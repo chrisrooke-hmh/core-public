@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Web Speech API Demo</title>
+<style>
+  * {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    box-sizing: border-box;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #fff;
+  }
+  a:link {
+    color:#000;
+    text-decoration: none;
+  }
+  a:visited {
+    color:#000;
+  }
+  a:hover {
+    color:#33F;
+  }
+  .button {
+    background: -webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);
+    border: 1px solid #076bd2;
+    border-radius: 3px;
+    color: #fff;
+    display: none;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.3;
+    padding: 8px 25px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #076bd2;
+    letter-spacing: normal;
+  }
+  .center {
+    padding: 10px;
+    text-align: center;
+  }
+  .final {
+    color: black;
+    padding-right: 3px; 
+  }
+  .interim {
+    color: gray;
+  }
+  .info {
+    font-size: 14px;
+    text-align: center;
+    color: #777;
+    display: none;
+  }
+  .right {
+    float: right;
+  }
+  .sidebyside {
+    display: inline-block;
+    width: 45%;
+    min-height: 40px;
+    text-align: left;
+    vertical-align: top;
+  }
+  #headline {
+    font-size: 40px;
+    font-weight: 300;
+  }
+  #info {
+    font-size: 20px;
+    /* text-align: center; */
+    color: #777;
+    /* visibility: hidden; */
+  }
+  #stem {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+    /* border: 2px solid gray; */
+    /* padding: .875rem; */
+    /* padding-top: 0; */
+    padding-bottom: .875rem;
+    text-align: left;
+    overflow-y: scroll;
+    position: relative;
+    font-weight: 700;
+    color: rgba(0,0,0,0.66);
+    margin: 0;
+  }
+  #start_button {
+    border: 0;
+    background-color:transparent;
+    padding: 0;
+    /* position: absolute; */
+    /* top: .875rem;
+    right: .875rem; */
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
+    /* border-radius: 50%; */
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: .375rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: 2px solid #CBCDCF;
+    box-shadow: 0;
+    will-change: box-shadow;
+    transition: box-shadow .2s ease-in-out;
+  }
+
+  #start_button:hover {
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2), 0px 3px 3px -4px rgba(0, 0, 0, 0.12), 0px 3px 4px 0px rgba(0, 0, 0, 0.14);
+  }
+
+  #start_button:active {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 2px 1px -2px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  }
+
+  #start_button img {
+    width: 100%;
+    height: 100%;
+  }
+
+  article {
+    width: 500px;
+    background: #e9e9e9;
+    border-radius: 1.5rem;
+    display: block;
+    box-shadow: 0 8px 24px -8px rgba(0,0,0,0.21);
+    padding: .875rem;
+  }
+
+  #title, #stem {
+    width: 100%;
+    /* color: #fff; */
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    /* padding: .875rem; */
+    display: block;
+    /* border: 2px solid gray; */
+  }
+
+  #title {
+    /* background-color: gray; */
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    margin: 0;
+    /* padding-bottom: 0; */
+  }
+
+  #info {
+    /* background-color: darkgray; */
+    border-top: 0;
+    border-bottom: 0;
+    /* padding-top: 0; */
+    margin-left: .875rem;
+    font-size: .875rem;
+    font-weight: 700;
+  }
+
+  #info p {
+    display: none;
+    margin: 0;
+  }
+  
+  #info p#info_start {
+    display: block;
+  }
+
+  textarea {
+    width: 100%;
+    height: 20rem;
+    display: block;
+    border: 0;
+    border-radius: 0 0 .625rem .625rem;
+    padding: .25rem;
+    font-size: 1rem;
+  }
+
+  #toolbar {
+    width: 100%;
+    border-bottom: 2px solid #e9e9e9;
+    background-color: white;
+    border-radius: .625rem .625rem 0 0;
+    padding: .25rem;
+    display: flex;
+    align-items: center;
+  }
+  
+
+</style>
+<!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet"> -->
+
+<article>
+  <h5 id="title">Favorite Candy</h5>
+  <p id="stem">Answer this question by telling what your favorite candy is and why. What is the flavor like? What do you think is in this candy?</p>
+  <div id="results">
+    <div id="toolbar">
+      <button id="start_button" onclick="startButton(event)">
+        <img id="start_img" src="mic.gif" alt="Start"></button>  
+        <div id="info">
+          <p id="info_start">Click on the microphone icon and begin speaking.</p>
+          <p id="info_speak_now">Speak now. When you have completed your answer, click to stop.</p>
+          <p id="info_no_speech">No speech was detected. You may need to adjust your
+            <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+              microphone settings</a>.</p>
+          <p id="info_no_microphone" style="display:none">
+            No microphone was found. Ensure that a microphone is installed and that
+            <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
+            microphone settings</a> are configured correctly.</p>
+          <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
+          <p id="info_denied">Permission to use microphone was denied.</p>
+          <p id="info_blocked">Permission to use microphone is blocked. To change,
+            go to chrome://settings/contentExceptions#media-stream</p>
+          <p id="info_upgrade">Web Speech API is not supported by this browser.
+            Upgrade to <a href="//www.google.com/chrome">Chrome</a>
+            version 25 or later.</p>
+        </div>
+      
+    </div>
+    <textarea id="final_span"></textarea>
+    <!-- <span id="final_span" class="final"></span> -->
+    <!-- <span id="interim_span" class="interim"></span> -->
+  </div>
+</article>
+<script>
+
+
+var final_transcript = '';
+var recognizing = false;
+var ignore_onend;
+var start_timestamp;
+if (!('webkitSpeechRecognition' in window)) {
+  upgrade();
+} else {
+  start_button.style.display = 'inline-block';
+  var recognition = new webkitSpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = false;
+
+  recognition.onstart = function() {
+    recognizing = true;
+    showInfo('info_speak_now');
+    start_img.src = 'mic-animate.gif';
+  };
+
+  recognition.onerror = function(event) {
+    if (event.error == 'no-speech') {
+      start_img.src = 'mic.gif';
+      showInfo('info_no_speech');
+      ignore_onend = true;
+    }
+    if (event.error == 'audio-capture') {
+      start_img.src = 'mic.gif';
+      showInfo('info_no_microphone');
+      ignore_onend = true;
+    }
+    if (event.error == 'not-allowed') {
+      if (event.timeStamp - start_timestamp < 100) {
+        showInfo('info_blocked');
+      } else {
+        showInfo('info_denied');
+      }
+      ignore_onend = true;
+    }
+  };
+
+  recognition.onend = function() {
+    recognizing = false;
+    if (ignore_onend) {
+      return;
+    }
+    start_img.src = 'mic.gif';
+    if (!final_transcript) {
+      showInfo('info_start');
+      return;
+    }
+    showInfo('');
+    if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+      var range = document.createRange();
+      range.selectNode(document.getElementById('final_span'));
+      window.getSelection().addRange(range);
+    }
+  };
+
+  recognition.onresult = function(event) {
+    // var interim_transcript = '';
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } 
+      // else {
+      //   interim_transcript += event.results[i][0].transcript;
+      // }
+    }
+    final_transcript = grammar(final_transcript);
+    final_span.value = capitalize(final_transcript);
+    // interim_span.innerHTML = linebreak(interim_transcript);
+  };
+}
+
+function upgrade() {
+  start_button.style.visibility = 'hidden';
+  showInfo('info_upgrade');
+}
+
+// var two_line = /\n\n/g;
+// var one_line = /\n/g;
+// function linebreak(s) {
+//   return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+// }
+
+var first_char = /\S/, punctuation = /([!?.]\s+)([a-z])/g;
+function capitalize(s) {
+  return s.replace(first_char, function(m) { return m.toUpperCase(); }).replace(punctuation, function(m, $1, $2) {return $1+$2.toUpperCase(); });
+}
+
+var period = ' period', comma = ' comma', exclamation = ' exclamation point', question = ' question mark';
+function grammar(t) {
+  return t.replace(period, '.').replace(comma, ',').replace(exclamation, '!').replace(question, '?');
+}
+
+function startButton(event) {
+  if (recognizing) {
+    recognition.stop();
+    return;
+  }
+  if (final_span.value.length > 0) {
+    final_transcript = final_span.value + ' ';
+  }
+  recognition.lang = 'en-US';
+  recognition.start();
+  ignore_onend = false;
+  // final_span.value = '';
+  // interim_span.innerHTML = '';
+  start_img.src = 'mic-slash.gif';
+  showInfo('info_allow');
+  start_timestamp = event.timeStamp;
+}
+
+function showInfo(s) {
+  if (s) {
+    for (var child = info.firstChild; child; child = child.nextSibling) {
+      if (child.style) {
+        child.style.display = child.id == s ? 'inline' : 'none';
+      }
+    }
+    info.style.display = 'block';
+  } else {
+    info.style.display = 'none';
+  }
+}
+</script>
