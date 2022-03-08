@@ -13,8 +13,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: 100%;
     background-color: #fff;
+    flex-direction: column;
+    padding: 3rem 0;
   }
   a:link {
     color:#000;
@@ -191,21 +193,28 @@
     display: flex;
     align-items: center;
   }
+
+  video {
+    width: 100%;
+    max-width: 1024px;
+    margin-bottom: 3rem;
+  }
   
 
 </style>
 <!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet"> -->
-
+<video controls src="video.mp4">Your browser does not support the video tag.</video>
 <article>
-  <h5 id="title">Title</h5>
-  <p id="stem">Question Stem</p>
+  <h5 id="title">I Wonder</h5>
+  <p id="stem">Think about the bee in the video you watched. What do you wonder about why the bee is on the flower?</p>
   <div id="results">
     <div id="toolbar">
       <button id="start_button" onclick="startButton(event)">
         <img id="start_img" src="mic.gif" alt="Start"></button>  
         <div id="info">
-          <p id="info_start">Click on the microphone icon and begin speaking.</p>
-          <p id="info_speak_now">Speak now.</p>
+          <p id="info_start">Click on the microphone button and begin speaking. Click the button again when you finish speaking.</p>
+          <!-- <p id="info_speak_now">Speak now. When you have completed your answer, click to stop.</p> -->
+          <p id="info_speak_now"></p>
           <p id="info_no_speech">No speech was detected. You may need to adjust your
             <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
               microphone settings</a>.</p>
