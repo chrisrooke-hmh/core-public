@@ -1,0 +1,344 @@
+@import "../common/custom/grades/grade_68";
+@import "../common/baseline/variables";
+@import "../common/baseline/colors";
+@import "../common/baseline/mixins";
+
+body {
+  // padding-bottom: 0;
+}
+
+:root {
+  --scroll-list1: 0;
+  --scroll-list2: 0;
+}
+
+p,
+h1,
+h3,
+ul,
+figure {
+  grid-column: 2 / span 12;
+}
+
+h1 {
+  color: color-code($blue-c55);
+  font-family: "Source Serif Pro", serif;
+  @include margin-above(0.5);
+
+  @include respond-md {
+    grid-column: 2 / span 10;
+    grid-row-start: 2;
+    background: white;
+    z-index: 3;
+    padding: calc(var(--base-lheight) / 2) calc(var(--base-lheight) / 2)
+      calc(var(--base-lheight) / 2) 0;
+  }
+}
+
+h3 {
+  color: color-code($blue-c55);
+  // @include padding-above(1);
+  text-align: center;
+  position: relative;
+  @include margin-above(0.5);
+
+  @include respond-md {
+    grid-column: 3 / span 10;
+    @include margin-above(1);
+    text-align: left;
+  }
+
+  @include respond-lg {
+    grid-column: 3 / span 10;
+  }
+  @include respond-xl {
+    grid-column: 2 / span 12;
+  }
+
+  &.gray {
+    color: color-code($gray-c55);
+    font-family: "Source Serif Pro", serif;
+  }
+}
+
+h4 {
+  color: color-code($blue-c55);
+  font-weight: 700;
+  text-align: center;
+  @include margin-above(1);
+}
+
+figure {
+  @include margin-above(0.5);
+}
+
+hr {
+  grid-column: 1 / span 14;
+  @include margin-above(1);
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: unset;
+  height: 0.3125rem;
+  background: color-code($blue-c55);
+
+  @include respond-md {
+    @include margin-above(2.5);
+  }
+
+  &.gray {
+    background: color-code($gray-c55);
+  }
+}
+
+header {
+  background: none;
+  @include respond-md {
+    @include margin-above(1.5);
+  }
+
+  .supertitle {
+    @include head-size($heading-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: color-code($blue-c30);
+
+    @include respond-md {
+      grid-column: 2 / span 5;
+    }
+  }
+
+  figure {
+    @include margin-above(1);
+    grid-column: 1 / span 14;
+    max-height: calc(11 * var(--base-lheight));
+    position: relative;
+
+    @include respond-md {
+      grid-column: 7 / span 8;
+      grid-row: 1 / span 4;
+      margin-right: 0;
+      margin-top: 0;
+      align-self: stretch;
+      max-height: unset;
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @include respond-md {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  .subtitle {
+    @include para-size($heading-sm);
+    color: color-code($blue-c55);
+    @include margin-above(1);
+
+    @include respond-md {
+      grid-column: 2 / span 5;
+    }
+  }
+
+  a {
+    grid-column: 2 / span 12;
+    width: fit-content;
+    margin: 0 auto;
+    color: black;
+    font-weight: 700;
+    border-bottom: 0;
+    @include margin-above(1);
+    @include padding-below(1.25);
+    position: relative;
+
+    @include respond-md {
+      grid-column: 2 / span 5;
+    }
+
+    &:before {
+      width: var(--base-lheight);
+      height: var(--base-lheight);
+      bottom: 0;
+      left: calc(50% - var(--base-lheight) / 2);
+      content: "";
+      box-sizing: border-box;
+      border: 0.25rem solid black;
+      border-radius: 50%;
+      position: absolute;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M16.6 8.6L12 13.2 7.4 8.6 6 10l6 6 6-6z'/%3E%3C/svg%3E");
+      background-position: center center;
+      background-size: nth($type-size, $body-md);
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+ul {
+  grid-column: 1 / span 14;
+  margin-top: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+
+  & > li {
+    padding-left: 0;
+    white-space: normal;
+    min-width: 100%;
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+
+    &.source__grid {
+      display: inline-grid;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &#list1 {
+    li {
+      transform: translateX(calc(var(--scroll-list1) * -100vw));
+    }
+  }
+
+  &#list2 {
+    li {
+      transform: translateX(calc(var(--scroll-list2) * -100vw));
+    }
+  }
+}
+
+.p_intro {
+  @include para-size($body-lg);
+  color: color-code($blue-c55);
+}
+
+.prev,
+.next {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  grid-row: 1 / span 1;
+  grid-column-end: span 3;
+  background-color: white;
+  width: var(--base-lheight);
+  height: var(--base-lheight);
+  align-self: flex-end;
+  border-radius: 50%;
+  border: 0.25rem solid color-code($gray-c25);
+  background-position: center center;
+  background-size: nth($type-size, $body-md);
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  @include respond-md {
+    grid-column-end: span 1;
+    align-self: center;
+    margin: 0 calc(var(--base-lheight) / 2);
+  }
+
+  @include respond-xl {
+    grid-row-start: 2;
+  }
+}
+
+.prev {
+  grid-column-start: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23BFC0C0' d='M15.4 7.4L14 6l-6 6 6 6 1.4-1.4-4.6-4.6 4.6-4.6z'/%3E%3C/svg%3E");
+}
+
+.next {
+  grid-column-start: 11;
+  justify-self: flex-end;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23BFC0C0' d='M10 6L8.6 7.4l4.6 4.6-4.6 4.6L10 18l6-6-6-6z'/%3E%3C/svg%3E");
+
+  @include respond-md {
+    grid-column-start: 13;
+  }
+}
+
+li {
+  &:before {
+    display: none;
+  }
+
+  h4 {
+    grid-row: 1 / span 1;
+    grid-column: 5 / span 6;
+
+    @include respond-md {
+      grid-column: 3 / span 2;
+      text-align: left;
+    }
+    @include respond-xl {
+      grid-column: 2 / span 1;
+    }
+  }
+
+  p,
+  figure,
+  .interaction {
+    @include respond-md {
+      grid-column: 5 / span 8;
+    }
+  }
+
+  p {
+    @include respond-xl {
+      grid-column: 3 / span 5;
+    }
+  }
+
+  figure,
+  .interaction {
+    @include respond-md {
+      @include margin-above(1);
+    }
+    @include respond-xl {
+      grid-column: 9 / span 4;
+      grid-row: 1 / span 2;
+    }
+  }
+}
+
+.interaction {
+  grid-column: 2 / span 12;
+  height: calc(var(--base-lheight) * 10);
+  background-color: color-code($blue-c10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: color-code($blue-c55);
+
+  @include respond-md {
+    grid-column: 3 / span 10;
+  }
+
+  @include respond-lg {
+    grid-column: 4 / span 8;
+  }
+
+  @include respond-xl {
+    grid-column: 3 / span 10;
+  }
+}

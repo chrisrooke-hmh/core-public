@@ -1,0 +1,238 @@
+body {
+  padding-bottom: 0;
+  align-content: stretch;
+}
+
+p,
+h2,
+h5,
+a {
+  grid-column: 2/span 12;
+}
+
+h2 {
+  margin-top: 0rem;
+}
+@media (min-width: 40.625rem) {
+  h2 {
+    margin-top: 0rem;
+  }
+}
+@media (min-width: 80rem) {
+  h2 {
+    margin-top: 0rem;
+  }
+}
+
+h5 {
+  color: #f0ad00;
+  font-weight: 700;
+}
+@media (min-width: 55rem) {
+  h5 {
+    grid-column: 2/span 4;
+  }
+}
+@media (min-width: 80rem) {
+  h5 {
+    grid-column: 1/span 6;
+  }
+}
+
+h4 {
+  font-weight: 700;
+}
+
+a {
+  display: block;
+  color: black;
+  border-bottom: 0;
+  background: #2d2d2d;
+  padding-bottom: calc(100% - var(--base-lheight));
+  position: relative;
+  margin-top: 0.9375rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 5px rgba(0, 0, 0, 0.15);
+  transform: scale3d(1, 1, 1);
+  transition: all 0.2s ease-out, filter 0.75s ease-out;
+  filter: grayscale(0.1) saturate(95%) brightness(95%) contrast(90%);
+  z-index: 9999;
+}
+@media (min-width: 40.625rem) {
+  a {
+    margin-top: 1rem;
+  }
+}
+@media (min-width: 80rem) {
+  a {
+    margin-top: 1.0625rem;
+  }
+}
+a:first-of-type img {
+  background: #cee6ff;
+}
+a:nth-of-type(2) img {
+  background: #e6f5b5;
+}
+a:nth-of-type(3) img {
+  background: #f4f4f4;
+}
+a:nth-of-type(4) {
+  background: #2d2d2d;
+}
+a:nth-of-type(4):before {
+  width: calc(50% - var(--base-lheight));
+  height: 4px;
+  position: absolute;
+  left: calc(var(--base-lheight) / 2);
+  bottom: var(--base-lheight);
+  background-color: #ffc849;
+  content: "";
+}
+a img {
+  position: absolute;
+  width: 108%;
+  height: auto;
+  top: -4%;
+  left: -4%;
+  z-index: -10;
+  transform: scale(1.05);
+  transition: all 0.2s ease-out, transform 0.2s ease-out, filter 0.75s ease-out;
+  filter: blur(0px);
+  max-width: unset;
+}
+a:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.15);
+  filter: grayscale(0) saturate(105%) brightness(100%) contrast(100%);
+  z-index: 1;
+}
+a.blur img {
+  filter: blur(1px) grayscale(0.1) saturate(95%);
+}
+a .shineLayer {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 80%);
+  transition: all 0.2s ease-out;
+  top: 0;
+  left: 0;
+}
+@media (min-width: 40.625rem) {
+  a {
+    margin-top: 1.875rem;
+  }
+}
+@media (min-width: 40.625rem) and (min-width: 40.625rem) {
+  a {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 40.625rem) and (min-width: 80rem) {
+  a {
+    margin-top: 2.125rem;
+  }
+}
+@media (min-width: 40.625rem) {
+  a:nth-of-type(odd) {
+    grid-column: 2/span 6;
+  }
+}
+@media (min-width: 40.625rem) {
+  a:nth-of-type(even) {
+    grid-column: 8/span 6;
+  }
+}
+@media (min-width: 55rem) {
+  a:nth-of-type(odd) {
+    grid-column: 2/span 4;
+  }
+  a:nth-of-type(even) {
+    grid-column: 2/span 4;
+  }
+}
+@media (min-width: 80rem) {
+  a:nth-of-type(odd) {
+    grid-column: 1/span 3;
+  }
+  a:nth-of-type(even) {
+    grid-column: 4/span 3;
+  }
+}
+a > * {
+  position: absolute;
+  top: calc(var(--base-lheight) / 2);
+  left: calc(var(--base-lheight) / 2);
+}
+a .title {
+  max-width: calc(100% - var(--base-lheight));
+}
+a p,
+a h4 {
+  background: white;
+  margin-top: 0rem;
+  margin: 0.1875rem 0;
+  width: fit-content;
+}
+@media (min-width: 40.625rem) {
+  a p,
+a h4 {
+    margin-top: 0rem;
+  }
+}
+@media (min-width: 80rem) {
+  a p,
+a h4 {
+    margin-top: 0rem;
+  }
+}
+
+header.source__grid {
+  position: relative;
+  background: none;
+}
+header.source__grid:before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffc849;
+  position: absolute;
+  z-index: -1;
+}
+@media (min-width: 55rem) {
+  header.source__grid {
+    grid-column: 2/span 6;
+    grid-template-columns: repeat(6, 1fr);
+    min-height: 100vh;
+    align-content: center;
+  }
+  header.source__grid * {
+    grid-column: 1/span 6;
+  }
+  header.source__grid:before {
+    width: 50vw;
+    right: 0;
+    left: unset;
+  }
+}
+
+.supertitle {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 700;
+}
+
+main.source__grid {
+  transform-style: preserve-3d;
+  transform: perspective(800px);
+}
+@media (min-width: 55rem) {
+  main.source__grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 8/span 6;
+    align-content: center;
+  }
+}
+
+/*# sourceMappingURL=custom.css.map */

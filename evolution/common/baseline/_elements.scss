@@ -1,0 +1,197 @@
+hr {
+  width: calc(100% - (2 * var(--base-lheight)));
+  border: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.66);
+  margin: calc(var(--base-lheight) / 2 - 1px) var(--base-lheight)
+    calc(var(--base-lheight) / 2);
+}
+
+ul,
+ol {
+  li {
+    list-style-position: inside;
+  }
+
+  ul {
+    list-style-type: circle;
+  }
+
+  ol {
+    list-style-type: lower-alpha;
+  }
+
+  ul,
+  ol {
+    margin-top: 0;
+
+    ul {
+      list-style-type: square;
+    }
+
+    ol {
+      list-style-type: lower-roman;
+    }
+  }
+}
+
+// p.subtitle {
+//   margin-top: 0;
+// }
+
+// p.supertitle {
+//   + h1,
+//   + h2,
+//   + h3,
+//   + h4,
+//   + h5,
+//   + h6 {
+//     margin-top: 0;
+//   }
+// }
+
+// p.numbered {
+//   position: relative;
+
+//   &:before {
+//     counter-increment: paras;
+//     content: counter(paras);
+//     font-family: "Source Sans Pro", sans-serif;
+//     position: absolute;
+//     right: calc(100% + 0.5rem);
+//   }
+// }
+
+.dropcap:first-letter {
+  float: left;
+  font-family: $font-sans;
+  // font-size: $type-size-lg-lv15;
+  font-size: 5.5 * nth($type-size-lg, $body-md);
+  line-height: 2.9412 * nth($para-lheight-lg, $body-md);
+
+  // line-height: calc(var(--base-lheight) * 3);
+  padding-right: calc(var(--base-lheight) / 4);
+  font-weight: 700;
+  // margin-top: -0.5rem;
+}
+
+img,
+video {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+
+  + figcaption {
+    background: rgba(0, 0, 0, 0.12);
+    padding: calc(var(--base-lheight) / 2);
+  }
+}
+
+figcaption {
+  font-family: $font-sans;
+}
+
+audio {
+  width: 100%;
+}
+
+aside {
+  grid-column-end: span 10;
+
+  @include respond-md {
+    grid-column-end: span 5;
+  }
+  @include respond-lg {
+    grid-column-end: span 4;
+  }
+  @include respond-xl {
+    grid-column-end: span 3;
+  }
+
+  background: rgba(0, 0, 0, 0.12);
+  padding: calc(var(--base-lheight) / 2);
+
+  &.left-aside {
+    grid-column-start: 2;
+
+    @include respond-md {
+      grid-column-start: 3;
+    }
+    @include respond-lg {
+      grid-column-start: 4;
+    }
+    @include respond-xl {
+      grid-column-start: 2;
+    }
+  }
+
+  &.right-aside {
+    grid-column-start: 4;
+
+    @include respond-md {
+      grid-column-start: 8;
+    }
+    @include respond-lg {
+      grid-column-start: 8;
+    }
+    @include respond-xl {
+      grid-column-start: 11;
+    }
+  }
+
+  p {
+    @include para-size($body-sm);
+  }
+
+  *:first-child {
+    margin-top: 0;
+  }
+
+  &.top-align {
+    align-self: flex-start;
+  }
+
+  &.center-align {
+    align-self: center;
+  }
+
+  &.bottom-align {
+    align-self: flex-end;
+  }
+}
+
+.text-panel {
+  background: color-code($gray-c10);
+  padding: calc(var(--base-lheight) / 2);
+}
+
+.dual-column {
+  columns: 2;
+}
+
+.triple-column {
+  columns: 3;
+}
+
+.dual-column,
+.triple-column {
+  column-gap: var(--base-lheight);
+}
+
+body > footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--base-lheight) / 4);
+  background-color: rgba(0, 0, 0, 0.66);
+}
+
+section {
+  background: color-code($gray-c10);
+  padding: var(--base-lheight) 0;
+}
+
+iframe {
+  grid-column: 1 / span 14;
+}

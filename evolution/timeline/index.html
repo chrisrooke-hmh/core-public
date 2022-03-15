@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <title>
+        Timeline
+    </title>
+    <link rel="stylesheet" href="../common/baseline.css">
+    <link rel="stylesheet" href="./custom.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <header class="source__grid">
+        <p role="doc-subtitle" class="supertitle">Module 11</p>
+        <h1>A Westward Expansion</h1>
+        <figure>
+            <img src="header.jpg">
+        </figure>
+        <p role="doc-subtitle" class="subtitle">Was the United States truly destined to expand west in the 1800s?</p>
+        <a href="#main">Start Exploring</a>
+    </header>
+    <main id="main" class="source__grid">
+        <hr>
+        <h3>1800-1810</h3>
+        <ul id="list1">
+            <li class="source__grid">
+                <!-- <button class="prev"></button> -->
+                <button class="next"></button>
+                <h4>1803</h4>
+                <figure class="interaction">Interaction</figure>
+                <p class="p_intro">Senate approves the Louisiana Purchase, roughly doubling the size of the U.S.</p>
+                <p>All or part of 13 present-day states were carved out of the territory. The total cost was around $15
+                    million, or about 4 cents an acre. Today, a land purhase the size of the Louisiana Territory would
+                    cost around $1.2 trillion.</p>
+            </li>
+            <li class="source__grid">
+                <button class="prev"></button>
+                <button class="next"></button>
+                <h4>1804</h4>
+                <figure class="interaction">Interaction</figure>
+                <p class="p_intro">Senate approves the Louisiana Purchase, roughly doubling the size of the U.S.</p>
+                <p>All or part of 13 present-day states were carved out of the territory. The total cost was around $15
+                    million, or about 4 cents an acre. Today, a land purhase the size of the Louisiana Territory would
+                    cost around $1.2 trillion.</p>
+            </li>
+            <li class="source__grid">
+                <button class="prev"></button>
+                <button class="next"></button>
+                <h4>1805</h4>
+                <figure class="interaction">Interaction</figure>
+                <p class="p_intro">Senate approves the Louisiana Purchase, roughly doubling the size of the U.S.</p>
+                <p>All or part of 13 present-day states were carved out of the territory. The total cost was around $15
+                    million, or about 4 cents an acre. Today, a land purhase the size of the Louisiana Territory would
+                    cost around $1.2 trillion.</p>
+            </li>
+            <li class="source__grid">
+                <button class="prev"></button>
+                <button class="next"></button>
+                <h4>1806</h4>
+                <figure class="interaction">Interaction</figure>
+                <p class="p_intro">Senate approves the Louisiana Purchase, roughly doubling the size of the U.S.</p>
+                <p>All or part of 13 present-day states were carved out of the territory. The total cost was around $15
+                    million, or about 4 cents an acre. Today, a land purhase the size of the Louisiana Territory would
+                    cost around $1.2 trillion.</p>
+            </li>
+            <li class="source__grid">
+                <button class="prev"></button>
+                <!-- <button class="next"></button> -->
+                <h4>1807</h4>
+                <figure class="interaction">Interaction</figure>
+                <p class="p_intro">Senate approves the Louisiana Purchase, roughly doubling the size of the U.S.</p>
+                <p>All or part of 13 present-day states were carved out of the territory. The total cost was around $15
+                    million, or about 4 cents an acre. Today, a land purhase the size of the Louisiana Territory would
+                    cost around $1.2 trillion.</p>
+            </li>
+        </ul>
+        <hr>
+        <h3>1820-1830</h3>
+        <ul id="list2">
+            <li class="source__grid">
+                <button class="prev"></button>
+                <button class="next"></button>
+                <h4>1803</h4>
+                <figure>
+                    <img src="content.jpg">
+                </figure>
+                <p class="p_intro">Jedediah Smith finds a South Pass through the Rocky Mountains.</p>
+                <p>Smith learned about the South Pass from the Crow Indians. It was a much safer and faster trail than
+                    the Missouri River route established by Lewis and Clarke in 1804. In time, it became the preferred
+                    route for settlers heading west to Oregon and California.</p>
+            </li>
+        </ul>
+        <hr class="gray">
+        <h3 class="gray">Interpret Timelines</h3>
+        <figure class="interaction">Interaction</figure>
+    </main>
+
+    <script type="text/javascript">
+        var nextButtons = document.getElementsByClassName("next");
+        var prevButtons = document.getElementsByClassName("prev");
+        let root = document.documentElement;
+        
+        var nextScroll = function() {
+            var activeList = '--scroll-' + this.parentNode.parentNode.id;
+            // console.log(activeList + ':' + window.getComputedStyle(root).getPropertyValue('--scroll-list1'));
+            root.style.setProperty(activeList, parseInt(window.getComputedStyle(root).getPropertyValue(activeList)) + 1);
+        };
+
+        for (var i = 0; i < nextButtons.length; i++) {
+            nextButtons[i].addEventListener('click', nextScroll, false);
+        }
+
+        var prevScroll = function() {
+            var activeList = '--scroll-' + this.parentNode.parentNode.id;
+            // console.log(activeList + ':' + window.getComputedStyle(root).getPropertyValue('--scroll-list1'));
+            root.style.setProperty(activeList, parseInt(window.getComputedStyle(root).getPropertyValue(activeList)) - 1);
+        };
+
+        for (var i = 0; i < prevButtons.length; i++) {
+            prevButtons[i].addEventListener('click', prevScroll, false);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        
+    </script>
+</body>
+
+</html>
