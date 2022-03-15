@@ -1,0 +1,135 @@
+// .main {
+//   grid-column-start: 2;
+//   grid-column-end: span 12;
+//
+//   @include respond-md {
+//     grid-column-start: 3;
+//     grid-column-end: span 10;
+//   }
+//   @include respond-lg {
+//     grid-column-start: 4;
+//     grid-column-end: span 8;
+//   }
+//   @include respond-xl {
+//     grid-column-start: 5;
+//     grid-column-end: span 6;
+//   }
+// }
+// .feature {
+//   grid-column-start: 2;
+//   grid-column-end: span 12;
+//
+//   @include respond-lg {
+//     grid-column-start: 3;
+//     grid-column-end: span 10;
+//   }
+//   @include respond-xl {
+//     grid-column-start: 4;
+//     grid-column-end: span 8;
+//   }
+// }
+// .wide {
+//   grid-column-start: 2;
+//   grid-column-end: span 12;
+//
+//   // @include respond-xl {
+//   //   grid-column-start: 3;
+//   //   grid-column-end: span 10;
+//   // }
+//
+//   .main,
+//   aside {
+//     width: 100%;
+//     margin-left: auto;
+//     margin-right: auto;
+//
+//     @include respond-md {
+//       width: calc((100vw - var(--base-lheight)) * 0.83333333 - var(--base-lheight));
+//     }
+//     @include respond-lg {
+//       width: calc((100vw - var(--base-lheight)) * 0.66666667 - var(--base-lheight));
+//     }
+//     @include respond-xl {
+//       width: calc(40rem - var(--base-lheight));
+//     }
+//   }
+//
+//   aside {
+//     @include respond-md {
+//       float: right;
+//       margin-left: 0.9375rem;
+//       width: calc((100vw - var(--base-lheight)) * 0.41666667 - var(--base-lheight));
+//     }
+//
+//     @include respond-lg {
+//       width: calc((100vw - var(--base-lheight)) * 0.33333333 - var(--base-lheight));
+//     }
+//     @include respond-xl {
+//       width: calc(20rem - var(--base-lheight));
+//     }
+//   }
+// }
+//
+// .fill {
+//   grid-column-start: 1;
+//   grid-column-end: span 14;
+// }
+
+.half-column.first {
+  grid-column: 4 / span 4;
+}
+
+.half-column.second {
+  grid-column: 8 / span 4;
+}
+
+.third-column.first {
+  grid-column: 2 / span 4;
+}
+
+.third-column.second {
+  grid-column: 6 / span 4;
+}
+
+.third-column.third {
+  grid-column: 10 / span 4;
+}
+
+.main,
+.feature,
+.wide,
+.half-column,
+.third-column,
+aside,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+ol,
+ul,
+.text-panel {
+  @include respond-md {
+    margin-left: calc(var(--base-lheight) / 2);
+    margin-right: calc(var(--base-lheight) / 2);
+  }
+}
+
+.margintop-half {
+  @include margin-above(0.5);
+}
+.margintop-one {
+  @include margin-above(1);
+}
+.margintop-one-half {
+  @include margin-above(1.5);
+}
+.margintop-two {
+  @include margin-above(2);
+}
+.margintop-two-half {
+  @include margin-above(2.5);
+}

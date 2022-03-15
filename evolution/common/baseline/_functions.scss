@@ -1,0 +1,40 @@
+//--------------------------------------------------------------------
+// Typography and Rhythm
+//--------------------------------------------------------------------
+
+@function space($multiple: 1, $context: $base-font-size) {
+  @return em($base-line-height * $multiple, $context);
+}
+
+//--------------------------------------------------------------------
+// Unit transformations
+//--------------------------------------------------------------------
+
+// Convert a value to ems base on its contextual font-size. If no
+// context is defined, the base font size is assumed.
+
+// Strip the units from a number.
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+// Convert a value to ems base on its contextual font-size. If no
+// context is defined, the base font size is assumed.
+@function em($target, $context: $base-font-size) {
+  @return (strip-units($target) / strip-units($context)) + 0em;
+}
+
+@function em($target, $context: $base-font-size) {
+  @return (strip-units($target) / strip-units($context)) + 0em;
+}
+
+//--------------------------------------------------------------------
+// Flexgrid
+//--------------------------------------------------------------------
+
+/**
+ * Calculate column size percentage
+ */
+@function get-col-percent($column-num) {
+  @return $column-num / $fg-columns * 100%;
+}
