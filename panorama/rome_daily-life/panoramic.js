@@ -20,6 +20,7 @@ let isUserInteracting = false,
 
 // Audio file paths
 let audioPathArray = [
+  "sound/ancientrome_sc6_title",
   "sound/ancientrome_sc6_poi_001.mp3",
   "sound/ancientrome_sc6_poi_002.mp3",
   "sound/ancientrome_sc6_poi_003.mp3",
@@ -28,17 +29,54 @@ let audioPathArray = [
   "sound/ancientrome_sc6_poi_006.mp3",
   "sound/ancientrome_sc6_poi_007.mp3",
   "sound/ancientrome_sc6_poi_008.mp3",
-  "sound/ancientrome_sc6_poi_009.mp3"
+  "sound/ancientrome_sc6_poi_009.mp3",
+];
+
+let entryArray = [
+  "entry1",
+  "entry2",
+  "entry3",
+  "entry4",
+  "entry5",
+  "entry6",
+  "entry7",
+  "entry8",
+  "entry9",
+  "entry10",
 ];
 
 let audioArray = [];
 let poiArray = [];
+let currentAudioFile = audioArray[0],
+  previousAudioFile = audioArray[0];
+
+//var x = document.getElementById("myAudio");
+function toggleMute() {
+  console.log("Mute button pressed");
+  let audioSources = $("source"); // Gets all audio sources as string
+  console.log(audioSources[0].src);
+  audioSources[0].src.setVolume(0);
+}
+
+function hideDescription() {
+  let showButton = $("#showButton");
+  showButton.show();
+  let descTarget = $("#description");
+  descTarget.hide();
+}
+
+function showDescription() {
+  let showButton = $("#showButton");
+  showButton.hide();
+  let descTarget = $("#description");
+  descTarget.show();
+}
 
 // Function preloads audio files into memory before everything else
 function preload() {
   soundFormats("mp3", "wav");
-  intro = loadSound("sound/ancientrome_sc6_title.mp3");
-  ambientMusic = loadSound("sound/roman_music_loop.wav");
+  intro = loadSound("sound/ancientrome_intro.mp3");
+  ambientMusic = loadSound("sound/roman town.mp3");
   for (let i = 0; i < audioPathArray.length; i++) {
     let audioToLoad = loadSound(audioPathArray[i]);
     audioArray.push(audioToLoad);
@@ -47,10 +85,9 @@ function preload() {
 
 // Required setup() function for p5. Used to start intro audio and ambient music
 function setup() {
-  intro.play();
   ambientMusic.play();
   ambientMusic.loop();
-  ambientMusic.setVolume(0.2);
+  ambientMusic.setVolume(0.1);
 }
 
 function stopIntro() {
@@ -59,11 +96,29 @@ function stopIntro() {
   }
 }
 
+function playAudio() {
+  if (currentAudioFile.isPlaying()) {
+    currentAudioFile.pause();
+  } else {
+    currentAudioFile.play();
+  }
+}
+
+function resetAudio() {
+  if (currentAudioFile.isPlaying()) {
+    currentAudioFile.stop();
+    currentAudioFile.play();
+  } else {
+    currentAudioFile.stop();
+  }
+}
+
 init();
 animate();
 
 function init() {
   // Hide text entries on page load
+  $("#showButton").hide();
   $("#entry1").hide();
   $("#entry2").hide();
   $("#entry3").hide();
@@ -73,6 +128,7 @@ function init() {
   $("#entry7").hide();
   $("#entry8").hide();
   $("#entry9").hide();
+  $("#entry10").show();
 
   // Three.js Camera, scene, mouse
   let container, mesh;
@@ -100,19 +156,20 @@ function init() {
   //////////////////////////////////////Interact Points///////////////////////////////////////
   // Positions of each poi. For more poi's add new positions in format below
   let positionsArray = [
-    { x: -100, y: -70, z: 100 },
-    { x: 125, y: -50, z: -75 },
-    { x: -20, y: -110, z: -95 },
-    { x: -15, y: -60, z: 120 },
-    { x: 0, y: -10, z: 150 },
-    { x: 55, y: -50, z: -125 },
-    { x: 120, y: -50, z: 60 },
-    { x: 120, y: 10, z: 80 },
-    { x: -100, y: -60, z: -65 },
+    { x: -180, y: -100, z: 180 },
+    { x: 195, y: -50, z: -150 },
+    { x: -20, y: -130, z: -180 },
+    { x: 0, y: -100, z: 220 },
+    { x: 0, y: -10, z: 250 },
+    { x: 75, y: -100, z: -180 },
+    { x: 200, y: -50, z: 140 },
+    { x: 200, y: 30, z: 80 },
+    { x: -160, y: -140, z: -145 },
+    { x: -1000, y: -1000, z: -80 },
   ];
 
   // Create poi's and set them to their positions
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 10; i++) {
     // Poi's instantiated from class
     poiArray.push(new PointOfInterest());
     // Poi's have unique names for switch statement
@@ -174,7 +231,7 @@ function onDocumentMouseUp(event) {
 
 // Zoom in and out
 function onDocumentMouseWheel(event) {
-  camera.fov += event.deltaY * 0.05;
+  camera.fov += event.deltaY * 0.35;
   console.log(camera.fov);
   camera.updateProjectionMatrix();
 }
@@ -196,8 +253,7 @@ function onMouseClick(event) {
     ) *
       2 +
     1;
-  raycaster.setFromCamera(mouse, camera);
-
+  //raycaster.setFromCamera(mouse, camera);
   raycaster.setFromCamera(mouse, camera);
 
   let intersects = raycaster.intersectObjects(scene.children, true);
@@ -207,228 +263,201 @@ function onMouseClick(event) {
       // Switch, if name of object matches play appropriate audio, stop other audio and update text
       case "pointOfInterest0":
         stopIntro();
-        if (audioArray[1].isPlaying() || audioArray[2].isPlaying() || audioArray[3].isPlaying() || audioArray[4].isPlaying() || audioArray[5].isPlaying() || audioArray[6].isPlaying() || audioArray[7].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[1].stop();
-          audioArray[2].stop();
-          audioArray[3].stop();
-          audioArray[4].stop();
-          audioArray[5].stop();
-          audioArray[6].stop();
-          audioArray[7].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest0");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[1];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[0].play();
-        $("#entry1").show();
-        $("#entry2").hide();
-        $("#entry3").hide();
-        $("#entry4").hide();
-        $("#entry5").hide();
-        $("#entry6").hide();
-        $("#entry7").hide();
-        $("#entry8").hide();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry1").show();
+          if (entryArray[i] != "entry1") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
 
       case "pointOfInterest1":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[2].isPlaying() || audioArray[3].isPlaying() || audioArray[4].isPlaying() || audioArray[5].isPlaying() || audioArray[6].isPlaying() || audioArray[7].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[2].stop();
-          audioArray[3].stop();
-          audioArray[4].stop();
-          audioArray[5].stop();
-          audioArray[6].stop();
-          audioArray[7].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest1");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[2];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[1].play();
-        $("#entry1").hide();
-        $("#entry2").show();
-        $("#entry3").hide();
-        $("#entry4").hide();
-        $("#entry5").hide();
-        $("#entry6").hide();
-        $("#entry7").hide();
-        $("#entry8").hide();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry2").show();
+          if (entryArray[i] != "entry2") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
 
       case "pointOfInterest2":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[1].isPlaying() || audioArray[3].isPlaying() || audioArray[4].isPlaying() || audioArray[5].isPlaying() || audioArray[6].isPlaying() || audioArray[7].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[1].stop();
-          audioArray[3].stop();
-          audioArray[4].stop();
-          audioArray[5].stop();
-          audioArray[6].stop();
-          audioArray[7].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest2");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[3];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[2].play();
-        $("#entry1").hide();
-        $("#entry2").hide();
-        $("#entry3").show();
-        $("#entry4").hide();
-        $("#entry5").hide();
-        $("#entry6").hide();
-        $("#entry7").hide();
-        $("#entry8").hide();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry3").show();
+          if (entryArray[i] != "entry3") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
-        
+
       case "pointOfInterest3":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[1].isPlaying() || audioArray[2].isPlaying() || audioArray[4].isPlaying() || audioArray[5].isPlaying() || audioArray[6].isPlaying() || audioArray[7].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[1].stop();
-          audioArray[2].stop();
-          audioArray[4].stop();
-          audioArray[5].stop();
-          audioArray[6].stop();
-          audioArray[7].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest3");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[4];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[3].play();
-        $("#entry1").hide();
-        $("#entry2").hide();
-        $("#entry3").hide();
-        $("#entry4").show();
-        $("#entry5").hide();
-        $("#entry6").hide();
-        $("#entry7").hide();
-        $("#entry8").hide();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry4").show();
+          if (entryArray[i] != "entry4") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
-        
+
       case "pointOfInterest4":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[1].isPlaying() || audioArray[2].isPlaying() || audioArray[3].isPlaying() || audioArray[5].isPlaying() || audioArray[6].isPlaying() || audioArray[7].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[1].stop();
-          audioArray[2].stop();
-          audioArray[3].stop();
-          audioArray[5].stop();
-          audioArray[6].stop();
-          audioArray[7].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest4");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[5];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[4].play();
-        $("#entry1").hide();
-        $("#entry2").hide();
-        $("#entry3").hide();
-        $("#entry4").hide();
-        $("#entry5").show();
-        $("#entry6").hide();
-        $("#entry7").hide();
-        $("#entry8").hide();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry5").show();
+          if (entryArray[i] != "entry5") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
-        
+
       case "pointOfInterest5":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[1].isPlaying() || audioArray[2].isPlaying() || audioArray[3].isPlaying()  || audioArray[4].isPlaying() || audioArray[6].isPlaying() || audioArray[7].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[1].stop();
-          audioArray[2].stop();
-          audioArray[3].stop();
-          audioArray[4].stop();
-          audioArray[6].stop();
-          audioArray[7].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest5");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[6];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[5].play();
-        $("#entry1").hide();
-        $("#entry2").hide();
-        $("#entry3").hide();
-        $("#entry4").hide();
-        $("#entry5").hide();
-        $("#entry6").show();
-        $("#entry7").hide();
-        $("#entry8").hide();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry6").show();
+          if (entryArray[i] != "entry6") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
-        
+
       case "pointOfInterest6":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[1].isPlaying() || audioArray[2].isPlaying() || audioArray[3].isPlaying()  || audioArray[4].isPlaying() || audioArray[5].isPlaying() || audioArray[7].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[1].stop();
-          audioArray[2].stop();
-          audioArray[3].stop();
-          audioArray[4].stop();
-          audioArray[5].stop();
-          audioArray[7].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest6");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[7];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[6].play();
-        $("#entry1").hide();
-        $("#entry2").hide();
-        $("#entry3").hide();
-        $("#entry4").hide();
-        $("#entry5").hide();
-        $("#entry6").hide();
-        $("#entry7").show();
-        $("#entry8").hide();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry7").show();
+          if (entryArray[i] != "entry7") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
-        
+
       case "pointOfInterest7":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[1].isPlaying() || audioArray[2].isPlaying() || audioArray[3].isPlaying()  || audioArray[4].isPlaying() || audioArray[5].isPlaying() || audioArray[6].isPlaying() || audioArray[8].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[1].stop();
-          audioArray[2].stop();
-          audioArray[3].stop();
-          audioArray[4].stop();
-          audioArray[5].stop();
-          audioArray[6].stop();
-          audioArray[8].stop();
+        setActivePoi("pointOfInterest7");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[8];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[7].play();
-        $("#entry1").hide();
-        $("#entry2").hide();
-        $("#entry3").hide();
-        $("#entry4").hide();
-        $("#entry5").hide();
-        $("#entry6").hide();
-        $("#entry7").hide();
-        $("#entry8").show();
-        $("#entry9").hide();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry8").show();
+          if (entryArray[i] != "entry8") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
-        
+
       case "pointOfInterest8":
         stopIntro();
-        if (audioArray[0].isPlaying() || audioArray[1].isPlaying() || audioArray[2].isPlaying() || audioArray[3].isPlaying()  || audioArray[4].isPlaying() || audioArray[5].isPlaying() || audioArray[6].isPlaying() || audioArray[7].isPlaying()) {
-          audioArray[0].stop();
-          audioArray[1].stop();
-          audioArray[2].stop();
-          audioArray[3].stop();
-          audioArray[4].stop();
-          audioArray[5].stop();
-          audioArray[6].stop();
-          audioArray[7].stop();
+        setActivePoi("pointOfInterest8");
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[9];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
         }
-        audioArray[8].play();
-        $("#entry1").hide();
-        $("#entry2").hide();
-        $("#entry3").hide();
-        $("#entry4").hide();
-        $("#entry5").hide();
-        $("#entry6").hide();
-        $("#entry7").hide();
-        $("#entry8").hide();
-        $("#entry9").show();
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry9").show();
+          if (entryArray[i] != "entry9") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
         moveBox();
         break;
+
+      case "pointOfInterest9":
+        previousAudioFile = currentAudioFile;
+        currentAudioFile = audioArray[10];
+        if (previousAudioFile.isPlaying()) {
+          previousAudioFile.stop();
+        }
+
+        for (let i = 0; i < entryArray.length; i++) {
+          $("#entry10").show();
+          if (entryArray[i] != "entry10") {
+            $("#" + entryArray[i]).hide();
+          }
+        }
+
+        moveBox();
+        break;
+    }
+  }
+}
+
+function setActivePoi(poi) {
+  for (let i = 0; i < poiArray.length; i++) {
+    if (poiArray[i].poi.name === poi) {
+      poiArray[i].material.color = new THREE.Color(0x006aff);
+    } else {
+      poiArray[i].material.color = new THREE.Color(0xffffff);
     }
   }
 }
@@ -452,10 +481,20 @@ function animate() {
   update();
 }
 
+function isItPlaying() {
+  for (let i = 0; i < audioArray.length; i++) {
+    if (audioArray[i].isPlaying()) {
+      console.log(audioArray[i] + " is playing");
+    } else {
+      console.log(audioArray[i] + " is not playing");
+    }
+  }
+}
+
 // Update camera orientation
 function update() {
   if (isUserInteracting === false) {
-    lon += 0.1; // Rotate Camera
+    lon += 0; // Rotate Camera
   }
 
   lat = Math.max(-85, Math.min(85, lat));
