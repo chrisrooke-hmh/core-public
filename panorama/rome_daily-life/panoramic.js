@@ -96,11 +96,13 @@ function stopIntro() {
   }
 }
 
-function playAudio() {
+function playAudio(item) {
   if (currentAudioFile.isPlaying()) {
     currentAudioFile.pause();
+    item.classList.remove("active");
   } else {
     currentAudioFile.play();
+    item.classList.add("active");
   }
 }
 
