@@ -1,5 +1,5 @@
 let camera, scene, renderer, mouse, raycaster; // Three.js globals
-let ambientMusic, intro; // p5.sound globals
+let ambientMusic, intro, previousAudioFile, currentAudioFile;; // p5.sound globals
 
 // Canvas size/ratio
 let widthFull = window.innerWidth,
@@ -45,33 +45,6 @@ let entryArray = [
   "entry10",
 ];
 
-let audioArray = [];
-let poiArray = [];
-let currentAudioFile = audioArray[0],
-  previousAudioFile = audioArray[0];
-
-//var x = document.getElementById("myAudio");
-function toggleMute() {
-  console.log("Mute button pressed");
-  let audioSources = $("source"); // Gets all audio sources as string
-  console.log(audioSources[0].src);
-  audioSources[0].src.setVolume(0);
-}
-
-function hideDescription() {
-  let showButton = $("#showButton");
-  showButton.show();
-  let descTarget = $("#description");
-  descTarget.hide();
-}
-
-function showDescription() {
-  let showButton = $("#showButton");
-  showButton.hide();
-  let descTarget = $("#description");
-  descTarget.show();
-}
-
 // Function preloads audio files into memory before everything else
 function preload() {
   soundFormats("mp3", "wav");
@@ -81,6 +54,13 @@ function preload() {
     let audioToLoad = loadSound(audioPathArray[i]);
     audioArray.push(audioToLoad);
   }
+  setDefaultAudio();
+}
+
+
+function setDefaultAudio()
+{
+  currentAudioFile = audioArray[0];
 }
 
 // Required setup() function for p5. Used to start intro audio and ambient music
@@ -90,47 +70,99 @@ function setup() {
   ambientMusic.setVolume(0.1);
 }
 
+let audioArray = [];
+let poiArray = [];
+
+function toggleMute() 
+{ 
+  console.log('Mute button pressed');
+  let audioSources = $("source"); // Gets all audio sources as string
+  console.log(audioSources[0].src);
+  audioSources[0].src.setVolume(0);
+} 
+
+function hideDescription()
+{
+  let showButton = $('#showButton')
+  showButton.show();
+  let descTarget = $('#description');
+  descTarget.hide();
+
+}
+
+function showDescription()
+{
+  let showButton = $('#showButton')
+  showButton.hide();
+  let descTarget = $('#description');
+  descTarget.show();
+}
+
 function stopIntro() {
   if (intro.isPlaying()) {
     intro.stop();
   }
 }
 
-function playAudio(item) {
-  if (currentAudioFile.isPlaying()) {
+function playAudio(item) 
+{
+  if (currentAudioFile.isPlaying()) 
+  {
     currentAudioFile.pause();
     item.classList.remove("active");
-  } else {
+  }
+  else 
+  {
     currentAudioFile.play();
     item.classList.add("active");
   }
 }
 
-function resetAudio() {
-  if (currentAudioFile.isPlaying()) {
+function resetAudio() 
+{
+  if (currentAudioFile.isPlaying()) 
+  {
     currentAudioFile.stop();
     currentAudioFile.play();
-  } else {
+  }
+  else
+  {
     currentAudioFile.stop();
   }
 }
+
+// Mute button functionality
+/* function muteAudio()
+{
+  if(currentAudioFile.getVolume() > 0)
+  {
+    ambientMusic.setVolume(0)
+    currentAudioFile.setVolume(0);
+    alert("Audio Muted!"); // Placeholder alerts for testing
+  }
+
+  else
+  {
+    ambientMusic.setVolume(0.1)
+    currentAudioFile.setVolume(1);
+    alert("Audio Unmuted!"); // Placeholder alerts for testing
+  }
+*/
 
 init();
 animate();
 
 function init() {
   // Hide text entries on page load
-  $("#showButton").hide();
-  $("#entry1").hide();
-  $("#entry2").hide();
-  $("#entry3").hide();
-  $("#entry4").hide();
-  $("#entry5").hide();
-  $("#entry6").hide();
-  $("#entry7").hide();
-  $("#entry8").hide();
-  $("#entry9").hide();
-  $("#entry10").show();
+  $('#showButton').hide();
+  for(let i = 0; i < entryArray.length; i++)
+  {
+    $("#entry10").show();
+    if(entryArray[i] != "entry10")
+    {
+      $('#' + entryArray[i]).hide();
+    }
+  }
 
   // Three.js Camera, scene, mouse
   let container, mesh;
@@ -167,7 +199,7 @@ function init() {
     { x: 200, y: -50, z: 140 },
     { x: 200, y: 30, z: 80 },
     { x: -160, y: -140, z: -145 },
-    { x: -1000, y: -1000, z: -80 },
+    { x: 150, y: 0, z: 0 },
   ];
 
   // Create poi's and set them to their positions
@@ -434,9 +466,11 @@ function onMouseClick(event) {
         moveBox();
         break;
 
-      case "pointOfInterest9":
+      case "pointOfInterest9":        
+        stopIntro();
+        setActivePoi("pointOfInterest9");
         previousAudioFile = currentAudioFile;
-        currentAudioFile = audioArray[10];
+        currentAudioFile = audioArray[0];
         if (previousAudioFile.isPlaying()) {
           previousAudioFile.stop();
         }
@@ -483,15 +517,6 @@ function animate() {
   update();
 }
 
-function isItPlaying() {
-  for (let i = 0; i < audioArray.length; i++) {
-    if (audioArray[i].isPlaying()) {
-      console.log(audioArray[i] + " is playing");
-    } else {
-      console.log(audioArray[i] + " is not playing");
-    }
-  }
-}
 
 // Update camera orientation
 function update() {
