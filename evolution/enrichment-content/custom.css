@@ -1,0 +1,163 @@
+@media (min-width: 80rem) {
+  body {
+    padding-top: 3.75rem;
+  }
+}
+@media (min-width: 80rem) and (min-width: 40.625rem) {
+  body {
+    padding-top: 4rem;
+  }
+}
+@media (min-width: 80rem) and (min-width: 80rem) {
+  body {
+    padding-top: 4.25rem;
+  }
+}
+
+h2,
+p {
+  grid-column: 2/span 12;
+}
+@media (min-width: 40.625rem) {
+  h2,
+p {
+    grid-column: 8/span 6;
+  }
+}
+
+h2 {
+  font-weight: 700;
+  margin-top: 1.875rem;
+}
+@media (min-width: 40.625rem) {
+  h2 {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 80rem) {
+  h2 {
+    margin-top: 2.125rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  p:not([aria-role=doc-subtitle]) {
+    margin-top: 1.875rem;
+    grid-column-end: span 3;
+  }
+}
+@media (min-width: 80rem) and (min-width: 40.625rem) {
+  p:not([aria-role=doc-subtitle]) {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 80rem) and (min-width: 80rem) {
+  p:not([aria-role=doc-subtitle]) {
+    margin-top: 2.125rem;
+  }
+}
+@media (min-width: 80rem) {
+  p:not([aria-role=doc-subtitle]):last-child {
+    grid-column-start: 11;
+  }
+}
+
+[aria-role=doc-subtitle] {
+  font-size: 1.875rem;
+  line-height: 2.375rem;
+  margin-top: 0rem;
+}
+@media (min-width: 40.625rem) {
+  [aria-role=doc-subtitle] {
+    font-size: 2.25rem;
+    line-height: 2.875rem;
+  }
+}
+@media (min-width: 80rem) {
+  [aria-role=doc-subtitle] {
+    font-size: 2.75rem;
+    line-height: 3.5rem;
+  }
+}
+@media (min-width: 40.625rem) {
+  [aria-role=doc-subtitle] {
+    margin-top: 0rem;
+  }
+}
+@media (min-width: 80rem) {
+  [aria-role=doc-subtitle] {
+    margin-top: 0rem;
+  }
+}
+[aria-role=doc-subtitle] + p {
+  margin-top: 1.875rem;
+}
+@media (min-width: 40.625rem) {
+  [aria-role=doc-subtitle] + p {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 80rem) {
+  [aria-role=doc-subtitle] + p {
+    margin-top: 2.125rem;
+  }
+}
+
+figure {
+  grid-column: 1/span 14;
+  height: 100vw;
+  position: relative;
+  clip-path: polygon(1rem 0%, 100% 0%, 100% 100%, 1rem 100%);
+}
+figure:before {
+  width: calc(100vw - 2rem);
+  height: calc(100vw - 2rem);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  background: #cee6ff;
+  z-index: -1;
+}
+@media (min-width: 40.625rem) {
+  figure:before {
+    width: calc(100% - var(--base-lheight) / 2);
+    height: 100%;
+    left: 0;
+    bottom: unset;
+    top: var(--base-lheight);
+  }
+}
+@media (min-width: 80rem) {
+  figure:before {
+    top: calc(var(--base-lheight) / 2);
+  }
+}
+figure img {
+  width: 100vw;
+  max-width: 100vw;
+}
+@media (min-width: 40.625rem) {
+  figure img {
+    width: 100%;
+    object-position: center center;
+  }
+}
+@media (min-width: 40.625rem) {
+  figure {
+    grid-column: 2/span 6;
+    grid-row-end: span 5;
+    height: calc(var(--col-width) * 9);
+    clip-path: polygon(0 0%, calc(100% + var(--base-lheight) / 2) 0%, calc(100% + var(--base-lheight) / 2) 100%, 0 100%);
+    margin-right: 0;
+    width: calc(100% - var(--base-lheight) / 2);
+    overflow: hidden;
+  }
+}
+@media (min-width: 80rem) {
+  figure {
+    height: calc(var(--col-width) * 6);
+  }
+}
+
+/*# sourceMappingURL=custom.css.map */

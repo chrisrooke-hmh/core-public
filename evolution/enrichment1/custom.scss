@@ -1,0 +1,232 @@
+@import "../common/custom/grades/grade_68";
+@import "../common/baseline/variables";
+@import "../common/baseline/colors";
+@import "../common/baseline/mixins";
+
+body {
+  padding-bottom: 0;
+  align-content: stretch;
+}
+
+p,
+h2,
+h5,
+a {
+  grid-column: 2 / span 12;
+}
+
+h2 {
+  @include margin-above(0);
+}
+
+h5 {
+  color: color-code($golden-s30);
+  font-weight: 700;
+
+  @include respond-lg {
+    grid-column: 2 / span 4;
+  }
+
+  @include respond-xl {
+    grid-column: 1 / span 6;
+  }
+}
+
+h4 {
+  font-weight: 700;
+}
+
+a {
+  display: block;
+  color: black;
+  border-bottom: 0;
+  background: color-code($gray-c70);
+  padding-bottom: calc(100% - var(--base-lheight));
+  position: relative;
+  @include margin-above(0.5);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 5px rgba(0, 0, 0, 0.15);
+  transform: scale3d(1, 1, 1);
+  transition: all 0.2s ease-out, filter 0.75s ease-out;
+  filter: grayscale(0.1) saturate(95%) brightness(95%) contrast(90%);
+  z-index: 9999;
+
+  &:first-of-type {
+    img {
+      background: #cee6ff;
+    }
+    // background-image: url(image1.png);
+    // background-position: left 25%;
+    // background-repeat: no-repeat;
+  }
+
+  &:nth-of-type(2) {
+    img {
+      background: #e6f5b5;
+    }
+    // background-image: url(image2.png);
+    // background-position: center 25%;
+    // background-repeat: no-repeat;
+  }
+
+  &:nth-of-type(3) {
+    img {
+      background: #f4f4f4;
+    }
+    // background-image: url(image3.png);
+    // background-position: center 25%;
+    // background-repeat: no-repeat;
+  }
+
+  &:nth-of-type(4) {
+    background: #2d2d2d;
+
+    &:before {
+      width: calc(50% - var(--base-lheight));
+      height: 4px;
+      position: absolute;
+      left: calc(var(--base-lheight) / 2);
+      bottom: var(--base-lheight);
+      background-color: #ffc849;
+      content: "";
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 108%;
+    height: auto;
+    top: -4%;
+    left: -4%;
+    z-index: -10;
+    transform: scale(1.05);
+    transition: all 0.2s ease-out, transform 0.2s ease-out,
+      filter 0.75s ease-out;
+    filter: blur(0px);
+    max-width: unset;
+  }
+  &:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.15);
+    filter: grayscale(0) saturate(105%) brightness(100%) contrast(100%);
+    z-index: 1;
+  }
+
+  &.blur {
+    img {
+      filter: blur(1px) grayscale(0.1) saturate(95%);
+    }
+  }
+
+  .shineLayer {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 80%
+    );
+    transition: all 0.2s ease-out;
+    top: 0;
+    left: 0;
+  }
+
+  @include respond-md {
+    @include margin-above(1);
+
+    &:nth-of-type(odd) {
+      grid-column: 2 / span 6;
+    }
+
+    &:nth-of-type(even) {
+      grid-column: 8 / span 6;
+    }
+  }
+
+  @include respond-lg {
+    &:nth-of-type(odd) {
+      grid-column: 2 / span 4;
+    }
+
+    &:nth-of-type(even) {
+      grid-column: 2 / span 4;
+    }
+  }
+
+  @include respond-xl {
+    &:nth-of-type(odd) {
+      grid-column: 1 / span 3;
+    }
+
+    &:nth-of-type(even) {
+      grid-column: 4 / span 3;
+    }
+  }
+
+  & > * {
+    position: absolute;
+    top: calc(var(--base-lheight) / 2);
+    left: calc(var(--base-lheight) / 2);
+  }
+
+  .title {
+    max-width: calc(100% - var(--base-lheight));
+  }
+
+  p,
+  h4 {
+    background: white;
+    @include margin-above(0);
+    margin: 0.1875rem 0;
+    width: fit-content;
+  }
+}
+
+header.source__grid {
+  position: relative;
+  background: none;
+
+  &:before {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: color-code($golden-s20);
+    position: absolute;
+    z-index: -1;
+  }
+
+  @include respond-lg {
+    grid-column: 2 / span 6;
+    grid-template-columns: repeat(6, 1fr);
+    min-height: 100vh;
+    align-content: center;
+
+    * {
+      grid-column: 1 / span 6;
+    }
+
+    &:before {
+      width: 50vw;
+      right: 0;
+      left: unset;
+    }
+  }
+}
+
+.supertitle {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 700;
+}
+
+main.source__grid {
+  transform-style: preserve-3d;
+  transform: perspective(800px);
+
+  @include respond-lg {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 8 / span 6;
+    align-content: center;
+  }
+}

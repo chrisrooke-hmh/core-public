@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>
+        Unit Opener
+    </title>
+    <link rel="stylesheet" href="../common/baseline.css">
+    <link rel="stylesheet" href="./custom.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <progress value="0" max="100" id="pagescroll"></progress>
+    <header id="header" class="source__grid">
+        <p role="doc-subtitle" class="supertitle">Module 11</p>
+        <h1>Westward Expansion</h1>
+        <figure>
+            <img src="header.jpg">
+            <figcaption>Wagon trains carried hundreds of thousands of settlers across the Great Plains.</figcaption>
+        </figure>
+        <hr>
+        <h3>Was the United States truly destined to expand west in the 1800s?</h3>
+    </header>
+    <main class="source__grid">
+        <p class="dropcap">In the 1800s hundreds of thousands of settlers crossed the Great Plains in wagon trains,
+            headed west. Over
+            time, some Americans came to believe it was the destiny of the United States to expand west and acquire more
+            land for its growing population.</p>
+        <p>As you read this module, look for evidence of key events in the westward expansion of the United States. When
+            you are done, you may be assigned to write a short essay answering the Essential Question for this module.
+        </p>
+        <figure class="onscroll animate__fadeInLeft">
+            <img src="content.jpg">
+        </figure>
+        <hr class="onscroll animate__fadeInUp">
+        </hr>
+        <h4 class="onscroll animate__fadeInUp">The Transcontinental Railroad</h4>
+        <p class="p_gray onscroll animate__fadeInUp">In the mid-1800s settlers heading west usually traveled by wagon train. But the completion of
+            the first transcontinental railroad in 1869 changed that. The transcontinental railroad revolutionized America’s
+            transportation and economic systems. For the first time, people and goods could travel from coast to coast
+            in a matter of days. </p>
+        <section class="source__grid">
+            <figure class="interaction">Interaction</figure>
+        </section>
+    </main>
+
+    <script type="text/javascript">
+        let intViewportWidth = window.innerWidth;
+        let intViewportHeight = window.innerHeight;
+        // console.log(intViewportWidth, intViewportHeight);
+        
+        let root = document.documentElement;
+
+        root.addEventListener("mousemove", e => {
+            root.style.setProperty('--transformx', ((-10 * e.clientX / intViewportWidth) + 5) + "%");
+            root.style.setProperty('--transformy', ((-10 * e.clientY / intViewportHeight) + 5) + "%");
+            // console.log(((-10 * e.clientX / intViewportWidth) + 5), ((-10 * e.clientY / intViewportHeight) + 5))
+        });
+
+
+        var intersectionOptions = {
+            root: null,  // use the viewport
+            rootMargin: '0px',
+            threshold: 1.0
+        }
+
+        function intersectionCallback(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio >= 1 && !entry.target.classList.contains('active')) {
+                    entry.target.classList.add('active');
+                console.log("Activated!");
+                } else {
+                console.log("Not activated!");
+                }
+            });
+        }
+
+        var observer = new IntersectionObserver(intersectionCallback, intersectionOptions);
+
+        var target = document.querySelectorAll('.onscroll');
+
+        target.forEach(element => observer.observe(element));
+        // console.log(target[0]);
+        // observer.observe(target);
+
+    
+    function scrollIndicator() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - window.innerHeight;
+        var scrolled = (winScroll / height);
+        console.log(scrolled);
+        document.documentElement.style.setProperty('--scroll-control', scrolled);
+        document.getElementById('pagescroll').value = scrolled * 100;
+        // document.querySelector(".progress-bar").style.width = scrolled + "%";
+    }
+    window.onscroll = function() {scrollIndicator()};
+
+    </script>
+</body>
+
+</html>
