@@ -75,9 +75,7 @@ let poiArray = [];
 
 function toggleMute() 
 { 
-  console.log('Mute button pressed');
   let audioSources = $("source"); // Gets all audio sources as string
-  console.log(audioSources[0].src);
   audioSources[0].src.setVolume(0);
 } 
 
@@ -241,7 +239,6 @@ function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  console.log("size changed");
 }
 
 // Handler for looking around on touch screen
@@ -296,7 +293,6 @@ function handleTouchEnd(event) {
 // Zoom in and out
 function onDocumentMouseWheel(event) {
   camera.fov += event.deltaY * 0.35;
-  console.log(camera.fov);
   camera.updateProjectionMatrix();
 }
 
