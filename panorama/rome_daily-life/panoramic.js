@@ -224,9 +224,13 @@ function init() {
 
   // Event management
   document.addEventListener("mousedown", onDocumentMouseDown, false);
+  document.addEventListener("touchstart", handleTouchStart, false);
   document.addEventListener("mousemove", onDocumentMouseMove, false);
+  document.addEventListener("touchmove", handleTouchMove, false);
   document.addEventListener("mouseup", onDocumentMouseUp, false);
+  document.addEventListener("touchend", handleTouchEnd, false);
   document.addEventListener("wheel", onDocumentMouseWheel, false);
+
   document.addEventListener("click", onMouseClick);
 
   window.addEventListener("resize", onWindowResize, false);
@@ -234,9 +238,23 @@ function init() {
 
 // Rescale renderer if dynamic scaling i.e. full screen
 function onWindowResize() {
-  camera.aspect = widthFull / heightFull;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(widthFull, heightFull);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  console.log("size changed");
+}
+
+// Handler for looking around on touch screen
+function handleTouchStart(event) {
+  event.preventDefault();
+
+  isUserInteracting = true;
+
+  onPointerDownPointerX = event.touches[0].clientX;
+  onPointerDownPointerY = event.touches[0].clientY;
+
+  onPointerDownLon = lon;
+  onPointerDownLat = lat;
 }
 
 // Controls for looking around panoramic
@@ -252,6 +270,13 @@ function onDocumentMouseDown(event) {
   onPointerDownLat = lat;
 }
 
+function handleTouchMove(event) {
+  if (isUserInteracting === true) {
+    lon = (onPointerDownPointerX - event.touches[0].clientX) * 0.1 + onPointerDownLon;
+    lat = (event.touches[0].clientY - onPointerDownPointerY) * 0.1 + onPointerDownLat;
+  }
+}
+
 function onDocumentMouseMove(event) {
   if (isUserInteracting === true) {
     lon = (onPointerDownPointerX - event.clientX) * 0.1 + onPointerDownLon;
@@ -259,7 +284,12 @@ function onDocumentMouseMove(event) {
   }
 }
 
+// Stop User Interaction
 function onDocumentMouseUp(event) {
+  isUserInteracting = false;
+}
+
+function handleTouchEnd(event) {
   isUserInteracting = false;
 }
 
