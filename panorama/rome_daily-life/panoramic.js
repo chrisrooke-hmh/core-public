@@ -238,9 +238,10 @@ function init() {
 
 // Rescale renderer if dynamic scaling i.e. full screen
 function onWindowResize() {
-  camera.aspect = widthFull / heightFull;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(widthFull, heightFull);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  console.log("size changed");
 }
 
 // Handler for looking around on touch screen
