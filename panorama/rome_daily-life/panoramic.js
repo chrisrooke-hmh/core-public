@@ -1,5 +1,5 @@
 let camera, scene, renderer, mouse, raycaster; // Three.js globals
-let ambientMusic, intro, previousAudioFile, currentAudioFile;; // p5.sound globals
+let ambientMusic, intro, hotSpotSFX, infoShowHideSFX, previousAudioFile, currentAudioFile; // p5.sound globals
 
 // Canvas size/ratio
 let widthFull = window.innerWidth,
@@ -49,7 +49,9 @@ let entryArray = [
 function preload() {
   soundFormats("mp3", "wav");
   intro = loadSound("sound/ancientrome_intro.mp3");
-  ambientMusic = loadSound("sound/roman town.mp3");
+  hotSpotSFX = loadSound("sound/hotspot_sfx.mp3");
+  infoShowHideSFX = loadSound("sound/info_button_2.wav");
+  ambientMusic = loadSound("sound/daily life.mp3");
   for (let i = 0; i < audioPathArray.length; i++) {
     let audioToLoad = loadSound(audioPathArray[i]);
     audioArray.push(audioToLoad);
@@ -78,6 +80,18 @@ function toggleMute()
   let audioSources = $("source"); // Gets all audio sources as string
   audioSources[0].src.setVolume(0);
 } 
+
+function playhotSpotSFX()
+{
+  hotSpotSFX.play();
+  hotSpotSFX.setVolume(0.5);
+}
+
+function playinfoShowHideSFX()
+{
+  infoShowHideSFX.play();
+  infoShowHideSFX.setVolume(0.75);
+}
 
 function hideDescription()
 {
@@ -130,22 +144,21 @@ function resetAudio()
 }
 
 // Mute button functionality
-/* function muteAudio()
-{
-  if(currentAudioFile.getVolume() > 0)
-  {
-    ambientMusic.setVolume(0)
-    currentAudioFile.setVolume(0);
-    alert("Audio Muted!"); // Placeholder alerts for testing
-  }
+// function muteAudio()
+// {
+//   if(currentAudioFile.getVolume() > 0)
+//   {
+//     ambientMusic.setVolume(0)
+//     currentAudioFile.setVolume(0);
+//   }
 
-  else
-  {
-    ambientMusic.setVolume(0.1)
-    currentAudioFile.setVolume(1);
-    alert("Audio Unmuted!"); // Placeholder alerts for testing
-  }
-*/
+//   else
+//   {
+//     ambientMusic.setVolume(0.1)
+//     currentAudioFile.setVolume(1);
+//   }
+// }
+
 
 init();
 animate();
@@ -201,7 +214,8 @@ function init() {
   ];
 
   // Create poi's and set them to their positions
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) 
+  {
     // Poi's instantiated from class
     poiArray.push(new PointOfInterest());
     // Poi's have unique names for switch statement
@@ -232,6 +246,28 @@ function init() {
   document.addEventListener("click", onMouseClick);
 
   window.addEventListener("resize", onWindowResize, false);
+}
+
+document.onkeydown = (e) => {
+  switch (e.keyCode)
+  {
+    case 37:
+      console.log("Left key pressed");
+      lon -= 3;
+      break;
+    case 38:
+      console.log("Up key pressed");
+      lat += 3;
+      break;
+    case 39:
+      console.log("Right key pressed");
+      lon += 3;
+      break;
+    case 40:
+      console.log("Down key pressed");
+      lat -= 3;
+      break;
+  }
 }
 
 // Rescale renderer if dynamic scaling i.e. full screen
@@ -323,6 +359,7 @@ function onMouseClick(event) {
       // Switch, if name of object matches play appropriate audio, stop other audio and update text
       case "pointOfInterest0":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest0");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[1];
@@ -337,11 +374,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }  
+        } 
+
+        poiArray[0].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest1":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest1");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[2];
@@ -356,11 +404,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }  
+        } 
+
+        poiArray[1].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest2":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest2");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[3];
@@ -375,11 +434,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }
+        } 
+
+        poiArray[2].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest3":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest3");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[4];
@@ -394,11 +464,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }
+        } 
+
+        poiArray[3].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest4":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest4");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[5];
@@ -413,11 +494,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }      
+        } 
+
+        poiArray[4].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest5":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest5");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[6];
@@ -432,11 +524,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }
+        } 
+
+        poiArray[5].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest6":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest6");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[7];
@@ -451,11 +554,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }
+        } 
+
+        poiArray[6].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest7":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest7");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[8];
@@ -470,11 +584,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          }
+        } 
+        
+        poiArray[7].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest8":
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest8");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[9];
@@ -489,11 +614,22 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          } 
+        } 
+
+        poiArray[8].active = true;
+        animatePoi();
         moveBox();
         break;
 
       case "pointOfInterest9":        
         stopIntro();
+        playhotSpotSFX();
         setActivePoi("pointOfInterest9");
         previousAudioFile = currentAudioFile;
         currentAudioFile = audioArray[0];
@@ -508,19 +644,51 @@ function onMouseClick(event) {
           }
         }
 
+        for(let i = 0; i < poiArray.length; i++)
+        {
+          if(poiArray[i].active === true)
+          {
+            poiArray[i].active = false
+          } 
+        } 
+
+        poiArray[9].active = true;
+        animatePoi();
         moveBox();
         break;
     }
   }
 }
 
-function setActivePoi(poi) {
-  for (let i = 0; i < poiArray.length; i++) {
-    if (poiArray[i].poi.name === poi) {
+function animatePoi()
+{
+  for(let i = 0; i < poiArray.length; i++)
+  {
+    if(poiArray[i].active === true)
+    {
+      console.log(poiArray[i]);
+      let tl = new TimelineMax();
+      tl.from(poiArray[i].poi.scale, .5, {x: 1, y: 1, z: 1}, {x: 2, y: 2, z: 2})
+      .from(poiArray[i].poi.scale, .75, {x: 2, y:2, z: 2}, {x: 1, y: 1, z: 1});
+    }
+  }
+}
+
+function setActivePoi(poi) 
+{
+  
+  for (let i = 0; i < poiArray.length; i++) 
+  {
+    if (poiArray[i].poi.name === poi) 
+    {
       poiArray[i].material.color = new THREE.Color(0x006aff);
-    } else {
+    } 
+
+    else 
+    {
       poiArray[i].material.color = new THREE.Color(0xffffff);
     }
+
   }
 }
 
@@ -543,11 +711,10 @@ function animate() {
   update();
 }
 
-
 // Update camera orientation
 function update() {
   if (isUserInteracting === false) {
-    lon += 0; // Rotate Camera
+    lat += 0; // Rotate Camera
   }
 
   lat = Math.max(-85, Math.min(85, lat));
