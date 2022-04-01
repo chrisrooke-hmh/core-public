@@ -2,12 +2,13 @@ class PointOfInterest
 {
     constructor()
     {
-        this.geometry = new THREE.SphereGeometry(7.5, 32, 32);
-        this.material = new THREE.MeshBasicMaterial({color: 0xFF0000});
+        this.geometry = new THREE.SphereGeometry(7.5, 24, 24);
+        this.material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: false});
+        this.material.side = false;
         this.poi = new THREE.Mesh(this.geometry, this.material);
         this.material.transparent = 1;
-        this.material.opacity = 0.35;
-        this.sound = '';
+        this.material.opacity = 1;
+        this.active = false;
         scene.add(this.poi);
     }
 }

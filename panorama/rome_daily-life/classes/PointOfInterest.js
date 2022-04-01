@@ -7,7 +7,7 @@ class PointOfInterest
         this.poi = new THREE.Mesh(this.geometry, this.material);
         this.material.transparent = 1;
         this.material.opacity = 1;
-        this.sound = '';
+        this.active = false;
         scene.add(this.poi);
     }
 }
