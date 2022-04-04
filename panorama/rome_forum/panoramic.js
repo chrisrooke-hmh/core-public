@@ -646,10 +646,8 @@ function setActivePoi(poi) {
   for (let i = 0; i < poiArray.length; i++) {
     if (poiArray[i].poi.name === poi) {
       poiArray[i].material.color = new THREE.Color(0x006aff);
-      poiArray[i].update();
     } else {
       poiArray[i].material.color = new THREE.Color(0xffffff);
-      poiArray[i].poi.scale = 1;
     }
   }
 }
