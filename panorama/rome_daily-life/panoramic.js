@@ -69,7 +69,7 @@ function setDefaultAudio()
 function setup() {
   ambientMusic.play();
   ambientMusic.loop();
-  ambientMusic.setVolume(0.1);
+  ambientMusic.setVolume(0.2);
 }
 
 let audioArray = [];

@@ -199,12 +199,12 @@ function init() {
   // Positions of each poi. For more poi's add new positions in format below
   let positionsArray = [
     { x: -140, y: 10, z: 50 },
-    { x: -48, y: 5, z: -140 },
+    { x: 150, y: -55, z: -25 },
     { x: -0, y: 40, z: 140 },
     { x: 72, y: 3, z: 120 },
     { x: 93, y: 45, z: -125 },
     { x: -120, y: 90, z: -90 },
-    { x: 150, y: -55, z: -25 },
+    { x: -48, y: -45, z: -140 },
     { x: 120, y: 0, z: 0 },
   ];
 
