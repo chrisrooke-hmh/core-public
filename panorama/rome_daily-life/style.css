@@ -41,20 +41,32 @@ body {
 #playButton,
 #resetButton,
 #muteButton {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   /* background: grey; */
   -webkit-appearance: none;
   display: inline-block;
-  border: 3px solid #006aff;
+  border: 2px solid #006aff;
   padding: 0;
   cursor: pointer;
-  background-size: 1.875rem 1.875rem;
+  background-size: 1.25rem 1.25rem;
   background-position: center center;
   background-repeat: no-repeat;
   background-color: white;
   transition: box-shadow 0.1s ease-in-out;
+}
+
+@media screen and (min-width: 480px) {
+  #hideButton,
+  #playButton,
+  #resetButton,
+  #muteButton {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid #006aff;
+    background-size: 1.875rem 1.875rem;
+  }
 }
  
 #showButton {
@@ -137,9 +149,13 @@ body {
 }
 
 p {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  margin: 0.875rem 0 0;
+  font-size: 1rem;
+  line-height: 1.4375rem;
+  margin: 0.7rem 0 0;
+}
+
+p:last-child {
+  padding-bottom: 1.875rem;
 }
 
 h3 {
@@ -153,4 +169,16 @@ h3 {
   margin-top: 200px; */
   width: 100%;
   height: 100%;
+}
+
+[id^="entry"], [id*=" entry"] {
+  max-height: 33vh;
+}
+
+@media screen and (min-width: 480px) {
+  p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin: 0.875rem 0 0;
+  }
 }
