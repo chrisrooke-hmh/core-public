@@ -14,113 +14,114 @@
         </style>
     </head>
     <body>
+        <div class = "container">
+            <div id = "canvas">
+                <!-- Canvas Loaded in here -->
+                    
+            </div>
+            <button id = "showButton" onclick="showDescription(); playinfoShowHideSFX();"></button>
+            <!-- <button id = "muteButton" onclick="muteAudio()"></button> -->
+            <div id = "description">
+                <button id = "hideButton" onclick="hideDescription(); playinfoShowHideSFX();"></button>
+                
+                <div id = "entry1" class = "hideOnLoad">
+                <h3>The Fighters</h3><br/>
+                    <!-- <audio id="myAudioTest" controls> <source  src="sound/ancientrome_sc5_poi_001.mp3" type="audio/mpeg"></audio>    -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>        
+                    <p>
+                        The life of a gladiator was hard and, often, short. 
+                        Who would choose that life? Some gladiators were slaves who were forced to fight. 
+                        Others were former soldiers lured by the promise of money and fame. 
+                        Successful gladiators were as popular—and rich—as rock stars and professional athletes are today. 
+                    </p>
+                </div>
+                <div id = "entry2" class = "hideOnLoad">
+                    <h3>A Mix of Styles</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_002.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Gladiators used a variety of weapons and armor. 
+                        The majority fought with swords and shields, but some wore much heavier armor than others. 
+                        Some used more unusual weapons, like this man, armed with a trident and a net. 
+                        The Romans liked to see gladiators with different weapons fighting each other.
+                    </p>
+                </div>
+                <div id = "entry3" class = "hideOnLoad">
+                    <h3>Popular Entertainment</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_003.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Gladiator games drew support from all classes of Roman society. 
+                        Seating in the Colosseum was strictly organized by social class. 
+                        The first few rows of seats were reserved for senators and their families. 
+                        The next level up was for noble families, and so on. Poor citizens sat in the highest seats.
+                    </p>
+                </div>
+                <div id = "entry4" class = "hideOnLoad">
+                    <h3>A Dangerous Sport</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_004.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Most gladiators did not fight to the death. 
+                        A gladiator was expensive to train, so most trainers wanted to keep the gladiators alive. 
+                        However, fatal accidents were not uncommon. 
+                        In addition, crowds and emperors sometimes called for defeated gladiators to be killed. 
+                    </p>
+                </div>
+                <div id = "entry5" class = "hideOnLoad">
+                    <h3>The Imperial Box</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_005.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        The Colosseum had a special box reserved for the imperial family and their attendants. 
+                        During the Empire, most games were sponsored by emperors. 
+                        At least one emperor, Commodus, was such a fan of gladiatorial fights that he took part himself—with the odds stacked in his favor, of course.
+                    </p>    
+                </div>
+                <div id = "entry6" class = "hideOnLoad">
+                    <h3>Keeping Out the Sun</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_006.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        One of the engineering marvels of the Colosseum was the huge retractable awning that provided shade for the audience. 
+                        Raising the awning required the efforts of hundreds of sailors, and scholars today are still not sure exactly how they managed to secure the heavy canvas.
+                    </p>
+                </div>
+                <div id = "entry7" class = "hideOnLoad">
+                    <h3>Under the Floor</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_007.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Beneath the floor of the Colosseum was a maze of corridors, rooms, and cages. 
+                        Gladiators waited in this area before matches, and wild animals were kept there in preparation for staged hunts. 
+                        During these hunts, trained performers would stalk such exotic animals as lions, ostriches, and elephants.
+                    </p>
+                </div>
+            <!--Intro Text-->
+            <div id = "entry8">
+                    <h3>Gladiator Contests</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_title.mp3" autoplay type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        This is the Colosseum, the home of Rome’s greatest gladiatorial games! Staged combats between gladiators—professional warriors 
+                        who fought for the public’s entertainment—were one of the most popular spectacles in ancient Rome. 
+                        The earliest fights between gladiators were held as part of funeral celebrations, 
+                        but by the time of the late Republic they had grown into huge events attended by thousands of fans. 
+                        Although Rome had many venues in which to hold these games, the Colosseum was the largest and best known. 
+                        Built in the 70s CE by the emperor Vespasian, the Colosseum could hold 50,000 people.
+                    </p>
+                </div>
 
-        <div id = "canvas">
-            <!-- Canvas Loaded in here -->
-            	
-        </div>
-        <button id = "showButton" onclick="showDescription(); playinfoShowHideSFX();"></button>
-        <!-- <button id = "muteButton" onclick="muteAudio()"></button> -->
-        <div id = "description">
-            <button id = "hideButton" onclick="hideDescription(); playinfoShowHideSFX();"></button>
-            
-            <div id = "entry1" class = "hideOnLoad">
-            <h3>The Fighters</h3><br/>
-                <!-- <audio id="myAudioTest" controls> <source  src="sound/ancientrome_sc5_poi_001.mp3" type="audio/mpeg"></audio>    -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>        
-                <p>
-                    The life of a gladiator was hard and, often, short. 
-                    Who would choose that life? Some gladiators were slaves who were forced to fight. 
-                    Others were former soldiers lured by the promise of money and fame. 
-                    Successful gladiators were as popular—and rich—as rock stars and professional athletes are today. 
-                </p>
+                <!--==========-->
             </div>
-            <div id = "entry2" class = "hideOnLoad">
-                <h3>A Mix of Styles</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_002.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Gladiators used a variety of weapons and armor. 
-                    The majority fought with swords and shields, but some wore much heavier armor than others. 
-                    Some used more unusual weapons, like this man, armed with a trident and a net. 
-                    The Romans liked to see gladiators with different weapons fighting each other.
-                </p>
-            </div>
-            <div id = "entry3" class = "hideOnLoad">
-                <h3>Popular Entertainment</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_003.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Gladiator games drew support from all classes of Roman society. 
-                    Seating in the Colosseum was strictly organized by social class. 
-                    The first few rows of seats were reserved for senators and their families. 
-                    The next level up was for noble families, and so on. Poor citizens sat in the highest seats.
-                </p>
-            </div>
-            <div id = "entry4" class = "hideOnLoad">
-                <h3>A Dangerous Sport</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_004.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Most gladiators did not fight to the death. 
-                    A gladiator was expensive to train, so most trainers wanted to keep the gladiators alive. 
-                    However, fatal accidents were not uncommon. 
-                    In addition, crowds and emperors sometimes called for defeated gladiators to be killed. 
-                 </p>
-            </div>
-            <div id = "entry5" class = "hideOnLoad">
-                <h3>The Imperial Box</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_005.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    The Colosseum had a special box reserved for the imperial family and their attendants. 
-                    During the Empire, most games were sponsored by emperors. 
-                    At least one emperor, Commodus, was such a fan of gladiatorial fights that he took part himself—with the odds stacked in his favor, of course.
-                 </p>    
-            </div>
-            <div id = "entry6" class = "hideOnLoad">
-                <h3>Keeping Out the Sun</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_006.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    One of the engineering marvels of the Colosseum was the huge retractable awning that provided shade for the audience. 
-                    Raising the awning required the efforts of hundreds of sailors, and scholars today are still not sure exactly how they managed to secure the heavy canvas.
-                </p>
-            </div>
-            <div id = "entry7" class = "hideOnLoad">
-				<h3>Under the Floor</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_poi_007.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-				<p>
-                    Beneath the floor of the Colosseum was a maze of corridors, rooms, and cages. 
-                    Gladiators waited in this area before matches, and wild animals were kept there in preparation for staged hunts. 
-                    During these hunts, trained performers would stalk such exotic animals as lions, ostriches, and elephants.
-                </p>
-            </div>
-        <!--Intro Text-->
-           <div id = "entry8">
-			    <h3>Gladiator Contests</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc5_title.mp3" autoplay type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    This is the Colosseum, the home of Rome’s greatest gladiatorial games! Staged combats between gladiators—professional warriors 
-                    who fought for the public’s entertainment—were one of the most popular spectacles in ancient Rome. 
-                    The earliest fights between gladiators were held as part of funeral celebrations, 
-                    but by the time of the late Republic they had grown into huge events attended by thousands of fans. 
-                    Although Rome had many venues in which to hold these games, the Colosseum was the largest and best known. 
-                    Built in the 70s CE by the emperor Vespasian, the Colosseum could hold 50,000 people.
-                </p>
-        	</div>
-
-            <!--==========-->
         </div>
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
