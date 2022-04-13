@@ -14,108 +14,109 @@
         </style>
     </head>
     <body>
-
-        <div id = "canvas">
-            <!-- Canvas Loaded in here -->
-            	
-        </div>
-        <button id = "showButton" onclick="showDescription(); playinfoShowHideSFX();"></button>
-        <!-- <button id = "muteButton" onclick="muteAudio()"></button> -->
-        <div id = "description">
-            <button id = "hideButton" onclick="hideDescription(); playinfoShowHideSFX();"></button>
-            
-            <div id = "entry1" class = "hideOnLoad">
-                <h3>Senators</h3><br/>
-                <!-- <audio id="myAudioTest" controls> <source  src="sound/ancientrome_sc6_poi_001.mp3" type="audio/mpeg"></audio>    -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>        
-                <p>
-                    For most of Roman history, the Senate had 300 members, although it could be larger. 
-                    To qualify for membership, a citizen had to own property valued at 1 million sesterces—a huge fortune. 
-                    Most senators were former magistrates, or elected officials, whose terms had ended. Only men could be senators.
-                </p>
+        <div class = "container">
+            <div id = "canvas">
+                <!-- Canvas Loaded in here -->
+                    
             </div>
-            <div id = "entry2" class = "hideOnLoad">
-                <h3>Consuls</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_002.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Senate meetings were led by consuls, the highest elected officials in the Roman Republic. 
-                    Two consuls were chosen each year in public elections. Besides leading Senate meetings, they commanded armies and governed provinces. 
-                    Before emperors took over, the consuls were the most powerful men in Rome.
-                </p>
+            <button id = "showButton" onclick="showDescription(); playinfoShowHideSFX();"></button>
+            <!-- <button id = "muteButton" onclick="muteAudio()"></button> -->
+            <div id = "description">
+                <button id = "hideButton" onclick="hideDescription(); playinfoShowHideSFX();"></button>
+                
+                <div id = "entry1" class = "hideOnLoad">
+                    <h3>Senators</h3><br/>
+                    <!-- <audio id="myAudioTest" controls> <source  src="sound/ancientrome_sc6_poi_001.mp3" type="audio/mpeg"></audio>    -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>        
+                    <p>
+                        For most of Roman history, the Senate had 300 members, although it could be larger. 
+                        To qualify for membership, a citizen had to own property valued at 1 million sesterces—a huge fortune. 
+                        Most senators were former magistrates, or elected officials, whose terms had ended. Only men could be senators.
+                    </p>
+                </div>
+                <div id = "entry2" class = "hideOnLoad">
+                    <h3>Consuls</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_002.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Senate meetings were led by consuls, the highest elected officials in the Roman Republic. 
+                        Two consuls were chosen each year in public elections. Besides leading Senate meetings, they commanded armies and governed provinces. 
+                        Before emperors took over, the consuls were the most powerful men in Rome.
+                    </p>
+                </div>
+                <div id = "entry3" class = "hideOnLoad">
+                    <h3>The Toga</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_003.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Take a look at what these senators are wearing. 
+                        That garment is called a toga. Wearing a toga was a symbol of Roman citizenship; women and foreigners were not allowed to wear them. 
+                        Most togas were white, but consuls and former consuls had a purple stripe on their togas as a symbol of honor.
+                    </p>
+                </div>
+                <div id = "entry4" class = "hideOnLoad">
+                    <h3>Expressing Opinions</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_004.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Senate meetings were not always quiet affairs. 
+                        Members often cheered, booed, or even heckled speakers. 
+                        Some senators would leave their chairs during speeches and move to sit with colleagues who shared their opinions. 
+                        Pointed remarks—and personal attacks—were common during debates.
+                    </p>
+                </div>
+                <div id = "entry5" class = "hideOnLoad">
+                    <h3>The Curia Julia</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_005.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Julius Caesar started work on the Curia Julia in Rome’s Forum after the old meeting place burned. 
+                        However, in 44 BCE, Caesar was assassinated by a group of senators, and work halted. 
+                        Emperor Augustus finished the curia some 15 years later. In the meantime, the Senate met in a nearby theater.
+                    </p>
+                </div>
+                <div id = "entry6" class = "hideOnLoad">
+                    <h3>The Floor</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_006.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        The ruins of the Curia Julia can still be seen in Rome today. 
+                        Although much of the building has been damaged by time, its elaborate floor of red and green stone inlays on white marble tiles is still visible.
+                    </p>
+                </div>
+                <div id = "entry7" class = "hideOnLoad">
+                    <h3>Lictors</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_007.mp3" type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        In general, only senators were allowed in Senate meetings. 
+                        An exception was made for the lictors, a group of bodyguards assigned to each consul. 
+                        Each lictor carried a fasces, a bundle of wooden rods with an axe, as a symbol of the consul’s power.
+                    </p>
+                </div>
+            <!--Intro Text-->
+            <div id = "entry8">
+                    <h3>The Roman Senate</h3></br>
+                    <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_title.mp3" autoplay type="audio/mpeg"></audio>           -->
+                    <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
+                    <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
+                    <p>
+                        Welcome to the Curia Julia, the meeting place of the Roman Senate. 
+                        During the Roman Republic from 509 to 27 BCE, the Senate was the main lawmaking body and the heart of the government. 
+                        As power shifted to the emperors, the Senate remained important. 
+                        It governed Rome and certain provinces and sometimes controlled finances and acted as a court. 
+                        The meeting you see here is taking place early in the Empire, as the Senate attempts to define its role in the new government.
+                    </p>
+                </div>
+                <!--==========-->
             </div>
-            <div id = "entry3" class = "hideOnLoad">
-                <h3>The Toga</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_003.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Take a look at what these senators are wearing. 
-                    That garment is called a toga. Wearing a toga was a symbol of Roman citizenship; women and foreigners were not allowed to wear them. 
-                    Most togas were white, but consuls and former consuls had a purple stripe on their togas as a symbol of honor.
-                </p>
-            </div>
-            <div id = "entry4" class = "hideOnLoad">
-                <h3>Expressing Opinions</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_004.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Senate meetings were not always quiet affairs. 
-                    Members often cheered, booed, or even heckled speakers. 
-                    Some senators would leave their chairs during speeches and move to sit with colleagues who shared their opinions. 
-                    Pointed remarks—and personal attacks—were common during debates.
-                </p>
-            </div>
-            <div id = "entry5" class = "hideOnLoad">
-                <h3>The Curia Julia</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_005.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Julius Caesar started work on the Curia Julia in Rome’s Forum after the old meeting place burned. 
-                    However, in 44 BCE, Caesar was assassinated by a group of senators, and work halted. 
-                    Emperor Augustus finished the curia some 15 years later. In the meantime, the Senate met in a nearby theater.
-                </p>
-            </div>
-            <div id = "entry6" class = "hideOnLoad">
-                <h3>The Floor</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_006.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    The ruins of the Curia Julia can still be seen in Rome today. 
-                    Although much of the building has been damaged by time, its elaborate floor of red and green stone inlays on white marble tiles is still visible.
-                </p>
-            </div>
-            <div id = "entry7" class = "hideOnLoad">
-                <h3>Lictors</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_poi_007.mp3" type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-				<p>
-                    In general, only senators were allowed in Senate meetings. 
-                    An exception was made for the lictors, a group of bodyguards assigned to each consul. 
-                    Each lictor carried a fasces, a bundle of wooden rods with an axe, as a symbol of the consul’s power.
-                </p>
-            </div>
-           <!--Intro Text-->
-           <div id = "entry8">
-			    <h3>The Roman Senate</h3></br>
-                <!-- <audio id="myAudio" controls> <source src="sound/ancientrome_sc6_title.mp3" autoplay type="audio/mpeg"></audio>           -->
-                <button id = "playButton" onclick="playAudio(this)"><span>Play</span></button>
-                <button id = "resetButton" onclick="resetAudio()"><span>Restart</span></button>
-                <p>
-                    Welcome to the Curia Julia, the meeting place of the Roman Senate. 
-                    During the Roman Republic from 509 to 27 BCE, the Senate was the main lawmaking body and the heart of the government. 
-                    As power shifted to the emperors, the Senate remained important. 
-                    It governed Rome and certain provinces and sometimes controlled finances and acted as a court. 
-                    The meeting you see here is taking place early in the Empire, as the Senate attempts to define its role in the new government.
-				</p>
-        	</div>
-            <!--==========-->
         </div>
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

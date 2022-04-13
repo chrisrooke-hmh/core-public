@@ -235,15 +235,15 @@ function init() {
   container.appendChild(renderer.domElement);
 
   // Event management
-  document.addEventListener("mousedown", onDocumentMouseDown, false);
-  document.addEventListener("touchstart", handleTouchStart, false);
-  document.addEventListener("mousemove", onDocumentMouseMove, false);
-  document.addEventListener("touchmove", handleTouchMove, false);
-  document.addEventListener("mouseup", onDocumentMouseUp, false);
-  document.addEventListener("touchend", handleTouchEnd, false);
-  document.addEventListener("wheel", onDocumentMouseWheel, false);
+  document.querySelector( '#canvas' ).addEventListener("mousedown", onDocumentMouseDown, false);
+  document.querySelector( '#canvas' ).addEventListener("touchstart", handleTouchStart, false);
+  document.querySelector( '#canvas' ).addEventListener("mousemove", onDocumentMouseMove, false);
+  document.querySelector( '#canvas' ).addEventListener("touchmove", handleTouchMove, false);
+  document.querySelector( '#canvas' ).addEventListener("mouseup", onDocumentMouseUp, false);
+  document.querySelector( '#canvas' ).addEventListener("touchend", handleTouchEnd, false);
+  document.querySelector( '#canvas' ).addEventListener("wheel", onDocumentMouseWheel, false);
 
-  document.addEventListener("click", onMouseClick);
+  document.querySelector('#canvas').addEventListener("click", onMouseClick);
 
   window.addEventListener("resize", onWindowResize, false);
 }
@@ -280,7 +280,7 @@ function onWindowResize() {
 // Handler for looking around on touch screen
 function handleTouchStart(event) {
   event.preventDefault();
-
+  event.stopPropagation();
   isUserInteracting = true;
 
   onPointerDownPointerX = event.touches[0].clientX;
@@ -293,7 +293,7 @@ function handleTouchStart(event) {
 // Controls for looking around panoramic
 function onDocumentMouseDown(event) {
   event.preventDefault();
-
+  event.stopPropagation();
   isUserInteracting = true;
 
   onPointerDownPointerX = event.clientX;
@@ -304,6 +304,7 @@ function onDocumentMouseDown(event) {
 }
 
 function handleTouchMove(event) {
+  event.stopPropagation();
   if (isUserInteracting === true) {
     lon = (onPointerDownPointerX - event.touches[0].clientX) * 0.1 + onPointerDownLon;
     lat = (event.touches[0].clientY - onPointerDownPointerY) * 0.1 + onPointerDownLat;
@@ -311,6 +312,7 @@ function handleTouchMove(event) {
 }
 
 function onDocumentMouseMove(event) {
+  event.stopPropagation();
   if (isUserInteracting === true) {
     lon = (onPointerDownPointerX - event.clientX) * 0.1 + onPointerDownLon;
     lat = (event.clientY - onPointerDownPointerY) * 0.1 + onPointerDownLat;
@@ -319,15 +321,18 @@ function onDocumentMouseMove(event) {
 
 // Stop User Interaction
 function onDocumentMouseUp(event) {
+  event.stopPropagation();
   isUserInteracting = false;
 }
 
 function handleTouchEnd(event) {
+  event.stopPropagation();
   isUserInteracting = false;
 }
 
 // Zoom in and out
 function onDocumentMouseWheel(event) {
+  event.stopPropagation();
   camera.fov += event.deltaY * 0.35;
   camera.updateProjectionMatrix();
 }
@@ -335,7 +340,7 @@ function onDocumentMouseWheel(event) {
 // Raycaster for clicking objects
 function onMouseClick(event) {
   event.preventDefault();
-
+  event.stopPropagation();
   let canvasBounds = renderer.domElement.getBoundingClientRect();
   mouse.x =
     ((event.clientX - canvasBounds.left) /
