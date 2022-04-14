@@ -230,7 +230,7 @@ function init() {
 
   // Event management
   document.querySelector( '#canvas' ).addEventListener("mousedown", onDocumentMouseDown, false);
-  document.querySelector( '#canvas' ).addEventListener("touchstart", handleTouchStart, false);
+  document.addEventListener("touchstart", handleTouchStart, false);
   document.querySelector( '#canvas' ).addEventListener("mousemove", onDocumentMouseMove, false);
   document.querySelector( '#canvas' ).addEventListener("touchmove", handleTouchMove, false);
   document.querySelector( '#canvas' ).addEventListener("mouseup", onDocumentMouseUp, false);
@@ -274,7 +274,7 @@ function onWindowResize() {
 // Handler for looking around on touch screen
 function handleTouchStart(event) {
   event.preventDefault();
-  event.stopPropagation();
+  //event.stopPropagation();
   isUserInteracting = true;
 
   onPointerDownPointerX = event.touches[0].clientX;
