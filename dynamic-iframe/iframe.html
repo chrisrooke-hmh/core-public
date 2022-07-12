@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            iFrame
+        </title>
+        <style>
+            :root {
+                --font-size: 1rem;
+            }
+
+            p {
+                font-size: var(--font-size);
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="sendSignal()">Play animation</button>
+        <p id="test">Pellentesque habitant morbi tristique senectus et. Non pulvinar neque laoreet suspendisse interdum consectetur libero. Quis auctor elit sed vulputate mi sit amet. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam. Morbi enim nunc faucibus a. Aliquam id diam maecenas ultricies mi. Risus pretium quam vulputate dignissim suspendisse. Lorem ipsum dolor sit amet consectetur. Quis eleifend quam adipiscing vitae proin sagittis. Dolor sit amet consectetur adipiscing.</p>
+        <p>Eu augue ut lectus arcu bibendum at varius vel pharetra. Quis viverra nibh cras pulvinar mattis nunc sed blandit. Pellentesque diam volutpat commodo sed egestas egestas fringilla. Nec feugiat nisl pretium fusce id velit. Suspendisse in est ante in nibh mauris. Eu nisl nunc mi ipsum. Blandit aliquam etiam erat velit scelerisque in dictum non consectetur. Vel eros donec ac odio tempor orci dapibus ultrices. Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit. Tellus pellentesque eu tincidunt tortor aliquam. Neque viverra justo nec ultrices. Turpis egestas sed tempus urna et. Fringilla est ullamcorper eget nulla facilisi etiam. Mattis vulputate enim nulla aliquet porttitor lacus. Libero id faucibus nisl tincidunt eget. Et malesuada fames ac turpis egestas sed tempus urna. Diam quis enim lobortis scelerisque fermentum dui. Eget dolor morbi non arcu.</p>
+        <p>Diam donec adipiscing tristique risus nec feugiat. Eu ultrices vitae auctor eu augue ut lectus arcu. Tempus imperdiet nulla malesuada pellentesque elit eget. Integer malesuada nunc vel risus commodo viverra maecenas. Pharetra magna ac placerat vestibulum. Neque laoreet suspendisse interdum consectetur. Integer malesuada nunc vel risus commodo viverra maecenas accumsan. Eget sit amet tellus cras adipiscing enim eu turpis egestas. Lectus mauris ultrices eros in cursus turpis massa tincidunt dui. In tellus integer feugiat scelerisque varius morbi. Tellus cras adipiscing enim eu turpis egestas pretium.</p>
+        <p>Scelerisque felis imperdiet proin fermentum. Tortor at auctor urna nunc id. Sit amet nisl purus in mollis nunc sed id semper. Est velit egestas dui id. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Convallis posuere morbi leo urna. Ac feugiat sed lectus vestibulum mattis. Amet consectetur adipiscing elit ut aliquam purus sit amet. Sed ullamcorper morbi tincidunt ornare. Imperdiet massa tincidunt nunc pulvinar sapien et. Nulla porttitor massa id neque aliquam. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa.</p>
+
+        <script type="text/javascript">
+            function sendSignal() {
+                window.parent.buttonPressed('email');
+            }
+        </script>
+    </body>
+</html>
