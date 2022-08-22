@@ -1,0 +1,143 @@
+$secondary-xs: $primary-xs;
+$secondary-sm: $secondary-xs;
+$secondary-md: floor($primary-md / 2);
+$secondary-lg: floor($primary-lg / 2);
+$secondary-xl: floor((12 - $primary-xl) / 2);
+$primary-xs-start: floor((14 - $primary-xs) / 2);
+$primary-sm-start: floor((14 - $primary-sm) / 2);
+$primary-md-start: floor((14- $primary-md) / 2);
+$primary-lg-start: floor((14 - $primary-lg) / 2);
+$primary-xl-start: floor((14 - $primary-xl) / 2);
+$secondary-xs-start: $primary-xs-start;
+$secondary-sm-start: $primary-sm-start;
+$secondary-md-start-left: $primary-md-start;
+$secondary-md-start-right: $primary-md-start + $primary-md - $secondary-md;
+$secondary-lg-start-left: $primary-lg-start;
+$secondary-lg-start-right: $primary-lg-start + $primary-lg - $secondary-lg;
+$secondary-xl-start-left: $primary-xl-start - $secondary-xl;
+$secondary-xl-start-right: $primary-xl-start + $primary-xl;
+
+* {
+  grid-column: $primary-xs-start / span $primary-xs;
+
+  @include respond-sm {
+    grid-column: $primary-sm-start / span $primary-sm;
+  }
+  @include respond-md {
+    grid-column: $primary-md-start / span $primary-md;
+  }
+  @include respond-lg {
+    grid-column: $primary-lg-start / span $primary-lg;
+  }
+  @include respond-xl {
+    grid-column: $primary-xl-start / span $primary-xl;
+  }
+}
+
+.source--secondary,
+.source--secondary-left,
+.source--secondary-right {
+  grid-column: $secondary-xs-start / span $secondary-xs;
+
+  @include respond-sm {
+    grid-column: $secondary-sm-start / span $secondary-sm;
+  }
+}
+
+.source--secondary-left {
+  @include respond-md {
+    grid-column: $secondary-md-start-left / span $secondary-md;
+  }
+  @include respond-lg {
+    grid-column: $secondary-lg-start-left / span $secondary-lg;
+  }
+  @include respond-xl {
+    grid-column: $secondary-xl-start-left / span $secondary-xl;
+  }
+}
+
+.source--secondary,
+.source--secondary-right {
+  @include respond-md {
+    grid-column: $secondary-md-start-right / span $secondary-md;
+  }
+  @include respond-lg {
+    grid-column: $secondary-lg-start-right / span $secondary-lg;
+  }
+  @include respond-xl {
+    grid-column: $secondary-xl-start-right / span $secondary-xl;
+  }
+}
+
+.source--full-content {
+  grid-column: $primary-xs-start / span $primary-xs;
+
+  @include respond-sm {
+    grid-column: $primary-sm-start / span $primary-sm;
+  }
+  @include respond-md {
+    grid-column: $primary-md-start / span $primary-md;
+  }
+  @include respond-lg {
+    grid-column: $primary-lg-start / span $primary-lg;
+  }
+  @include respond-xl {
+    grid-column: $secondary-xl-start-left / span $secondary-xl-start-right +
+      $secondary-xl;
+  }
+}
+
+.source__wraparound {
+  grid-column: $primary-xs-start / span $primary-xs;
+
+  @include respond-sm {
+    grid-column: $primary-sm-start / span $primary-sm;
+  }
+  @include respond-md {
+    grid-column: $primary-md-start / span $primary-md;
+  }
+  @include respond-lg {
+    grid-column: $primary-lg-start / span $primary-lg;
+  }
+
+  & > p {
+    @include respond-xl {
+      width: calc(#{$primary-xl} * var(--col-width) - var(--base-lheight));
+    }
+  }
+  aside {
+    width: calc(#{$secondary-xs} * var(--col-width));
+
+    @include respond-sm {
+      width: calc(#{$secondary-sm} * var(--col-width));
+    }
+    @include respond-md {
+      width: calc(#{$secondary-md} * var(--col-width) - var(--base-lheight));
+    }
+    @include respond-lg {
+      width: calc(#{$secondary-lg} * var(--col-width) - var(--base-lheight));
+    }
+    @include respond-xl {
+      width: calc(#{$secondary-xl} * var(--col-width) - var(--base-lheight));
+    }
+  }
+
+  &--left {
+    @extend .source__wraparound;
+    @include respond-xl {
+      grid-column: ($primary-xl-start - $secondary-xl) / span $primary-xl +
+        $secondary-xl;
+    }
+
+    & > p {
+      margin-left: auto;
+    }
+  }
+
+  &--right {
+    @extend .source__wraparound;
+    @include respond-xl {
+      grid-column: $primary-xl-start / span $primary-xl + $secondary-xl;
+    }
+  }
+}
