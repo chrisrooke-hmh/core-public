@@ -12,10 +12,11 @@ p.small {
 }
 
 iframe {
-    margin-top: var(--base-lheight);
+    margin-top: var(--half-lheight);
     height: calc(var(--base-lheight) * 10);
     grid-column: 1 / span 12;
     width: calc(100% - var(--base-lheight));
+    border: 1px solid gray;
 
     @include respond-md {
         grid-column: 2 / span 10;
@@ -28,5 +29,16 @@ iframe {
 
     @include respond-xl {
         grid-column: 2 / span 6;
+    }
+}
+
+.iframesmall {
+    grid-row: span 2;
+    @include respond-lg {
+        grid-column: 9 / span 4;
+    }
+
+    @include respond-xl {
+        grid-column: 8 / span 4;
     }
 }

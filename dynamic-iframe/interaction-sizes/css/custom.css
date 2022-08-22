@@ -33,10 +33,11 @@ p.small {
 }
 
 iframe {
-  margin-top: var(--base-lheight);
+  margin-top: var(--half-lheight);
   height: calc(var(--base-lheight) * 10);
   grid-column: 1/span 12;
   width: calc(100% - var(--base-lheight));
+  border: 1px solid gray;
 }
 @media (min-width: 40.625rem) {
   iframe {
@@ -51,6 +52,20 @@ iframe {
 @media (min-width: 80rem) {
   iframe {
     grid-column: 2/span 6;
+  }
+}
+
+.iframesmall {
+  grid-row: span 2;
+}
+@media (min-width: 55rem) {
+  .iframesmall {
+    grid-column: 9/span 4;
+  }
+}
+@media (min-width: 80rem) {
+  .iframesmall {
+    grid-column: 8/span 4;
   }
 }
 
