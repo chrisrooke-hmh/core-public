@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>
+            iFrame test
+        </title>
+        <link rel="stylesheet" href="css/source.css">
+        <link rel="stylesheet" href="css/custom.css">
+        <style>
+            /* p, iframe {
+                width: 512px;
+                margin: 1rem auto;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                display: block;
+            } */
+
+            iframe {
+                border: 1px solid gray;
+            }
+        </style>
+        <body>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer eget aliquet nibh praesent tristique magna sit amet purus. Sed id semper risus in hendrerit gravida rutrum quisque non. Dictumst quisque sagittis purus sit amet volutpat consequat mauris nunc. Posuere morbi leo urna molestie at. Quam vulputate dignissim suspendisse in est ante. Amet nulla facilisi morbi tempus iaculis urna id. Lorem donec massa sapien faucibus et molestie ac feugiat. Non nisi est sit amet. Sed augue lacus viverra vitae congue eu consequat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam.</p>
+            <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer eget aliquet nibh praesent tristique magna sit amet purus. Sed id semper risus in hendrerit gravida rutrum quisque non. Dictumst quisque sagittis purus sit amet volutpat consequat mauris nunc. Posuere morbi leo urna molestie at. Quam vulputate dignissim suspendisse in est ante. Amet nulla facilisi morbi tempus iaculis urna id. Lorem donec massa sapien faucibus et molestie ac feugiat. Non nisi est sit amet. Sed augue lacus viverra vitae congue eu consequat. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam.</p>
+            <iframe id="iframetest" src="iframe.html"></iframe>
+
+            <script type="text/javascript">
+                var iframetest = document.getElementById('iframetest');
+                iframetest.onload = function() {
+                    console.log(iframetest);
+                    console.log(iframetest.contentWindow.document.getElementById('test'));
+                    changeSize();
+                }
+
+                const cssVars = ['--base-lheight', '--half-lheight', '--quart-lheight', '--body-lg', '--body-md', '--body-sm', '--caption', '--body-lg-lheight', '--body-md-lheight', '--body-sm-lheight', '--caption-lheight', '--body-lg-head-lheight', '--body-md-head-lheight'];
+
+                function changeSize() {
+                    cssVars.forEach(cssVar => {
+                        iframetest.contentWindow.document.documentElement.style.setProperty(cssVar, getComputedStyle(document.documentElement).getPropertyValue(cssVar));
+                    });
+                }
+
+                window.onresize = changeSize;
+
+            </script>
+        </body>
+    </head>
+</html>

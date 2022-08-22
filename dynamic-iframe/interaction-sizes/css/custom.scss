@@ -1,0 +1,32 @@
+@import "custom/grades/grade_68";
+@import "source/variables";
+@import "source/colors";
+@import "source/mixins";
+
+p {
+    @include para-size($body-md);
+}
+
+p.small {
+    @include para-size($body-sm);
+}
+
+iframe {
+    margin-top: var(--base-lheight);
+    height: calc(var(--base-lheight) * 10);
+    grid-column: 1 / span 12;
+    width: calc(100% - var(--base-lheight));
+
+    @include respond-md {
+        grid-column: 2 / span 10;
+    }
+
+    @include respond-lg {
+        grid-column: 1 / span 8;
+    }
+
+
+    @include respond-xl {
+        grid-column: 2 / span 6;
+    }
+}
