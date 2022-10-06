@@ -1,0 +1,281 @@
+<html>
+    <head>
+        <title>Scrollable video</title>
+        <style>
+            body {
+                border: 0;
+                padding: 0;
+                margin: 0;
+                /* height: 1000vh; */
+            }
+
+            video {
+                margin: 0;
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                position: fixed;
+            }
+
+            .question {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 32px;
+                width: fit-content;
+                max-width: 80%;
+                border-radius: 16px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+            }
+
+            .question.visible {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            h2 {
+                font-size: 48px;
+                text-align: center;
+                flex-basis: 100%;
+                margin: 0 0 16px 0;
+            }
+
+            button {
+                border-radius: 8px;
+                background: grey;
+                padding: 16px;
+                font-size: 24px;
+                color: white;
+                border: 0;
+                cursor: pointer;
+                margin: 16px;
+            }
+
+            .correct {
+                background-color: darkolivegreen;
+            }
+
+            .incorrect {
+                background-color: darkred;
+            }
+
+            @keyframes headShake {
+            0% {
+                transform: translateX(0);
+            }
+
+            6.5% {
+                transform: translateX(-6px) rotateY(-9deg);
+            }
+
+            18.5% {
+                transform: translateX(5px) rotateY(7deg);
+            }
+
+            31.5% {
+                transform: translateX(-3px) rotateY(-5deg);
+            }
+
+            43.5% {
+                transform: translateX(2px) rotateY(3deg);
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+            }
+
+            .headShake {
+            animation-timing-function: ease-in-out;
+            animation-name: headShake;
+            animation-duration: 1s;
+            }
+
+            .preventScroll {
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body id="body">
+        <video id="vid" autobuffer="autobuffer" preload="auto" muted>
+            <!-- <source src="Chrome_ImF.webm" type="video/webm"></source> -->
+            <source src="video.webm" type="video/webm"></source>
+            <!-- <source src="video-sm.webm" type="video/webm"></source> -->
+            <source src="video.mp4" type="video/mp4"></source>
+        </video>
+
+        <!-- <article id="q1">
+            <h2>
+                What is in this video?
+            </h2>
+            <button id="correct">
+                A galaxy close to home
+            </button>
+            <button id="incorrect">
+                A galaxy far, far away
+            </button>
+        </article> -->
+
+        <script>
+            // var vid = document.getElementById('vid'), body = document.body, html = document.documentElement, vidDuration;
+            // var pageHeight = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ), viewHeight = window.innerHeight;
+            // // console.log(pageHeight);
+            // // console.log(viewHeight);
+            // vid.onloadedmetadata = function() {
+            //     vidDuration = this.duration;
+            // };
+            // body.onscroll = function() {
+            //     // console.log('scrolling')
+            //     // console.log(body.scrollTop);
+            //     var scrollPerc = body.scrollTop / (pageHeight - viewHeight), vidTime = vidDuration * scrollPerc;
+            //     console.log(vidDuration * scrollPerc);
+            //     vid.currentTime = vidDuration * scrollPerc;
+            // };
+
+            // // function scrollPlay(){  
+            // //     var scrollPerc = body.scrollTop / (pageHeight - viewHeight), vidTime = vidDuration * scrollPerc;
+            // //     console.log(vidDuration * scrollPerc);
+            // //     vid.currentTime = vidDuration * scrollPerc;
+            // // }
+            var frameNumber = 0, // start video at frame 0
+                // lower numbers = faster playback
+                playbackConst = 1000, 
+                // get page height from video duration
+                setHeight = document.getElementById("body"), 
+                // select video element         
+                vid = document.getElementById('vid'), 
+                // var vid = $('#v0')[0]; // jquery option
+                body = document.getElementById('body');
+
+            // dynamically set the page height according to video length
+            vid.addEventListener('loadedmetadata', function() {
+            setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+            });
+
+
+            // Use requestAnimationFrame for smooth playback
+            function scrollPlay(){  
+                frameNumber  = window.pageYOffset/playbackConst;
+                vid.currentTime  = frameNumber;
+                window.requestAnimationFrame(scrollPlay);
+            }
+
+            const questions = [
+                // {
+                //     vidPosition: 5,
+                //     title: 'What is in this video?',
+                //     answers: ['The Milky Way', 'A galaxy far, far away', 'A galaxy closer to home', 'A marble'
+                // ]
+                // },
+                // {
+                //     vidPosition: 8,
+                //     title: 'Second question',
+                //     answers: [ 'Correct', 'Incorrect 1', 'Incorrect 2'
+                // ]
+                // },
+                // {
+                //     vidPosition: 11,
+                //     title: 'Third question',
+                //     answers: ['Correct', 'Incorrect 1', 'Incorrect 2', 'Incorrect 3', 'Incorrect 4'
+                // ]
+                // }
+            ]
+
+            let questionTimes = [];
+            let nextStop, nextStopIndex;
+            window.onload = function() {
+                // console.log(questions.length);
+                for (let i = 0; i < questions.length; i++ ) {
+                    // Create question El
+                    const panelEl = document.createElement("article");
+                    const questionEl  = document.createElement("h2");
+                    questionEl.appendChild(document.createTextNode(questions[i].title)); 
+                    panelEl.appendChild(questionEl);
+                    panelEl.setAttribute('id',`q${i}`);
+                    panelEl.setAttribute('data-index', i);
+                    panelEl.classList.add('question');
+                    var answersArr = questions[i].answers;
+                    console.log(answersArr);
+                    for (var j = 0; j < answersArr.length; j++) {
+                        const buttonEl = document.createElement("button");
+                        buttonEl.appendChild(document.createTextNode(answersArr[j]));
+                        if (j === 0) {
+                            buttonEl.classList.add('correct');
+                        } else {
+                            buttonEl.classList.add('incorrect');
+                        }
+                        panelEl.appendChild(buttonEl);
+                    }
+                    document.body.appendChild(panelEl);
+                    questionTimes.push(questions[i].vidPosition);
+                }
+
+                // console.log(questionTimes);
+                nextStop = Math.min(...questionTimes);
+                nextStopIndex = questionTimes.indexOf(nextStop);
+                // console.log(nextStopIndex); 
+
+                correctButtons = document.getElementsByClassName('correct');
+                for (var k = 0; k < correctButtons.length; k++) {
+                    correctButtons[k].addEventListener('click', function() {
+                        let currentIndex = this.parentElement.getAttribute('data-index');
+                        this.parentElement.classList.remove('visible');
+                        body.classList.remove('preventScroll');
+                        nextStopIndex++;
+                        nextStop = questionTimes[nextStopIndex];
+                        console.log(nextStopIndex); 
+                    });
+                }
+
+                incorrectButtons = document.getElementsByClassName('incorrect');
+                for (var l = 0; l < incorrectButtons.length; l++) {
+                    incorrectButtons[l].addEventListener('click', function() {
+                        this.classList.add('headShake');
+                    });
+                }
+
+                
+                // .addEventListener('click', function(){
+                //     console.log(this.parentElement);
+                //     this.parentElement.classList.remove('visible');
+                //     body.classList.remove('preventScroll');
+                //     // vid.play();
+                // });
+
+                // document.getElementById('incorrect').addEventListener('click', function(){
+                //     this.classList.add('headShake');
+                // });
+
+            }
+
+            window.addEventListener('scroll', function(e) {
+                // console.log(frameNumber);
+                if (frameNumber >= nextStop) {
+                    body.classList.add('preventScroll');
+                    let currentQuestion = document.getElementById(`q${nextStopIndex}`);
+                    currentQuestion.classList.add('visible');
+                }
+            });
+            window.requestAnimationFrame(scrollPlay);
+            
+            // var q1 = document.getElementById('q1'), pause = function() {
+            //     console.log(this.currentTime);
+            //     if(this.currentTime >= 5) {
+            //         // this.pause();
+            //         // alert('stopped!');
+            //         // this.removeEventListener("timeupdate", pause);
+            //         q1.classList.add('visible');
+            //     }
+            // }
+            // // vid.addEventListener("timeupdate", pause);
+
+        </script>
+    </body>
+</html>
