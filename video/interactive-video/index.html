@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>Interactive Video</title>
+        <style>
+            html, body {
+                border: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            article {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 32px;
+                width: fit-content;
+                max-width: 80%;
+                border-radius: 16px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+            }
+
+            #q1.visible {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            h2 {
+                font-size: 48px;
+                text-align: center;
+                flex-basis: 100%;
+                margin: 0 0 16px 0;
+            }
+
+            button {
+                border-radius: 8px;
+                background: grey;
+                padding: 16px;
+                font-size: 24px;
+                color: white;
+                border: 0;
+                cursor: pointer;
+                margin: 16px;
+            }
+
+            #correct {
+                background-color: darkolivegreen;
+            }
+
+            #incorrect {
+                background-color: darkred;
+            }
+
+            @keyframes headShake {
+            0% {
+                transform: translateX(0);
+            }
+
+            6.5% {
+                transform: translateX(-6px) rotateY(-9deg);
+            }
+
+            18.5% {
+                transform: translateX(5px) rotateY(7deg);
+            }
+
+            31.5% {
+                transform: translateX(-3px) rotateY(-5deg);
+            }
+
+            43.5% {
+                transform: translateX(2px) rotateY(3deg);
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+            }
+
+            .headShake {
+            animation-timing-function: ease-in-out;
+            animation-name: headShake;
+            animation-duration: 1s;
+            }
+
+        </style>
+    </head>
+    <body>
+        <video id="video" autoplay muted>
+            <source src="video.mp4" type="video/mp4"></source>
+        </video>
+      
+        <article id="q1">
+            <h2>
+                What is in this video?
+            </h2>
+            <button id="correct">
+                A mountain
+            </button>
+            <button id="incorrect">
+                A very, very big rock
+            </button>
+        </article>
+        <script type="text/javascript">
+            var video = document.getElementById('video'), q1 = document.getElementById('q1'), pause = function() {
+                console.log(this.currentTime);
+                if(this.currentTime >= 5) {
+                    this.pause();
+                    // alert('stopped!');
+                    this.removeEventListener("timeupdate", pause);
+                    q1.classList.add('visible');
+                }
+            }
+            video.addEventListener("timeupdate", pause);
+
+            document.getElementById('correct').addEventListener('click', function(){
+                q1.classList.remove('visible');
+                video.play();
+            });
+
+            document.getElementById('incorrect').addEventListener('click', function(){
+                this.classList.add('headShake');
+            });
+
+        </script>
+    </body>
+</html>
