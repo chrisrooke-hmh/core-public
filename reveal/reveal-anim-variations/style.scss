@@ -1,0 +1,288 @@
+:root {
+    --base-lheight: 2rem;
+    --half-lheight: 1rem;
+    --quart-lheight: 0.5rem;
+
+    --reveal-min-height: calc(var(--base-lheight) + var(--half-lheight));
+}
+
+$reveal-gray: #dad9d9;
+$reveal-aqua: #01a3bf;
+$reveal-border: 0.125rem;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.source__reveal__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: calc(var(--half-lheight) + var(--quart-lheight) / 2)
+        var(--half-lheight);
+    align-items: start;
+    padding: var(--half-lheight);
+    border: solid $reveal-border $reveal-gray;
+    max-width: 600px;
+
+    > li {
+        list-style: none;
+        margin-top: 0;
+        padding-left: 0;
+        grid-column: span 1;
+
+        &:before {
+            content: unset;
+        }
+    }
+
+    details {
+        position: relative;
+        list-style-type: none;
+        min-height: var(--reveal-min-height);
+        cursor: pointer;
+        border: solid transparent $reveal-border;
+
+        &[open] {
+            summary {
+                background-color: transparent;
+                //comment this out to allow toggle
+                // z-index: -2;
+            }
+        }
+
+        summary {
+            list-style: none;
+            position: absolute;
+            inset: calc(-1 * $reveal-border);
+            width: calc(100% + 2 * $reveal-border);
+            height: calc(100% + 2 * $reveal-border);
+            background-color: #f8f8f9;
+            padding-top: var(--quart-lheight);
+            border: solid $reveal-aqua $reveal-border;
+            z-index: 2;
+
+            background-image: url('../reveal-icon.png'),
+                linear-gradient(25deg, #f8f8f9 5%, #f8f8f9 70%, #eeeef1 95%);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 1.75rem, cover;
+
+            // sr-only stands for screen reader only
+            .sr-only {
+                opacity: 0;
+            }
+        }
+
+        summary::-webkit-details-marker,
+        summary::marker {
+            display: none;
+        }
+
+        p {
+            margin: 0;
+            text-align: center;
+            padding: var(--quart-lheight);
+            background-color: white;
+            line-height: 1.75rem;
+            z-index: 1;
+        }
+
+        // styles for varying content
+
+        > figure {
+            margin: 0;
+            padding-bottom: 0;
+
+            img {
+                width: 100%;
+                margin-inline: auto;
+                padding-bottom: 0;
+                display: block;
+                min-height: var(--reveal-min-height);
+                object-fit: cover;
+            }
+        }
+
+        ol,
+        ul {
+            padding-left: 0;
+            padding: var(--quart-lheight);
+        }
+    }
+}
+
+li:nth-of-type(1) details[open] summary {
+    animation: 1s bounceOutRight ease forwards;
+}
+
+li:nth-of-type(2) details[open] summary {
+    animation: 0.9s bounceOutUp ease-in forwards;
+}
+
+li:nth-of-type(3) details[open] summary {
+    animation: 0.9s hinge ease-in forwards;
+    transform-origin: top left;
+}
+
+li:nth-of-type(4) details[open] summary {
+    animation: 0.6s lightSpeedOutRight ease-in forwards;
+}
+
+li:nth-of-type(5) details[open] summary {
+    animation: 0.6s fadeOutUp ease-out forwards;
+}
+
+li:nth-of-type(6) details[open] summary {
+    animation: 0.9s flipOutX ease-in forwards;
+    backface-visibility: visible;
+    transform-origin: top center;
+}
+
+li:nth-of-type(7) details[open] summary {
+    animation: 0.9s rollOut ease-in forwards;
+}
+
+@keyframes bounceOutUp {
+    20% {
+        transform: translate3d(0, -10px, 0) scaleY(0.985);
+    }
+
+    40%,
+    45% {
+        opacity: 1;
+        transform: translate3d(0, 20px, 0) scaleY(0.9);
+    }
+
+    98% {
+        opacity: 0;
+        transform: translate3d(0, -2000px, 0) scaleY(3);
+        z-index: 2;
+    }
+
+    100% {
+        transform: translate3d(0) scaleY(0);
+        border: solid $reveal-border transparent;
+        z-index: -2;
+    }
+}
+
+@keyframes bounceOutRight {
+    20% {
+        opacity: 1;
+        transform: translate3d(-20px, 0, 0) scaleX(0.9);
+    }
+
+    98% {
+        opacity: 0;
+        transform: translate3d(1500px, 0, 0) scaleX(2);
+        z-index: 2;
+    }
+
+    100% {
+        transform: translate3d(0) scaleX(0);
+        border: solid $reveal-border transparent;
+        z-index: -2;
+    }
+}
+
+@keyframes lightSpeedOutRight {
+    0% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    98% {
+        transform: translate3d(100%, 0, 0) skewX(50deg);
+        opacity: 0;
+        z-index: 2;
+    }
+
+    100% {
+        transform: translate3d(0) skewX(0deg);
+        border: solid $reveal-border transparent;
+        z-index: -2;
+    }
+}
+
+@keyframes hinge {
+    0% {
+        animation-timing-function: ease-in-out;
+    }
+
+    20%,
+    60% {
+        transform: rotate3d(0, 0, 1, 80deg);
+        animation-timing-function: ease-in-out;
+    }
+
+    40%,
+    80% {
+        transform: rotate3d(0, 0, 1, 60deg);
+        animation-timing-function: ease-in-out;
+        opacity: 1;
+    }
+
+    98% {
+        transform: translate3d(0, 500px, 0);
+        z-index: 2;
+    }
+
+    100% {
+        transform: translate3d(0);
+        border: solid $reveal-border transparent;
+        z-index: -2;
+    }
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+    }
+
+    98% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+        z-index: 2;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        border: solid $reveal-border transparent;
+        z-index: -2;
+    }
+}
+
+@keyframes flipOutX {
+    from {
+        transform: perspective(400px);
+    }
+
+    30% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    90% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    }
+
+    99% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        z-index: 2;
+        opacity: 0;
+    }
+
+    100% {
+        transform: perspective(400px) rotate3d(0);
+        border: solid $reveal-border transparent;
+        z-index: -2;
+    }
+}
