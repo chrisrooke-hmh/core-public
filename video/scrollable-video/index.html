@@ -234,7 +234,7 @@
 
             // dynamically set the page height according to video length
             vid.addEventListener('loadedmetadata', function() {
-                console.log(vid.duration);
+                // console.log(vid.duration);
                 setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
             });
 
@@ -275,6 +275,7 @@
                 for (i=0; i<zones.length; i++) {
                     const panelEl = document.createElement("section");
                     panelEl.setAttribute('id',`q${i}`);
+                    panelEl.classList.add(zones[i].type);
                     panelEl.style.height = ((zones[i].endTime + 1 - zones[i].startTime) / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
                     panelEl.style.top = (zones[i].startTime / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
                     if (zones[i].type === 'text') {
@@ -284,18 +285,23 @@
                         panelEl.innerHTML = '<div><article>' + zones[i].contents + '</article></div>';
                     }
                     if (zones[i].type === 'gate') {
-                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '</article></div>';
+                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '<button class="close">Close</button></article></div>';
                     }
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
                 } 
-                console.log(panels);
+                // console.log(panels);
 
                 document.addEventListener( 'scroll', event => {
                     for (j=0; j<panels.length; j++) {
                         if(inViewport(document.getElementById(panels[j])) === 'active'){
                             document.getElementById(panels[j]).classList.add('active');
-                            document.getElementById(panels[j]).classList.remove('past');
+                            if (!document.getElementById(panels[j]).classList.contains('gate')) {
+                                document.getElementById(panels[j]).classList.remove('past');
+                            }
+                            if (document.getElementById(panels[j]).classList.contains('gate') && !document.getElementById(panels[j]).classList.contains('past')) {
+                                body.classList.add('preventScroll');
+                            }
                         } else if (inViewport(document.getElementById(panels[j])) === 'past') {
                             document.getElementById(panels[j]).classList.add('past');
                         } else if (inViewport(document.getElementById(panels[j])) === 'early') {
@@ -307,7 +313,21 @@
                 // for (j=0; j<panels.length; j++) {
                 //     document.getElementById(panels[j])
                 // }
+
+                let closers = document.getElementsByClassName('close');
+                for (k=0; k<closers.length; k++) {
+                    // console.log(closers[k].parentElement.closest('section'));
+                    closers[k].onclick = () => {
+                        body.classList.remove('preventScroll');
+                        console.log(event.target.parentElement.closest('section'));
+
+                        event.target.parentElement.closest('section').classList.remove('active');
+                        event.target.parentElement.closest('section').classList.add('past');
+                    }
+                }
             }
+
+
 
             function inViewport( element ){
                 // Get the elements position relative to the viewport
@@ -328,20 +348,6 @@
             }
 
             var myElement = document.querySelector( 'div' );
-
-            // Listen for the scroll event
-
-            // document.addEventListener( 'scroll', event => {
-            // // Check the viewport status
-            // if( inViewport( myElement ) ){
-            //     myElement.style.background = 'red';
-            // } else {
-            //     myElement.style.background = '';
-            // }
-            // })
-
-
-
 
 
             // OLD: set question gates 
