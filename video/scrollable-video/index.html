@@ -101,14 +101,113 @@
             .preventScroll {
                 overflow: hidden;
             }
+
+            section {
+                width: 100%;
+                position: absolute;
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+                /* display: flex;
+                justify-content: center;
+                align-items: center; */
+                text-shadow: 0 0 10px rgba(0,0,0,0.4);
+            }
+
+            section.active {
+                opacity: 1;
+            }
+
+            section.past {
+                opacity: 0;
+            }
+
+            section:before {
+                /* content: ''; */
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: pink; 
+                opacity: 0.25;
+            }
+
+            section.active h1, section.active article {
+                animation: fadeInUp 1s ease-out forwards;
+            }
+
+            section.active div > p {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+                animation: fadeInUp 1s 1s ease-out forwards;
+            }
+
+            div {
+                position: sticky;
+                top: 50vh;
+                transform: translateY(-50%);
+                margin: 0 auto;
+                width: fit-content;
+                text-align: center;
+                font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: white;
+            }
+
+            h1 {
+                font-size: 5vw;
+                margin: 0;
+                /* opacity: 0; */
+                /* transform: translate3d(0, 100%, 0); */
+                /* transition: opacity .2s ease-in-out; */
+            }
+
+            div > p {
+                font-size: 2.5vw;
+                font-weight: 700;
+                margin: 0;
+                /* opacity: 0; */
+                /* transform: translate3d(0, 100%, 0);
+                transition: opacity .2s ease-in-out; */
+            }
+
+            article {
+                width: 50vw;
+                background: white;
+                color: rgba(0,0,0,0.87);
+                text-align: left;
+                text-shadow: 0;
+                padding: 32px;
+                border-radius: 16px;
+            }
+
+            article p {
+                font-size: 20px;
+            }
+
+            article p:first-child {
+                font-size: 24px;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translate3d(0, 100%, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+
         </style>
     </head>
     <body id="body">
         <video id="vid" autobuffer="autobuffer" preload="auto" muted>
             <!-- <source src="Chrome_ImF.webm" type="video/webm"></source> -->
-            <source src="video.webm" type="video/webm"></source>
+            <!-- <source src="video.webm" type="video/webm"></source> -->
             <!-- <source src="video-sm.webm" type="video/webm"></source> -->
-            <source src="video.mp4" type="video/mp4"></source>
+            <source src="video-sm_timecode.mp4" type="video/mp4"></source>
         </video>
 
         <!-- <article id="q1">
@@ -124,26 +223,6 @@
         </article> -->
 
         <script>
-            // var vid = document.getElementById('vid'), body = document.body, html = document.documentElement, vidDuration;
-            // var pageHeight = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ), viewHeight = window.innerHeight;
-            // // console.log(pageHeight);
-            // // console.log(viewHeight);
-            // vid.onloadedmetadata = function() {
-            //     vidDuration = this.duration;
-            // };
-            // body.onscroll = function() {
-            //     // console.log('scrolling')
-            //     // console.log(body.scrollTop);
-            //     var scrollPerc = body.scrollTop / (pageHeight - viewHeight), vidTime = vidDuration * scrollPerc;
-            //     console.log(vidDuration * scrollPerc);
-            //     vid.currentTime = vidDuration * scrollPerc;
-            // };
-
-            // // function scrollPlay(){  
-            // //     var scrollPerc = body.scrollTop / (pageHeight - viewHeight), vidTime = vidDuration * scrollPerc;
-            // //     console.log(vidDuration * scrollPerc);
-            // //     vid.currentTime = vidDuration * scrollPerc;
-            // // }
             var frameNumber = 0, // start video at frame 0
                 // lower numbers = faster playback
                 playbackConst = 1000, 
@@ -151,12 +230,12 @@
                 setHeight = document.getElementById("body"), 
                 // select video element         
                 vid = document.getElementById('vid'), 
-                // var vid = $('#v0')[0]; // jquery option
                 body = document.getElementById('body');
 
             // dynamically set the page height according to video length
             vid.addEventListener('loadedmetadata', function() {
-            setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+                // console.log(vid.duration);
+                setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
             });
 
 
@@ -165,8 +244,113 @@
                 frameNumber  = window.pageYOffset/playbackConst;
                 vid.currentTime  = frameNumber;
                 window.requestAnimationFrame(scrollPlay);
+                // console.log(window.pageYOffset, vid.currentTime);
             }
 
+            const zones = [
+                {
+                    startTime: 2,
+                    endTime: 5,
+                    type: 'text',
+                    contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>'
+                },
+                {
+                    startTime: 7,
+                    endTime: 10,
+                    type: 'panel',
+                    contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>'
+                },
+                {
+                    startTime: 12,
+                    endTime: 15,
+                    type: 'gate',
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
+                }
+
+            ]
+
+            window.onload = function() {
+                let panels = [];
+                
+                for (i=0; i<zones.length; i++) {
+                    const panelEl = document.createElement("section");
+                    panelEl.setAttribute('id',`q${i}`);
+                    panelEl.classList.add(zones[i].type);
+                    panelEl.style.height = ((zones[i].endTime + 1 - zones[i].startTime) / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
+                    panelEl.style.top = (zones[i].startTime / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
+                    if (zones[i].type === 'text') {
+                        panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
+                    }
+                    if (zones[i].type === 'panel') {
+                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '</article></div>';
+                    }
+                    if (zones[i].type === 'gate') {
+                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '<button class="close">Close</button></article></div>';
+                    }
+                    document.body.appendChild(panelEl);
+                    panels.push(`q${i}`);
+                } 
+                // console.log(panels);
+
+                document.addEventListener( 'scroll', event => {
+                    for (j=0; j<panels.length; j++) {
+                        if(inViewport(document.getElementById(panels[j])) === 'active'){
+                            document.getElementById(panels[j]).classList.add('active');
+                            if (!document.getElementById(panels[j]).classList.contains('gate')) {
+                                document.getElementById(panels[j]).classList.remove('past');
+                            }
+                            if (document.getElementById(panels[j]).classList.contains('gate') && !document.getElementById(panels[j]).classList.contains('past')) {
+                                body.classList.add('preventScroll');
+                            }
+                        } else if (inViewport(document.getElementById(panels[j])) === 'past') {
+                            document.getElementById(panels[j]).classList.add('past');
+                        } else if (inViewport(document.getElementById(panels[j])) === 'early') {
+                            document.getElementById(panels[j]).classList.remove('active');
+                        }
+                    }
+                })
+
+                // for (j=0; j<panels.length; j++) {
+                //     document.getElementById(panels[j])
+                // }
+
+                let closers = document.getElementsByClassName('close');
+                for (k=0; k<closers.length; k++) {
+                    // console.log(closers[k].parentElement.closest('section'));
+                    closers[k].onclick = () => {
+                        body.classList.remove('preventScroll');
+                        console.log(event.target.parentElement.closest('section'));
+
+                        event.target.parentElement.closest('section').classList.remove('active');
+                        event.target.parentElement.closest('section').classList.add('past');
+                    }
+                }
+            }
+
+
+
+            function inViewport( element ){
+                // Get the elements position relative to the viewport
+                var bb = element.getBoundingClientRect();
+                // Check if the element is outside the viewport
+                // Then invert the returned value because you want to know the opposite
+                // return !(bb.top > innerHeight || bb.bottom < 0);
+                if (bb.top > 0) {
+                    return 'early';
+                }
+                if (bb.top <= 0 && bb.bottom >= innerHeight) {
+                    return 'active';
+                } else if (bb.top <= 0 && bb.bottom >= 0) {
+                    return 'past';
+                } else {
+                    return false;
+                };
+            }
+
+            var myElement = document.querySelector( 'div' );
+
+
+            // OLD: set question gates 
             const questions = [
                 // {
                 //     vidPosition: 5,
@@ -188,94 +372,68 @@
                 // }
             ]
 
-            let questionTimes = [];
-            let nextStop, nextStopIndex;
-            window.onload = function() {
-                // console.log(questions.length);
-                for (let i = 0; i < questions.length; i++ ) {
-                    // Create question El
-                    const panelEl = document.createElement("article");
-                    const questionEl  = document.createElement("h2");
-                    questionEl.appendChild(document.createTextNode(questions[i].title)); 
-                    panelEl.appendChild(questionEl);
-                    panelEl.setAttribute('id',`q${i}`);
-                    panelEl.setAttribute('data-index', i);
-                    panelEl.classList.add('question');
-                    var answersArr = questions[i].answers;
-                    console.log(answersArr);
-                    for (var j = 0; j < answersArr.length; j++) {
-                        const buttonEl = document.createElement("button");
-                        buttonEl.appendChild(document.createTextNode(answersArr[j]));
-                        if (j === 0) {
-                            buttonEl.classList.add('correct');
-                        } else {
-                            buttonEl.classList.add('incorrect');
-                        }
-                        panelEl.appendChild(buttonEl);
-                    }
-                    document.body.appendChild(panelEl);
-                    questionTimes.push(questions[i].vidPosition);
-                }
+            // let questionTimes = [];
+            // let nextStop, nextStopIndex;
+            // window.onload = function() {
+            //     // console.log(questions.length);
+            //     for (let i = 0; i < questions.length; i++ ) {
+            //         // Create question El
+            //         const panelEl = document.createElement("article");
+            //         const questionEl  = document.createElement("h2");
+            //         questionEl.appendChild(document.createTextNode(questions[i].title)); 
+            //         panelEl.appendChild(questionEl);
+            //         panelEl.setAttribute('id',`q${i}`);
+            //         panelEl.setAttribute('data-index', i);
+            //         panelEl.classList.add('question');
+            //         var answersArr = questions[i].answers;
+            //         console.log(answersArr);
+            //         for (var j = 0; j < answersArr.length; j++) {
+            //             const buttonEl = document.createElement("button");
+            //             buttonEl.appendChild(document.createTextNode(answersArr[j]));
+            //             if (j === 0) {
+            //                 buttonEl.classList.add('correct');
+            //             } else {
+            //                 buttonEl.classList.add('incorrect');
+            //             }
+            //             panelEl.appendChild(buttonEl);
+            //         }
+            //         document.body.appendChild(panelEl);
+            //         questionTimes.push(questions[i].vidPosition);
+            //     }
 
-                // console.log(questionTimes);
-                nextStop = Math.min(...questionTimes);
-                nextStopIndex = questionTimes.indexOf(nextStop);
-                // console.log(nextStopIndex); 
+            //     nextStop = Math.min(...questionTimes);
+            //     nextStopIndex = questionTimes.indexOf(nextStop);
 
-                correctButtons = document.getElementsByClassName('correct');
-                for (var k = 0; k < correctButtons.length; k++) {
-                    correctButtons[k].addEventListener('click', function() {
-                        let currentIndex = this.parentElement.getAttribute('data-index');
-                        this.parentElement.classList.remove('visible');
-                        body.classList.remove('preventScroll');
-                        nextStopIndex++;
-                        nextStop = questionTimes[nextStopIndex];
-                        console.log(nextStopIndex); 
-                    });
-                }
+            //     correctButtons = document.getElementsByClassName('correct');
+            //     for (var k = 0; k < correctButtons.length; k++) {
+            //         correctButtons[k].addEventListener('click', function() {
+            //             let currentIndex = this.parentElement.getAttribute('data-index');
+            //             this.parentElement.classList.remove('visible');
+            //             body.classList.remove('preventScroll');
+            //             nextStopIndex++;
+            //             nextStop = questionTimes[nextStopIndex];
+            //             console.log(nextStopIndex); 
+            //         });
+            //     }
 
-                incorrectButtons = document.getElementsByClassName('incorrect');
-                for (var l = 0; l < incorrectButtons.length; l++) {
-                    incorrectButtons[l].addEventListener('click', function() {
-                        this.classList.add('headShake');
-                    });
-                }
-
-                
-                // .addEventListener('click', function(){
-                //     console.log(this.parentElement);
-                //     this.parentElement.classList.remove('visible');
-                //     body.classList.remove('preventScroll');
-                //     // vid.play();
-                // });
-
-                // document.getElementById('incorrect').addEventListener('click', function(){
-                //     this.classList.add('headShake');
-                // });
-
-            }
-
-            window.addEventListener('scroll', function(e) {
-                // console.log(frameNumber);
-                if (frameNumber >= nextStop) {
-                    body.classList.add('preventScroll');
-                    let currentQuestion = document.getElementById(`q${nextStopIndex}`);
-                    currentQuestion.classList.add('visible');
-                }
-            });
-            window.requestAnimationFrame(scrollPlay);
-            
-            // var q1 = document.getElementById('q1'), pause = function() {
-            //     console.log(this.currentTime);
-            //     if(this.currentTime >= 5) {
-            //         // this.pause();
-            //         // alert('stopped!');
-            //         // this.removeEventListener("timeupdate", pause);
-            //         q1.classList.add('visible');
+            //     incorrectButtons = document.getElementsByClassName('incorrect');
+            //     for (var l = 0; l < incorrectButtons.length; l++) {
+            //         incorrectButtons[l].addEventListener('click', function() {
+            //             this.classList.add('headShake');
+            //         });
             //     }
             // }
-            // // vid.addEventListener("timeupdate", pause);
 
+            // window.addEventListener('scroll', function(e) {
+            //     // console.log(frameNumber);
+            //     if (frameNumber >= nextStop) {
+            //         body.classList.add('preventScroll');
+            //         let currentQuestion = document.getElementById(`q${nextStopIndex}`);
+            //         currentQuestion.classList.add('visible');
+            //     }
+            // });
+            window.requestAnimationFrame(scrollPlay);
+        
         </script>
     </body>
 </html>
