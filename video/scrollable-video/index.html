@@ -102,9 +102,9 @@
                 overflow: hidden;
             }
 
-            article {
+            section {
                 width: 100%;
-                position: relative;
+                position: absolute;
                 opacity: 0;
                 transition: opacity .2s ease-in-out;
                 /* display: flex;
@@ -113,15 +113,15 @@
                 text-shadow: 0 0 10px rgba(0,0,0,0.4);
             }
 
-            article.active {
+            section.active {
                 opacity: 1;
             }
 
-            article.past {
+            section.past {
                 opacity: 0;
             }
 
-            article:before {
+            section:before {
                 /* content: ''; */
                 position: absolute;
                 top: 0;
@@ -132,11 +132,11 @@
                 opacity: 0.25;
             }
 
-            article.active h1 {
+            section.active h1, section.active article {
                 animation: fadeInUp 1s ease-out forwards;
             }
 
-            article.active p {
+            section.active div > p {
                 opacity: 0;
                 transform: translate3d(0, 100%, 0);
                 animation: fadeInUp 1s 1s ease-out forwards;
@@ -161,13 +161,31 @@
                 /* transition: opacity .2s ease-in-out; */
             }
 
-            p {
+            div > p {
                 font-size: 2.5vw;
                 font-weight: 700;
                 margin: 0;
                 /* opacity: 0; */
                 /* transform: translate3d(0, 100%, 0);
                 transition: opacity .2s ease-in-out; */
+            }
+
+            article {
+                width: 50vw;
+                background: white;
+                color: rgba(0,0,0,0.87);
+                text-align: left;
+                text-shadow: 0;
+                padding: 32px;
+                border-radius: 16px;
+            }
+
+            article p {
+                font-size: 20px;
+            }
+
+            article p:first-child {
+                font-size: 24px;
             }
 
             @keyframes fadeInUp {
@@ -187,9 +205,9 @@
     <body id="body">
         <video id="vid" autobuffer="autobuffer" preload="auto" muted>
             <!-- <source src="Chrome_ImF.webm" type="video/webm"></source> -->
-            <source src="video.webm" type="video/webm"></source>
+            <!-- <source src="video.webm" type="video/webm"></source> -->
             <!-- <source src="video-sm.webm" type="video/webm"></source> -->
-            <source src="video.mp4" type="video/mp4"></source>
+            <source src="video-sm_timecode.mp4" type="video/mp4"></source>
         </video>
 
         <!-- <article id="q1">
@@ -216,7 +234,8 @@
 
             // dynamically set the page height according to video length
             vid.addEventListener('loadedmetadata', function() {
-            setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+                console.log(vid.duration);
+                setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
             });
 
 
@@ -234,21 +253,43 @@
                     endTime: 5,
                     type: 'text',
                     contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>'
+                },
+                {
+                    startTime: 7,
+                    endTime: 10,
+                    type: 'panel',
+                    contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>'
+                },
+                {
+                    startTime: 12,
+                    endTime: 15,
+                    type: 'gate',
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
                 }
+
             ]
 
             window.onload = function() {
                 let panels = [];
                 
                 for (i=0; i<zones.length; i++) {
-                    const panelEl = document.createElement("article");
+                    const panelEl = document.createElement("section");
                     panelEl.setAttribute('id',`q${i}`);
-                    panelEl.style.height = ((zones[i].endTime - zones[i].startTime) / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
+                    panelEl.style.height = ((zones[i].endTime + 1 - zones[i].startTime) / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
                     panelEl.style.top = (zones[i].startTime / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
-                    panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
+                    if (zones[i].type === 'text') {
+                        panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
+                    }
+                    if (zones[i].type === 'panel') {
+                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '</article></div>';
+                    }
+                    if (zones[i].type === 'gate') {
+                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '</article></div>';
+                    }
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
                 } 
+                console.log(panels);
 
                 document.addEventListener( 'scroll', event => {
                     for (j=0; j<panels.length; j++) {
