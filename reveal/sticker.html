@@ -35,7 +35,7 @@
                 bottom: calc(var(--reveal-border) * -1);
                 right: calc((var(--reveal-height) + var(--reveal-border)) * -1);
                 transform: translateX(-20px);
-                transition: transform 1s ease-in-out;
+                transition: transform .5s ease-in;
                 pointer-events: none;
 
                 /* 45 deg */
@@ -56,7 +56,7 @@
                 height: 100%;
                 background: pink;
                 transform: translateX(20px);
-                transition: transform 1s ease-in-out;
+                transition: transform .5s ease-in;
             }
             .sticker_back {
                 position: absolute;
@@ -66,7 +66,7 @@
                 height: 100%;
                 background: coral;
                 transform-origin: 0 0;
-                transition: transform 1s ease-in-out;
+                transition: transform .5s ease-in;
                 box-shadow: 0 0 6px rgba(0,0,0,0.33);
                 /* 45 deg */
                 /* transform: translate(400px, 0) rotate(-90deg); */
@@ -82,7 +82,7 @@
             figure:hover .sticker_wrap {
                 transform: translateX(-400px);
                 opacity: 0;
-                transition: transform 1s ease-in-out, opacity .2s .8s ease-out;
+                transition: transform .5s ease-in, opacity .1s .4s ease-out;
             }
 
             figure:hover .sticker_front {
