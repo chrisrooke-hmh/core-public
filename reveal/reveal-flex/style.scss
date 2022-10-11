@@ -1,0 +1,121 @@
+:root {
+    --base-lheight: 2rem;
+    --half-lheight: 1rem;
+    --quart-lheight: 0.5rem;
+
+    --reveal-min-height: calc(var(--base-lheight) + var(--half-lheight));
+}
+
+$reveal-gray: #dad9d9;
+$reveal-aqua: #01a3bf;
+$reveal-border: 0.125rem;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.source__reveal__flex {
+    grid-column: 1 / span 12;
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--half-lheight) + var(--quart-lheight) / 2)
+        var(--half-lheight);
+    align-items: start;
+    padding: var(--half-lheight);
+    border: solid $reveal-border $reveal-gray;
+
+    justify-content: center;
+
+    > li {
+        list-style: none;
+        margin-top: 0;
+        padding-left: 0;
+        flex-basis: calc(50% - var(--quart-lheight));
+
+        &:before {
+            content: unset;
+        }
+
+        @media (min-width: 55rem) {
+            flex-basis: calc(33.33% - var(--base-lheight) / 3);
+        }
+
+        @media (min-width: 75rem) {
+            flex-basis: calc(25% - var(--base-lheight) * 1.5 / 4);
+        }
+    }
+
+    details {
+        position: relative;
+        list-style-type: none;
+        min-height: var(--reveal-min-height);
+        cursor: pointer;
+        border: solid transparent $reveal-border;
+
+        &[open] {
+            summary {
+                background: transparent;
+                //comment this out to allow toggle
+                z-index: -2;
+            }
+        }
+
+        summary {
+            list-style: none;
+            position: absolute;
+            inset: calc(-1 * $reveal-border);
+            width: calc(100% + 2 * $reveal-border);
+            height: calc(100% + 2 * $reveal-border);
+            background-color: #f8f8f9;
+            padding-top: var(--quart-lheight);
+            border: solid $reveal-aqua $reveal-border;
+
+            background-image: url('reveal-icon.png'),
+                linear-gradient(25deg, #f8f8f9 5%, #f8f8f9 70%, #eeeef1 95%);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 1.75rem, cover;
+
+            // sr-only stands for screen reader only
+            .sr-only {
+                opacity: 0;
+            }
+        }
+
+        summary::-webkit-details-marker,
+        summary::marker {
+            display: none;
+        }
+
+        p {
+            margin: 0;
+            text-align: center;
+            padding: var(--quart-lheight);
+            background-color: white;
+            line-height: 1.625rem;
+        }
+
+        // styles for varying content
+
+        > figure {
+            margin: 0;
+            padding-bottom: 0;
+
+            img {
+                width: 100%;
+                margin-inline: auto;
+                padding-bottom: 0;
+                display: block;
+                min-height: var(--reveal-min-height);
+                object-fit: cover;
+            }
+        }
+
+        ol,
+        ul {
+            padding: var(--quart-lheight) var(--half-lheight);
+        }
+    }
+}

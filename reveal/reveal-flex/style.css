@@ -1,0 +1,98 @@
+:root {
+  --base-lheight: 2rem;
+  --half-lheight: 1rem;
+  --quart-lheight: 0.5rem;
+  --reveal-min-height: calc(var(--base-lheight) + var(--half-lheight));
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.source__reveal__flex {
+  grid-column: 1/span 12;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--half-lheight) + var(--quart-lheight) / 2) var(--half-lheight);
+  align-items: start;
+  padding: var(--half-lheight);
+  border: solid 0.125rem #dad9d9;
+  justify-content: center;
+}
+.source__reveal__flex > li {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+  flex-basis: calc(50% - var(--quart-lheight));
+}
+.source__reveal__flex > li:before {
+  content: unset;
+}
+@media (min-width: 55rem) {
+  .source__reveal__flex > li {
+    flex-basis: calc(33.33% - var(--base-lheight) / 3);
+  }
+}
+@media (min-width: 75rem) {
+  .source__reveal__flex > li {
+    flex-basis: calc(25% - var(--base-lheight) * 1.5 / 4);
+  }
+}
+.source__reveal__flex details {
+  position: relative;
+  list-style-type: none;
+  min-height: var(--reveal-min-height);
+  cursor: pointer;
+  border: solid transparent 0.125rem;
+}
+.source__reveal__flex details[open] summary {
+  background: transparent;
+  z-index: -2;
+}
+.source__reveal__flex details summary {
+  list-style: none;
+  position: absolute;
+  inset: -0.125rem;
+  width: calc(100% + 0.25rem);
+  height: calc(100% + 0.25rem);
+  background-color: #f8f8f9;
+  padding-top: var(--quart-lheight);
+  border: solid #01a3bf 0.125rem;
+  background-image: url("reveal-icon.png"), linear-gradient(25deg, #f8f8f9 5%, #f8f8f9 70%, #eeeef1 95%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.75rem, cover;
+}
+.source__reveal__flex details summary .sr-only {
+  opacity: 0;
+}
+.source__reveal__flex details summary::-webkit-details-marker,
+.source__reveal__flex details summary::marker {
+  display: none;
+}
+.source__reveal__flex details p {
+  margin: 0;
+  text-align: center;
+  padding: var(--quart-lheight);
+  background-color: white;
+  line-height: 1.625rem;
+}
+.source__reveal__flex details > figure {
+  margin: 0;
+  padding-bottom: 0;
+}
+.source__reveal__flex details > figure img {
+  width: 100%;
+  margin-inline: auto;
+  padding-bottom: 0;
+  display: block;
+  min-height: var(--reveal-min-height);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.source__reveal__flex details ol,
+.source__reveal__flex details ul {
+  padding: var(--quart-lheight) var(--half-lheight);
+}/*# sourceMappingURL=style.css.map */
