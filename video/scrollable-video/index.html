@@ -188,6 +188,36 @@
                 font-size: 24px;
             }
 
+            details > summary {
+                list-style: none;
+            }
+
+            details summary::-webkit-details-marker {
+                display:none;
+            }
+
+            details {
+                display: flex;
+                align-items: center;
+                align-content: center;
+            }
+
+            summary {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 2px solid white;
+                background: pink;
+                position: absolute;
+                overflow: hidden;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+            }
+
+
+
             @keyframes fadeInUp {
                 from {
                     opacity: 0;
@@ -265,7 +295,14 @@
                     endTime: 15,
                     type: 'gate',
                     contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
+                },
+                {
+                    startTime: 17,
+                    endTime: 20,
+                    type: 'hotspot',
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
                 }
+
 
             ]
 
@@ -280,12 +317,12 @@
                     panelEl.style.top = (zones[i].startTime / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
                     if (zones[i].type === 'text') {
                         panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
-                    }
-                    if (zones[i].type === 'panel') {
+                    } else if (zones[i].type === 'panel') {
                         panelEl.innerHTML = '<div><article>' + zones[i].contents + '</article></div>';
-                    }
-                    if (zones[i].type === 'gate') {
+                    } else if (zones[i].type === 'gate') {
                         panelEl.innerHTML = '<div><article>' + zones[i].contents + '<button class="close">Close</button></article></div>';
+                    } else if (zones[i].type === 'hotspot') {
+                        panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details">Close</button></article></details>';
                     }
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
@@ -319,12 +356,33 @@
                     // console.log(closers[k].parentElement.closest('section'));
                     closers[k].onclick = () => {
                         body.classList.remove('preventScroll');
-                        console.log(event.target.parentElement.closest('section'));
+                        // console.log(event.target.parentElement.closest('section'));
 
                         event.target.parentElement.closest('section').classList.remove('active');
                         event.target.parentElement.closest('section').classList.add('past');
                     }
                 }
+
+                let detailsClosers = document.getElementsByClassName('close-details');
+                for (l=0; l<detailsClosers.length; l++) {
+                    // console.log(closers[k].parentElement.closest('section'));
+                    detailsClosers[l].onclick = () => {
+                        body.classList.remove('preventScroll');
+                        console.log(event.target.parentElement.closest('details'));
+                        event.target.parentElement.closest('details').removeAttribute("open");
+                    }
+                }
+
+                let summaries = document.getElementsByTagName('summary');
+                for (m=0; m<summaries.length; m++) {
+                    // console.log(closers[k].parentElement.closest('section'));
+                    summaries[m].onclick = () => {
+                        body.classList.add('preventScroll');
+                        // console.log(event.target.parentElement.closest('section'));
+                    }
+                }
+
+
             }
 
 
