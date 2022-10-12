@@ -9,7 +9,7 @@
                 /* height: 1000vh; */
             }
 
-            video {
+            body > video {
                 margin: 0;
                 width: 100%;
                 height: 100vh;
@@ -133,13 +133,13 @@
             }
 
             section.active h1, section.active article {
-                animation: fadeInUp 1s ease-out forwards;
+                animation: fadeInUp .5s ease-out forwards;
             }
 
             section.active div > p {
                 opacity: 0;
                 transform: translate3d(0, 100%, 0);
-                animation: fadeInUp 1s 1s ease-out forwards;
+                animation: fadeInUp .5s .5s ease-out forwards;
             }
 
             div {
@@ -176,16 +176,33 @@
                 color: rgba(0,0,0,0.87);
                 text-align: left;
                 text-shadow: 0;
-                padding: 32px;
                 border-radius: 16px;
             }
 
             article p {
                 font-size: 20px;
+                margin-bottom: 0;
+                padding: 0 32px;
             }
 
             article p:first-child {
+                margin-top: 0;
+                padding-top: 32px;
+            }
+
+            article p:last-child {
+                padding-bottom: 32px;
+            }
+
+
+            article p:first-child {
                 font-size: 24px;
+            }
+
+            img, article video {
+                width: 100%;
+                border-radius: 16px;
+                border: 4px solid white;
             }
 
             details > summary {
@@ -221,7 +238,7 @@
             @keyframes fadeInUp {
                 from {
                     opacity: 0;
-                    transform: translate3d(0, 100%, 0);
+                    transform: translate3d(0, 50%, 0);
                 }
 
                 to {
@@ -237,7 +254,8 @@
             <!-- <source src="Chrome_ImF.webm" type="video/webm"></source> -->
             <!-- <source src="video.webm" type="video/webm"></source> -->
             <!-- <source src="video-sm.webm" type="video/webm"></source> -->
-            <source src="video-sm_timecode.mp4" type="video/mp4"></source>
+            <!-- <source src="video-sm_timecode.mp4" type="video/mp4"></source> -->
+            <source src="video-sm_1.mp4" type="video/mp4"></source>
         </video>
 
         <!-- <article id="q1">
@@ -280,18 +298,30 @@
             const zones = [
                 {
                     startTime: 2,
-                    endTime: 5,
+                    endTime: 4,
                     type: 'text',
                     contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>'
                 },
                 {
-                    startTime: 7,
-                    endTime: 10,
+                    startTime: 5,
+                    endTime: 7,
                     type: 'panel',
                     contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>'
                 },
                 {
-                    startTime: 12,
+                    startTime: 8,
+                    endTime: 10,
+                    type: 'panel',
+                    contents: '<img src="assets/image.jpg">'
+                },
+                {
+                    startTime: 11,
+                    endTime: 13,
+                    type: 'gate',
+                    contents: '<video controls><source src="assets/video.mp4" type="video/mp4"></source></video>'
+                },
+                {
+                    startTime: 14,
                     endTime: 15,
                     type: 'gate',
                     contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
