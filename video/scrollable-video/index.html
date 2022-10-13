@@ -58,12 +58,17 @@
                 margin: 16px;
             }
 
-            .correct {
+            .correct.selected {
                 background-color: darkolivegreen;
+                pointer-events: none;
             }
 
-            .incorrect {
+            .incorrect.selected {
                 background-color: darkred;
+                pointer-events: none;
+                animation-timing-function: ease-in-out;
+                animation-name: headShake;
+                animation-duration: 1s;
             }
 
             @keyframes headShake {
@@ -142,7 +147,7 @@
                 animation: fadeInUp .5s .5s ease-out forwards;
             }
 
-            div {
+            section > div {
                 position: sticky;
                 top: 50vh;
                 transform: translateY(-50%);
@@ -159,6 +164,12 @@
                 /* opacity: 0; */
                 /* transform: translate3d(0, 100%, 0); */
                 /* transition: opacity .2s ease-in-out; */
+            }
+
+            h3 {
+                font-size: 24px;
+                text-align: center;
+                padding: 32px 32px 0;
             }
 
             div > p {
@@ -263,6 +274,20 @@
                 border-radius: 3rem;
             }
 
+            .mcq-answers {
+                display: flex;
+                justify-content: center;
+                padding-bottom: 16px;
+            }
+
+            .correct, .incorrect {
+                transition: background-color .2s ease-in-out;
+            }
+
+            .complete .correct, .complete .incorrect {
+                pointer-events: none;
+            }
+
             @keyframes fadeInUp {
                 from {
                     opacity: 0;
@@ -362,8 +387,16 @@
                     contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
                 },
                 {
-                    startTime: 17,
-                    endTime: 20,
+                    startTime: 16,
+                    endTime: 18,
+                    type: 'mcq',
+                    question: 'What is the name of the planet we live on?',
+                    correct: 'Earth',
+                    incorrect: ['Gallifrey', 'Coruscant', 'Krypton']
+                },
+                {
+                    startTime: 19,
+                    endTime: 21,
                     type: 'hotspot',
                     contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
                 }
@@ -390,7 +423,22 @@
                         panelEl.innerHTML = '<div><article>' + zones[i].contents + '<button class="close">Close</button></article></div>';
                     } else if (zones[i].type === 'hotspot') {
                         panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details">Close</button></article></details>';
+                    } else if (zones[i].type === 'mcq') {
+                        panelEl.classList.add('gate');
+                        let answers = zones[i].incorrect;
+                        answers.push(zones[i].correct);
+                        let shuffled = answers.sort(() => Math.random() - 0.5);
+                        for (o=0; o < shuffled.length; o++) {
+                            let answerClass = 'incorrect'
+                            if (shuffled[o] === zones[i].correct) {
+                                answerClass = 'correct';
+                            }
+                            shuffled[o] = '<button class=\"' + answerClass + '\">' + shuffled[o] + '</button>';
+                        }
+                        console.log(shuffled);
+                        panelEl.innerHTML = '<div><article><h3>' + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></article></div>';
                     }
+
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
                 } 
@@ -426,9 +474,16 @@
                     closers[k].onclick = () => {
                         body.classList.remove('preventScroll');
                         // console.log(event.target.parentElement.closest('section'));
-
                         event.target.parentElement.closest('section').classList.remove('active');
                         event.target.parentElement.closest('section').classList.add('past');
+                        // console.log(event.target.previousElementSibling.nodeName);
+                        let vidsVisible = event.target.parentElement.querySelectorAll('video');
+                        if (vidsVisible) {
+                            for (n=0; n<vidsVisible.length; n++) {
+                                console.log(vidsVisible[n]);
+                                vidsVisible[n].pause();
+                            }
+                        }
                     }
                 }
 
@@ -448,6 +503,23 @@
                     summaries[m].onclick = () => {
                         body.classList.add('preventScroll');
                         // console.log(event.target.parentElement.closest('section'));
+                    }
+                }
+
+                let incorrectMCQs = document.getElementsByClassName('incorrect');
+                for (p=0; p<incorrectMCQs.length; p++) {
+                    incorrectMCQs[p].onclick = (event) => event.target.classList.add('selected');
+                }
+
+                let correctMCQs = document.getElementsByClassName('correct');
+                for (q=0; q<correctMCQs.length; q++) {
+                    correctMCQs[q].onclick = (event) => {
+                        event.target.classList.add('selected');
+                        setTimeout(function() {
+                            body.classList.remove('preventScroll');
+                            event.target.parentElement.closest('section').classList.remove('active');
+                            event.target.parentElement.closest('section').classList.add('past');
+                        }, 500)
                     }
                 }
 
