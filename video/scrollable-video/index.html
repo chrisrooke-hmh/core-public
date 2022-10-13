@@ -234,6 +234,34 @@
             }
 
 
+            /* audio {
+                z-index: 99;
+                position: fixed;
+            } */
+            
+            #starter {
+                position: fixed;
+                background-color: rgba(0,0,0,0.5);
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                opacity: 1;
+                z-index: 99;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #start-btn {
+                background: white;
+                color: black;
+                width: 24rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                height: 6rem;
+                border-radius: 3rem;
+            }
 
             @keyframes fadeInUp {
                 from {
@@ -249,7 +277,7 @@
 
         </style>
     </head>
-    <body id="body">
+    <body id="body" class="preventScroll">
         <video id="vid" autobuffer="autobuffer" preload="auto" muted>
             <!-- <source src="Chrome_ImF.webm" type="video/webm"></source> -->
             <!-- <source src="video.webm" type="video/webm"></source> -->
@@ -261,6 +289,9 @@
         <audio id="sound-bg" loop>
             <source src="space.mp3" type="audio/mpeg">
         </audio>
+        <section id="starter">
+            <button id="start-btn">Start</button>
+        </section>
 
         <!-- <article id="q1">
             <h2>
@@ -340,6 +371,8 @@
 
             ]
 
+            const bgAudio = document.getElementById('sound-bg');
+
             window.onload = function() {
                 let panels = [];
                 
@@ -379,6 +412,7 @@
                             document.getElementById(panels[j]).classList.remove('active');
                         }
                     }
+                    // bgAudio.play();
                     
                 })
 
@@ -417,10 +451,15 @@
                     }
                 }
 
-                // const bgAudio = document.getElementById('sound-bg')
-                // // if (bgAudio.duration > 0 && !myAudio.paused)
-                // if (bgAudio.duration === 0) {
+                document.getElementById('start-btn').onclick = function() {
+                    document.getElementById('starter').style.display = 'none';
+                    bgAudio.play();
+                    body.classList.remove('preventScroll');
+                }
 
+                // if (bgAudio.duration > 0 && !myAudio.paused)
+                // if (bgAudio.duration === 0) {
+                //     console.log('hi')
                 // }
 
             }
