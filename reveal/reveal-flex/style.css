@@ -90,6 +90,7 @@
   min-height: var(--reveal-min-height);
   -o-object-fit: cover;
      object-fit: cover;
+  max-width: 100.2%;
 }
 .source__reveal__flex details ol,
 .source__reveal__flex details ul {
