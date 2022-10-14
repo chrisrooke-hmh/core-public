@@ -9,6 +9,10 @@
                 /* height: 1000vh; */
             }
 
+            .smooth-scroll {
+                scroll-behavior: smooth;
+            }
+            
             body > video {
                 margin: 0;
                 width: 100%;
@@ -17,7 +21,35 @@
                 position: fixed;
             }
 
-            .question {
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 48px;
+                height: 100%;
+                /* background: pink; */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 9;
+            }
+
+            nav a {
+                width: 24px;
+                height: 24px;
+                margin: 12px;
+                border-radius: 50%;
+                background: white;
+                transition: opacity .2s ease-in-out;
+            }
+
+            nav a.inactive {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            /* .question {
                 position: fixed;
                 top: 50%;
                 left: 50%;
@@ -38,7 +70,7 @@
             .question.visible {
                 visibility: visible;
                 opacity: 1;
-            }
+            } */
 
             h2 {
                 font-size: 48px;
@@ -317,7 +349,9 @@
         <section id="starter">
             <button id="start-btn">Start</button>
         </section>
-
+        <nav id="nav">
+            <!-- <a href="#"></a> -->
+        </nav>
         <!-- <article id="q1">
             <h2>
                 What is in this video?
@@ -353,6 +387,40 @@
                 vid.currentTime  = frameNumber;
                 window.requestAnimationFrame(scrollPlay);
                 // console.log(window.pageYOffset, vid.currentTime);
+            }
+
+            let panels = [], navLinks = [];
+
+            function checkZones() {
+                for (j=0; j<panels.length; j++) {
+                    if(inViewport(document.getElementById(panels[j])) === 'active'){
+                        document.getElementById(panels[j]).classList.add('active');
+                        if (!document.getElementById(panels[j]).classList.contains('gate')) {
+                            document.getElementById(panels[j]).classList.remove('past');
+                        }
+                        if (document.getElementById(panels[j]).classList.contains('gate') && !document.getElementById(panels[j]).classList.contains('past')) {
+                            body.classList.add('preventScroll');
+                        }
+                    } else if (inViewport(document.getElementById(panels[j])) === 'past') {
+                        document.getElementById(panels[j]).classList.add('past');
+                    } else if (inViewport(document.getElementById(panels[j])) === 'early') {
+                        document.getElementById(panels[j]).classList.remove('active');
+                    }
+                }
+            }
+
+            function navCheck() {
+                let firstGate = document.querySelector("section.gate:not(.past)");
+                console.log(firstGate);
+                if (firstGate) {
+                    for (r=0; r<panels.indexOf(firstGate.id) + 1; r++) {
+                        document.getElementById('nav').querySelectorAll('a')[r].classList.remove('inactive');
+                    }
+                } else {
+                    for (s=0; s<document.getElementById('nav').querySelectorAll('a').length; s++) {
+                        document.getElementById('nav').querySelectorAll('a')[s].classList.remove('inactive');
+                    }
+                }
             }
 
             const zones = [
@@ -407,7 +475,6 @@
             const bgAudio = document.getElementById('sound-bg');
 
             window.onload = function() {
-                let panels = [];
                 
                 for (i=0; i<zones.length; i++) {
                     const panelEl = document.createElement("section");
@@ -435,34 +502,26 @@
                             }
                             shuffled[o] = '<button class=\"' + answerClass + '\">' + shuffled[o] + '</button>';
                         }
-                        console.log(shuffled);
+                        // console.log(shuffled);
                         panelEl.innerHTML = '<div><article><h3>' + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></article></div>';
                     }
-
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
+
+                    const linkEl = document.createElement("a");
+                    linkEl.href = `#q${i}`;
+                    linkEl.setAttribute('id',`nav-q${i}`);
+                    linkEl.classList.add('inactive');
+                    document.getElementById('nav').appendChild(linkEl);
+                    
                 } 
                 // console.log(panels);
+               
+                checkZones();
+                navCheck();
 
-                document.addEventListener( 'scroll', event => {
-                    for (j=0; j<panels.length; j++) {
-                        if(inViewport(document.getElementById(panels[j])) === 'active'){
-                            document.getElementById(panels[j]).classList.add('active');
-                            if (!document.getElementById(panels[j]).classList.contains('gate')) {
-                                document.getElementById(panels[j]).classList.remove('past');
-                            }
-                            if (document.getElementById(panels[j]).classList.contains('gate') && !document.getElementById(panels[j]).classList.contains('past')) {
-                                body.classList.add('preventScroll');
-                            }
-                        } else if (inViewport(document.getElementById(panels[j])) === 'past') {
-                            document.getElementById(panels[j]).classList.add('past');
-                        } else if (inViewport(document.getElementById(panels[j])) === 'early') {
-                            document.getElementById(panels[j]).classList.remove('active');
-                        }
-                    }
-                    // bgAudio.play();
-                    
-                })
+
+                document.addEventListener( 'scroll', event => checkZones());
 
                 // for (j=0; j<panels.length; j++) {
                 //     document.getElementById(panels[j])
@@ -480,10 +539,11 @@
                         let vidsVisible = event.target.parentElement.querySelectorAll('video');
                         if (vidsVisible) {
                             for (n=0; n<vidsVisible.length; n++) {
-                                console.log(vidsVisible[n]);
+                                // console.log(vidsVisible[n]);
                                 vidsVisible[n].pause();
                             }
                         }
+                        navCheck();
                     }
                 }
 
@@ -519,7 +579,8 @@
                             body.classList.remove('preventScroll');
                             event.target.parentElement.closest('section').classList.remove('active');
                             event.target.parentElement.closest('section').classList.add('past');
-                        }, 500)
+                            navCheck();
+                        }, 500);
                     }
                 }
 
@@ -534,6 +595,7 @@
                 //     console.log('hi')
                 // }
 
+                document.documentElement.classList.add('smooth-scroll');
             }
 
 
