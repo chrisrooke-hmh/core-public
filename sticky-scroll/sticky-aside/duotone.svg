@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="socialstudies">
+  <feColorMatrix type="matrix" result="grayscale" values="1 0 0 0 0                 1 0 0 0 0                 1 0 0 0 0                 0 0 0 1 0">
+  </feColorMatrix>
+  <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
+      <feFuncR type="table" tableValues="0.85098039215 1"/>
+      <feFuncG type="table" tableValues="0.85098039215 1"/>
+      <feFuncB type="table" tableValues="0.85098039215 1"/>
+      <feFuncA type="table" tableValues="0 1"/>
+  </feComponentTransfer>
+</filter>        
+      <filter id="socialstudies2">
+  <feColorMatrix type="matrix" result="grayscale" values="1 0 0 0 0                 1 0 0 0 0                 1 0 0 0 0                 0 0 0 1 0">
+  </feColorMatrix>
+  <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
+      <feFuncR type="table" tableValues="0.5 1"/>
+      <feFuncG type="table" tableValues="0.5 1"/>
+      <feFuncB type="table" tableValues="0.5 1"/>
+      <feFuncA type="table" tableValues="0 1"/>
+  </feComponentTransfer>
+</filter>        
+    <filter id="ss_blue">
+      <feColorMatrix type="matrix" result="grayscale" values="1 0 0 0 0                 1 0 0 0 0                 1 0 0 0 0                 0 0 0 1 0">
+      </feColorMatrix>
+      <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
+          <feFuncR type="table" tableValues="0.070588235294118 0.211764705882353"/>
+          <feFuncG type="table" tableValues="0.12156862745098 0.266666666666667"/>
+          <feFuncB type="table" tableValues="0.43921568627451 0.854901960784314"/>
+          <feFuncA type="table" tableValues="0 1"/>
+      </feComponentTransfer>
+  </filter>    
+      <filter id="ss_gold">
+      <feColorMatrix type="matrix" result="grayscale" values="1 0 0 0 0                 1 0 0 0 0                 1 0 0 0 0                 0 0 0 1 0">
+      </feColorMatrix>
+      <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
+          <feFuncR type="table" tableValues="1 1"/>
+          <feFuncG type="table" tableValues="0.474509803921569 0.733333333333333"/>
+          <feFuncB type="table" tableValues="0.043137254901961 0"/>
+          <feFuncA type="table" tableValues="0 1"/>
+      </feComponentTransfer>
+  </filter>        
+  <filter id="posterize">
+      <feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0 .33 .66 1" />
+          <feFuncG type="discrete" tableValues="0 .33 .66 1" />
+          <feFuncB type="discrete" tableValues="0 .33 .66 1" />
+      </feComponentTransfer>
+  </filter>
+</svg>
