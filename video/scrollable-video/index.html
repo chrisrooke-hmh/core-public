@@ -411,10 +411,13 @@
 
             function navCheck() {
                 let firstGate = document.querySelector("section.gate:not(.past)");
-                console.log(firstGate);
+                // console.log(+firstGate.id.replace( /^\D+/g, ''));
                 if (firstGate) {
-                    for (r=0; r<panels.indexOf(firstGate.id) + 1; r++) {
-                        document.getElementById('nav').querySelectorAll('a')[r].classList.remove('inactive');
+                    let firstGateId = +firstGate.id.replace( /^\D+/g, '');
+                    for (r=0; r<firstGateId; r++) {
+                        if (document.getElementById(`nav-q${r}`)) {
+                            document.getElementById(`nav-q${r}`).classList.remove('inactive');
+                        }
                     }
                 } else {
                     for (s=0; s<document.getElementById('nav').querySelectorAll('a').length; s++) {
@@ -428,13 +431,15 @@
                     startTime: 2,
                     endTime: 4,
                     type: 'text',
-                    contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>'
+                    contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>',
+                    milestone: true
                 },
                 {
                     startTime: 5,
                     endTime: 7,
                     type: 'panel',
-                    contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>'
+                    contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>',
+                    milestone: true
                 },
                 {
                     startTime: 8,
@@ -446,13 +451,15 @@
                     startTime: 11,
                     endTime: 13,
                     type: 'gate',
-                    contents: '<video controls><source src="assets/video.mp4" type="video/mp4"></source></video>'
+                    contents: '<video controls><source src="assets/video.mp4" type="video/mp4"></source></video>',
+                    milestone: true
                 },
                 {
                     startTime: 14,
                     endTime: 15,
                     type: 'gate',
-                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
+                    milestone: true
                 },
                 {
                     startTime: 16,
@@ -466,7 +473,8 @@
                     startTime: 19,
                     endTime: 21,
                     type: 'hotspot',
-                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
+                    milestone: true
                 }
 
 
@@ -508,12 +516,13 @@
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
 
-                    const linkEl = document.createElement("a");
-                    linkEl.href = `#q${i}`;
-                    linkEl.setAttribute('id',`nav-q${i}`);
-                    linkEl.classList.add('inactive');
-                    document.getElementById('nav').appendChild(linkEl);
-                    
+                    if (zones[i].milestone && zones[i].type != 'gate') {
+                        const linkEl = document.createElement("a");
+                        linkEl.href = `#q${i}`;
+                        linkEl.setAttribute('id',`nav-q${i}`);
+                        linkEl.classList.add('inactive');
+                        document.getElementById('nav').appendChild(linkEl);
+                    }
                 } 
                 // console.log(panels);
                
@@ -611,7 +620,8 @@
                 }
                 if (bb.top <= 0 && bb.bottom >= innerHeight) {
                     return 'active';
-                } else if (bb.top <= 0 && bb.bottom >= 0) {
+                } else if (bb.top <= 0 && bb.bottom < innerHeight) {
+                    console.log(element);
                     return 'past';
                 } else {
                     return false;
