@@ -320,6 +320,11 @@
                 pointer-events: none;
             }
 
+            #mute {
+                position: fixed;
+                z-index: 1;
+            }
+
             @keyframes fadeInUp {
                 from {
                     opacity: 0;
@@ -349,6 +354,7 @@
         <section id="starter">
             <button id="start-btn">Start</button>
         </section>
+        <button id="mute">Mute</button>
         <nav id="nav">
             <!-- <a href="#"></a> -->
         </nav>
@@ -561,7 +567,7 @@
                     // console.log(closers[k].parentElement.closest('section'));
                     detailsClosers[l].onclick = () => {
                         body.classList.remove('preventScroll');
-                        console.log(event.target.parentElement.closest('details'));
+                        // console.log(event.target.parentElement.closest('details'));
                         event.target.parentElement.closest('details').removeAttribute("open");
                     }
                 }
@@ -599,6 +605,38 @@
                     body.classList.remove('preventScroll');
                 }
 
+                document.getElementById('mute').onclick = () => {
+                    if (bgAudio.paused && !body.classList.contains('vidplaying')) {
+                         bgAudio.play();
+                         body.classList.remove('muted');
+                     } else if (bgAudio.paused && body.classList.contains('vidplaying') && body.classList.contains('muted')){ 
+                        body.classList.remove('muted');
+                     } else {
+                        bgAudio.pause(); body.classList.add('muted') 
+                    }
+                }
+
+                let panelVids = document.querySelectorAll('video:not(#vid)');
+                for (t=0; t<panelVids.length; t++) {
+                    panelVids[t].onplay = () => {
+                        body.classList.add('vidplaying');
+                        bgAudio.pause();
+                    }
+                    panelVids[t].onpause = () => {
+                        body.classList.remove('vidplaying');
+                        if (!body.classList.contains('muted')) {
+                            bgAudio.play();
+                        }
+                    }
+
+                    panelVids[t].onended = () => {
+                        body.classList.remove('vidplaying');
+                        if (!body.classList.contains('muted')) {
+                            bgAudio.play();
+                        }
+                    }
+                }
+
                 // if (bgAudio.duration > 0 && !myAudio.paused)
                 // if (bgAudio.duration === 0) {
                 //     console.log('hi')
@@ -621,7 +659,7 @@
                 if (bb.top <= 0 && bb.bottom >= innerHeight) {
                     return 'active';
                 } else if (bb.top <= 0 && bb.bottom < innerHeight) {
-                    console.log(element);
+                    // console.log(element);
                     return 'past';
                 } else {
                     return false;
