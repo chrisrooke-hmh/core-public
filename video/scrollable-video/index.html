@@ -9,6 +9,10 @@
                 /* height: 1000vh; */
             }
 
+            * {
+                box-sizing: border-box;
+            }
+
             .smooth-scroll {
                 scroll-behavior: smooth;
             }
@@ -150,8 +154,13 @@
                 text-shadow: 0 0 10px rgba(0,0,0,0.4);
             }
 
+            /* section[id*="q"] {
+                pointer-events: none;
+            } */
+
             section.active {
                 opacity: 1;
+                /* pointer-events: initial; */
             }
 
             section.past {
@@ -167,6 +176,7 @@
                 right: 0;
                 background: pink; 
                 opacity: 0.25;
+                pointer-events: none;
             }
 
             section.active h1, section.active article {
@@ -181,13 +191,22 @@
 
             section > div {
                 position: sticky;
-                top: 50vh;
-                transform: translateY(-50%);
+                top: 0;
+                bottom: 0;
                 margin: 0 auto;
-                width: fit-content;
+                width: 100%;
+                height: 100vh;
                 text-align: center;
                 font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 color: white;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                flex-direction: column;
+            }
+
+            section.text > div {
+                justify-content: center;
             }
 
             h1 {
@@ -214,12 +233,16 @@
             }
 
             article {
-                width: 50vw;
+                width: 100%;
                 background: white;
                 color: rgba(0,0,0,0.87);
                 text-align: left;
                 text-shadow: 0;
-                border-radius: 16px;
+                border-radius: 16px 16px 0 0;
+            }
+
+            article.text {
+                width: 75vw;
             }
 
             article p {
@@ -320,6 +343,11 @@
                 pointer-events: none;
             }
 
+            #mute {
+                position: fixed;
+                z-index: 1;
+            }
+
             @keyframes fadeInUp {
                 from {
                     opacity: 0;
@@ -331,6 +359,28 @@
                     transform: translate3d(0, 0, 0);
                 }
             }
+
+            .expander-summary {
+                padding: 8px 4px;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            @media screen and (min-width: 650px) {
+                section > div {
+                    justify-content: center;
+                }
+
+                article {
+                    width: 50vw;
+                    border-radius: 16px;
+                }
+            }
+
 
         </style>
     </head>
@@ -349,6 +399,7 @@
         <section id="starter">
             <button id="start-btn">Start</button>
         </section>
+        <button id="mute">Mute</button>
         <nav id="nav">
             <!-- <a href="#"></a> -->
         </nav>
@@ -411,10 +462,13 @@
 
             function navCheck() {
                 let firstGate = document.querySelector("section.gate:not(.past)");
-                console.log(firstGate);
+                // console.log(+firstGate.id.replace( /^\D+/g, ''));
                 if (firstGate) {
-                    for (r=0; r<panels.indexOf(firstGate.id) + 1; r++) {
-                        document.getElementById('nav').querySelectorAll('a')[r].classList.remove('inactive');
+                    let firstGateId = +firstGate.id.replace( /^\D+/g, '');
+                    for (r=0; r<firstGateId; r++) {
+                        if (document.getElementById(`nav-q${r}`)) {
+                            document.getElementById(`nav-q${r}`).classList.remove('inactive');
+                        }
                     }
                 } else {
                     for (s=0; s<document.getElementById('nav').querySelectorAll('a').length; s++) {
@@ -428,13 +482,15 @@
                     startTime: 2,
                     endTime: 4,
                     type: 'text',
-                    contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>'
+                    contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>',
+                    milestone: true
                 },
                 {
                     startTime: 5,
                     endTime: 7,
                     type: 'panel',
-                    contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>'
+                    contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>',
+                    milestone: true
                 },
                 {
                     startTime: 8,
@@ -445,14 +501,16 @@
                 {
                     startTime: 11,
                     endTime: 13,
-                    type: 'gate',
-                    contents: '<video controls><source src="assets/video.mp4" type="video/mp4"></source></video>'
+                    type: 'panel',
+                    contents: '<video controls><source src="assets/video.mp4" type="video/mp4"></source></video>',
+                    milestone: true
                 },
                 {
                     startTime: 14,
                     endTime: 15,
                     type: 'gate',
-                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
+                    milestone: true
                 },
                 {
                     startTime: 16,
@@ -466,7 +524,8 @@
                     startTime: 19,
                     endTime: 21,
                     type: 'hotspot',
-                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>'
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
+                    milestone: true
                 }
 
 
@@ -480,14 +539,14 @@
                     const panelEl = document.createElement("section");
                     panelEl.setAttribute('id',`q${i}`);
                     panelEl.classList.add(zones[i].type);
-                    panelEl.style.height = ((zones[i].endTime + 1 - zones[i].startTime) / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
-                    panelEl.style.top = (zones[i].startTime / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px';
+                    panelEl.style.height = ((zones[i].endTime + 1 - zones[i].startTime) / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px'; // add + (2 * window.innerHeight) to reduce scroll obviousness
+                    panelEl.style.top = (zones[i].startTime / Math.floor(vid.duration)) * (Math.floor(vid.duration) * playbackConst) + 'px'; // add  - window.innerHeight to reduce scroll obviousness
                     if (zones[i].type === 'text') {
                         panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
                     } else if (zones[i].type === 'panel') {
-                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '</article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
                     } else if (zones[i].type === 'gate') {
-                        panelEl.innerHTML = '<div><article>' + zones[i].contents + '<button class="close">Close</button></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content">` + zones[i].contents + '</div><button class="close">Close</button></article></div>';
                     } else if (zones[i].type === 'hotspot') {
                         panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details">Close</button></article></details>';
                     } else if (zones[i].type === 'mcq') {
@@ -503,17 +562,18 @@
                             shuffled[o] = '<button class=\"' + answerClass + '\">' + shuffled[o] + '</button>';
                         }
                         // console.log(shuffled);
-                        panelEl.innerHTML = '<div><article><h3>' + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content"><h3>` + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></div></article></div>';
                     }
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
 
-                    const linkEl = document.createElement("a");
-                    linkEl.href = `#q${i}`;
-                    linkEl.setAttribute('id',`nav-q${i}`);
-                    linkEl.classList.add('inactive');
-                    document.getElementById('nav').appendChild(linkEl);
-                    
+                    if (zones[i].milestone && zones[i].type != 'gate') {
+                        const linkEl = document.createElement("a");
+                        linkEl.href = `#q${i}`;
+                        linkEl.setAttribute('id',`nav-q${i}`);
+                        linkEl.classList.add('inactive');
+                        document.getElementById('nav').appendChild(linkEl);
+                    }
                 } 
                 // console.log(panels);
                
@@ -552,7 +612,7 @@
                     // console.log(closers[k].parentElement.closest('section'));
                     detailsClosers[l].onclick = () => {
                         body.classList.remove('preventScroll');
-                        console.log(event.target.parentElement.closest('details'));
+                        // console.log(event.target.parentElement.closest('details'));
                         event.target.parentElement.closest('details').removeAttribute("open");
                     }
                 }
@@ -590,15 +650,50 @@
                     body.classList.remove('preventScroll');
                 }
 
+                document.getElementById('mute').onclick = () => {
+                    if (bgAudio.paused && !body.classList.contains('vidplaying')) {
+                         bgAudio.play();
+                         body.classList.remove('muted');
+                     } else if (bgAudio.paused && body.classList.contains('vidplaying') && body.classList.contains('muted')){ 
+                        body.classList.remove('muted');
+                     } else {
+                        bgAudio.pause(); body.classList.add('muted') 
+                    }
+                }
+
+                let panelVids = document.querySelectorAll('video:not(#vid)');
+                for (t=0; t<panelVids.length; t++) {
+                    panelVids[t].onplay = () => {
+                        body.classList.add('vidplaying');
+                        bgAudio.pause();
+                    }
+                    panelVids[t].onpause = () => {
+                        body.classList.remove('vidplaying');
+                        if (!body.classList.contains('muted')) {
+                            bgAudio.play();
+                        }
+                    }
+
+                    panelVids[t].onended = () => {
+                        body.classList.remove('vidplaying');
+                        if (!body.classList.contains('muted')) {
+                            bgAudio.play();
+                        }
+                    }
+                }
+
                 // if (bgAudio.duration > 0 && !myAudio.paused)
                 // if (bgAudio.duration === 0) {
                 //     console.log('hi')
                 // }
 
                 document.documentElement.classList.add('smooth-scroll');
+                activateAllExpanders();
             }
 
-
+            window.onresize = function() {
+                activateAllExpanders();
+            }
 
             function inViewport( element ){
                 // Get the elements position relative to the viewport
@@ -611,11 +706,96 @@
                 }
                 if (bb.top <= 0 && bb.bottom >= innerHeight) {
                     return 'active';
-                } else if (bb.top <= 0 && bb.bottom >= 0) {
+                } else if (bb.top <= 0 && bb.bottom < innerHeight) {
+                    // console.log(element);
                     return 'past';
                 } else {
                     return false;
                 };
+
+                /* align with changes for scroll obviousness above: 
+                    if (bb.top > innerHeight * -1) {
+                        return 'early';
+                    }
+                    if (bb.top <= innerHeight * -1 && bb.bottom >= innerHeight * 2) {
+                        return 'active';
+                    } else if (bb.top <= innerHeight * -1 && bb.bottom < innerHeight * 2) {
+                        // console.log(element);
+                        return 'past';
+                    } else {
+                        return false
+                    };
+                */
+            }
+
+            function activateAllExpanders() {
+                var expanders = document.querySelectorAll('.expander');
+                for (var i = 0; i < expanders.length; i++) {
+                    if (expanders[i]) {
+                        if (expanders[i].querySelector('.expander-summary')) {
+                            if (!expanders[i].querySelector('.expander-summary').hasAttribute('aria-expanded') && window.innerWidth < 650) {
+                                createExpander(expanders[i]);
+                            } else if (window.innerWidth >= 650) {
+                                removeExpander(expanders[i]);
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            function createExpander(container) {
+                // var containerTag = container.tagName;
+                var summary = container.querySelector('.expander-summary');
+                if (summary.hasAttribute('aria-expanded')) {
+                  return false;
+                }
+
+                summary.setAttribute('tabindex', '0');
+                summary.setAttribute('aria-expanded', 'false');
+                summary.setAttribute('role', 'button');
+
+                var content = container.querySelector('.expander-content');
+                content.classList.add('hidden');
+
+                function toggle(e) {
+                var ua = window.navigator.userAgent;
+                var msie = ua.indexOf('Trident/');
+                var msedge = ua.indexOf('Edge');
+                if (msie > 0 || msedge > 0) {
+                    window.onkeydown = function (e) {
+                    return !(e.keyCode == 32);
+                    };
+                }
+
+                e.stopPropagation();
+                e.preventDefault();
+                content.classList.toggle('hidden');
+                if (content.classList.contains('hidden')) {
+                    summary.setAttribute('aria-expanded', 'false');
+                } else {
+                    summary.setAttribute('aria-expanded', 'true');
+                }
+                }
+
+                // (0, _keyboardUtils.onElementEnter)(summary, toggle);
+                // (0, _keyboardUtils.onElementSpace)(summary, toggle);
+                summary.addEventListener('click', toggle);
+                summary.addEventListener('keyup', function (e) {
+                if (e.keyCode == 32) {
+                    //toggle(e);
+                }
+                });
+            }
+
+            function removeExpander(container) {
+                var summary = container.querySelector('.expander-summary');
+                summary.removeAttribute('tabindex');
+                summary.removeAttribute('aria-expanded');
+                summary.removeAttribute('role');
+                var content = container.querySelector('.expander-content');
+                content.classList.remove('hidden');
+                summary.replaceWith(summary.cloneNode(true));
             }
 
             var myElement = document.querySelector( 'div' );
@@ -705,6 +885,7 @@
             // });
             window.requestAnimationFrame(scrollPlay);
         
+
         </script>
     </body>
 </html>
