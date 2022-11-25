@@ -78,11 +78,11 @@
                             body.classList.add('preventScroll');
                         }
                         if (document.getElementById(panels[j]).classList.contains('hotspot')) {
-                            // console.log(document.getElementById(panels[j]).getBoundingClientRect().top);
+                            console.log(document.getElementById(panels[j]).getBoundingClientRect().top);
                             let animBasis = document.getElementById(panels[j]).offsetHeight - window.innerHeight;
                             // console.log(animBasis);
-                            let animDelay = ((document.getElementById(panels[j]).getBoundingClientRect().top / animBasis + 1) * -1) + 's';
-                            console.log(animDelay);
+                            let animDelay = (document.getElementById(panels[j]).getBoundingClientRect().top / animBasis) + 's';
+                            // console.log(animDelay);
                             let activeSummaries = document.getElementById(panels[j]).querySelectorAll('summary');
                             for (u=0; u<activeSummaries.length; u++) {
                                 activeSummaries[u].style.animationDelay = animDelay;
