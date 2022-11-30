@@ -2,7 +2,7 @@
     <head>
         <title>Scrollable video</title>
         <link rel="stylesheet" href="styles/source.css">
-        <link rel="stylesheet" href="styles/space2.css">
+        <link rel="stylesheet" href="styles/space.css">
         <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
         <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&family=Orbitron:wght@700&display=swap" rel="stylesheet"> -->
@@ -82,6 +82,9 @@
                             let animBasis = document.getElementById(panels[j]).offsetHeight - window.innerHeight;
                             // console.log(animBasis);
                             let animDelay = (document.getElementById(panels[j]).getBoundingClientRect().top / animBasis) + 's';
+                            if (animDelay === '-1s') {
+                                animDelay = '0.9999s';
+                            }
                             // console.log(animDelay);
                             let activeSummaries = document.getElementById(panels[j]).querySelectorAll('summary');
                             for (u=0; u<activeSummaries.length; u++) {
@@ -114,16 +117,16 @@
             }
 
             const zones = [
+                // {
+                //     startTime: 2,
+                //     endTime: 4,
+                //     type: 'text',
+                //     contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>',
+                //     milestone: true
+                // },
                 {
-                    startTime: 2,
-                    endTime: 4,
-                    type: 'text',
-                    contents: '<h1>Welcome to the Milky Way</h1><p>Discover our galaxy</p>',
-                    milestone: true
-                },
-                {
-                    startTime: 5,
-                    endTime: 7,
+                    startTime: 3,
+                    endTime: 6,
                     type: 'panel',
                     contents: '<p>The Milky Way is the galaxy that includes our Solar System, with the name describing the galaxy\'s appearance from Earth: a hazy band of light seen in the night sky formed from stars that cannot be individually distinguished by the naked eye</p><p>The Milky Way as a whole is moving at a velocity of approximately 600 km per second with respect to extragalactic frames of reference. The oldest stars in the Milky Way are nearly as old as the Universe itself and thus probably formed shortly after the Dark Ages of the Big Bang.</p>',
                     milestone: true
@@ -132,13 +135,13 @@
                     startTime: 8,
                     endTime: 10,
                     type: 'panel',
-                    contents: '<img src="assets/image.jpg">'
+                    contents: '<figure><img src="assets/image.jpg"><figcaption>Sample caption</figcaption></figure>'
                 },
                 {
                     startTime: 11,
                     endTime: 13,
                     type: 'panel',
-                    contents: '<video controls><source src="assets/video.mp4" type="video/mp4"></source></video>',
+                    contents: '<figure><video controls><source src="assets/video.mp4" type="video/mp4"></source></video><figcaption>Sample caption</figcaption></figure>',
                     milestone: true
                 },
                 {
@@ -180,9 +183,9 @@
                     if (zones[i].type === 'text') {
                         panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
                     } else if (zones[i].type === 'panel') {
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i}</h2></div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
                     } else if (zones[i].type === 'gate') {
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i}</h2></div><div class="expander-content">` + zones[i].contents + '</div><button class="close">Close</button></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div><button class="close">Close</button></article></div>';
                     } else if (zones[i].type === 'hotspot') {
                         panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details">Close</button></article></details>';
                     } else if (zones[i].type === 'mcq') {
@@ -198,7 +201,7 @@
                             shuffled[o] = '<button class=\"' + answerClass + '\">' + shuffled[o] + '</button>';
                         }
                         // console.log(shuffled);
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content"><h3>` + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></div></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Test your knowledge</div><div class="expander-content"><h3>` + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></div></article></div>';
                     }
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
