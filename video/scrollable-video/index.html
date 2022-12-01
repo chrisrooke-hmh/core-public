@@ -24,7 +24,16 @@
             <p>Discover our galaxy</p>
             <button id="start-btn">Start</button>
         </section>
-        <button id="mute">Mute</button>
+        <button id="mute">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="9" cy="14" r="3"/>
+                <path d="M10.6787 2H11.9587V10.2266L10.6787 9V2Z"/>
+                <rect x="10.6792" y="2" width="5.20682" height="2.71188"/>
+                <rect x="2.01953" y="4.49805" width="2" height="19.5677" transform="rotate(-46.7136 2.01953 4.49805)"/>
+                </svg>
+                           
+            <!-- Mute -->
+        </button>
         <nav id="nav">
             <!-- <a href="#"></a> -->
         </nav>
@@ -185,9 +194,9 @@
                     } else if (zones[i].type === 'panel') {
                         panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
                     } else if (zones[i].type === 'gate') {
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div><button class="close">Close</button></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div><button class="close"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9015 10L17.6062 15.7046C18.1313 16.2297 18.1313 17.0811 17.6062 17.6062C17.0811 18.1313 16.2297 18.1313 15.7046 17.6062L10 11.9015L4.29537 17.6062C3.77027 18.1313 2.91892 18.1313 2.39382 17.6062C1.86873 17.0811 1.86873 16.2297 2.39382 15.7046L8.09846 10L2.39382 4.29537C1.86873 3.77027 1.86873 2.91892 2.39382 2.39382C2.91892 1.86873 3.77027 1.86873 4.29537 2.39382L10 8.09846L15.7046 2.39382C16.2297 1.86873 17.0811 1.86873 17.6062 2.39382C18.1313 2.91892 18.1313 3.77027 17.6062 4.29537L11.9015 10Z"/></svg></button></article></div>';
                     } else if (zones[i].type === 'hotspot') {
-                        panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details">Close</button></article></details>';
+                        panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9015 10L17.6062 15.7046C18.1313 16.2297 18.1313 17.0811 17.6062 17.6062C17.0811 18.1313 16.2297 18.1313 15.7046 17.6062L10 11.9015L4.29537 17.6062C3.77027 18.1313 2.91892 18.1313 2.39382 17.6062C1.86873 17.0811 1.86873 16.2297 2.39382 15.7046L8.09846 10L2.39382 4.29537C1.86873 3.77027 1.86873 2.91892 2.39382 2.39382C2.91892 1.86873 3.77027 1.86873 4.29537 2.39382L10 8.09846L15.7046 2.39382C16.2297 1.86873 17.0811 1.86873 17.6062 2.39382C18.1313 2.91892 18.1313 3.77027 17.6062 4.29537L11.9015 10Z"/></svg></button></article></details>';
                     } else if (zones[i].type === 'mcq') {
                         panelEl.classList.add('gate');
                         let answers = zones[i].incorrect;
