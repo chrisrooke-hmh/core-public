@@ -59,10 +59,55 @@ button {
     transition: all .2s ease-in-out;
     border: .125rem solid white;
 
+    svg {
+        fill: #fff;
+        transition: all .2s ease-in-out;
+    }
     &:hover {
         background-color: white;
+
+        svg {
+            fill: #000;
+        }
     }
 }
+
+
+// Nav 
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 100%;
+    /* background: pink; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+  }
+  
+  nav a {
+    width: 1rem;
+    height: 1rem;
+    margin: var(--half-lheight) 0;
+    border: .125rem solid white;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    background: rgba(255, 255, 255, 0);
+
+    &:hover {
+        background: rgba(255, 255, 255, 1)
+    }
+  }
+  
+  nav a.inactive {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
 
 
   
@@ -89,7 +134,14 @@ body > video {
     overflow: hidden;
     color: transparent;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    svg {
+        width: var(--base-lheight);
+        height: var(--base-lheight);
+    }
   }
   
 
@@ -272,8 +324,16 @@ button.close, button.close-details {
     border-radius: 50%;
     overflow: hidden;
     color: transparent;
-    margin-top: var(--base-lheight);
+    margin: var(--base-lheight) auto 0;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: var(--half-lheight);
+        height: var(--half-lheight);
+    }
 }
 
 h3 {
