@@ -48,7 +48,10 @@ body {
 .preventScroll {
     overflow: hidden;
 }
-
+.hidden {
+    display: none;
+  }
+  
   
 
 // Common elements
@@ -97,6 +100,7 @@ nav {
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
     background: rgba(255, 255, 255, 0);
+    box-shadow: 0 .25rem .125rem rgba(0,0,0,0.25);
 
     &:hover {
         background: rgba(255, 255, 255, 1)
@@ -256,21 +260,36 @@ div > article, details article {
         text-align: center;
         position: relative;
         // grid-column: 3 / span 8;
-        width: 50%;
+        width: 100%;
+        padding: var(--base-lheight);
 
+        @include respond-md {
+            width: 50%;
+            padding: 0;
+        }
         &:before {
             content: '';
             position: absolute;
-            top: calc(var(--base-lheight) * -6);
-            left: calc(var(--base-lheight) * -6);
-            bottom: calc(var(--base-lheight) * -6);
-            right: calc(var(--base-lheight) * -6);
-            /* background: red; */
-            background: radial-gradient(50% 50% at 50% 50%, #000000 25%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 100%);
-            filter: blur(3px);
-            opacity: 0.75;
-            border-radius: 9999px;
             z-index: -1;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: #101D2C;
+            opacity: 0.9;
+            border-radius: .5625rem .5625rem 0 0;
+
+            @include respond-md {
+                top: calc(var(--base-lheight) * -6);
+                left: calc(var(--base-lheight) * -6);
+                bottom: calc(var(--base-lheight) * -6);
+                right: calc(var(--base-lheight) * -6);
+                /* background: red; */
+                background: radial-gradient(50% 50% at 50% 50%, #000000 25%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 100%);
+                filter: blur(3px);
+                opacity: 0.75;
+                border-radius: 9999px;    
+            }
         }
   }
 
@@ -350,8 +369,12 @@ h3 {
         @include para-size(5);
         padding: var(--quart-lheight) var(--half-lheight);
         border-radius: .5625rem;
-        margin: 0 var(--half-lheight);
+        margin: 0 var(--quart-lheight) var(--half-lheight);
         box-shadow: 0 .25rem .125rem rgba(0,0,0,0.25);
+
+        @include respond-md {
+            margin: 0 var(--half-lheight) var(--base-lheight);
+        }
     }
 }
 
@@ -443,4 +466,12 @@ details > summary {
 
 .expander {
     margin-top: 0;
+}
+
+.expander-summary {
+    cursor: pointer;
+
+    @include respond-md {
+        cursor: unset;
+    }
 }

@@ -35,6 +35,10 @@ body {
   overflow: hidden;
 }
 
+.hidden {
+  display: none;
+}
+
 button {
   cursor: pointer;
   background-color: transparent;
@@ -74,6 +78,7 @@ nav a {
   border-radius: 50%;
   transition: all 0.2s ease-in-out;
   background: rgba(255, 255, 255, 0);
+  box-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.25);
 }
 nav a:hover {
   background: rgb(255, 255, 255);
@@ -258,21 +263,39 @@ div > article, details article {
   color: white;
   text-align: center;
   position: relative;
-  width: 50%;
+  width: 100%;
+  padding: var(--base-lheight);
+}
+@media (min-width: 40.625rem) {
+  div > article, details article {
+    width: 50%;
+    padding: 0;
+  }
 }
 div > article:before, details article:before {
   content: "";
   position: absolute;
-  top: calc(var(--base-lheight) * -6);
-  left: calc(var(--base-lheight) * -6);
-  bottom: calc(var(--base-lheight) * -6);
-  right: calc(var(--base-lheight) * -6);
-  /* background: red; */
-  background: radial-gradient(50% 50% at 50% 50%, #000000 25%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 100%);
-  filter: blur(3px);
-  opacity: 0.75;
-  border-radius: 9999px;
   z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #101D2C;
+  opacity: 0.9;
+  border-radius: 0.5625rem 0.5625rem 0 0;
+}
+@media (min-width: 40.625rem) {
+  div > article:before, details article:before {
+    top: calc(var(--base-lheight) * -6);
+    left: calc(var(--base-lheight) * -6);
+    bottom: calc(var(--base-lheight) * -6);
+    right: calc(var(--base-lheight) * -6);
+    /* background: red; */
+    background: radial-gradient(50% 50% at 50% 50%, #000000 25%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 100%);
+    filter: blur(3px);
+    opacity: 0.75;
+    border-radius: 9999px;
+  }
 }
 
 details article {
@@ -376,7 +399,7 @@ h3 {
   line-height: 1.875rem;
   padding: var(--quart-lheight) var(--half-lheight);
   border-radius: 0.5625rem;
-  margin: 0 var(--half-lheight);
+  margin: 0 var(--quart-lheight) var(--half-lheight);
   box-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.25);
 }
 @media (min-width: 40.625rem) {
@@ -389,6 +412,11 @@ h3 {
   .mcq-answers button {
     font-size: 1.25rem;
     line-height: 1.875rem;
+  }
+}
+@media (min-width: 40.625rem) {
+  .mcq-answers button {
+    margin: 0 var(--half-lheight) var(--base-lheight);
   }
 }
 
@@ -469,6 +497,15 @@ summary:before {
 }
 .expander {
   margin-top: 0;
+}
+
+.expander-summary {
+  cursor: pointer;
+}
+@media (min-width: 40.625rem) {
+  .expander-summary {
+    cursor: unset;
+  }
 }
 
 /*# sourceMappingURL=space.css.map */
