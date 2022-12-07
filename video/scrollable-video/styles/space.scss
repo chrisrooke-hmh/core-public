@@ -148,6 +148,13 @@ body > video {
     }
   }
   
+.muted #mute {
+    background-color: white;
+
+    svg {
+        fill: #000;
+    }
+}
 
 
 

@@ -1,14 +1,397 @@
 <html>
     <head>
         <title>Scrollable video</title>
-        <link rel="stylesheet" href="styles/source.css">
-        <link rel="stylesheet" href="styles/space.css">
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&family=Orbitron:wght@700&display=swap" rel="stylesheet"> -->
+        <style>
+            body {
+                border: 0;
+                padding: 0;
+                margin: 0;
+                /* height: 1000vh; */
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            .smooth-scroll {
+                scroll-behavior: smooth;
+            }
+            
+            body > video {
+                margin: 0;
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                position: fixed;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 48px;
+                height: 100%;
+                /* background: pink; */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 9;
+            }
+
+            nav a {
+                width: 24px;
+                height: 24px;
+                margin: 12px;
+                border-radius: 50%;
+                background: white;
+                transition: opacity .2s ease-in-out;
+            }
+
+            nav a.inactive {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            /* .question {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 32px;
+                width: fit-content;
+                max-width: 80%;
+                border-radius: 16px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+            }
+
+            .question.visible {
+                visibility: visible;
+                opacity: 1;
+            } */
+
+            h2 {
+                font-size: 48px;
+                text-align: center;
+                flex-basis: 100%;
+                margin: 0 0 16px 0;
+            }
+
+            button {
+                border-radius: 8px;
+                background: grey;
+                padding: 16px;
+                font-size: 24px;
+                color: white;
+                border: 0;
+                cursor: pointer;
+                margin: 16px;
+            }
+
+            .correct.selected {
+                background-color: darkolivegreen;
+                pointer-events: none;
+            }
+
+            .incorrect.selected {
+                background-color: darkred;
+                pointer-events: none;
+                animation-timing-function: ease-in-out;
+                animation-name: headShake;
+                animation-duration: 1s;
+            }
+
+            @keyframes headShake {
+            0% {
+                transform: translateX(0);
+            }
+
+            6.5% {
+                transform: translateX(-6px) rotateY(-9deg);
+            }
+
+            18.5% {
+                transform: translateX(5px) rotateY(7deg);
+            }
+
+            31.5% {
+                transform: translateX(-3px) rotateY(-5deg);
+            }
+
+            43.5% {
+                transform: translateX(2px) rotateY(3deg);
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+            }
+
+            .headShake {
+            animation-timing-function: ease-in-out;
+            animation-name: headShake;
+            animation-duration: 1s;
+            }
+
+            .preventScroll {
+                overflow: hidden;
+            }
+
+            section {
+                width: 100%;
+                position: absolute;
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+                /* display: flex;
+                justify-content: center;
+                align-items: center; */
+                text-shadow: 0 0 10px rgba(0,0,0,0.4);
+            }
+
+            /* section[id*="q"] {
+                pointer-events: none;
+            } */
+
+            section.active {
+                opacity: 1;
+                /* pointer-events: initial; */
+            }
+
+            section.past {
+                opacity: 0;
+            }
+
+            section:before {
+                /* content: ''; */
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: pink; 
+                opacity: 0.25;
+                pointer-events: none;
+            }
+
+            section.active h1, section.active article {
+                animation: fadeInUp .5s ease-out forwards;
+            }
+
+            section.active div > p {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+                animation: fadeInUp .5s .5s ease-out forwards;
+            }
+
+            section > div {
+                position: sticky;
+                top: 0;
+                bottom: 0;
+                margin: 0 auto;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                flex-direction: column;
+            }
+
+            section.text > div {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 5vw;
+                margin: 0;
+                /* opacity: 0; */
+                /* transform: translate3d(0, 100%, 0); */
+                /* transition: opacity .2s ease-in-out; */
+            }
+
+            h2 {
+                font-size: 48px;
+                text-align: left;
+                padding: 32px 32px 0;
+            }
+            
+            h3 {
+                font-size: 24px;
+                text-align: center;
+                padding: 32px 32px 0;
+            }
+
+            div > p {
+                font-size: 2.5vw;
+                font-weight: 700;
+                margin: 0;
+                /* opacity: 0; */
+                /* transform: translate3d(0, 100%, 0);
+                transition: opacity .2s ease-in-out; */
+            }
+
+            article {
+                width: 100%;
+                background: white;
+                color: rgba(0,0,0,0.87);
+                text-align: left;
+                text-shadow: 0;
+                border-radius: 16px 16px 0 0;
+            }
+
+            article.text {
+                width: 75vw;
+            }
+
+            article p {
+                font-size: 20px;
+                margin-bottom: 0;
+                padding: 0 32px;
+            }
+
+            article p:first-child {
+                margin-top: 0;
+                padding-top: 32px;
+            }
+
+            article p:last-child {
+                padding-bottom: 32px;
+            }
+
+
+            article p:first-child {
+                font-size:30px;
+            }
+
+            img, article video {
+                width: 100%;
+                border-radius: 16px;
+                border: 4px solid white;
+            }
+
+            details > summary {
+                list-style: none;
+            }
+
+            details summary::-webkit-details-marker {
+                display:none;
+            }
+
+            details {
+                display: flex;
+                align-items: center;
+                align-content: center;
+            }
+
+            summary {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 2px solid white;
+                background: pink;
+                position: absolute;
+                overflow: hidden;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+            }
+
+
+            /* audio {
+                z-index: 99;
+                position: fixed;
+            } */
+            
+            #starter {
+                position: fixed;
+                background-color: rgba(0,0,0,0.5);
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                opacity: 1;
+                z-index: 99;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #start-btn {
+                background: white;
+                color: black;
+                width: 24rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                height: 6rem;
+                border-radius: 3rem;
+            }
+
+            .mcq-answers {
+                display: flex;
+                justify-content: center;
+                padding-bottom: 16px;
+            }
+
+            .correct, .incorrect {
+                transition: background-color .2s ease-in-out;
+            }
+
+            .complete .correct, .complete .incorrect {
+                pointer-events: none;
+            }
+
+            #mute {
+                position: fixed;
+                z-index: 1;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translate3d(0, 50%, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+
+            .expander-summary {
+                padding: 8px 4px;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            @media screen and (min-width: 650px) {
+                section > div {
+                    justify-content: center;
+                }
+
+                article {
+                    width: 50vw;
+                    border-radius: 16px;
+                }
+            }
+
+
+        </style>
     </head>
     <body id="body" class="preventScroll">
-        <video class="source--no-marginlr" id="vid" autobuffer="autobuffer" preload="auto" muted>
+        <video id="vid" autobuffer="autobuffer" preload="auto" muted>
             <!-- <source src="Chrome_ImF.webm" type="video/webm"></source> -->
             <!-- <source src="video.webm" type="video/webm"></source> -->
             <!-- <source src="video-sm.webm" type="video/webm"></source> -->
@@ -17,23 +400,12 @@
             <source src="video-sm_CBR.mp4" type="video/mp4"></source>
         </video>
         <audio id="sound-bg" loop>
-            <source src="space.mp3" type="audio/mpeg">
+            <source src="space.mp" type="audio/mpeg">
         </audio>
         <section id="starter">
-            <h1><span>Welcome</span> to the Milky Way</h1>
-            <p>Discover our galaxy</p>
             <button id="start-btn">Start</button>
         </section>
-        <button id="mute">
-            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="9" cy="14" r="3"/>
-                <path d="M10.6787 2H11.9587V10.2266L10.6787 9V2Z"/>
-                <rect x="10.6792" y="2" width="5.20682" height="2.71188"/>
-                <rect x="2.01953" y="4.49805" width="2" height="19.5677" transform="rotate(-46.7136 2.01953 4.49805)"/>
-                </svg>
-                           
-            <!-- Mute -->
-        </button>
+        <button id="mute">Mute</button>
         <nav id="nav">
             <!-- <a href="#"></a> -->
         </nav>
@@ -61,8 +433,8 @@
 
             // dynamically set the page height according to video length
             vid.addEventListener('loadedmetadata', function() {
-                console.log(vid.duration);
-                setHeight.style.height = Math.floor((vid.duration) * playbackConst) + "px";
+                // console.log(vid.duration);
+                setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
             });
 
 
@@ -85,20 +457,6 @@
                         }
                         if (document.getElementById(panels[j]).classList.contains('gate') && !document.getElementById(panels[j]).classList.contains('past')) {
                             body.classList.add('preventScroll');
-                        }
-                        if (document.getElementById(panels[j]).classList.contains('hotspot')) {
-                            console.log(document.getElementById(panels[j]).getBoundingClientRect().top);
-                            let animBasis = document.getElementById(panels[j]).offsetHeight - window.innerHeight;
-                            // console.log(animBasis);
-                            let animDelay = (document.getElementById(panels[j]).getBoundingClientRect().top / animBasis) + 's';
-                            if (animDelay === '-1s') {
-                                animDelay = '0.9999s';
-                            }
-                            // console.log(animDelay);
-                            let activeSummaries = document.getElementById(panels[j]).querySelectorAll('summary');
-                            for (u=0; u<activeSummaries.length; u++) {
-                                activeSummaries[u].style.animationDelay = animDelay;
-                            }
                         }
                     } else if (inViewport(document.getElementById(panels[j])) === 'past') {
                         document.getElementById(panels[j]).classList.add('past');
@@ -126,13 +484,13 @@
             }
 
             const zones = [
-                // {
-                //     startTime: 0.1,
-                //     endTime: 1,
-                //     type: 'hotspot',
-                //     contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
-                //     milestone: true
-                // },
+                {
+                    startTime: 0.1,
+                    endTime: 1,
+                    type: 'hotspot',
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
+                    milestone: true
+                },
                 {
                     startTime: 1,
                     endTime: 2,
@@ -285,11 +643,11 @@
                     if (zones[i].type === 'text') {
                         panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
                     } else if (zones[i].type === 'panel') {
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
                     } else if (zones[i].type === 'gate') {
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div><button class="close"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9015 10L17.6062 15.7046C18.1313 16.2297 18.1313 17.0811 17.6062 17.6062C17.0811 18.1313 16.2297 18.1313 15.7046 17.6062L10 11.9015L4.29537 17.6062C3.77027 18.1313 2.91892 18.1313 2.39382 17.6062C1.86873 17.0811 1.86873 16.2297 2.39382 15.7046L8.09846 10L2.39382 4.29537C1.86873 3.77027 1.86873 2.91892 2.39382 2.39382C2.91892 1.86873 3.77027 1.86873 4.29537 2.39382L10 8.09846L15.7046 2.39382C16.2297 1.86873 17.0811 1.86873 17.6062 2.39382C18.1313 2.91892 18.1313 3.77027 17.6062 4.29537L11.9015 10Z"/></svg></button></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content">` + zones[i].contents + '</div><button class="close">Close</button></article></div>';
                     } else if (zones[i].type === 'hotspot') {
-                        panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9015 10L17.6062 15.7046C18.1313 16.2297 18.1313 17.0811 17.6062 17.6062C17.0811 18.1313 16.2297 18.1313 15.7046 17.6062L10 11.9015L4.29537 17.6062C3.77027 18.1313 2.91892 18.1313 2.39382 17.6062C1.86873 17.0811 1.86873 16.2297 2.39382 15.7046L8.09846 10L2.39382 4.29537C1.86873 3.77027 1.86873 2.91892 2.39382 2.39382C2.91892 1.86873 3.77027 1.86873 4.29537 2.39382L10 8.09846L15.7046 2.39382C16.2297 1.86873 17.0811 1.86873 17.6062 2.39382C18.1313 2.91892 18.1313 3.77027 17.6062 4.29537L11.9015 10Z"/></svg></button></article></details>';
+                        panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details">Close</button></article></details>';
                     } else if (zones[i].type === 'mcq') {
                         panelEl.classList.add('gate');
                         let answers = zones[i].incorrect;
@@ -303,7 +661,7 @@
                             shuffled[o] = '<button class=\"' + answerClass + '\">' + shuffled[o] + '</button>';
                         }
                         // console.log(shuffled);
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Test your knowledge</div><div class="expander-content"><h3>` + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></div></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content"><h3>` + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></div></article></div>';
                     }
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);

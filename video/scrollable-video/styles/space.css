@@ -81,7 +81,7 @@ nav a {
   box-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.25);
 }
 nav a:hover {
-  background: rgb(255, 255, 255);
+  background: white;
 }
 
 nav a.inactive {
@@ -117,6 +117,13 @@ body > video {
 #mute svg {
   width: var(--base-lheight);
   height: var(--base-lheight);
+}
+
+.muted #mute {
+  background-color: white;
+}
+.muted #mute svg {
+  fill: #000;
 }
 
 #starter {
@@ -464,8 +471,8 @@ summary:before {
   height: calc(var(--base-lheight) * 2);
   position: absolute;
   content: "";
-  top: calc(var(--half-lheight) * -1 - 0.125rem);
-  left: calc(var(--half-lheight) * -1 - 0.125rem);
+  top: calc(var(--half-lheight) * -1 - .125rem);
+  left: calc(var(--half-lheight) * -1 - .125rem);
   background: white;
   opacity: 0.25;
   border-radius: 50%;
