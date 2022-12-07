@@ -1,14 +1,397 @@
 <html>
     <head>
         <title>Scrollable video</title>
-        <link rel="stylesheet" href="styles/source.css">
-        <link rel="stylesheet" href="styles/space.css">
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&family=Orbitron:wght@700&display=swap" rel="stylesheet"> -->
+        <style>
+            body {
+                border: 0;
+                padding: 0;
+                margin: 0;
+                /* height: 1000vh; */
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            .smooth-scroll {
+                scroll-behavior: smooth;
+            }
+            
+            body > video {
+                margin: 0;
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                position: fixed;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 48px;
+                height: 100%;
+                /* background: pink; */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 9;
+            }
+
+            nav a {
+                width: 24px;
+                height: 24px;
+                margin: 12px;
+                border-radius: 50%;
+                background: white;
+                transition: opacity .2s ease-in-out;
+            }
+
+            nav a.inactive {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            /* .question {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 32px;
+                width: fit-content;
+                max-width: 80%;
+                border-radius: 16px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+            }
+
+            .question.visible {
+                visibility: visible;
+                opacity: 1;
+            } */
+
+            h2 {
+                font-size: 48px;
+                text-align: center;
+                flex-basis: 100%;
+                margin: 0 0 16px 0;
+            }
+
+            button {
+                border-radius: 8px;
+                background: grey;
+                padding: 16px;
+                font-size: 24px;
+                color: white;
+                border: 0;
+                cursor: pointer;
+                margin: 16px;
+            }
+
+            .correct.selected {
+                background-color: darkolivegreen;
+                pointer-events: none;
+            }
+
+            .incorrect.selected {
+                background-color: darkred;
+                pointer-events: none;
+                animation-timing-function: ease-in-out;
+                animation-name: headShake;
+                animation-duration: 1s;
+            }
+
+            @keyframes headShake {
+            0% {
+                transform: translateX(0);
+            }
+
+            6.5% {
+                transform: translateX(-6px) rotateY(-9deg);
+            }
+
+            18.5% {
+                transform: translateX(5px) rotateY(7deg);
+            }
+
+            31.5% {
+                transform: translateX(-3px) rotateY(-5deg);
+            }
+
+            43.5% {
+                transform: translateX(2px) rotateY(3deg);
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+            }
+
+            .headShake {
+            animation-timing-function: ease-in-out;
+            animation-name: headShake;
+            animation-duration: 1s;
+            }
+
+            .preventScroll {
+                overflow: hidden;
+            }
+
+            section {
+                width: 100%;
+                position: absolute;
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+                /* display: flex;
+                justify-content: center;
+                align-items: center; */
+                text-shadow: 0 0 10px rgba(0,0,0,0.4);
+            }
+
+            /* section[id*="q"] {
+                pointer-events: none;
+            } */
+
+            section.active {
+                opacity: 1;
+                /* pointer-events: initial; */
+            }
+
+            section.past {
+                opacity: 0;
+            }
+
+            section:before {
+                /* content: ''; */
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background: pink; 
+                opacity: 0.25;
+                pointer-events: none;
+            }
+
+            section.active h1, section.active article {
+                animation: fadeInUp .5s ease-out forwards;
+            }
+
+            section.active div > p {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+                animation: fadeInUp .5s .5s ease-out forwards;
+            }
+
+            section > div {
+                position: sticky;
+                top: 0;
+                bottom: 0;
+                margin: 0 auto;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                flex-direction: column;
+            }
+
+            section.text > div {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 5vw;
+                margin: 0;
+                /* opacity: 0; */
+                /* transform: translate3d(0, 100%, 0); */
+                /* transition: opacity .2s ease-in-out; */
+            }
+
+            h2 {
+                font-size: 48px;
+                text-align: left;
+                padding: 32px 32px 0;
+            }
+            
+            h3 {
+                font-size: 24px;
+                text-align: center;
+                padding: 32px 32px 0;
+            }
+
+            div > p {
+                font-size: 2.5vw;
+                font-weight: 700;
+                margin: 0;
+                /* opacity: 0; */
+                /* transform: translate3d(0, 100%, 0);
+                transition: opacity .2s ease-in-out; */
+            }
+
+            article {
+                width: 100%;
+                background: white;
+                color: rgba(0,0,0,0.87);
+                text-align: left;
+                text-shadow: 0;
+                border-radius: 16px 16px 0 0;
+            }
+
+            article.text {
+                width: 75vw;
+            }
+
+            article p {
+                font-size: 20px;
+                margin-bottom: 0;
+                padding: 0 32px;
+            }
+
+            article p:first-child {
+                margin-top: 0;
+                padding-top: 32px;
+            }
+
+            article p:last-child {
+                padding-bottom: 32px;
+            }
+
+
+            article p:first-child {
+                font-size:30px;
+            }
+
+            img, article video {
+                width: 100%;
+                border-radius: 16px;
+                border: 4px solid white;
+            }
+
+            details > summary {
+                list-style: none;
+            }
+
+            details summary::-webkit-details-marker {
+                display:none;
+            }
+
+            details {
+                display: flex;
+                align-items: center;
+                align-content: center;
+            }
+
+            summary {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 2px solid white;
+                background: pink;
+                position: absolute;
+                overflow: hidden;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+            }
+
+
+            /* audio {
+                z-index: 99;
+                position: fixed;
+            } */
+            
+            #starter {
+                position: fixed;
+                background-color: rgba(0,0,0,0.5);
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                opacity: 1;
+                z-index: 99;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #start-btn {
+                background: white;
+                color: black;
+                width: 24rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                height: 6rem;
+                border-radius: 3rem;
+            }
+
+            .mcq-answers {
+                display: flex;
+                justify-content: center;
+                padding-bottom: 16px;
+            }
+
+            .correct, .incorrect {
+                transition: background-color .2s ease-in-out;
+            }
+
+            .complete .correct, .complete .incorrect {
+                pointer-events: none;
+            }
+
+            #mute {
+                position: fixed;
+                z-index: 1;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translate3d(0, 50%, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+
+            .expander-summary {
+                padding: 8px 4px;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            @media screen and (min-width: 650px) {
+                section > div {
+                    justify-content: center;
+                }
+
+                article {
+                    width: 50vw;
+                    border-radius: 16px;
+                }
+            }
+
+
+        </style>
     </head>
     <body id="body" class="preventScroll">
-        <video class="source--no-marginlr" id="vid" autobuffer="autobuffer" preload="auto" muted>
+        <video id="vid" autobuffer="autobuffer" preload="auto" muted>
             <!-- <source src="Chrome_ImF.webm" type="video/webm"></source> -->
             <!-- <source src="video.webm" type="video/webm"></source> -->
             <!-- <source src="video-sm.webm" type="video/webm"></source> -->
@@ -17,23 +400,12 @@
             <source src="video-sm_CBR.mp4" type="video/mp4"></source>
         </video>
         <audio id="sound-bg" loop>
-            <source src="space.mp3" type="audio/mpeg">
+            <source src="space.mp" type="audio/mpeg">
         </audio>
         <section id="starter">
-            <h1><span>Welcome</span> to the Milky Way</h1>
-            <p>Discover our galaxy</p>
             <button id="start-btn">Start</button>
         </section>
-        <button id="mute">
-            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="9" cy="14" r="3"/>
-                <path d="M10.6787 2H11.9587V10.2266L10.6787 9V2Z"/>
-                <rect x="10.6792" y="2" width="5.20682" height="2.71188"/>
-                <rect x="2.01953" y="4.49805" width="2" height="19.5677" transform="rotate(-46.7136 2.01953 4.49805)"/>
-                </svg>
-                           
-            <!-- Mute -->
-        </button>
+        <button id="mute">Mute</button>
         <nav id="nav">
             <!-- <a href="#"></a> -->
         </nav>
@@ -61,8 +433,8 @@
 
             // dynamically set the page height according to video length
             vid.addEventListener('loadedmetadata', function() {
-                console.log(vid.duration);
-                setHeight.style.height = Math.floor((vid.duration) * playbackConst) + "px";
+                // console.log(vid.duration);
+                setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
             });
 
 
@@ -85,20 +457,6 @@
                         }
                         if (document.getElementById(panels[j]).classList.contains('gate') && !document.getElementById(panels[j]).classList.contains('past')) {
                             body.classList.add('preventScroll');
-                        }
-                        if (document.getElementById(panels[j]).classList.contains('hotspot')) {
-                            console.log(document.getElementById(panels[j]).getBoundingClientRect().top);
-                            let animBasis = document.getElementById(panels[j]).offsetHeight - window.innerHeight;
-                            // console.log(animBasis);
-                            let animDelay = (document.getElementById(panels[j]).getBoundingClientRect().top / animBasis) + 's';
-                            if (animDelay === '-1s') {
-                                animDelay = '0.9999s';
-                            }
-                            // console.log(animDelay);
-                            let activeSummaries = document.getElementById(panels[j]).querySelectorAll('summary');
-                            for (u=0; u<activeSummaries.length; u++) {
-                                activeSummaries[u].style.animationDelay = animDelay;
-                            }
                         }
                     } else if (inViewport(document.getElementById(panels[j])) === 'past') {
                         document.getElementById(panels[j]).classList.add('past');
@@ -126,13 +484,13 @@
             }
 
             const zones = [
-                // {
-                //     startTime: 0.1,
-                //     endTime: 1,
-                //     type: 'hotspot',
-                //     contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
-                //     milestone: true
-                // },
+                {
+                    startTime: 0.1,
+                    endTime: 1,
+                    type: 'hotspot',
+                    contents: '<p>This panel is a gate.</p><p>Some sort of conditional activity should go here.</p>',
+                    milestone: true
+                },
                 {
                     startTime: 1,
                     endTime: 2,
@@ -144,95 +502,83 @@
                     startTime: 2,
                     endTime: 4,
                     type: 'panel',
-                    heading: 'The Solar System',
-                    contents: '<p> The solar system is a huge space that consists of the Sun, the planets and other objects such as moons, comets, asteroids, dwarf planets, dust and gas. All planets and objects in the solar system orbit, or travel around, the Sun. However, most of the solar system is empty space even with all these objects. Look inside a pyramid <a href="/tomb/index.html">here!</a></p>',
+                    contents: '<h2>The Solar System</h2> <p> The solar system is a huge space that consists of the Sun, the planets and other objects such as moons, comets, asteroids, dwarf planets, dust and gas. All planets and objects in the solar system orbit, or travel around, the Sun. However, most of the solar system is empty space even with all these objects. Look inside a pyramid <a href="/tomb/index.html">here!</a></p>',
                     milestone: true
                 },                
                 {
                     startTime: 5.5,
                     endTime: 6.5,
                     type: 'panel',
-                    heading: 'Earth',
-                    contents: '<p> Earth is the planet that we live on, and it is the only living planet in the solar system. It is the third planet from the Sun, between Venus and Mars, and the fifth largest planet in the solar system. Earth is a rocky planet, and it is the largest one among the rocky planets.<br></p><p>The surface of Earth is either water or land. Water covers about 70% of Earths surface. The other 30% of Earths surface is covered with land. There are layers of gases surrounding Earth called the atmosphere. The atmosphere helps maintain temperatures on Earth so that they are warm enough for us to survive. Earth completes one orbit around the Sun in 365 days, and it completes one rotation about its centre in 24 hours. </p>',
+                    contents: '<h2>Earth</h2> <p> Earth is the planet that we live on, and it is the only living planet in the solar system. It is the third planet from the Sun, between Venus and Mars, and the fifth largest planet in the solar system. Earth is a rocky planet, and it is the largest one among the rocky planets.<br><br></p><p>The surface of Earth is either water or land. Water covers about 70% of Earths surface. The other 30% of Earths surface is covered with land. There are layers of gases surrounding Earth called the atmosphere. The atmosphere helps maintain temperatures on Earth so that they are warm enough for us to survive. Earth completes one orbit around the Sun in 365 days, and it completes one rotation about its centre in 24 hours. </p>',
                     milestone: true
                 },
                 {
                     startTime: 6.8,
                     endTime: 7.3,
                     type: 'panel',
-                    heading: 'Moon',
-                    contents: '<p>The Moon is the only natural satellite, or moon, that orbits Earth. It takes the Moon about 27 days to complete one orbit around Earth. It takes the same time, too, to rotate about its centre. The Moon is the second brightest object in our sky after the Sun, and the brightest one at night. However, it does not produce its own light, but it only reflects light from the Sun. <br></p><p>Most of the Moon&#39;s surface is rock. It is also covered with craters and dead volcanoes. Temperatures on the Moon vary from super-hot to super cold because it has no atmosphere. The forces of gravity between the Earth and the Moon cause some interesting effects, such as the ocean tides. The Moon is the only object in space that has been visited by humans. </p> </p>',
+                    contents: '<h2>Moon</h2> <p>The Moon is the only natural satellite, or moon, that orbits Earth. It takes the Moon about 27 days to complete one orbit around Earth. It takes the same time, too, to rotate about its centre. The Moon is the second brightest object in our sky after the Sun, and the brightest one at night. However, it does not produce its own light, but it only reflects light from the Sun. <br><br></p><p>Most of the Moon&#39;s surface is rock. It is also covered with craters and dead volcanoes. Temperatures on the Moon vary from super-hot to super cold because it has no atmosphere. The forces of gravity between the Earth and the Moon cause some interesting effects, such as the ocean tides. The Moon is the only object in space that has been visited by humans. </p> </p>',
                     milestone: true
                 },
                 {
                     startTime: 7.5,
                     endTime: 8,
                     type: 'panel',
-                    heading: 'Moon Landing',
-                    contents: '<p>On July 20, 1969, two U.S. astronauts do something no one had ever done before. Wearing bulky space suits and backpacks of oxygen to breathe, Neil Armstrong and Edwin &#39;Buzz&#39; Aldrin became the first human beings to walk on the moon.</p> <br><img src="assets/Moon.jpg">'
+                    contents: '<h2>Moon Landing</h2> <p>On July 20, 1969, two U.S. astronauts do something no one had ever done before. Wearing bulky space suits and backpacks of oxygen to breathe, Neil Armstrong and Edwin &#39;Buzz&#39; Aldrin became the first human beings to walk on the moon.</p> <br><img src="assets/Moon.jpg">'
                 },
                 {
                     startTime: 9,
                     endTime: 9.5,
                     type: 'panel',
-                    heading: 'Mars',
-                    contents: '<p>Mars is the fourth planet from the Sun, between Earth and Jupiter. It is the second smallest planet in the solar system, after Mercury. In fact, Mars is about half the size of Earth. It can be seen from Earth without telescopes or binoculars. Mars is called the &#39;Red Planet&#39; because its colour is red. <br></p><p> Mars is simply a cold desert. It is a rocky planet with complex terrain on its surface, such as mountains and volcanoes. It has a thin atmosphere, so temperatures on Mars change between highs and lows. Scientists believe that there might have been water on Mars a long time ago.</p>',
+                    contents: '<h2>Mars</h2><p>Mars is the fourth planet from the Sun, between Earth and Jupiter. It is the second smallest planet in the solar system, after Mercury. In fact, Mars is about half the size of Earth. It can be seen from Earth without telescopes or binoculars. Mars is called the &#39;Red Planet&#39; because its colour is red. <br><br></p><p> Mars is simply a cold desert. It is a rocky planet with complex terrain on its surface, such as mountains and volcanoes. It has a thin atmosphere, so temperatures on Mars change between highs and lows. Scientists believe that there might have been water on Mars a long time ago.</p>',
                     milestone: true
                 },
                 {
                     startTime: 9.7,
                     endTime: 10.2,
                     type: 'panel',
-                    heading: 'Mars Rover',
-                    contents: '<p>Perserverance, a car-sized Mars rover, landed on Mars in February 2021. <br>Its mission, to search for ancient life on the red planet!</p> <br><img src="assets/Rover.jpg">'
+                    contents: '<h2>Mars Rover</h2> <p>Perserverance, a car-sized Mars rover, landed on Mars in February 2021. <br>Its mission, to search for ancient life on the red planet!</p> <br><img src="assets/Rover.jpg">'
 
                 },
                 {
                     startTime: 10.5,
                     endTime: 11.3,
                     type: 'panel',
-                    heading: 'Jupiter',
-                    contents: '<p>Jupiter is the fifth planet from the Sun, between Mars and Saturn, and the largest planet in the solar system. It is so huge that it could easily swallow all of the other planets. It is a gas giant planet, and it is actually very similar to a star. It consists entirely of gases, mainly hydrogen and helium, which means that it has no solid surface. Jupiter is the third brightest object in the sky, after the Moon and Venus.<br></p><p>Jupiter&#39;s vivid colours are probably a result of chemical interactions in its huge and thick atmosphere. The most interesting feature of Jupiter is a spot called &#39;The Great Red Spot&#39;, which is actually a huge storm.</p></p>',
+                    contents: '<h2>Jupiter</h2> <p>Jupiter is the fifth planet from the Sun, between Mars and Saturn, and the largest planet in the solar system. It is so huge that it could easily swallow all of the other planets. It is a gas giant planet, and it is actually very similar to a star. It consists entirely of gases, mainly hydrogen and helium, which means that it has no solid surface. Jupiter is the third brightest object in the sky, after the Moon and Venus.<br><br></p><p>Jupiter&#39;s vivid colours are probably a result of chemical interactions in its huge and thick atmosphere. The most interesting feature of Jupiter is a spot called &#39;The Great Red Spot&#39;, which is actually a huge storm.</p></p>',
                     milestone: true
                 },
             	{
                     startTime: 11.5,
                     endTime: 12.3,
                     type: 'panel',
-                    heading: 'Saturn',
-                    contents: '<p>Saturn is the sixth planet from the Sun, between Jupiter and Uranus, and it is the second largest planet in the solar system, after Jupiter. Like Jupiter, Saturn is a gas giant planet that is made up of gases, mostly hydrogen and helium. This means that it does not have a solid surface. Its atmosphere is huge, and it consists of gases.<br></p><p>Saturn is most famous for the beautiful rings surrounding it. Those rings are thin and bright, and they can be seen from Earth with a telescope. Saturn has 82 moons, 53 of which are known and named, and the other 29 are awaiting confirmation.</p>',
+                    contents: '<h2>Saturn</h2><p>Saturn is the sixth planet from the Sun, between Jupiter and Uranus, and it is the second largest planet in the solar system, after Jupiter. Like Jupiter, Saturn is a gas giant planet that is made up of gases, mostly hydrogen and helium. This means that it does not have a solid surface. Its atmosphere is huge, and it consists of gases.<br><br></p><p>Saturn is most famous for the beautiful rings surrounding it. Those rings are thin and bright, and they can be seen from Earth with a telescope. Saturn has 82 moons, 53 of which are known and named, and the other 29 are awaiting confirmation.</p>',
                     milestone: true
                 },
                 {
                     startTime: 12.5,
                     endTime: 13.22,
                     type: 'panel',
-                    heading: 'Uranus',
-                    contents: '<p>Uranus is the seventh planet from the Sun, between Saturn and Neptune, and it is the third largest planet in the solar system. It is a gas giant planet, meaning that it consists of gases, and it does not have a solid surface. <br></p><p>The atmosphere of Uranus is the coldest atmosphere in the solar system. It contains a gas called methane, which gives the planet a bright blue colour.</p>',
+                    contents: '<h2>Uranus</h2><p>Uranus is the seventh planet from the Sun, between Saturn and Neptune, and it is the third largest planet in the solar system. It is a gas giant planet, meaning that it consists of gases, and it does not have a solid surface. <br><br></p><p>The atmosphere of Uranus is the coldest atmosphere in the solar system. It contains a gas called methane, which gives the planet a bright blue colour.</p>',
                     milestone: true
                 },
                 {
                     startTime: 13.3,
                     endTime: 14.2,
                     type: 'panel',
-                    heading: 'Neptune',
-                    contents: '<p>Neptune is the eighth, and the farthest, planet from the Sun, which makes Uranus its only neighbour. It is a gas giant planet, meaning that it is made up of gases, mainly hydrogen and helium, and it does not have a solid surface. It is the fourth largest planet in the solar system, and the smallest one among the gas giants. <br></p><p>Neptune is very similar to Uranus in terms of size, mass and composition. So, they are referred to as twin planets, or, sometimes, ice giants. Neptune is a dark, cold and stormy world, surrounded by dusty rings.</p><br><img src="assets/Neptune.png">',
+                    contents: '<h2>Neptune</h2><p>Neptune is the eighth, and the farthest, planet from the Sun, which makes Uranus its only neighbour. It is a gas giant planet, meaning that it is made up of gases, mainly hydrogen and helium, and it does not have a solid surface. It is the fourth largest planet in the solar system, and the smallest one among the gas giants. <br><br></p><p>Neptune is very similar to Uranus in terms of size, mass and composition. So, they are referred to as twin planets, or, sometimes, ice giants. Neptune is a dark, cold and stormy world, surrounded by dusty rings.</p><br><img src="assets/Neptune.png">',
                     milestone: true
                 },
                 {
                     startTime: 15.5,
                     endTime: 16,
                     type: 'panel',
-                    heading: 'Space rocks',
-                    contents: '<p> The solar system is also home to dwarf planets such as Pluto; dozens of moons; and millions of asteroids, comets, and meteoroids. This video shows how moons can form. </p><br><video controls><source src="assets/video.mp4" type="video/mp4"></source></video>',
+                    contents: '<h2>Space rocks</h2><p> The solar system is also home to dwarf planets such as Pluto; dozens of moons; and millions of asteroids, comets, and meteoroids. This video shows how moons can form. </p><br><br><video controls><source src="assets/video.mp4" type="video/mp4"></source></video>',
                     milestone: true
                 },
                 {
                     startTime: 23,
                     endTime: 24,
                     type: 'gate',
-                    heading: 'Well done, you made it!',
-                    contents: '<p>Click HERE to level up!</p>',
+                    contents: '<h2>Well done, you made it!</h2><p>Click HERE to level up!</p>',
                     milestone: true
                 },
                 {
@@ -255,8 +601,7 @@
                     startTime: 19,
                     endTime: 20,
                     type: 'panel',
-                    heading: 'Outer Space',
-                    contents: '<p>Beyond our own solar system, there are more planets than stars in the night sky. So far, we have discovered thousands of planetary systems orbiting other stars in the Milky Way, with more planets being found. Most of the hundreds of billions of stars in our galaxy are thought to have planets of their own, and the Milky Way is but one of perhaps 100 billion galaxies in the universe.</p><br>',
+                    contents: '<h2>Outer Space</h2><p>Beyond our own solar system, there are more planets than stars in the night sky. So far, we have discovered thousands of planetary systems orbiting other stars in the Milky Way, with more planets being found. Most of the hundreds of billions of stars in our galaxy are thought to have planets of their own, and the Milky Way is but one of perhaps 100 billion galaxies in the universe.</p><br>',
                     milestone: true
                 },
                 {
@@ -267,13 +612,13 @@
                     correct: 'Milky Way',
                     incorrect: ['Starry Sky', 'Milky Bar', 'Milky Drink']
                 },
-                //                {
-                //     startTime: 4,
-                //     endTime: 4,
-                //     type: 'hotspot',
-                //     contents: '<h2>Well done, you made it!</h2><p>Click HERE to level up!</p>',
-                //     milestone: true
-                // },
+                               {
+                    startTime: 4,
+                    endTime: 4,
+                    type: 'hotspot',
+                    contents: '<h2>Well done, you made it!</h2><p>Click HERE to level up!</p>',
+                    milestone: true
+                },
                 {
                     startTime: 25,
                     endTime: 26,
@@ -298,11 +643,11 @@
                     if (zones[i].type === 'text') {
                         panelEl.innerHTML = '<div>' + zones[i].contents + '</div>';
                     } else if (zones[i].type === 'panel') {
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>` + zones[i].heading + `</h2></div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content">` + zones[i].contents + '</div></article></div>';
                     } else if (zones[i].type === 'gate') {
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary"><h2>Panel ${i + 1}</h2></div><div class="expander-content">` + zones[i].contents + '</div><button class="close"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9015 10L17.6062 15.7046C18.1313 16.2297 18.1313 17.0811 17.6062 17.6062C17.0811 18.1313 16.2297 18.1313 15.7046 17.6062L10 11.9015L4.29537 17.6062C3.77027 18.1313 2.91892 18.1313 2.39382 17.6062C1.86873 17.0811 1.86873 16.2297 2.39382 15.7046L8.09846 10L2.39382 4.29537C1.86873 3.77027 1.86873 2.91892 2.39382 2.39382C2.91892 1.86873 3.77027 1.86873 4.29537 2.39382L10 8.09846L15.7046 2.39382C16.2297 1.86873 17.0811 1.86873 17.6062 2.39382C18.1313 2.91892 18.1313 3.77027 17.6062 4.29537L11.9015 10Z"/></svg></button></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content">` + zones[i].contents + '</div><button class="close">Close</button></article></div>';
                     } else if (zones[i].type === 'hotspot') {
-                        panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9015 10L17.6062 15.7046C18.1313 16.2297 18.1313 17.0811 17.6062 17.6062C17.0811 18.1313 16.2297 18.1313 15.7046 17.6062L10 11.9015L4.29537 17.6062C3.77027 18.1313 2.91892 18.1313 2.39382 17.6062C1.86873 17.0811 1.86873 16.2297 2.39382 15.7046L8.09846 10L2.39382 4.29537C1.86873 3.77027 1.86873 2.91892 2.39382 2.39382C2.91892 1.86873 3.77027 1.86873 4.29537 2.39382L10 8.09846L15.7046 2.39382C16.2297 1.86873 17.0811 1.86873 17.6062 2.39382C18.1313 2.91892 18.1313 3.77027 17.6062 4.29537L11.9015 10Z"/></svg></button></article></details>';
+                        panelEl.innerHTML = '<div><details><summary></summary><article>' + zones[i].contents + '<button class="close-details">Close</button></article></details>';
                     } else if (zones[i].type === 'mcq') {
                         panelEl.classList.add('gate');
                         let answers = zones[i].incorrect;
@@ -316,7 +661,7 @@
                             shuffled[o] = '<button class=\"' + answerClass + '\">' + shuffled[o] + '</button>';
                         }
                         // console.log(shuffled);
-                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Test your knowledge</div><div class="expander-content"><h3>` + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></div></article></div>';
+                        panelEl.innerHTML = `<div><article class="expander"><div class="expander-summary">Panel ${i}</div><div class="expander-content"><h3>` + zones[i].question + '</h3><div class=\"mcq-answers\">' + shuffled.join('') + '</div></div></article></div>';
                     }
                     document.body.appendChild(panelEl);
                     panels.push(`q${i}`);
