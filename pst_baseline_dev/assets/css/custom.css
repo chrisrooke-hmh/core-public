@@ -1370,6 +1370,15 @@ html:not(.s9-habitat-editing-enabled) .source__reveal__flex--authoring details[o
   display: none;
 }
 
+.image-zoom img {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 3;
+  pointer-events: none;
+  transition: transform-origin 0.75s ease-in-out, transform 0.75s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 
 @media screen and (hover: hover) {
 
@@ -1392,14 +1401,6 @@ html:not(.s9-habitat-editing-enabled) .source__reveal__flex--authoring details[o
     opacity: 0;
   }
 
-  .image-zoom img {
-    grid-column: 1 / span 3;
-    grid-row: 1 / span 3;
-    pointer-events: none;
-    transition: transform-origin 0.75s ease-in-out, transform 0.75s ease-in-out;
-    user-select: none;
-    -webkit-user-select: none;
-  }
 
   .image-zoom div {
     grid-row: 1;
