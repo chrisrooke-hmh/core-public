@@ -1390,6 +1390,7 @@ html:not(.s9-habitat-editing-enabled) .source__reveal__flex--authoring details[o
   grid-row: 1 / span 3;
   pointer-events: none;
   transition: transform-origin 0.75s ease-in-out, transform 0.75s ease-in-out;
+  user-select: none;
 }
 
 .image-zoom div {
@@ -1516,6 +1517,7 @@ html:not(.s9-habitat-editing-enabled) .source__reveal__flex--authoring details[o
 
 .image-zoom.double-view figure:first-of-type div:hover ~ img {
   transform: unset;
+  user-select: none;
 }
 
 .image-zoom.double-view figure:first-of-type:has(div:hover):before {
