@@ -1366,84 +1366,93 @@ html:not(.s9-habitat-editing-enabled) .source__reveal__flex--authoring details[o
   position: relative;
 }
 
-.image-zoom:after {
-  content: '';
-  position: absolute;
-  top: var(--half-lheight);
-  right: var(--half-lheight);
-  width: calc(var(--base-lheight) * 2);
-  height: calc(var(--base-lheight) * 2);
-  background: url("data:image/svg+xml,%3Csvg width='42' height='42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23a)'%3E%3Ccircle cx='21' cy='20' r='16' fill='%23fff'/%3E%3C/g%3E%3Cpath d='M22.522 18.034h-1.495v-1.495a.498.498 0 0 0-.498-.498h-.997a.498.498 0 0 0-.498.498v1.495h-1.495a.498.498 0 0 0-.498.498v.997a.498.498 0 0 0 .498.498h1.495v1.495a.498.498 0 0 0 .498.498h.997a.499.499 0 0 0 .498-.498v-1.495h1.495a.499.499 0 0 0 .498-.498v-.997a.498.498 0 0 0-.498-.498Z' fill='%230069FE'/%3E%3Cpath d='M26.01 22.604a7.003 7.003 0 1 0-2.406 2.406l2.698 2.698a.997.997 0 0 0 1.41 0l.996-.996a.997.997 0 0 0 0-1.41l-2.698-2.698Zm-5.98 1.41a4.983 4.983 0 1 1 0-9.967 4.983 4.983 0 0 1 0 9.967Z' fill='%230069FE'/%3E%3Cdefs%3E%3Cfilter id='a' x='0' y='0' width='42' height='42' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='1'/%3E%3CfeGaussianBlur stdDeviation='2.5'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0'/%3E%3CfeBlend in2='BackgroundImageFix' result='effect1_dropShadow_2094_4432'/%3E%3CfeColorMatrix in='SourceAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeMorphology radius='2' in='SourceAlpha' result='effect2_dropShadow_2094_4432'/%3E%3CfeOffset dy='3'/%3E%3CfeGaussianBlur stdDeviation='.5'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0'/%3E%3CfeBlend in2='effect1_dropShadow_2094_4432' result='effect2_dropShadow_2094_4432'/%3E%3CfeColorMatrix in='SourceAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='2'/%3E%3CfeGaussianBlur stdDeviation='1'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0'/%3E%3CfeBlend in2='effect2_dropShadow_2094_4432' result='effect3_dropShadow_2094_4432'/%3E%3CfeBlend in='SourceGraphic' in2='effect3_dropShadow_2094_4432' result='shape'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E");
-  background-size: calc(var(--base-lheight) * 2);
-  background-repeat: no-repeat;
-  background-position: center center;
-  transform: translate3d(0, 0, 0);
-  pointer-events: none;
-}
-
-.image-zoom:hover:after {
-  opacity: 0;
-}
-
-.image-zoom img {
-  grid-column: 1 / span 3;
-  grid-row: 1 / span 3;
-  pointer-events: none;
-  transition: transform-origin 0.75s ease-in-out, transform 0.75s ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
 .image-zoom div {
-  grid-row: 1;
-  position: relative;
+  display: none;
 }
 
-.image-zoom div:hover ~ img, .image-zoom div:active ~ img {
-  transform: scale(3);
-  -webkit-transform-origin-y: 0;
-}
 
-.image-zoom div:nth-of-type(3n + 1) {
-  grid-column: 1;
-}
+@media screen and (hover: hover) {
 
-.image-zoom div:nth-of-type(3n + 1):hover ~ img, .image-zoom div:nth-of-type(3n + 1):active ~ img {
-  -webkit-transform-origin-x: 0;
-}
+  .image-zoom:after {
+    content: '';
+    position: absolute;
+    top: var(--half-lheight);
+    right: var(--half-lheight);
+    width: calc(var(--base-lheight) * 2);
+    height: calc(var(--base-lheight) * 2);
+    background: url("data:image/svg+xml,%3Csvg width='42' height='42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23a)'%3E%3Ccircle cx='21' cy='20' r='16' fill='%23fff'/%3E%3C/g%3E%3Cpath d='M22.522 18.034h-1.495v-1.495a.498.498 0 0 0-.498-.498h-.997a.498.498 0 0 0-.498.498v1.495h-1.495a.498.498 0 0 0-.498.498v.997a.498.498 0 0 0 .498.498h1.495v1.495a.498.498 0 0 0 .498.498h.997a.499.499 0 0 0 .498-.498v-1.495h1.495a.499.499 0 0 0 .498-.498v-.997a.498.498 0 0 0-.498-.498Z' fill='%230069FE'/%3E%3Cpath d='M26.01 22.604a7.003 7.003 0 1 0-2.406 2.406l2.698 2.698a.997.997 0 0 0 1.41 0l.996-.996a.997.997 0 0 0 0-1.41l-2.698-2.698Zm-5.98 1.41a4.983 4.983 0 1 1 0-9.967 4.983 4.983 0 0 1 0 9.967Z' fill='%230069FE'/%3E%3Cdefs%3E%3Cfilter id='a' x='0' y='0' width='42' height='42' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='1'/%3E%3CfeGaussianBlur stdDeviation='2.5'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0'/%3E%3CfeBlend in2='BackgroundImageFix' result='effect1_dropShadow_2094_4432'/%3E%3CfeColorMatrix in='SourceAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeMorphology radius='2' in='SourceAlpha' result='effect2_dropShadow_2094_4432'/%3E%3CfeOffset dy='3'/%3E%3CfeGaussianBlur stdDeviation='.5'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0'/%3E%3CfeBlend in2='effect1_dropShadow_2094_4432' result='effect2_dropShadow_2094_4432'/%3E%3CfeColorMatrix in='SourceAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='2'/%3E%3CfeGaussianBlur stdDeviation='1'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0'/%3E%3CfeBlend in2='effect2_dropShadow_2094_4432' result='effect3_dropShadow_2094_4432'/%3E%3CfeBlend in='SourceGraphic' in2='effect3_dropShadow_2094_4432' result='shape'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E");
+    background-size: calc(var(--base-lheight) * 2);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: translate3d(0, 0, 0);
+    pointer-events: none;
+  }
+    
+  .image-zoom:hover:after {
+    opacity: 0;
+  }
 
-.image-zoom div:nth-of-type(3n + 2) {
-  grid-column: 2;
-}
+  .image-zoom img {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 3;
+    pointer-events: none;
+    transition: transform-origin 0.75s ease-in-out, transform 0.75s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+  }
 
-.image-zoom div:nth-of-type(3n + 2):hover ~ img, .image-zoom div:nth-of-type(3n + 2):active ~ img {
-  -webkit-transform-origin-x: 50%;
-}
+  .image-zoom div {
+    grid-row: 1;
+    position: relative;
+    display: block;
+  }
 
-.image-zoom div:nth-of-type(3n) {
-  grid-column: 3;
-}
+  .image-zoom div:hover ~ img, .image-zoom div:active ~ img {
+    transform: scale(3);
+    -webkit-transform-origin-y: 0;
+  }
 
-.image-zoom div:nth-of-type(3n):hover ~ img, .image-zoom div:nth-of-type(3n):active ~ img {
-  -webkit-transform-origin-x: 100%;
-}
+  .image-zoom div:nth-of-type(3n + 1) {
+    grid-column: 1;
+  }
 
-.image-zoom div:nth-of-type(n + 4) {
-  grid-row: 2;
-}
+  .image-zoom div:nth-of-type(3n + 1):hover ~ img, .image-zoom div:nth-of-type(3n + 1):active ~ img {
+    -webkit-transform-origin-x: 0;
+  }
 
-.image-zoom div:nth-of-type(n + 4):hover ~ img, .image-zoom div:nth-of-type(n + 4):active ~ img {
-  -webkit-transform-origin-y: 50%;
-}
+  .image-zoom div:nth-of-type(3n + 2) {
+    grid-column: 2;
+  }
 
-.image-zoom div:nth-of-type(n + 7) {
-  grid-row: 3;
-}
+  .image-zoom div:nth-of-type(3n + 2):hover ~ img, .image-zoom div:nth-of-type(3n + 2):active ~ img {
+    -webkit-transform-origin-x: 50%;
+  }
 
-.image-zoom div:nth-of-type(n + 7):hover ~ img, .image-zoom div:nth-of-type(n + 7):active ~ img {
-  -webkit-transform-origin-y: 100%;
-}
+  .image-zoom div:nth-of-type(3n) {
+    grid-column: 3;
+  }
 
+  .image-zoom div:nth-of-type(3n):hover ~ img, .image-zoom div:nth-of-type(3n):active ~ img {
+    -webkit-transform-origin-x: 100%;
+  }
+
+  .image-zoom div:nth-of-type(n + 4) {
+    grid-row: 2;
+  }
+
+  .image-zoom div:nth-of-type(n + 4):hover ~ img, .image-zoom div:nth-of-type(n + 4):active ~ img {
+    -webkit-transform-origin-y: 50%;
+  }
+
+  .image-zoom div:nth-of-type(n + 7) {
+    grid-row: 3;
+  }
+
+  .image-zoom div:nth-of-type(n + 7):hover ~ img, .image-zoom div:nth-of-type(n + 7):active ~ img {
+    -webkit-transform-origin-y: 100%;
+  }
+
+}
 .image-zoom.no-overflow {
   overflow: unset;
   position: relative;
