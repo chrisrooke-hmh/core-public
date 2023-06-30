@@ -1380,7 +1380,7 @@ html:not(.s9-habitat-editing-enabled) .source__reveal__flex--authoring details[o
 }
 
 
-@media screen and (hover: hover) {
+@media screen and (any-hover: hover) {
 
   .image-zoom:after {
     content: '';
