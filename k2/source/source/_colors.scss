@@ -1,0 +1,532 @@
+// CORE PALETTE ---update 14 oct 2020---
+
+//Yellow
+$yellow-c70: 68 56 8;
+$yellow-c65: 94 77 8;
+$yellow-c60: 107 87 6;
+$yellow-c55: 122 101 5;
+$yellow-c50: 138 115 0;
+$yellow-c45: 156 130 0;
+$yellow-c40: 173 147 0;
+$yellow-c35: 212 182 15;
+$yellow-c30: 229 203 30;
+$yellow-c25: 245 218 44;
+$yellow-c20: 250 229 70;
+$yellow-c15: 252 239 121;
+$yellow-c10: 252 246 169;
+$yellow-c5: 255 252 204;
+//Golden
+$golden-c70: 77 44 11;
+$golden-c65: 97 60 12;
+$golden-c60: 122 75 9;
+$golden-c55: 145 80 0;
+$golden-c50: 158 109 30;
+$golden-c45: 181 125 34;
+$golden-c40: 194 137 31;
+$golden-c35: 212 159 36;
+$golden-c30: 222 168 42;
+$golden-c25: 232 181 60;
+$golden-c20: 240 197 96;
+$golden-c15: 245 213 140;
+$golden-c10: 247 229 178;
+$golden-c5: 255 245 217;
+//Orange
+$orange-c70: 87 31 8;
+$orange-c65: 112 49 17;
+$orange-c60: 145 61 12;
+$orange-c55: 173 76 10;
+$orange-c50: 186 91 2;
+$orange-c45: 212 114 11;
+$orange-c40: 222 124 20;
+$orange-c35: 237 145 47;
+$orange-c30: 245 156 61;
+$orange-c25: 250 170 85;
+$orange-c20: 252 182 101;
+$orange-c15: 252 204 149;
+$orange-c10: 255 224 189;
+$orange-c5: 255 237 217;
+//Red
+$red-c70: 92 6 6;
+$red-c65: 125 0 0;
+$red-c60: 163 3 3;
+$red-c55: 191 19 19;
+$red-c50: 214 36 36;
+$red-c45: 229 67 67;
+$red-c40: 240 84 84;
+$red-c35: 245 100 100;
+$red-c30: 247 116 116;
+$red-c25: 250 130 130;
+$red-c20: 250 157 157;
+$red-c15: 255 184 184;
+$red-c10: 255 214 212;
+$red-c5: 255 232 232;
+//Cerise
+$cerise-c70: 97 0 48;
+$cerise-c65: 133 0 69;
+$cerise-c60: 168 8 91;
+$cerise-c55: 189 34 114;
+$cerise-c50: 209 52 133;
+$cerise-c45: 227 75 151;
+$cerise-c40: 237 100 161;
+$cerise-c35: 247 111 173;
+$cerise-c30: 250 137 192;
+$cerise-c25: 255 140 190;
+$cerise-c20: 250 160 206;
+$cerise-c15: 255 191 224;
+$cerise-c10: 255 222 239;
+$cerise-c5: 255 235 248;
+//Purple
+$purple-c70: 64 29 82;
+$purple-c65: 86 40 122;
+$purple-c60: 111 55 153;
+$purple-c55: 133 63 186;
+$purple-c50: 141 76 199;
+$purple-c45: 151 93 217;
+$purple-c40: 162 112 223;
+$purple-c35: 173 124 242;
+$purple-c30: 181 139 239;
+$purple-c25: 188 151 240;
+$purple-c20: 201 169 245;
+$purple-c15: 221 196 255;
+$purple-c10: 233 220 252;
+$purple-c5: 245 237 255;
+//Blue
+$blue-c70: 0 49 105;
+$blue-c65: 0 62 133;
+$blue-c60: 0 79 168;
+$blue-c55: 6 94 194;
+$blue-c50: 0 114 219;
+$blue-c45: 17 131 237;
+$blue-c40: 35 144 247;
+$blue-c35: 59 159 255;
+$blue-c30: 79 165 255;
+$blue-c25: 100 176 255;
+$blue-c20: 134 193 255;
+$blue-c15: 175 214 255;
+$blue-c10: 206 230 255;
+$blue-c5: 234 244 255;
+//Aqua
+$aqua-c70: 0 61 79;
+$aqua-c65: 0 74 97;
+$aqua-c60: 0 94 122;
+$aqua-c55: 15 109 140;
+$aqua-c50: 18 126 153;
+$aqua-c45: 7 147 179;
+$aqua-c40: 15 163 189;
+$aqua-c35: 38 177 201;
+$aqua-c30: 78 187 207;
+$aqua-c25: 103 202 219;
+$aqua-c20: 131 211 229;
+$aqua-c15: 167 223 235;
+$aqua-c10: 203 237 242;
+$aqua-c5: 227 247 250;
+//Turquoise
+$turquoise-c70: 5 66 64;
+$turquoise-c65: 13 79 76;
+$turquoise-c60: 16 99 97;
+$turquoise-c55: 17 115 112;
+$turquoise-c50: 18 130 122;
+$turquoise-c45: 20 150 144;
+$turquoise-c40: 20 166 158;
+$turquoise-c35: 46 184 172;
+$turquoise-c30: 77 196 182;
+$turquoise-c25: 105 209 197;
+$turquoise-c20: 137 217 205;
+$turquoise-c15: 172 227 218;
+$turquoise-c10: 203 242 234;
+$turquoise-c5: 227 250 245;
+//Green
+$green-c70: 12 66 7;
+$green-c65: 20 84 10;
+$green-c60: 21 102 12;
+$green-c55: 25 120 17;
+$green-c50: 47 135 23;
+$green-c45: 62 150 26;
+$green-c40: 80 168 42;
+$green-c35: 103 181 67;
+$green-c30: 121 199 86;
+$green-c25: 145 219 105;
+$green-c20: 162 224 128;
+$green-c15: 182 237 149;
+$green-c10: 216 247 198;
+$green-c5: 235 250 225;
+//Apple
+$apple-c70: 42 64 10;
+$apple-c65: 55 79 13;
+$apple-c60: 66 97 14;
+$apple-c55: 82 115 16;
+$apple-c50: 92 130 17;
+$apple-c45: 114 150 23;
+$apple-c40: 125 161 27;
+$apple-c35: 155 186 61;
+$apple-c30: 171 201 81;
+$apple-c25: 186 214 103;
+$apple-c20: 200 227 120;
+$apple-c15: 216 237 154;
+$apple-c10: 230 245 181;
+$apple-c5: 242 250 217;
+
+//Gray
+$gray-c70: 45 45 45;
+$gray-c65: 66 66 66;
+$gray-c60: 86 87 87;
+$gray-c55: 93 95 95;
+$gray-c50: 106 109 109;
+$gray-c45: 127 130 130;
+$gray-c40: 137 141 141;
+$gray-c35: 160 162 162;
+$gray-c30: 178 178 178;
+$gray-c25: 191 192 192;
+$gray-c20: 203 205 207;
+$gray-c15: 220 220 220;
+$gray-c10: 237 237 237;
+$gray-c5: 247 247 248;
+//Cool Gray
+$cool-gray-c70: 61 63 63;
+$cool-gray-c65: 76 78 80;
+$cool-gray-c60: 84 88 90;
+$cool-gray-c55: 98 103 107;
+$cool-gray-c50: 111 117 122;
+$cool-gray-c45: 124 131 136;
+$cool-gray-c40: 137 145 150;
+$cool-gray-c35: 152 159 163;
+$cool-gray-c30: 166 173 177;
+$cool-gray-c25: 179 186 189;
+$cool-gray-c20: 192 198 200;
+$cool-gray-c15: 213 218 220;
+$cool-gray-c10: 232 236 237;
+$cool-gray-c5: 244 244 244;
+//Warm Gray
+$warm-gray-c70: 60 53 48;
+$warm-gray-c65: 76 69 65;
+$warm-gray-c60: 91 83 79;
+$warm-gray-c55: 107 97 92;
+$warm-gray-c50: 127 114 107;
+$warm-gray-c45: 141 127 118;
+$warm-gray-c40: 155 139 129;
+$warm-gray-c35: 166 153 144;
+$warm-gray-c30: 178 167 159;
+$warm-gray-c25: 189 179 172;
+$warm-gray-c20: 206 196 191;
+$warm-gray-c15: 222 214 209;
+$warm-gray-c10: 239 236 234;
+$warm-gray-c5: 247 245 242;
+
+// MUTED PALETTE
+
+//Yellow
+$yellow-m70: 72 52 0;
+$yellow-m65: 93 72 9;
+$yellow-m60: 104 83 14;
+$yellow-m55: 120 95 12;
+$yellow-m50: 142 112 11;
+$yellow-m45: 156 124 19;
+$yellow-m40: 179 143 25;
+$yellow-m35: 215 172 29;
+$yellow-m30: 226 188 65;
+$yellow-m25: 237 208 102;
+$yellow-m20: 240 216 131;
+$yellow-m15: 243 224 161;
+$yellow-m10: 242 232 189;
+$yellow-m5: 247 242 217;
+//Golden
+$golden-m70: 77 40 0;
+$golden-m65: 100 56 7;
+$golden-m60: 117 69 15;
+$golden-m55: 135 86 25;
+$golden-m50: 150 97 30;
+$golden-m45: 167 116 37;
+$golden-m40: 185 133 46;
+$golden-m35: 204 151 55;
+$golden-m30: 217 169 72;
+$golden-m25: 224 184 105;
+$golden-m20: 229 196 135;
+$golden-m15: 235 207 163;
+$golden-m10: 243 223 189;
+$golden-m5: 245 233 215;
+//Orange
+$orange-m70: 81 16 0;
+$orange-m65: 110 47 0;
+$orange-m60: 130 58 1;
+$orange-m55: 153 68 6;
+$orange-m50: 170 82 15;
+$orange-m45: 190 94 20;
+$orange-m40: 201 108 33;
+$orange-m35: 218 123 54;
+$orange-m30: 225 138 70;
+$orange-m25: 231 155 98;
+$orange-m20: 235 174 128;
+$orange-m15: 240 195 155;
+$orange-m10: 245 214 189;
+$orange-m5: 247 229 214;
+//Red
+$red-m70: 85 2 17;
+$red-m65: 118 4 32;
+$red-m60: 144 7 38;
+$red-m55: 166 13 45;
+$red-m50: 181 17 50;
+$red-m45: 192 35 59;
+$red-m40: 209 56 77;
+$red-m35: 225 74 82;
+$red-m30: 231 97 94;
+$red-m25: 232 120 119;
+$red-m20: 235 148 144;
+$red-m15: 236 179 174;
+$red-m10: 243 206 201;
+$red-m5: 243 221 218;
+//Cerise
+$cerise-m70: 86 2 47;
+$cerise-m65: 107 0 60;
+$cerise-m60: 130 0 74;
+$cerise-m55: 146 3 87;
+$cerise-m50: 159 5 96;
+$cerise-m45: 172 29 110;
+$cerise-m40: 189 51 129;
+$cerise-m35: 198 75 146;
+$cerise-m30: 211 99 159;
+$cerise-m25: 220 121 171;
+$cerise-m20: 233 147 184;
+$cerise-m15: 238 179 205;
+$cerise-m10: 244 206 224;
+$cerise-m5: 246 224 233;
+//Purple
+$purple-m70: 55 5 87;
+$purple-m65: 73 29 105;
+$purple-m60: 82 40 113;
+$purple-m55: 97 47 124;
+$purple-m50: 108 56 131;
+$purple-m45: 119 65 141;
+$purple-m40: 132 84 159;
+$purple-m35: 139 103 168;
+$purple-m30: 154 121 179;
+$purple-m25: 168 141 188;
+$purple-m20: 182 159 199;
+$purple-m15: 200 182 213;
+$purple-m10: 212 204 225;
+$purple-m5: 230 224 236;
+//Blue
+$blue-m70: 3 38 92;
+$blue-m65: 10 51 107;
+$blue-m60: 23 66 123;
+$blue-m55: 25 79 137;
+$blue-m50: 40 90 146;
+$blue-m45: 57 100 155;
+$blue-m40: 73 119 172;
+$blue-m35: 98 132 180;
+$blue-m30: 116 148 195;
+$blue-m25: 132 161 204;
+$blue-m20: 152 174 212;
+$blue-m15: 177 195 223;
+$blue-m10: 204 214 233;
+$blue-m5: 222 228 242;
+//Aqua
+$aqua-m70: 0 54 72;
+$aqua-m65: 0 67 86;
+$aqua-m60: 5 82 105;
+$aqua-m55: 6 93 120;
+$aqua-m50: 22 104 130;
+$aqua-m45: 30 115 141;
+$aqua-m40: 32 133 160;
+$aqua-m35: 57 150 177;
+$aqua-m30: 84 162 190;
+$aqua-m25: 112 176 200;
+$aqua-m20: 134 192 212;
+$aqua-m15: 160 204 223;
+$aqua-m10: 190 224 240;
+$aqua-m5: 214 234 246;
+//Turquoise
+$turquoise-m70: 0 61 51;
+$turquoise-m65: 1 72 65;
+$turquoise-m60: 5 90 82;
+$turquoise-m55: 14 104 95;
+$turquoise-m50: 25 116 107;
+$turquoise-m45: 32 130 124;
+$turquoise-m40: 48 146 140;
+$turquoise-m35: 67 159 151;
+$turquoise-m30: 91 173 164;
+$turquoise-m25: 119 185 175;
+$turquoise-m20: 137 198 189;
+$turquoise-m15: 164 210 201;
+$turquoise-m10: 195 224 219;
+$turquoise-m5: 220 236 236;
+//Green
+$green-m70: 0 62 34;
+$green-m65: 2 77 45;
+$green-m60: 9 92 56;
+$green-m55: 19 108 65;
+$green-m50: 36 121 78;
+$green-m45: 47 132 89;
+$green-m40: 64 149 102;
+$green-m35: 82 161 117;
+$green-m30: 103 176 133;
+$green-m25: 122 188 146;
+$green-m20: 146 199 164;
+$green-m15: 171 212 184;
+$green-m10: 198 225 206;
+$green-m5: 221 235 226;
+//Apple
+$apple-m70: 24 61 21;
+$apple-m65: 34 81 31;
+$apple-m60: 48 89 34;
+$apple-m55: 65 108 45;
+$apple-m50: 76 119 50;
+$apple-m45: 96 138 65;
+$apple-m40: 109 149 79;
+$apple-m35: 122 164 94;
+$apple-m30: 140 176 108;
+$apple-m25: 153 187 123;
+$apple-m20: 169 200 147;
+$apple-m15: 187 212 163;
+$apple-m10: 208 225 193;
+$apple-m5: 224 235 218;
+
+// SATURATED PALETTE
+
+//Yellow
+$yellow-s10: 255 251 179;
+$yellow-s15: 255 248 117;
+$yellow-s20: 255 242 0;
+$yellow-s25: 242 229 0;
+$yellow-s30: 222 207 0;
+$yellow-s35: 193 179 0;
+$yellow-s40: 158 148 0;
+$yellow-s45: 144 132 0;
+$yellow-s50: 129 118 0;
+//Golden
+$golden-s10: 255 229 173;
+$golden-s15: 255 215 127;
+$golden-s20: 255 200 73;
+$golden-s25: 255 187 0;
+$golden-s30: 240 173 0;
+$golden-s35: 218 155 0;
+$golden-s40: 199 136 0;
+$golden-s45: 181 115 0;
+$golden-s50: 163 103 0;
+//Orange
+$orange-s10: 255 224 199;
+$orange-s15: 255 198 158;
+$orange-s20: 255 171 109;
+$orange-s25: 255 148 69;
+$orange-s30: 255 132 32;
+$orange-s35: 255 120 11;
+$orange-s40: 238 107 0;
+$orange-s45: 221 96 3;
+$orange-s50: 194 84 0;
+//Red
+$red-s10: 255 230 230;
+$red-s15: 255 204 204;
+$red-s20: 255 171 171;
+$red-s25: 255 144 144;
+$red-s30: 255 119 119;
+$red-s35: 255 88 88;
+$red-s40: 255 51 51;
+$red-s45: 248 8 0;
+$red-s50: 235 0 0;
+//Cerise
+$cerise-s10: 255 230 245;
+$cerise-s15: 255 204 235;
+$cerise-s20: 255 166 219;
+$cerise-s25: 255 146 211;
+$cerise-s30: 255 117 200;
+$cerise-s35: 255 85 187;
+$cerise-s40: 255 46 171;
+$cerise-s45: 242 0 172;
+$cerise-s50: 224 0 151;
+//Purple
+$purple-s10: 244 230 255;
+$purple-s15: 235 209 255;
+$purple-s20: 222 179 255;
+$purple-s25: 214 160 255;
+$purple-s30: 203 136 255;
+$purple-s35: 194 108 255;
+$purple-s40: 185 93 255;
+$purple-s45: 175 70 255;
+$purple-s50: 167 51 255;
+//Blue
+$blue-s10: 230 240 255;
+$blue-s15: 209 228 255;
+$blue-s20: 179 210 255;
+$blue-s25: 153 196 255;
+$blue-s30: 115 173 255;
+$blue-s35: 82 154 255;
+$blue-s40: 51 136 255;
+$blue-s45: 20 118 255;
+$blue-s50: 0 106 255;
+//Aqua
+$aqua-s10: 217 249 255;
+$aqua-s15: 179 242 255;
+$aqua-s20: 130 234 255;
+$aqua-s25: 75 219 247;
+$aqua-s30: 35 195 235;
+$aqua-s35: 0 174 222;
+$aqua-s40: 0 157 209;
+$aqua-s45: 0 138 198;
+$aqua-s50: 0 125 179;
+//Turquoise
+$turquoise-s10: 217 255 246;
+$turquoise-s15: 181 255 242;
+$turquoise-s20: 133 255 235;
+$turquoise-s25: 18 243 224;
+$turquoise-s30: 0 215 207;
+$turquoise-s35: 0 196 195;
+$turquoise-s40: 0 163 163;
+$turquoise-s45: 0 147 147;
+$turquoise-s50: 0 128 128;
+//Green
+$green-s10: 225 250 225;
+$green-s15: 191 255 191;
+$green-s20: 153 255 153;
+$green-s25: 109 242 109;
+$green-s30: 69 229 69;
+$green-s35: 0 204 0;
+$green-s40: 0 173 0;
+$green-s45: 0 158 0;
+$green-s50: 0 138 0;
+//Apple
+$apple-s10: 236 255 192;
+$apple-s15: 220 255 161;
+$apple-s20: 202 255 89;
+$apple-s25: 177 236 0;
+$apple-s30: 160 214 0;
+$apple-s35: 138 184 0;
+$apple-s40: 119 158 0;
+$apple-s45: 105 140 0;
+$apple-s50: 96 128 0;
+
+@function color-code($shade, $opacity: 1) {
+  @return rgba(nth($shade, 1), nth($shade, 2), nth($shade, 3), $opacity);
+}
+//Text Colors
+$text-dark: color-code($gray-c70);
+$text-medium: color-code($gray-c50);
+$text-color: $text-dark;
+$text-white: #fff;
+//Brand Colors
+$hmh-golden: #f2a900;
+$hmh-dark-gray: color-code($cool-gray-c60);
+$hmh-light-gray: color-code($cool-gray-c40);
+
+// Action Buttons defaults
+$action-transparent: transparent;
+$action-xxlight: white;
+$action-xlight: color-code($blue-c10);
+$action-light: color-code($blue-c15);
+$action-mid: color-code($blue-c50);
+$action-dark: color-code($blue-c55);
+$action-xdark: color-code($blue-c60);
+$action-mid-small: color-code($blue-c50);
+$action-dark-small: color-code($blue-c55);
+$action-xdark-small: color-code($blue-c60);
+$link-color: $action-dark;
+
+// Tool Buttons defaults
+$tool-transparent: transparent;
+$tool-xxlight: white;
+$tool-xlight: color-code($gray-c10);
+$tool-light: color-code($gray-c15);
+$tool-mid: color-code($gray-c50);
+$tool-xdark: color-code($gray-c70);
+
+// Feedback colours
+$feedback-green: #008000;
+$feedback-red: #e60000;

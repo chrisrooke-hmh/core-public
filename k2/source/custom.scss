@@ -1,0 +1,533 @@
+@import "custom/grades/grade_23";
+@import "source/variables";
+@import "source/colors";
+@import "source/mixins";
+@import "source/_functions";
+@import "source/icons/icon-map";
+@import "source/_icons";
+
+/* NOTES 
+- focus state disabled in Source.css
+- margin l/r removed in source.css
+*/
+
+
+:root {
+    // Colors
+    --focus: #{color-code($cerise-s40)};
+    --shadow-r: #{nth($cool-gray-c65, 1)};
+    --shadow-g: #{nth($cool-gray-c65, 2)};
+    --shadow-b: #{nth($cool-gray-c65, 3)};
+    --shadow-light: rgba(var(--shadow-r), var(--shadow-g), var(--shadow-b), .15);
+    --shadow-dark: rgba(var(--shadow-r), var(--shadow-g), var(--shadow-b), .25);
+
+    --slate-dark: #39649B;
+    --slate-medium: #5497C9;
+    --slate-light: #B0CFE6;
+    --slate-accent: #E4EDF7;
+
+    --blue-dark: #2461B5;
+    --blue-medium: #{color-code($blue-s40)};
+    --blue-light: #A1C8FF;
+    --blue-accent: #BAF1FB;
+
+    --green-dark: #007B00;
+    --green-medium: #{color-code($green-s40)};
+    --green-light: #8AD98A;
+    --green-accent: #D2F7AE;
+
+    --gray-dark: #5A5C5C;
+    --gray-medium: #{color-code($gray-c45)};
+    --gray-light: #C4C6C6;
+    --gray-accent: #D2F7AE;
+
+    --golden-dark: #E49929;
+    --golden-medium: #{color-code($golden-s30)};
+    --golden-light: #FFD601;
+
+    // Borders
+    --border-xs: 0 0 0 .0625rem var(--shadow-light);
+    --border-sm: 0 0 0 .125rem var(--shadow-light);
+    --border-md: 0 0 0 .1825rem var(--shadow-light);
+    --border-lg: 0 0 0 .25rem var(--shadow-light);
+    --border-xl: 0 0 0 .3125rem var(--shadow-light);
+
+    // Default States
+    --default-xs: 0 0 0 .0625rem var(--shadow-light), 0 .125rem 0 0 var(--shadow-dark);
+    --default-sm: 0 0 0 .125rem var(--shadow-light,), 0 .25rem 0 0 var(--shadow-dark);
+    --default-md: 0 0 0 .1825rem var(--shadow-light), 0 .375rem 0 0 var(--shadow-dark);
+    --default-lg: 0 0 0 .25rem var(--shadow-light), 0 .5rem 0 0 var(--shadow-dark);
+    --default-xl: 0 0 0 .3125rem var(--shadow-light), 0 .625rem 0 0 var(--shadow-dark);
+
+    // Focus States
+    --focus-xs: 0 0 0 .0625rem var(--focus), 0 .125rem 0 0 var(--focus);
+    --focus-sm: 0 0 0 .125rem var(--focus), 0 .25rem 0 0 var(--focus);
+    --focus-md: 0 0 0 .1825rem var(--focus), 0 .375rem 0 0 var(--focus);
+    --focus-lg: 0 0 0 .25rem var(--focus), 0 .5rem 0 0 var(--focus);
+    --focus-xl: 0 0 0 .3125rem var(--focus), 0 .625rem 0 0 var(--focus);
+    
+    // Hover States
+    --hover-xs: 0 0 0 .0625rem var(--shadow-light), 0 .375rem 0 0 var(--shadow-dark);
+    --hover-sm: 0 0 0 .125rem var(--shadow-light), 0 .5rem 0 0 var(--shadow-dark);
+    --hover-md: 0 0 0 .1825rem var(--shadow-light), 0 .625rem 0 0 var(--shadow-dark);
+    --hover-lg: 0 0 0 .25rem var(--shadow-light), 0 .75rem 0 0 var(--shadow-dark);
+    --hover-xl: 0 0 0 .3125rem var(--shadow-light), 0 .875rem 0 0 var(--shadow-dark);
+    
+    // Inset Shadows
+    --inset-down-xs: inset 0 -.125rem 0 0 var(--shadow-light);
+    --inset-down-sm: inset 0 -.25rem 0 0 var(--shadow-light);
+    --inset-down-md: inset 0 -.375rem 0 0 var(--shadow-light);
+    --inset-down-lg: inset 0 -.5rem 0 0 var(--shadow-light);
+    --inset-down-xl: inset 0 -.625rem 0 0 var(--shadow-light);
+    --inset-up-xs: inset 0 .125rem 0 0 var(--shadow-light);
+    --inset-up-sm: inset 0 .25rem 0 0 var(--shadow-light);
+    --inset-up-md: inset 0 .375rem 0 0 var(--shadow-light);
+    --inset-up-lg: inset 0 .5rem 0 0 var(--shadow-light);
+    --inset-up-xl: inset 0 .625rem 0 0 var(--shadow-light);
+}
+
+@font-face {
+    font-family: "Avenir Primary";
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("fonts/avenirprimaryhmh.otf");
+}
+
+@font-face {
+    font-family: "Avenir Primary";
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("fonts/avenirprimaryhmh-bold.otf");
+}
+
+*, label {
+    font-family: "Avenir Primary", sans-serif;
+}
+
+body {
+    align-items: center;
+    grid-gap: var(--base-lheight);
+}
+  
+div {
+    width: 100%;
+    aspect-ratio: 1;
+    // margin-top: 30px;
+    border-radius: 30px;
+    grid-column: span 2;
+
+    &:nth-of-type(5n + 1) {
+        grid-column: 2 / span 2;
+    }
+}
+
+button {
+    // margin-top: 30px;
+    grid-column: span 3;
+
+    &:nth-of-type(3n + 1) {
+        grid-column: 2 / span 3;
+    }
+}
+
+input[type=text] {
+    grid-column: span 2;
+
+    &:nth-of-type(4n + 1) {
+        grid-column: 2 / span 2;
+    }
+}
+
+.border-xs {
+    box-shadow: var(--border-xs)
+}
+
+.border-sm {
+    box-shadow: var(--border-sm)
+}
+
+.border-md {
+    box-shadow: var(--border-md)
+}
+
+.border-lg {
+    box-shadow: var(--border-lg)
+}
+
+.border-xl {
+    box-shadow: var(--border-xl)
+}
+
+.default-xs {
+    box-shadow: var(--default-xs)
+}
+
+.default-sm {
+    box-shadow: var(--default-sm)
+}
+
+.default-md {
+    box-shadow: var(--default-md)
+}
+
+.default-lg {
+    box-shadow: var(--default-lg)
+}
+
+.default-xl {
+    box-shadow: var(--default-xl)
+}
+
+.hover-xs {
+    box-shadow: var(--hover-xs)
+}
+
+.hover-sm {
+    box-shadow: var(--hover-sm)
+}
+
+.hover-md {
+    box-shadow: var(--hover-md)
+}
+
+.hover-lg {
+    box-shadow: var(--hover-lg)
+}
+
+.hover-xl {
+    box-shadow: var(--hover-xl)
+}
+
+.focus-xs {
+    box-shadow: var(--focus-xs)
+}
+
+.focus-sm {
+    box-shadow: var(--focus-sm)
+}
+
+.focus-md {
+    box-shadow: var(--focus-md)
+}
+
+.focus-lg {
+    box-shadow: var(--focus-lg)
+}
+
+.focus-xl {
+    box-shadow: var(--focus-xl)
+}
+
+.inset-up-xs {
+    box-shadow: var(--inset-up-xs)
+}
+
+.inset-up-sm {
+    box-shadow: var(--inset-up-sm)
+}
+
+.inset-up-md {
+    box-shadow: var(--inset-up-md)
+}
+
+.inset-up-lg {
+    box-shadow: var(--inset-up-lg)
+}
+
+.inset-up-xl {
+    box-shadow: var(--inset-up-xl)
+}
+
+.inset-down-xs {
+    box-shadow: var(--inset-down-xs)
+}
+
+.inset-down-sm {
+    box-shadow: var(--inset-down-sm)
+}
+
+.inset-down-md {
+    box-shadow: var(--inset-down-md)
+}
+
+.inset-down-lg {
+    box-shadow: var(--inset-down-lg)
+}
+
+.inset-down-xl {
+    box-shadow: var(--inset-down-xl)
+}
+
+form {
+    align-self: start;
+}
+form.sm {
+    grid-column: 1 / span 1;
+    max-width: 64px;
+}
+
+form.md {
+    grid-column: 2 / span 3;
+    max-width: 190px;
+}
+
+form.lg {
+    grid-column: 5 / span 3;
+    max-width: 280px;
+}
+form.xl {
+    grid-column: 8 / span 5;
+    max-width: 430px;
+}
+
+
+button {
+    min-height: 5rem;
+    border-radius: 2.5rem;
+    // background: white;
+    width: fit-content;
+    border: .5rem solid white;
+    box-shadow: var(--border-sm), var(--inset-down-sm);
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    @include para-size($body-md);
+    background-color: var(--blue-medium);
+    background-image: url('images/shine.svg');
+    background-position: calc(100% - 10px) 10px;
+    background-repeat: no-repeat;
+    font-weight: 700;
+    color: white;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        box-shadow: var(--hover-md), var(--inset-down-sm);
+        transform: scale(1.15);
+    }
+
+    &:focus-visible {
+        box-shadow: var(--focus-sm), var(--inset-down-sm);
+        outline: none;
+    }
+
+    &.active {
+        background-color: var(--blue-dark);
+    }
+
+    &.correct {
+        background-color: var(--slate-light);
+        color: var(--slate-dark);
+    }
+
+    &.icon-text {
+        padding: .75rem 1.5rem .75rem .75rem;
+
+        img {
+            display: block;
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-right: .75rem;
+        }
+    }
+
+    &.icon-only {
+        width: 5rem;
+            padding: .75rem;
+
+        img {
+            display: block;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    }
+}
+
+input[type=text] {
+    --bg-color: var(--blue-accent);
+    --border-color: var(--blue-medium);
+    min-height: 4.625rem;
+    border-radius: 1.5rem;
+    border: 0;
+    background: var(--bg-color);
+    border: .5rem solid white;
+    box-shadow: var(--border-sm), inset 0 0 0 .25rem var(--border-color), var(--inset-up-lg);
+    padding: 0 1rem;
+    @include para-size($body-md);
+    font-weight: 700;
+    position: relative;
+
+    &:hover:not([disabled]) {
+        box-shadow: var(--hover-md), inset 0 0 0 .25rem var(--border-color), var(--inset-up-lg);
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        background: white;
+    }
+
+    &:focus-visible {
+        box-shadow: var(--focus-sm), inset 0 0 0 .25rem var(--border-color), var(--inset-up-lg);
+        outline: none;
+    }
+    
+    &[disabled] {
+        --bg-color: var(--slate-accent);
+        --border-color: var(--slate-light);
+        color: var(--gray-medium);
+        cursor: not-allowed;
+    }
+    
+    &.correct {
+        --bg-color: var(--green-accent);
+        --border-color: var(--green-medium);
+        color: black;
+    }
+    &.incorrect {
+        --bg-color: var(--slate-accent);
+        --border-color: var(--slate-medium);
+        color: black;
+    }
+}
+
+input[type=radio], input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+
+    + label {
+        --bg-color: var(--blue-accent);
+        --border-color: white;
+        --outer-shadow: var(--default-sm);
+        display: block;
+        min-height: 4rem;
+        @include para-size($body-md);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        margin-top: var(--half-lheight);
+        cursor: pointer;
+        position: relative;
+
+        &:not(:has(img)) {
+            width: fit-content;
+            padding: .625rem solid white;
+            border-radius: 1.25rem;
+            background: var(--bg-color);
+            box-shadow: var(--outer-shadow), inset 0 0 0 .375rem white, inset 0 0 0 .625rem var(--border-color);
+            padding: 0 3rem;
+        }
+
+        &:has(img) {
+            container-type: inline-size;
+        }
+
+        img {
+            border-radius: 1.25rem;
+            padding: .6875rem;
+            background-color: white;
+            box-shadow: var(--outer-shadow), inset 0 0 0 .375rem white, inset 0 0 0 .625rem var(--border-color);
+
+            @container (min-width: 190px) {
+                --outer-shadow: var(--default-md);
+                border-radius: 2rem;
+                padding: .875rem;
+                box-shadow: var(--outer-shadow), inset 0 0 0 .375rem white, inset 0 0 0 .75rem var(--border-color);
+            }
+            @container (min-width: 280px) {
+                --outer-shadow: var(--default-lg);
+                border-radius: 2.5rem;
+                padding: 1.1875rem;
+                box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white, inset 0 0 0 1rem var(--border-color);
+            }
+            @container (min-width: 430px) {
+                --outer-shadow: var(--default-xl);
+                border-radius: 3rem;
+                padding: 1.5rem;
+                box-shadow: var(--outer-shadow), inset 0 0 0 .625rem white, inset 0 0 0 1.25rem var(--border-color);
+            }
+        }
+    }
+    
+
+    &:focus-visible {
+        + label {
+            --outer-shadow: var(--focus-sm);
+
+            img {
+                @container (min-width: 190px) {
+                    --outer-shadow: var(--focus-md);
+                }    
+                @container (min-width: 280px) {
+                    --outer-shadow: var(--focus-lg);
+                }    
+                @container (min-width: 430px) {
+                    --outer-shadow: var(--focus-xl);
+                }    
+            }
+            
+        }
+    }
+
+    &:checked {
+        + label {
+            --bg-color: var(--white-accent);
+            --border-color: var(--blue-medium);
+        }
+    }
+
+    &:not([disabled]):hover {
+        + label {
+            --outer-shadow: var(--hover-sm);
+            &:not(:has(img)) {
+                transform: scale(1.05);   
+            } 
+
+            img {
+                transform: scale(1.15);
+
+                @container (min-width: 190px) {
+                    transform: scale(1.1);
+                    --outer-shadow: var(--hover-md);
+                }    
+                @container (min-width: 280px) {
+                    transform: scale(1.05);
+                    --outer-shadow: var(--hover-lg);
+                }    
+                @container (min-width: 430px) {
+                    transform: scale(1.02);
+                    --outer-shadow: var(--hover-xl);
+                }    
+
+            }
+        }
+    }
+
+    &[disabled] {
+        + label {
+            --bg-color: var(--slate-accent);
+            --border-color: var(--slate-light);
+            color: var(--gray-medium);
+            cursor: not-allowed;
+        }
+    }
+
+    &.correct {
+        + label {
+            --bg-color: var(--green-accent);
+            --border-color: var(--green-medium);
+            color: black;
+        }
+    }
+
+    &.incorrect {
+        + label {
+            --bg-color: var(--slate-accent);
+            --border-color: var(--slate-medium);
+            color: black;
+        }
+    }
+   
+}

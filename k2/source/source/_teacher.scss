@@ -1,0 +1,227 @@
+/*
+Teacher Notes
+*/
+
+.s9-in-editor [data-ink-edition-labels="teacher"].default::before {
+  content: "Teacher Content";
+  display: block;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 0.8rem;
+  top: -10px;
+  padding: 0.5em;
+  -webkit-border-bottom-right-radius: 10px 10px;
+  color: white;
+}
+
+.s9-in-editor [data-ink-edition-labels="teacher"].default::before {
+  background: #6a6d6d;
+}
+
+.s9-in-editor [data-ink-edition-labels="teacher"].default {
+  border: 1px dashed #6a6d6d;
+}
+div.default .teacher-standard {
+  border: 1px solid #6a6d6d;
+}
+.s9-in-editor [data-ink-edition-labels="teacher"].default [property] {
+  border-bottom: 1px dotted #6a6d6d;
+}
+
+.s9-in-editor [data-ink-edition-labels="teacher"] {
+  visibility: visible;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.s9-in-editor [data-ink-edition-labels="teacher"].hmh-edition-meta {
+  background: none;
+}
+
+.s9-in-editor
+  [data-ink-edition-labels="teacher"].hmh-edition-meta
+  [property]::before {
+  display: inline-block;
+  content: attr(property);
+  float: left;
+  font-size: 0.8em;
+  margin-right: 1em;
+  text-transform: uppercase;
+  text-align: left;
+  color: #999999;
+  vertical-align: middle;
+}
+
+.s9-in-editor [data-ink-edition-labels="teacher"].hmh-edition-meta [property] {
+  text-align: left;
+  width: 100%;
+  /* font-size: 1em; */
+  font-size: 15px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+.s9-in-editor [data-ink-edition-labels="teacher"].hmh-edition-meta {
+  display: block !important;
+  max-width: 500px;
+  min-height: 250px;
+  height: 100%;
+  padding: 10px;
+  margin: 20px;
+}
+.s9-in-editor figure.teacher-image img {
+  max-width: 100%;
+}
+
+[data-inkling-editions="teacher"] .hmh-edition-meta {
+  visibility: visible;
+  border: 1px dashed #6a6d6d;
+}
+
+[data-inkling-editions="teacher"].hmh-edition-meta {
+  content: "Teacher Annotation";
+  display: block;
+  width: 150px;
+  font-size: 0.6rem;
+  font-style: italic;
+  top: -10px;
+  padding: 0.5em;
+  background: #6a6d6d;
+  color: white;
+}
+
+/* TEACHER NOTE STYLES */
+
+/* TN text patterns */
+
+.teacher-note {
+  grid-column-start: 2;
+  grid-column-end: span 12;
+
+  @include respond-md {
+    grid-column-start: 3;
+    grid-column-end: span 10;
+  }
+  @include respond-lg {
+    grid-column-start: 4;
+    grid-column-end: span 8;
+  }
+  @include respond-xl {
+    grid-column-start: 5;
+    grid-column-end: span 6;
+  }
+}
+.teacher-note h1.tn-header,
+h2.tn-subheader,
+h3.tn-small-header,
+p.tn-paragraph,
+p.tn-ancillary,
+p.tn-answer,
+.hmh-meta,
+.tn-standard,
+.teacher-note ul > li,
+.teacher-note ol > li {
+  font-family: tahoma, sans-serif;
+  color: #4c4e50;
+  font-weight: 400;
+  margin: 10px 0 0 0;
+  line-height: 1.5;
+}
+
+/* Pattern name:  TN: Header */
+.teacher-note h1.tn-header {
+  font-size: 26px;
+}
+/* Pattern name:  TN: Subheader */
+.teacher-note h2.tn-subheader {
+  font-size: 21px;
+}
+/* Pattern name:  TN: Small Header */
+.teacher-note h3.tn-small-header {
+  font-size: 18px;
+}
+/* Pattern name: TN: Paragraph */
+.teacher-note p.tn-paragraph,
+.hmh-meta {
+  font-size: 15px;
+  margin: 5px 0 0 0;
+}
+
+.teacher-note ul,
+.teacher-note ol {
+  font-size: 15px;
+}
+/* Pattern name: Teacher Anciliary Info */
+.teacher-note .tn-ancillary {
+  /*or use <small> or some other class name */
+  font-size: 12px;
+}
+
+/* Pattern name: Teacher Answer */
+.teacher-note .tn-answer {
+  color: #378500;
+}
+
+.teacher-note .tn-standard,
+.hmh-meta {
+  font-size: 15px;
+  margin: 15px 0 0 0;
+  padding: 0;
+  background: unset;
+}
+
+/* This next is a pattern using ete-run-in as a span class within a h1. 
+/* Pattern name: Teacher Run-in and Header */
+/* ie <h1 data-uuid="64272e0264f744eda580bf73dc28e6a6"><span class="ete-run-in">Run in head</span>Main Header</h1>*/
+.teacher-note .tn-run-in {
+  font-family: Palatino, serif;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+img.tn-icon {
+  width: auto;
+  max-width: 200px;
+}
+
+.hmh-pou-meta [property]:before {
+  display: inline-block;
+  content: attr(property);
+  float: left;
+  font-size: 15px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  text-transform: uppercase;
+  text-align: left;
+  width: 33%;
+  color: #999999;
+  vertical-align: middle;
+}
+
+.hmh-pou-meta [property] {
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px dotted #333333;
+  font-size: 15px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+.hmh-pou-meta h4 {
+  font-size: 15px;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  clear: both;
+  display: block;
+}
+
+.hmh-meta {
+  display: block !important;
+}
+
+[property="hmh:title"]::before {
+  float: none !important;
+  display: block !important;
+}

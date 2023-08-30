@@ -1,0 +1,42 @@
+//--------------------------------------------------------------------
+// Typography and Rhythm
+//--------------------------------------------------------------------
+
+@function space($multiple: 1, $context: $base-font-size) {
+  @return em($base-line-height * $multiple, $context);
+}
+
+//--------------------------------------------------------------------
+// Unit transformations
+//--------------------------------------------------------------------
+
+// Convert a value to ems base on its contextual font-size. If no
+// context is defined, the base font size is assumed.
+
+// Strip the units from a number.
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+// Convert a value to ems base on its contextual font-size. If no
+// context is defined, the base font size is assumed.
+@function em($target, $context: $base-font-size) {
+  @return (strip-units($target) / strip-units($context)) + 0em;
+}
+
+@function em($target, $context: $base-font-size) {
+  @return (strip-units($target) / strip-units($context)) + 0em;
+}
+
+//--------------------------------------------------------------------
+// String Replacement
+//--------------------------------------------------------------------
+
+// Replace `$search` with `$replace` in `$string`
+// author Kitty Giraudel, https://css-tricks.com/snippets/sass/str-replace-function/
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search); 
+  @return if($index, 
+      str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace), $string); 
+} 
