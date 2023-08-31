@@ -79,7 +79,7 @@
   font-stretch: normal;
   src: url("fonts/avenirprimaryhmh-bold.otf");
 }
-*, label {
+*, label, option {
   font-family: "Avenir Primary", sans-serif;
   transition: all 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
@@ -263,7 +263,6 @@ button {
   width: fit-content;
   border: 0.5rem solid white;
   box-shadow: var(--border-sm), var(--inset-down-sm);
-  padding: 0;
   cursor: pointer;
   position: relative;
   font-size: 1.375rem;
@@ -329,7 +328,6 @@ input[type=text] {
   --border-color: var(--blue-medium);
   min-height: 4.625rem;
   border-radius: 1.5rem;
-  border: 0;
   background: var(--bg-color);
   border: 0.5rem solid white;
   box-shadow: var(--border-sm), inset 0 0 0 0.25rem var(--border-color), var(--inset-up-lg);
@@ -515,6 +513,55 @@ input[type=radio].incorrect + label, input[type=checkbox].incorrect + label {
   --bg-color: var(--slate-accent);
   --border-color: var(--slate-medium);
   color: black;
+}
+
+select {
+  --border-color: var(--blue-medium);
+  width: fit-content;
+  min-height: 4.625rem;
+  box-shadow: var(--border-sm), inset 0 0 0 0.25rem var(--border-color), var(--inset-up-lg);
+  border: 0.5rem solid white;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  font-size: 1.375rem;
+  line-height: 2.125rem;
+  padding: 0 4.625rem 0 1rem;
+  appearance: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none'%3E%3Cpath fill='%23fff' d='M7.531 12.169a1.6 1.6 0 0 0-2.263 2.263l9.6 9.6a1.6 1.6 0 0 0 2.263 0l9.6-9.6a1.6 1.6 0 0 0-2.263-2.263L16 20.637 7.53 12.17Z'/%3E%3C/svg%3E"), linear-gradient(90deg, rgba(0, 114, 219, 0) 0%, rgba(0, 114, 219, 0) calc(100% - 3.375rem), var(--border-color) calc(100% - 3.375rem), var(--border-color) 100%);
+  background-size: 2rem 2rem, 100% 100%;
+  background-position: calc(100% - 0.6875rem) center, 100% 100%;
+  background-repeat: no-repeat;
+}
+@media (min-width: 40.625rem) {
+  select {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+}
+@media (min-width: 80rem) {
+  select {
+    font-size: 1.6875rem;
+    line-height: 2.625rem;
+  }
+}
+select:hover {
+  box-shadow: var(--default-sm), inset 0 0 0 0.25rem var(--border-color), var(--inset-up-lg);
+  transform: scale(1.1);
+}
+
+select.v1 {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none'%3E%3Cpath fill='%23fff' d='M7.531 12.169a1.6 1.6 0 0 0-2.263 2.263l9.6 9.6a1.6 1.6 0 0 0 2.263 0l9.6-9.6a1.6 1.6 0 0 0-2.263-2.263L16 20.637 7.53 12.17Z'/%3E%3C/svg%3E"), linear-gradient(90deg, rgba(0, 114, 219, 0) 0%, rgba(0, 114, 219, 0) calc(100% - 3.375rem), var(--border-color) calc(100% - 3.375rem), var(--border-color) 100%);
+  background-size: 2rem 2rem, 100% 100%;
+  background-position: calc(100% - 0.6875rem) center, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+select.v2 {
+  box-shadow: var(--border-sm), inset -3.125rem 0 0 0.25rem var(--border-color), inset 0 0 0 0.25rem var(--border-color), var(--inset-up-lg);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='33' fill='none'%3E%3Cpath fill='%23fff' d='M7.531 12.169a1.6 1.6 0 0 0-2.263 2.263l9.6 9.6a1.6 1.6 0 0 0 2.263 0l9.6-9.6a1.6 1.6 0 0 0-2.263-2.263L16 20.637 7.53 12.17Z'/%3E%3C/svg%3E");
+  background-size: 2rem 2rem;
+  background-position: calc(100% - 0.6875rem) center;
+  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=custom.css.map */
