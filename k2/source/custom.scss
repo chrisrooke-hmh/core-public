@@ -107,7 +107,7 @@
     src: url("fonts/avenirprimaryhmh-bold.otf");
 }
 
-*, label, option {
+*, label {
     font-family: "Avenir Primary", sans-serif;
     transition: all .2s cubic-bezier(0.65, 0, 0.35, 1);
 }
@@ -572,8 +572,8 @@ select.v2 {
     background-size: 2rem 2rem;
     background-position: calc(100% - .6875rem) center;
     background-repeat: no-repeat;
-}
 
-option {
-
+    &:hover {
+        box-shadow: var(--default-sm), inset -3.125rem 0 0 .25rem var(--border-color), inset 0 0 0 .25rem var(--border-color), var(--inset-up-lg);
+    }
 }
