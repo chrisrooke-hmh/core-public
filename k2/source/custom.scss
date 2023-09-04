@@ -129,6 +129,10 @@ div {
     }
 }
 
+figure {
+    grid-column: 2 / span 10;
+}
+
 button {
     // margin-top: 30px;
     grid-column: span 3;
@@ -400,36 +404,137 @@ input[type=text] {
     }
 }
 
+input[type=radio], input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+
+    + label {
+        @include para-size($body-md);
+        --bg-color: var(--blue-accent);
+        --border-color: transparent;
+        --outer-shadow: var(--border-sm);
+        --button-color: var(--blue-medium);
+        display: block;
+        min-height: 4.625rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        margin-top: var(--half-lheight);
+
+        &:not(:has(img)) {
+            background-color: var(--bg-color);
+            width: fit-content;
+            padding: 0 3rem 0 5.125rem;
+            box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white;
+            border-radius: 9999rem;
+        }
+
+        &:before {
+            width: 2.875rem;
+            height: 2.875rem;
+            background: white;
+            position: absolute;
+            top: .875rem;
+            left: .875rem;
+            border-radius: 50%;
+            content: '';
+            box-shadow: var(--default-xs), inset 0 0 0 .25rem white, inset 0 0 0 .5rem var(--button-color);
+            transition: all .2s ease-in-out;
+        }
+
+        &:after {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: var(--button-color);
+            position: absolute;
+            top: 1.5625rem;
+            left: 1.5625rem;
+            border-radius: 50%;
+            content: '';
+            box-shadow: var(--inset-down-xs);
+            opacity: 0;
+            transition: all .2s ease-in-out;
+        }
+    }
+
+    &:not([disabled]):hover {
+        + label {
+            &:before, &:after {
+                transform: scale(1.1);
+            }    
+        }
+    }
+
+    &:checked {
+        + label {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &[disabled] {
+        + label {
+            --bg-color: var(--slate-accent);
+            --border-color: var(--slate-light);
+            --button-color: var(--border-color);
+            color: var(--gray-medium);
+            cursor: not-allowed;
+        }
+    }
+
+    &.correct {
+        + label {
+            --bg-color: var(--green-accent);
+            --border-color: var(--green-medium);
+            color: black;
+        }
+    }
+
+    &.incorrect {
+        + label {
+            --bg-color: var(--slate-accent);
+            --border-color: var(--slate-medium);
+            color: black;
+        }
+    }
+}
+
+input[type=checkbox] {
+    + label {
+        &:not(:has(img)) {
+            border-radius: 1.25rem;
+        }
+
+        &:before {
+            border-radius: .375rem;
+        }
+
+        &:after {
+            border-radius: 0;
+        }
+    }
+}
+
 form.mcq {
     input[type=radio], input[type=checkbox] {
-        position: absolute;
-        opacity: 0;
-    
         + label {
-            --bg-color: var(--blue-accent);
-            --border-color: transparent;
             --outer-shadow: var(--default-sm);
-            display: block;
-            min-height: 4.625rem;
-            @include para-size($body-md);
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            margin-top: var(--half-lheight);
-            cursor: pointer;
-            position: relative;
     
             &:not(:has(img)) {
-                width: fit-content;
-                padding: .625rem solid white;
                 border-radius: 1.25rem;
-                background: var(--bg-color);
-                box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white, inset 0 0 0 .75rem var(--border-color);
                 padding: 0 3rem;
+                box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white, inset 0 0 0 .75rem var(--border-color);
             }
     
             &:has(img) {
                 container-type: inline-size;
+            }
+
+            &:before, &:after {
+                content: unset;
             }
     
             img {
@@ -511,33 +616,7 @@ form.mcq {
     
                 }
             }
-        }
-    
-        &[disabled] {
-            + label {
-                --bg-color: var(--slate-accent);
-                --border-color: var(--slate-light);
-                color: var(--gray-medium);
-                cursor: not-allowed;
-            }
-        }
-    
-        &.correct {
-            + label {
-                --bg-color: var(--green-accent);
-                --border-color: var(--green-medium);
-                color: black;
-            }
-        }
-    
-        &.incorrect {
-            + label {
-                --bg-color: var(--slate-accent);
-                --border-color: var(--slate-medium);
-                color: black;
-            }
-        }
-       
+        }       
     }    
 }
 
