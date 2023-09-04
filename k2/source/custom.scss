@@ -290,6 +290,7 @@ form.xl {
 
 
 button {
+    --content-color: white;
     min-height: 5rem;
     border-radius: 2.5rem;
     // background: white;
@@ -304,7 +305,7 @@ button {
     background-position: calc(100% - 10px) 10px;
     background-repeat: no-repeat;
     font-weight: 700;
-    color: white;
+    color: var(--content-color);
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
@@ -325,17 +326,18 @@ button {
 
     &.correct {
         background-color: var(--slate-light);
-        color: var(--slate-dark);
+        --content-color: var(--slate-dark);
     }
 
     &.icon-text {
         padding: .75rem 1.5rem .75rem .75rem;
 
-        img {
+        img, svg {
             display: block;
             width: 2.5rem;
             height: 2.5rem;
             margin-right: .75rem;
+            fill: var(--content-color);
         }
     }
 
@@ -343,10 +345,11 @@ button {
         width: 5rem;
             padding: .75rem;
 
-        img {
+        img, svg {
             display: block;
             width: 2.5rem;
             height: 2.5rem;
+            fill: var(--content-color);
         }
     }
 }
@@ -397,143 +400,145 @@ input[type=text] {
     }
 }
 
-input[type=radio], input[type=checkbox] {
-    position: absolute;
-    opacity: 0;
-
-    + label {
-        --bg-color: var(--blue-accent);
-        --border-color: transparent;
-        --outer-shadow: var(--default-sm);
-        display: block;
-        min-height: 4.625rem;
-        @include para-size($body-md);
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        margin-top: var(--half-lheight);
-        cursor: pointer;
-        position: relative;
-
-        &:not(:has(img)) {
-            width: fit-content;
-            padding: .625rem solid white;
-            border-radius: 1.25rem;
-            background: var(--bg-color);
-            box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white, inset 0 0 0 .75rem var(--border-color);
-            padding: 0 3rem;
-        }
-
-        &:has(img) {
-            container-type: inline-size;
-        }
-
-        img {
-            border-radius: 1.25rem;
-            padding: .6875rem;
-            background-color: white;
-            box-shadow: var(--outer-shadow), inset 0 0 0 .375rem white, inset 0 0 0 .625rem var(--border-color);
-
-            @container (min-width: 190px) {
-                --outer-shadow: var(--default-md);
-                border-radius: 2rem;
-                padding: .875rem;
-                box-shadow: var(--outer-shadow), inset 0 0 0 .375rem white, inset 0 0 0 .75rem var(--border-color);
-            }
-            @container (min-width: 280px) {
-                --outer-shadow: var(--default-lg);
-                border-radius: 2.5rem;
-                padding: 1.1875rem;
-                box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white, inset 0 0 0 1rem var(--border-color);
-            }
-            @container (min-width: 430px) {
-                --outer-shadow: var(--default-xl);
-                border-radius: 3rem;
-                padding: 1.5rem;
-                box-shadow: var(--outer-shadow), inset 0 0 0 .625rem white, inset 0 0 0 1.25rem var(--border-color);
-            }
-        }
-    }
+form.mcq {
+    input[type=radio], input[type=checkbox] {
+        position: absolute;
+        opacity: 0;
     
-
-    &:focus-visible {
         + label {
-            --outer-shadow: var(--focus-sm);
-
-            img {
-                @container (min-width: 190px) {
-                    --outer-shadow: var(--focus-md);
-                }    
-                @container (min-width: 280px) {
-                    --outer-shadow: var(--focus-lg);
-                }    
-                @container (min-width: 430px) {
-                    --outer-shadow: var(--focus-xl);
-                }    
-            }
-            
-        }
-    }
-
-    &:checked {
-        + label {
-            --bg-color: var(--white-accent);
-            --border-color: var(--blue-medium);
-        }
-    }
-
-    &:not([disabled]):hover {
-        + label {
-            --outer-shadow: var(--hover-sm);
+            --bg-color: var(--blue-accent);
+            --border-color: transparent;
+            --outer-shadow: var(--default-sm);
+            display: block;
+            min-height: 4.625rem;
+            @include para-size($body-md);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            margin-top: var(--half-lheight);
+            cursor: pointer;
+            position: relative;
+    
             &:not(:has(img)) {
-                transform: scale(1.05);   
-            } 
-
+                width: fit-content;
+                padding: .625rem solid white;
+                border-radius: 1.25rem;
+                background: var(--bg-color);
+                box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white, inset 0 0 0 .75rem var(--border-color);
+                padding: 0 3rem;
+            }
+    
+            &:has(img) {
+                container-type: inline-size;
+            }
+    
             img {
-                transform: scale(1.15);
-
+                border-radius: 1.25rem;
+                padding: .6875rem;
+                background-color: white;
+                box-shadow: var(--outer-shadow), inset 0 0 0 .375rem white, inset 0 0 0 .625rem var(--border-color);
+    
                 @container (min-width: 190px) {
-                    transform: scale(1.1);
-                    --outer-shadow: var(--hover-md);
-                }    
+                    --outer-shadow: var(--default-md);
+                    border-radius: 2rem;
+                    padding: .875rem;
+                    box-shadow: var(--outer-shadow), inset 0 0 0 .375rem white, inset 0 0 0 .75rem var(--border-color);
+                }
                 @container (min-width: 280px) {
-                    transform: scale(1.05);
-                    --outer-shadow: var(--hover-lg);
-                }    
+                    --outer-shadow: var(--default-lg);
+                    border-radius: 2.5rem;
+                    padding: 1.1875rem;
+                    box-shadow: var(--outer-shadow), inset 0 0 0 .5rem white, inset 0 0 0 1rem var(--border-color);
+                }
                 @container (min-width: 430px) {
-                    transform: scale(1.02);
-                    --outer-shadow: var(--hover-xl);
-                }    
-
+                    --outer-shadow: var(--default-xl);
+                    border-radius: 3rem;
+                    padding: 1.5rem;
+                    box-shadow: var(--outer-shadow), inset 0 0 0 .625rem white, inset 0 0 0 1.25rem var(--border-color);
+                }
             }
         }
-    }
-
-    &[disabled] {
-        + label {
-            --bg-color: var(--slate-accent);
-            --border-color: var(--slate-light);
-            color: var(--gray-medium);
-            cursor: not-allowed;
+        
+    
+        &:focus-visible {
+            + label {
+                --outer-shadow: var(--focus-sm);
+    
+                img {
+                    @container (min-width: 190px) {
+                        --outer-shadow: var(--focus-md);
+                    }    
+                    @container (min-width: 280px) {
+                        --outer-shadow: var(--focus-lg);
+                    }    
+                    @container (min-width: 430px) {
+                        --outer-shadow: var(--focus-xl);
+                    }    
+                }
+                
+            }
         }
-    }
-
-    &.correct {
-        + label {
-            --bg-color: var(--green-accent);
-            --border-color: var(--green-medium);
-            color: black;
+    
+        &:checked {
+            + label {
+                --bg-color: var(--white-accent);
+                --border-color: var(--blue-medium);
+            }
         }
-    }
-
-    &.incorrect {
-        + label {
-            --bg-color: var(--slate-accent);
-            --border-color: var(--slate-medium);
-            color: black;
+    
+        &:not([disabled]):hover {
+            + label {
+                --outer-shadow: var(--hover-sm);
+                &:not(:has(img)) {
+                    transform: scale(1.05);   
+                } 
+    
+                img {
+                    transform: scale(1.15);
+    
+                    @container (min-width: 190px) {
+                        transform: scale(1.1);
+                        --outer-shadow: var(--hover-md);
+                    }    
+                    @container (min-width: 280px) {
+                        transform: scale(1.05);
+                        --outer-shadow: var(--hover-lg);
+                    }    
+                    @container (min-width: 430px) {
+                        transform: scale(1.02);
+                        --outer-shadow: var(--hover-xl);
+                    }    
+    
+                }
+            }
         }
-    }
-   
+    
+        &[disabled] {
+            + label {
+                --bg-color: var(--slate-accent);
+                --border-color: var(--slate-light);
+                color: var(--gray-medium);
+                cursor: not-allowed;
+            }
+        }
+    
+        &.correct {
+            + label {
+                --bg-color: var(--green-accent);
+                --border-color: var(--green-medium);
+                color: black;
+            }
+        }
+    
+        &.incorrect {
+            + label {
+                --bg-color: var(--slate-accent);
+                --border-color: var(--slate-medium);
+                color: black;
+            }
+        }
+       
+    }    
 }
 
 
