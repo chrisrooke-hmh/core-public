@@ -1,4 +1,9 @@
 /*! 1.3 */
+* {
+  font-variant-ligatures: none;
+  hyphens: none;
+}
+
 html,
 body,
 div,
@@ -165,14 +170,14 @@ table {
 }
 
 :root {
-  --base-fontsize: 1.25rem;
+  --base-fontsize: 1.3125rem;
   --col-width: calc((100vw - 2rem) / 12);
   /* Common across statics and interactions */
-  --base-lheight: 1.875rem;
-  --half-lheight: 0.9375rem;
+  --base-lheight: 2rem;
+  --half-lheight: 1rem;
   --quart-lheight: 0.5rem;
   --eighth-lheight: 0.25rem;
-  --base-fontsize: 1.25rem;
+  --base-fontsize: 1.3125rem;
   --col-width: calc((100vw - 2rem) / 12);
   --gutter-width: 1rem;
   --ui-button: 2rem;
@@ -180,13 +185,13 @@ table {
 }
 @media (min-width: 40.625rem) {
   :root {
-    --base-fontsize: 1.3125rem;
+    --base-fontsize: 1.375rem;
     --col-width: calc((100vw - (9.75rem - var(--base-lheight))) / 12);
-    --base-lheight: 2rem;
-    --half-lheight: 1rem;
-    --quart-lheight: 0.5rem;
+    --base-lheight: 2.125rem;
+    --half-lheight: 1.0625rem;
+    --quart-lheight: 0.5625rem;
     --eighth-lheight: 0.25rem;
-    --base-fontsize: 1.3125rem;
+    --base-fontsize: 1.375rem;
     --col-width: calc((100vw - (9.75rem - var(--base-lheight))) / 12);
     --gutter-width: Max(calc(4.875rem - var(--half-lheight)), calc((100vw - 80rem) / 2));
     --ui-button: 2rem;
@@ -195,25 +200,25 @@ table {
 }
 @media (min-width: 80rem) {
   :root {
-    --base-fontsize: 1.375rem;
+    --base-fontsize: 1.5rem;
     --col-width: calc((100vw - (9.75rem - var(--base-lheight))) / 12);
-    --base-lheight: 2.125rem;
-    --half-lheight: 1.0625rem;
+    --base-lheight: 2.25rem;
+    --half-lheight: 1.125rem;
     --quart-lheight: 0.5625rem;
-    --eighth-lheight: 0.25rem;
-    --body-lg: 1.5rem;
-    --body-md: 1.375rem;
-    --body-sm: 1.25rem;
-    --caption: 1.125rem;
-    --body-lg-lheight: 2.25rem;
-    --body-md-lheight: 2.125rem;
-    --body-sm-lheight: 1.875rem;
-    --caption-lheight: 1.75rem;
-    --body-lg-head-lheight: 2.25rem;
-    --body-md-head-lheight: 2.125rem;
+    --eighth-lheight: 0.3125rem;
+    --body-lg: 1.6875rem;
+    --body-md: 1.5rem;
+    --body-sm: 1.375rem;
+    --caption: 1.25rem;
+    --body-lg-lheight: 2.625rem;
+    --body-md-lheight: 2.25rem;
+    --body-sm-lheight: 2.125rem;
+    --caption-lheight: 1.875rem;
+    --body-lg-head-lheight: 2.125rem;
+    --body-md-head-lheight: 2.25rem;
   }
 }
-@media (min-width: 91.875rem) {
+@media (min-width: 92rem) {
   :root {
     --col-width: calc(80rem / 12);
   }
@@ -255,13 +260,13 @@ html.html--stretch body, html.html--scale body {
   box-sizing: border-box;
 }
 
-/* @media (min-width: 40.625rem) {
+@media (min-width: 40.625rem) {
   body > *:not(.source--full-width):not(.source__grid):not(.source--no-marginlr):not(section),
   .source__grid > *:not(.source--full-width):not(.source__grid):not(.source--no-marginlr):not(section) {
     margin-left: var(--half-lheight);
     margin-right: var(--half-lheight);
   }
-} */
+}
 
 .source--full-width {
   grid-column: 1/13;
@@ -270,68 +275,68 @@ html.html--stretch body, html.html--scale body {
 }
 
 .source--margintop-half {
-  margin-top: 0.9375rem;
+  margin-top: 1rem;
 }
 @media (min-width: 40.625rem) {
-  .source--margintop-half {
-    margin-top: 1rem;
-  }
-}
-@media (min-width: 80rem) {
   .source--margintop-half {
     margin-top: 1.0625rem;
   }
 }
-.source--margintop-one {
-  margin-top: 1.875rem;
-}
-@media (min-width: 40.625rem) {
-  .source--margintop-one {
-    margin-top: 2rem;
+@media (min-width: 80rem) {
+  .source--margintop-half {
+    margin-top: 1.125rem;
   }
 }
-@media (min-width: 80rem) {
+.source--margintop-one {
+  margin-top: 2rem;
+}
+@media (min-width: 40.625rem) {
   .source--margintop-one {
     margin-top: 2.125rem;
   }
 }
-.source--margintop-one-half {
-  margin-top: 2.8125rem;
-}
-@media (min-width: 40.625rem) {
-  .source--margintop-one-half {
-    margin-top: 3rem;
+@media (min-width: 80rem) {
+  .source--margintop-one {
+    margin-top: 2.25rem;
   }
 }
-@media (min-width: 80rem) {
+.source--margintop-one-half {
+  margin-top: 3rem;
+}
+@media (min-width: 40.625rem) {
   .source--margintop-one-half {
     margin-top: 3.1875rem;
   }
 }
-.source--margintop-two {
-  margin-top: 3.75rem;
-}
-@media (min-width: 40.625rem) {
-  .source--margintop-two {
-    margin-top: 4rem;
+@media (min-width: 80rem) {
+  .source--margintop-one-half {
+    margin-top: 3.375rem;
   }
 }
-@media (min-width: 80rem) {
+.source--margintop-two {
+  margin-top: 4rem;
+}
+@media (min-width: 40.625rem) {
   .source--margintop-two {
     margin-top: 4.25rem;
   }
 }
+@media (min-width: 80rem) {
+  .source--margintop-two {
+    margin-top: 4.5rem;
+  }
+}
 .source--margintop-two-half {
-  margin-top: 4.6875rem;
+  margin-top: 5rem;
 }
 @media (min-width: 40.625rem) {
   .source--margintop-two-half {
-    margin-top: 5rem;
+    margin-top: 5.3125rem;
   }
 }
 @media (min-width: 80rem) {
   .source--margintop-two-half {
-    margin-top: 5.3125rem;
+    margin-top: 5.625rem;
   }
 }
 
@@ -513,35 +518,35 @@ html.html--stretch body, html.html--scale body {
 }
 body {
   font-family: "Source Sans Pro", "Helvetica", "Verdana", sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.875rem;
+  font-size: 1.3125rem;
+  line-height: 2rem;
 }
 @media (min-width: 40.625rem) {
-  body {
-    font-size: 1.3125rem;
-    line-height: 2rem;
-  }
-}
-@media (min-width: 80rem) {
   body {
     font-size: 1.375rem;
     line-height: 2.125rem;
   }
 }
+@media (min-width: 80rem) {
+  body {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+}
 
 h1 {
-  margin-top: 5.625rem;
+  margin-top: 6rem;
   font-size: 2.625rem;
   line-height: 3rem;
 }
 @media (min-width: 40.625rem) {
   h1 {
-    margin-top: 6rem;
+    margin-top: 6.375rem;
   }
 }
 @media (min-width: 80rem) {
   h1 {
-    margin-top: 6.375rem;
+    margin-top: 6.75rem;
   }
 }
 @media (min-width: 30rem) {
@@ -558,18 +563,18 @@ h1 {
 }
 
 h2 {
-  margin-top: 4.6875rem;
+  margin-top: 5rem;
   font-size: 2.375rem;
   line-height: 3rem;
 }
 @media (min-width: 40.625rem) {
   h2 {
-    margin-top: 5rem;
+    margin-top: 5.3125rem;
   }
 }
 @media (min-width: 80rem) {
   h2 {
-    margin-top: 5.3125rem;
+    margin-top: 5.625rem;
   }
 }
 @media (min-width: 40.625rem) {
@@ -586,274 +591,274 @@ h2 {
 }
 
 h3 {
-  margin-top: 3.75rem;
-  font-size: 1.875rem;
-  line-height: 2.375rem;
+  margin-top: 4rem;
+  font-size: 2.125rem;
+  line-height: 2.625rem;
 }
 @media (min-width: 40.625rem) {
-  h3 {
-    margin-top: 4rem;
-  }
-}
-@media (min-width: 80rem) {
   h3 {
     margin-top: 4.25rem;
   }
 }
+@media (min-width: 80rem) {
+  h3 {
+    margin-top: 4.5rem;
+  }
+}
 @media (min-width: 40.625rem) {
   h3 {
-    font-size: 2.25rem;
-    line-height: 2.875rem;
+    font-size: 2.625rem;
+    line-height: 3.25rem;
   }
 }
 @media (min-width: 80rem) {
   h3 {
-    font-size: 2.75rem;
-    line-height: 3.5rem;
+    font-size: 3.25rem;
+    line-height: 4.125rem;
   }
 }
 
 h4 {
-  margin-top: 2.8125rem;
-  font-size: 1.5rem;
-  line-height: 1.875rem;
+  margin-top: 3rem;
+  font-size: 1.625rem;
+  line-height: 2.125rem;
 }
 @media (min-width: 40.625rem) {
-  h4 {
-    margin-top: 3rem;
-  }
-}
-@media (min-width: 80rem) {
   h4 {
     margin-top: 3.1875rem;
   }
 }
-@media (min-width: 40.625rem) {
+@media (min-width: 80rem) {
   h4 {
-    font-size: 1.625rem;
-    line-height: 2.125rem;
+    margin-top: 3.375rem;
   }
 }
-@media (min-width: 80rem) {
+@media (min-width: 40.625rem) {
   h4 {
     font-size: 1.875rem;
     line-height: 2.375rem;
   }
 }
-
-h5 {
-  margin-top: 1.875rem;
-  font-size: 1.3125rem;
-  line-height: 2rem;
-}
-@media (min-width: 40.625rem) {
-  h5 {
-    margin-top: 2rem;
+@media (min-width: 80rem) {
+  h4 {
+    font-size: 2.25rem;
+    line-height: 2.875rem;
   }
 }
-@media (min-width: 80rem) {
+
+h5 {
+  margin-top: 2rem;
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+}
+@media (min-width: 40.625rem) {
   h5 {
     margin-top: 2.125rem;
   }
 }
+@media (min-width: 80rem) {
+  h5 {
+    margin-top: 2.25rem;
+  }
+}
 @media (min-width: 40.625rem) {
   h5 {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+}
+@media (min-width: 80rem) {
+  h5 {
+    font-size: 1.6875rem;
+    line-height: 2.125rem;
+  }
+}
+
+h6 {
+  margin-top: 1rem;
+  font-size: 1.3125rem;
+  line-height: 2rem;
+}
+@media (min-width: 40.625rem) {
+  h6 {
+    margin-top: 1.0625rem;
+  }
+}
+@media (min-width: 80rem) {
+  h6 {
+    margin-top: 1.125rem;
+  }
+}
+@media (min-width: 40.625rem) {
+  h6 {
     font-size: 1.375rem;
     line-height: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
-  h5 {
+  h6 {
     font-size: 1.5rem;
     line-height: 2.25rem;
   }
 }
 
-h6 {
-  margin-top: 0.9375rem;
-  font-size: 1.25rem;
-  line-height: 1.875rem;
+blockquote {
+  font-size: 1.375rem;
+  line-height: 2.125rem;
+  margin-top: 3rem;
 }
 @media (min-width: 40.625rem) {
-  h6 {
-    margin-top: 1rem;
+  blockquote {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 }
 @media (min-width: 80rem) {
-  h6 {
-    margin-top: 1.0625rem;
+  blockquote {
+    font-size: 1.6875rem;
+    line-height: 2.625rem;
   }
 }
 @media (min-width: 40.625rem) {
-  h6 {
+  blockquote {
+    margin-top: 3.1875rem;
+  }
+}
+@media (min-width: 80rem) {
+  blockquote {
+    margin-top: 3.375rem;
+  }
+}
+
+aside {
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  margin-top: 2rem;
+}
+@media (min-width: 40.625rem) {
+  aside {
     font-size: 1.3125rem;
     line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
-  h6 {
+  aside {
     font-size: 1.375rem;
     line-height: 2.125rem;
   }
 }
-
-blockquote {
-  font-size: 1.3125rem;
-  line-height: 2rem;
-  margin-top: 2.8125rem;
-}
 @media (min-width: 40.625rem) {
-  blockquote {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
-  }
-}
-@media (min-width: 80rem) {
-  blockquote {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
-  }
-}
-@media (min-width: 40.625rem) {
-  blockquote {
-    margin-top: 3rem;
-  }
-}
-@media (min-width: 80rem) {
-  blockquote {
-    margin-top: 3.1875rem;
-  }
-}
-
-aside {
-  font-size: 1.1875rem;
-  line-height: 1.875rem;
-  margin-top: 1.875rem;
-}
-@media (min-width: 40.625rem) {
-  aside {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
-  }
-}
-@media (min-width: 80rem) {
-  aside {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
-  }
-}
-@media (min-width: 40.625rem) {
-  aside {
-    margin-top: 2rem;
-  }
-}
-@media (min-width: 80rem) {
   aside {
     margin-top: 2.125rem;
+  }
+}
+@media (min-width: 80rem) {
+  aside {
+    margin-top: 2.25rem;
   }
 }
 
 small {
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
-  margin-top: 1.875rem;
+  font-size: 1.1875rem;
+  line-height: 1.875rem;
+  margin-top: 2rem;
 }
 @media (min-width: 40.625rem) {
   small {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 @media (min-width: 80rem) {
   small {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 @media (min-width: 40.625rem) {
-  small {
-    margin-top: 2rem;
-  }
-}
-@media (min-width: 80rem) {
   small {
     margin-top: 2.125rem;
+  }
+}
+@media (min-width: 80rem) {
+  small {
+    margin-top: 2.25rem;
   }
 }
 
 sup,
 sub {
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.1875rem;
+  line-height: 1.875rem;
 }
 @media (min-width: 40.625rem) {
   sup,
   sub {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 @media (min-width: 80rem) {
   sup,
   sub {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 
 p,
 li,
 q {
-  font-size: 1.25rem;
-  line-height: 1.875rem;
-}
-@media (min-width: 40.625rem) {
-  p,
-  li,
-  q {
-    font-size: 1.3125rem;
-    line-height: 2rem;
-  }
-}
-@media (min-width: 80rem) {
-  p,
-  li,
-  q {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
-  }
-}
-
-p.source--large-text {
   font-size: 1.3125rem;
   line-height: 2rem;
 }
 @media (min-width: 40.625rem) {
-  p.source--large-text {
+  p,
+  li,
+  q {
     font-size: 1.375rem;
     line-height: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
+  p,
+  li,
+  q {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+}
+
+p.source--large-text {
+  font-size: 1.375rem;
+  line-height: 2.125rem;
+}
+@media (min-width: 40.625rem) {
   p.source--large-text {
     font-size: 1.5rem;
     line-height: 2.25rem;
   }
 }
+@media (min-width: 80rem) {
+  p.source--large-text {
+    font-size: 1.6875rem;
+    line-height: 2.625rem;
+  }
+}
 p.source--small-text {
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   line-height: 1.875rem;
 }
 @media (min-width: 40.625rem) {
   p.source--small-text {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.3125rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
   p.source--small-text {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 
@@ -861,17 +866,9 @@ p,
 ol,
 ul,
 aside {
-  margin-top: 0.9375rem;
+  margin-top: 1rem;
 }
 @media (min-width: 40.625rem) {
-  p,
-  ol,
-  ul,
-  aside {
-    margin-top: 1rem;
-  }
-}
-@media (min-width: 80rem) {
   p,
   ol,
   ul,
@@ -879,24 +876,32 @@ aside {
     margin-top: 1.0625rem;
   }
 }
+@media (min-width: 80rem) {
+  p,
+  ol,
+  ul,
+  aside {
+    margin-top: 1.125rem;
+  }
+}
 
 .source__supertitle,
 .source__subtitle {
-  font-size: 1.25rem;
-  line-height: 1.875rem;
+  font-size: 1.3125rem;
+  line-height: 2rem;
 }
 @media (min-width: 40.625rem) {
   .source__supertitle,
   .source__subtitle {
-    font-size: 1.3125rem;
-    line-height: 2rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   .source__supertitle,
   .source__subtitle {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 }
 
@@ -958,21 +963,21 @@ dfn {
   font-weight: 600;
   color: rgb(6, 94, 194);
   content: "[1]";
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   line-height: 1.875rem;
 }
 @media (min-width: 40.625rem) {
   [href*="[remark"]:after,
   [rel=remark]:after {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.3125rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
   [href*="[remark"]:after,
   [rel=remark]:after {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 
@@ -1000,14 +1005,14 @@ ol ul,
 ol ol {
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 1rem;
 }
 @media (min-width: 40.625rem) {
   ul ul,
   ul ol,
   ol ul,
   ol ol {
-    margin-bottom: 1rem;
+    margin-bottom: 1.0625rem;
   }
 }
 @media (min-width: 80rem) {
@@ -1015,7 +1020,7 @@ ol ol {
   ul ol,
   ol ul,
   ol ol {
-    margin-bottom: 1.0625rem;
+    margin-bottom: 1.125rem;
   }
 }
 ul ul ol li,
@@ -1133,7 +1138,7 @@ ul > li:before {
   background: rgb(106, 109, 109);
   border-radius: 50%;
   content: "";
-  border: 0.125rem solid rgb(106, 109, 109);
+  border: 0.1875rem solid rgb(106, 109, 109);
   box-sizing: border-box;
 }
 ul > li::marker {
@@ -1155,8 +1160,8 @@ ol > li::marker {
 
 .grid-list {
   grid-column: 1/-1;
-  border: 0.125rem solid rgb(220, 220, 220);
-  border-radius: 0.25rem;
+  border: 0.1875rem solid rgb(220, 220, 220);
+  border-radius: 0.375rem;
   display: flex;
   flex-flow: row wrap;
   overflow: hidden;
@@ -1164,7 +1169,7 @@ ol > li::marker {
 .grid-list > li {
   border-color: rgb(220, 220, 220);
   border-style: solid;
-  border-width: 0.125rem 0 0 0;
+  border-width: 0.1875rem 0 0 0;
   display: flex;
   flex-flow: column wrap;
   padding-left: unset;
@@ -1181,7 +1186,7 @@ ol > li::marker {
 @media (min-width: 40.625rem) {
   .grid-list > li {
     flex-basis: 50%;
-    border-right-width: 0.125rem;
+    border-right-width: 0.1875rem;
   }
   .grid-list > li:nth-child(2n) {
     border-right-width: 0;
@@ -1232,25 +1237,25 @@ ol > li::marker {
 }
 
 blockquote {
-  font-size: 1.3125rem;
-  line-height: 2rem;
-  padding-left: calc(var(--base-lheight) - 0.125rem);
-  border-left: 0.125rem solid rgb(237, 237, 237);
+  font-size: 1.375rem;
+  line-height: 2.125rem;
+  padding-left: calc(var(--base-lheight) - 0.1875rem);
+  border-left: 0.1875rem solid rgb(237, 237, 237);
   margin-top: 0rem;
-  margin-bottom: 0.9375rem;
+  margin-bottom: 1rem;
 }
 @media (min-width: 40.625rem) {
-  blockquote {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
-  }
-}
-@media (min-width: 80rem) {
   blockquote {
     font-size: 1.5rem;
     line-height: 2.25rem;
   }
 }
+@media (min-width: 80rem) {
+  blockquote {
+    font-size: 1.6875rem;
+    line-height: 2.625rem;
+  }
+}
 @media (min-width: 40.625rem) {
   blockquote {
     margin-top: 0rem;
@@ -1262,13 +1267,13 @@ blockquote {
   }
 }
 @media (min-width: 40.625rem) {
-  blockquote {
-    margin-bottom: 1rem;
-  }
-}
-@media (min-width: 80rem) {
   blockquote {
     margin-bottom: 1.0625rem;
+  }
+}
+@media (min-width: 80rem) {
+  blockquote {
+    margin-bottom: 1.125rem;
   }
 }
 
@@ -1298,19 +1303,19 @@ aside * {
   margin-right: 0;
 }
 aside p {
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   line-height: 1.875rem;
 }
 @media (min-width: 40.625rem) {
   aside p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.3125rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
   aside p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 aside *:first-child {
@@ -1318,32 +1323,32 @@ aside *:first-child {
 }
 
 .source__wraparound, .source__wraparound--left, .source__wraparound--right {
-  margin-top: 0.9375rem;
+  margin-top: 1rem;
 }
 @media (min-width: 40.625rem) {
   .source__wraparound, .source__wraparound--left, .source__wraparound--right {
-    margin-top: 1rem;
+    margin-top: 1.0625rem;
   }
 }
 @media (min-width: 80rem) {
   .source__wraparound, .source__wraparound--left, .source__wraparound--right {
-    margin-top: 1.0625rem;
+    margin-top: 1.125rem;
   }
 }
 .source__wraparound aside, .source__wraparound--left aside, .source__wraparound--right aside {
   background: rgb(247, 247, 248);
   margin-left: var(--base-lheight);
   margin-right: var(--base-lheight);
-  margin-bottom: 0.9375rem;
+  margin-bottom: 1rem;
 }
 @media (min-width: 40.625rem) {
   .source__wraparound aside, .source__wraparound--left aside, .source__wraparound--right aside {
-    margin-bottom: 1rem;
+    margin-bottom: 1.0625rem;
   }
 }
 @media (min-width: 80rem) {
   .source__wraparound aside, .source__wraparound--left aside, .source__wraparound--right aside {
-    margin-bottom: 1.0625rem;
+    margin-bottom: 1.125rem;
   }
 }
 .source__wraparound aside + *, .source__wraparound--left aside + *, .source__wraparound--right aside + * {
@@ -1369,16 +1374,16 @@ aside *:first-child {
 }
 
 article {
-  margin-top: 1.875rem;
+  margin-top: 2rem;
 }
 @media (min-width: 40.625rem) {
   article {
-    margin-top: 2rem;
+    margin-top: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   article {
-    margin-top: 2.125rem;
+    margin-top: 2.25rem;
   }
 }
 article * {
@@ -1390,60 +1395,60 @@ article *:first-child {
 }
 
 .source__panel, .source__panel--border {
-  padding: calc(var(--half-lheight) - 0.125rem);
-  border-radius: 0.25rem;
+  padding: calc(var(--half-lheight) - 0.1875rem);
+  border-radius: 0.375rem;
 }
 .source__panel--border {
-  border: 0.125rem solid black;
+  border: 0.1875rem solid black;
 }
 
 .source__page-section {
-  margin-top: 1.875rem;
-  padding-top: 1.875rem;
-  padding-bottom: 1.875rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 @media (min-width: 40.625rem) {
-  .source__page-section {
-    margin-top: 2rem;
-  }
-}
-@media (min-width: 80rem) {
   .source__page-section {
     margin-top: 2.125rem;
   }
 }
-@media (min-width: 40.625rem) {
+@media (min-width: 80rem) {
   .source__page-section {
-    padding-top: 2rem;
+    margin-top: 2.25rem;
   }
 }
-@media (min-width: 80rem) {
+@media (min-width: 40.625rem) {
   .source__page-section {
     padding-top: 2.125rem;
   }
 }
+@media (min-width: 80rem) {
+  .source__page-section {
+    padding-top: 2.25rem;
+  }
+}
 @media (min-width: 40.625rem) {
   .source__page-section {
-    padding-bottom: 2rem;
+    padding-bottom: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   .source__page-section {
-    padding-bottom: 2.125rem;
+    padding-bottom: 2.25rem;
   }
 }
 
 header {
-  padding-bottom: 1.875rem;
+  padding-bottom: 2rem;
 }
 @media (min-width: 40.625rem) {
   header {
-    padding-bottom: 2rem;
+    padding-bottom: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   header {
-    padding-bottom: 2.125rem;
+    padding-bottom: 2.25rem;
   }
 }
 
@@ -1465,7 +1470,7 @@ header:before {
 
 hr {
   border: 0;
-  height: 0.125rem;
+  height: 0.1875rem;
   background-color: rgba(0, 0, 0, 0.66);
   margin: calc(var(--half-lheight) - 1px) var(--base-lheight) var(--half-lheight);
 }
@@ -1631,9 +1636,9 @@ hr {
 }
 .source__timeline h4 {
   padding: var(--quart-lheight) var(--half-lheight);
-  border: 0.125rem solid rgb(106, 109, 109);
+  border: 0.1875rem solid rgb(106, 109, 109);
   width: fit-content;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   position: relative;
   background: white;
 }
@@ -1656,14 +1661,14 @@ hr {
 }
 .source__timeline h4:before {
   right: 100%;
-  height: 0.125rem;
+  height: 0.1875rem;
   width: var(--half-lheight);
 }
 .source__timeline h4:after {
   width: var(--half-lheight);
   height: var(--half-lheight);
   border-radius: 50%;
-  border: 0.125rem solid white;
+  border: 0.1875rem solid white;
   left: calc(var(--quart-lheight) * -1 - var(--half-lheight));
   box-sizing: border-box;
 }
@@ -1695,11 +1700,11 @@ hr {
   left: 0;
   position: absolute;
   top: 0;
-  width: 0.125rem;
+  width: 0.1875rem;
 }
 @media (min-width: 55rem) {
   .source__timeline > ol::before {
-    left: calc(50% - 0.125rem / 2);
+    left: calc(50% - 0.1875rem / 2);
   }
 }
 .source__timeline > ol > li {
@@ -1717,12 +1722,12 @@ hr {
 }
 .source__timeline > ol > li:first-child h4, .source__timeline > ol > li:last-child h4 {
   color: white;
-  border-radius: 0 0.25rem 0.25rem 0;
+  border-radius: 0 0.375rem 0.375rem 0;
   background: rgb(106, 109, 109);
 }
 @media (min-width: 55rem) {
   .source__timeline > ol > li:first-child h4, .source__timeline > ol > li:last-child h4 {
-    border-radius: 0.25rem;
+    border-radius: 0.375rem;
   }
 }
 .source__timeline > ol > li:first-child h4:before, .source__timeline > ol > li:first-child h4:after, .source__timeline > ol > li:last-child h4:before, .source__timeline > ol > li:last-child h4:after {
@@ -1759,8 +1764,8 @@ hr {
 }
 .source__timeline .left, .source__timeline .right {
   padding: var(--quart-lheight) var(--half-lheight);
-  border: 0.125rem solid rgb(106, 109, 109);
-  border-radius: 0.25rem;
+  border: 0.1875rem solid rgb(106, 109, 109);
+  border-radius: 0.375rem;
   background: white;
   margin-top: var(--quart-lheight);
   position: relative;
@@ -1775,7 +1780,7 @@ hr {
   position: absolute;
   top: var(--base-lheight);
   width: calc(var(--half-lheight) + var(--col-width));
-  height: 0.125rem;
+  height: 0.1875rem;
   background: rgb(106, 109, 109);
 }
 @media (min-width: 55rem) {
@@ -1790,7 +1795,7 @@ hr {
   height: var(--half-lheight);
   border-radius: 50%;
   background: rgb(106, 109, 109);
-  border: 0.125rem solid white;
+  border: 0.1875rem solid white;
 }
 @media (min-width: 55rem) {
   .source__timeline .left:after, .source__timeline .right:after {
@@ -1807,7 +1812,7 @@ hr {
   left: 100%;
 }
 .source__timeline .left:after {
-  right: calc((var(--col-width) + var(--half-lheight) + var(--quart-lheight) + 0.125rem) * -1);
+  right: calc((var(--col-width) + var(--half-lheight) + var(--quart-lheight) + 0.1875rem) * -1);
 }
 @media (min-width: 55rem) {
   .source__timeline .right {
@@ -1820,12 +1825,12 @@ hr {
   left: unset;
 }
 .source__timeline .right:after {
-  left: calc((var(--col-width) + var(--half-lheight) + var(--quart-lheight) + 0.125rem) * -1);
+  left: calc((var(--col-width) + var(--half-lheight) + var(--quart-lheight) + 0.1875rem) * -1);
 }
 
 .source__tablecontainer caption {
-  font-size: 1.5rem;
-  line-height: 1.875rem;
+  font-size: 1.625rem;
+  line-height: 2.125rem;
   background-color: unset;
   color: black;
   font-weight: 700;
@@ -1833,30 +1838,30 @@ hr {
 }
 @media (min-width: 40.625rem) {
   .source__tablecontainer caption {
-    font-size: 1.625rem;
-    line-height: 2.125rem;
+    font-size: 1.875rem;
+    line-height: 2.375rem;
   }
 }
 @media (min-width: 80rem) {
   .source__tablecontainer caption {
-    font-size: 1.875rem;
-    line-height: 2.375rem;
+    font-size: 2.25rem;
+    line-height: 2.875rem;
   }
 }
 
 .source__tablecontainer {
   height: min-content;
   overflow: auto;
-  margin-top: 1.875rem;
+  margin-top: 2rem;
 }
 @media (min-width: 40.625rem) {
   .source__tablecontainer {
-    margin-top: 2rem;
+    margin-top: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   .source__tablecontainer {
-    margin-top: 2.125rem;
+    margin-top: 2.25rem;
   }
 }
 .source__tablecontainer::-webkit-scrollbar {
@@ -1867,7 +1872,7 @@ hr {
 }
 .source__tablecontainer::-webkit-scrollbar-thumb {
   border-radius: calc(var(--base-fontsize) / 4);
-  border: 0.125rem solid white; /* should match background, can't be transparent */
+  border: 0.1875rem solid white; /* should match background, can't be transparent */
   background-color: rgba(0, 0, 0, 0.5);
 }
 .source__tablecontainer .header,
@@ -1957,7 +1962,7 @@ hr {
   padding: var(--quart-lheight) var(--half-lheight);
 }
 .source__tablecontainer table {
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   line-height: 1.875rem;
   background-color: transparent;
   border-collapse: separate;
@@ -1965,14 +1970,14 @@ hr {
 }
 @media (min-width: 40.625rem) {
   .source__tablecontainer table {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.3125rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
   .source__tablecontainer table {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .source__tablecontainer table tbody {
@@ -2143,9 +2148,9 @@ hr {
   display: inline-block;
   width: fit-content;
   padding: var(--quart-lheight) var(--half-lheight);
-  border: 0.125rem solid rgb(0, 114, 219);
-  border-radius: 0.25rem;
-  font-size: 1.1875rem;
+  border: 0.1875rem solid rgb(0, 114, 219);
+  border-radius: 0.375rem;
+  font-size: 1.25rem;
   line-height: 1.875rem;
   font-weight: 600;
   box-shadow: 0px 0.0625rem 0.125rem 0px rgba(0, 0, 0, 0.3), 0px 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
@@ -2153,14 +2158,14 @@ hr {
 }
 @media (min-width: 40.625rem) {
   .source__button {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.3125rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
   .source__button {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .source__button:hover {
@@ -2171,16 +2176,16 @@ hr {
 }
 
 figure {
-  margin-top: 1.875rem;
+  margin-top: 2rem;
 }
 @media (min-width: 40.625rem) {
   figure {
-    margin-top: 2rem;
+    margin-top: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   figure {
-    margin-top: 2.125rem;
+    margin-top: 2.25rem;
   }
 }
 
@@ -2198,36 +2203,36 @@ video + figcaption {
 
 figcaption {
   font-family: "Source Sans Pro", "Helvetica", "Verdana", sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.1875rem;
+  line-height: 1.875rem;
 }
 @media (min-width: 40.625rem) {
   figcaption {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 @media (min-width: 80rem) {
   figcaption {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 figcaption p {
   font-family: "Source Sans Pro", "Helvetica", "Verdana", sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.1875rem;
+  line-height: 1.875rem;
 }
 @media (min-width: 40.625rem) {
   figcaption p {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 @media (min-width: 80rem) {
   figcaption p {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 figcaption *:first-child {
@@ -2472,7 +2477,7 @@ details summary::marker {
 }
 .source__accordion > li {
   padding-left: 0;
-  margin-top: 0.125rem;
+  margin-top: 0.1875rem;
   margin-left: 0;
 }
 .source__accordion > li:before {
@@ -2489,7 +2494,7 @@ details summary::marker {
   padding-bottom: var(--quart-lheight);
 }
 .source__accordion details[open] summary {
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-radius: 0.375rem 0.375rem 0 0;
 }
 .source__accordion details[open] summary:after {
   transform: rotate(180deg);
@@ -2498,9 +2503,9 @@ details summary::marker {
   padding-top: var(--quart-lheight);
   padding-bottom: var(--quart-lheight);
   min-height: calc(var(---ui-button) + var(--half-lheight));
-  border-radius: 0.25rem;
-  font-size: 1.3125rem;
-  line-height: 2rem;
+  border-radius: 0.375rem;
+  font-size: 1.375rem;
+  line-height: 2.125rem;
   list-style: none;
   cursor: pointer;
   display: flex;
@@ -2509,14 +2514,14 @@ details summary::marker {
 }
 @media (min-width: 40.625rem) {
   .source__accordion summary {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 }
 @media (min-width: 80rem) {
   .source__accordion summary {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: 1.6875rem;
+    line-height: 2.625rem;
   }
 }
 .source__accordion summary *, .source__accordion summary + * {
@@ -2528,7 +2533,7 @@ details summary::marker {
   content: "";
   margin-left: var(--half-lheight);
   border-radius: 50%;
-  border: 0.125rem solid rgb(0, 114, 219);
+  border: 0.1875rem solid rgb(0, 114, 219);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h20v20H0z'/%3E%3Cpath fill='%230072db' fill-rule='nonzero' d='M16 5.8c.5-.4 1.2-.4 1.7 0 .4.5.4 1.2 0 1.6l-6.9 6.8c-.4.4-1.2.4-1.6 0L2.3 7.4C2 7 2 6.3 2.3 5.8c.5-.4 1.2-.4 1.7 0l6 6 6-6z'/%3E%3C/g%3E%3C/svg%3E");
   background-size: var(--ui-icon) var(--ui-icon);
   background-position: center center;
@@ -2544,7 +2549,7 @@ details summary::marker {
   top: 0;
   left: 0;
   content: "";
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   box-shadow: 0px 0.0625rem 0.125rem 0px rgba(0, 0, 0, 0.3), 0px 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
   z-index: -1;
   transition: box-shadow 0.1s ease-in-out;
@@ -2556,17 +2561,17 @@ details summary::marker {
   box-shadow: 0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.3), 0px 0.5rem 0.75rem 0.375rem rgba(0, 0, 0, 0.15);
 }
 .source__accordion--divider summary + * {
-  padding-top: 0.46875rem;
+  padding-top: 0.5rem;
   position: relative;
 }
 @media (min-width: 40.625rem) {
   .source__accordion--divider summary + * {
-    padding-top: 0.5rem;
+    padding-top: 0.53125rem;
   }
 }
 @media (min-width: 80rem) {
   .source__accordion--divider summary + * {
-    padding-top: 0.53125rem;
+    padding-top: 0.5625rem;
   }
 }
 .source__accordion--divider summary + *:before {
@@ -2574,7 +2579,7 @@ details summary::marker {
   top: 0;
   left: var(--half-lheight);
   width: calc(100% - var(--base-lheight));
-  height: 0.125rem;
+  height: 0.1875rem;
   content: "";
   background: rgb(220, 220, 220);
 }
@@ -2582,16 +2587,16 @@ details summary::marker {
   background: rgb(234, 244, 255);
 }
 .source__accordion--color details[open] summary + * {
-  padding-top: 0.46875rem;
+  padding-top: 0.5rem;
 }
 @media (min-width: 40.625rem) {
   .source__accordion--color details[open] summary + * {
-    padding-top: 0.5rem;
+    padding-top: 0.53125rem;
   }
 }
 @media (min-width: 80rem) {
   .source__accordion--color details[open] summary + * {
-    padding-top: 0.53125rem;
+    padding-top: 0.5625rem;
   }
 }
 
@@ -2606,19 +2611,19 @@ details summary::marker {
 }
 .source__flipcards li, .source__reveal li {
   padding: 0;
-  margin-top: 1.875rem;
+  margin-top: 2rem;
   margin-left: 0;
   margin-right: 0;
   flex-basis: 100%;
 }
 @media (min-width: 40.625rem) {
   .source__flipcards li, .source__reveal li {
-    margin-top: 2rem;
+    margin-top: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   .source__flipcards li, .source__reveal li {
-    margin-top: 2.125rem;
+    margin-top: 2.25rem;
   }
 }
 @media (min-width: 40.625rem) {
@@ -2679,7 +2684,7 @@ details summary::marker {
   transition: transform 0.75s cubic-bezier(0.52, 0.02, 0.28, 1), box-shadow 0.1s cubic-bezier(0.52, 0.02, 0.28, 1);
   margin: 0;
   background: white;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
 }
 .source__flipcards .source__flipcards__front,
 .source__flipcards summary:before, .source__reveal .source__flipcards__front,
@@ -2719,7 +2724,6 @@ details summary::marker {
   bottom: 0;
   left: 0;
   position: absolute;
-  border: 0.125rem solid rgb(0, 114, 219);
   background-size: var(--ui-icon);
   background-position: var(--quart-lheight) center;
   background-repeat: no-repeat;
@@ -2736,7 +2740,7 @@ details summary::marker {
   height: 100%;
   z-index: 99;
   background: white;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   padding: 0;
   display: grid;
   box-shadow: unset;
@@ -2761,19 +2765,19 @@ details summary::marker {
   padding-bottom: var(--quart-lheight);
 }
 .source__flipcards .source__flipcards__back *, .source__reveal .source__flipcards__back * {
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   line-height: 1.875rem;
 }
 @media (min-width: 40.625rem) {
   .source__flipcards .source__flipcards__back *, .source__reveal .source__flipcards__back * {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.3125rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
   .source__flipcards .source__flipcards__back *, .source__reveal .source__flipcards__back * {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .source__flipcards .source__flipcards__back > *, .source__reveal .source__flipcards__back > * {
@@ -2799,11 +2803,9 @@ details summary::marker {
   height: var(--ui-button);
   bottom: 0;
   left: var(--quart-lheight);
-  border-radius: 50%;
-  background: white;
   content: counter(cards);
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.1875rem;
+  line-height: 1.875rem;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -2811,14 +2813,14 @@ details summary::marker {
 }
 @media (min-width: 40.625rem) {
   .source__flipcards--counter details .source__flipcards__front:after, .source__reveal--counter details .source__flipcards__front:after {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 @media (min-width: 80rem) {
   .source__flipcards--counter details .source__flipcards__front:after, .source__reveal--counter details .source__flipcards__front:after {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 .source__flipcards .source__flipcards__front--image,
@@ -2870,8 +2872,8 @@ details summary::marker {
 .source__flipcards .source__flipcards__back--alphanumeric, .source__reveal .source__flipcards__front--alphanumeric,
 .source__reveal .source__flipcards__back--alphanumeric {
   align-items: center;
-  font-size: 1.875rem;
-  line-height: 2.875rem;
+  font-size: 2.125rem;
+  line-height: 2.625rem;
   text-align: center;
   display: grid;
 }
@@ -2879,15 +2881,15 @@ details summary::marker {
   .source__flipcards .source__flipcards__front--alphanumeric,
   .source__flipcards .source__flipcards__back--alphanumeric, .source__reveal .source__flipcards__front--alphanumeric,
   .source__reveal .source__flipcards__back--alphanumeric {
-    font-size: 2.25rem;
-    line-height: 3.375rem;
+    font-size: 2.625rem;
+    line-height: 3.25rem;
   }
 }
 @media (min-width: 80rem) {
   .source__flipcards .source__flipcards__front--alphanumeric,
   .source__flipcards .source__flipcards__back--alphanumeric, .source__reveal .source__flipcards__front--alphanumeric,
   .source__reveal .source__flipcards__back--alphanumeric {
-    font-size: 2.75rem;
+    font-size: 3.25rem;
     line-height: 4.125rem;
   }
 }
@@ -2906,8 +2908,8 @@ details summary::marker {
 .source__reveal .source__flipcards__back--alphanumeric i,
 .source__reveal .source__flipcards__back--alphanumeric u,
 .source__reveal .source__flipcards__back--alphanumeric b {
-  font-size: 1.875rem;
-  line-height: 2.875rem;
+  font-size: 2.125rem;
+  line-height: 2.625rem;
   text-align: center;
 }
 @media (min-width: 40.625rem) {
@@ -2926,8 +2928,8 @@ details summary::marker {
   .source__reveal .source__flipcards__back--alphanumeric i,
   .source__reveal .source__flipcards__back--alphanumeric u,
   .source__reveal .source__flipcards__back--alphanumeric b {
-    font-size: 2.25rem;
-    line-height: 3.375rem;
+    font-size: 2.625rem;
+    line-height: 3.25rem;
   }
 }
 @media (min-width: 80rem) {
@@ -2946,7 +2948,7 @@ details summary::marker {
   .source__reveal .source__flipcards__back--alphanumeric i,
   .source__reveal .source__flipcards__back--alphanumeric u,
   .source__reveal .source__flipcards__back--alphanumeric b {
-    font-size: 2.75rem;
+    font-size: 3.25rem;
     line-height: 4.125rem;
   }
 }
@@ -2954,8 +2956,8 @@ details summary::marker {
 .source__flipcards .source__flipcards__back--word, .source__reveal .source__flipcards__front--word,
 .source__reveal .source__flipcards__back--word {
   align-items: center;
-  font-size: 1.5rem;
-  line-height: 2.25rem;
+  font-size: 1.625rem;
+  line-height: 2.5rem;
   text-align: center;
   display: grid;
 }
@@ -2963,16 +2965,16 @@ details summary::marker {
   .source__flipcards .source__flipcards__front--word,
   .source__flipcards .source__flipcards__back--word, .source__reveal .source__flipcards__front--word,
   .source__reveal .source__flipcards__back--word {
-    font-size: 1.625rem;
-    line-height: 2.5rem;
+    font-size: 1.875rem;
+    line-height: 2.875rem;
   }
 }
 @media (min-width: 80rem) {
   .source__flipcards .source__flipcards__front--word,
   .source__flipcards .source__flipcards__back--word, .source__reveal .source__flipcards__front--word,
   .source__reveal .source__flipcards__back--word {
-    font-size: 1.875rem;
-    line-height: 2.875rem;
+    font-size: 2.25rem;
+    line-height: 3.375rem;
   }
 }
 .source__flipcards .source__flipcards__front--word p,
@@ -2990,8 +2992,8 @@ details summary::marker {
 .source__reveal .source__flipcards__back--word i,
 .source__reveal .source__flipcards__back--word u,
 .source__reveal .source__flipcards__back--word b {
-  font-size: 1.5rem;
-  line-height: 2.25rem;
+  font-size: 1.625rem;
+  line-height: 2.5rem;
   text-align: center;
 }
 @media (min-width: 40.625rem) {
@@ -3010,8 +3012,8 @@ details summary::marker {
   .source__reveal .source__flipcards__back--word i,
   .source__reveal .source__flipcards__back--word u,
   .source__reveal .source__flipcards__back--word b {
-    font-size: 1.625rem;
-    line-height: 2.5rem;
+    font-size: 1.875rem;
+    line-height: 2.875rem;
   }
 }
 @media (min-width: 80rem) {
@@ -3030,8 +3032,8 @@ details summary::marker {
   .source__reveal .source__flipcards__back--word i,
   .source__reveal .source__flipcards__back--word u,
   .source__reveal .source__flipcards__back--word b {
-    font-size: 1.875rem;
-    line-height: 2.875rem;
+    font-size: 2.25rem;
+    line-height: 3.375rem;
   }
 }
 .source__flipcards .source__flipcards__front--image, .source__reveal .source__flipcards__front--image {
@@ -3082,7 +3084,7 @@ keyframes front-rotate to {
 .source__reveal details {
   --flipcard-height: calc(var(--base-lheight) + var(--half-lheight));
   background: white;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   box-shadow: 0px 0.0625rem 0.125rem 0px rgba(0, 0, 0, 0.3), 0px 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.1s cubic-bezier(0.52, 0.02, 0.28, 1);
 }
@@ -3105,7 +3107,7 @@ keyframes front-rotate to {
 .source__reveal summary {
   width: 100%;
   height: 100%;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   left: unset;
   bottom: 0;
   right: 0;
@@ -3152,20 +3154,20 @@ keyframes front-rotate to {
 }
 .source__reveal .source__flipcards__back > * {
   margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.875rem;
+  font-size: 1.3125rem;
+  line-height: 2rem;
   text-align: center;
 }
 @media (min-width: 40.625rem) {
   .source__reveal .source__flipcards__back > * {
-    font-size: 1.3125rem;
-    line-height: 2rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 @media (min-width: 80rem) {
   .source__reveal .source__flipcards__back > * {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 }
 .source__reveal.source__flipcards--sequenced li:not(:has(details[open])):not(:has(~ li details[open])) ~ li details {
@@ -3481,7 +3483,7 @@ keyframes front-rotate to {
   transform: translate(var(--pan-zoom-hor), var(--pan-zoom-ver));
 }
 .image-zoom.double-view figure:last-of-type p {
-  font-size: 1.1875rem;
+  font-size: 1.25rem;
   line-height: 1.875rem;
   position: absolute;
   margin-top: 0;
@@ -3491,14 +3493,14 @@ keyframes front-rotate to {
 }
 @media (min-width: 40.625rem) {
   .image-zoom.double-view figure:last-of-type p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.3125rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 80rem) {
   .image-zoom.double-view figure:last-of-type p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .image-zoom.double-view.asymm {
