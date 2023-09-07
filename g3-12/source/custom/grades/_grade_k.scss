@@ -1,0 +1,27 @@
+$project-opener: 15;
+$heading-lg: 14;
+$heading-md: 14;
+$heading-sm: 13;
+$body-lg: 13;
+$body-md: 11;
+$body-sm: 10;
+$caption: 9;
+$credits: 2;
+
+$primary-xs: 12;
+$primary-sm: $primary-xs;
+$primary-md: 8;
+$primary-lg: 6;
+$primary-xl: $primary-lg;
+
+$border-width: 0.375rem;
+$border-radius: 0.75rem;
+
+$ui-mobile: 2;
+$ui-desktop: 3;
+
+
+* {
+  font-variant-ligatures: none;
+  hyphens: none;
+}

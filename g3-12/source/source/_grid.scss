@@ -1,0 +1,155 @@
+:root {
+  --base-fontsize: #{$base-fontsize};
+  --col-width: calc((100vw - 2rem) / 12);
+
+  /* Common across statics and interactions */
+  --base-lheight: #{$base-lheight};
+  --half-lheight: #{$half-lheight};
+  --quart-lheight: #{$quart-lheight};
+  --eighth-lheight: #{$eighth-lheight};
+  --base-fontsize: #{$base-fontsize};
+  --col-width: calc((100vw - 2rem) / 12);
+  --gutter-width: 1rem;
+  --ui-button: #{nth($icon-wrap, $ui-mobile)};
+  --ui-icon: #{nth($icon-boxed, $ui-mobile)};
+
+  @include respond-md {
+    --base-fontsize: #{$base-fontsize-md};
+    --col-width: calc((100vw - (9.75rem - var(--base-lheight))) / 12);
+
+    --base-lheight: #{$base-lheight-md};
+    --half-lheight: #{$half-lheight-md};
+    --quart-lheight: #{$quart-lheight-md};  
+    --eighth-lheight: #{$eighth-lheight-md};
+    --base-fontsize: #{$base-fontsize-md};
+    --col-width: calc((100vw - (9.75rem - var(--base-lheight))) / 12);
+    --gutter-width: Max(calc(4.875rem - var(--half-lheight)), calc((100vw - 80rem) / 2));
+    --ui-button: #{nth($icon-wrap, $ui-desktop)};
+    --ui-icon: #{nth($icon-boxed, $ui-desktop)};  
+  }
+
+  @include respond-xl {
+    --base-fontsize: #{$base-fontsize-lg};
+    // --col-width: min(
+    //   calc(80rem / 12),
+    //   calc((100vw - (9.75rem - var(--base-lheight))) / 12)
+    // );
+    --col-width: calc((100vw - (9.75rem - var(--base-lheight))) / 12);
+
+    --base-lheight: #{$base-lheight-lg};
+    --half-lheight: #{$half-lheight-lg};
+    --quart-lheight: #{$quart-lheight-lg};  
+    --eighth-lheight: #{$eighth-lheight-lg};
+    --body-lg: #{nth($type-size-lg, $body-lg)};
+    --body-md: #{nth($type-size-lg, $body-md)};
+    --body-sm: #{nth($type-size-lg, $body-sm)};
+    --caption: #{nth($type-size-lg, $caption)};
+    --body-lg-lheight: #{nth($para-lheight-lg, $body-lg)};
+    --body-md-lheight: #{nth($para-lheight-lg, $body-md)};
+    --body-sm-lheight: #{nth($para-lheight-lg, $body-sm)};
+    --caption-lheight: #{nth($para-lheight-lg, $caption)};
+    --body-lg-head-lheight: #{nth($head-lheight-lg, $body-lg)};
+    --body-md-head-lheight: #{nth($head-lheight-lg, $body-md)};
+  }
+
+  @include respond-min-width(89.75rem + $base-lheight-lg) {
+    --col-width: calc(80rem / 12);
+  }
+}
+
+body,
+.source__grid {
+//   display: grid;
+//   width: 100%;
+// 
+//   // Grid with max width 1280px @ 1rem = 16px font, outer columns usable for fill content
+//   grid-template-columns: 1rem repeat(12, 1fr) 1rem;
+// 
+//   // // Grid 12-col stretches to width of viewport, no content scale change
+// 
+//   grid-template-rows: max-content;
+//   grid-row-gap: 0;
+//   align-content: start;
+// 
+//   @include respond-md {
+//     grid-template-columns:
+//       minmax(
+//         calc(4.875rem - var(--half-lheight)),
+//         calc((100vw - 80rem) / 2)
+//       )
+//       repeat(12, 1fr)
+//       minmax(
+//         calc(4.875rem - var(--half-lheight)),
+//         calc((100vw - 80rem) / 2)
+//       );
+//   }
+
+  display: grid;
+  width: 100%;
+  // Grid with max width 1280px @ 1rem = 16px font, outer columns usable for fill content
+  grid-template-columns: repeat(12, 1fr);
+
+  // // Grid 12-col stretches to width of viewport, no content scale change
+
+  grid-template-rows: max-content;
+  grid-row-gap: 0;
+  align-content: start;
+}
+
+body {
+  min-height: 100%;
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(255, 255, 255, 1) 0%,
+  //   rgba(255, 255, 255, 1) calc(100% - 1px),
+  //   rgba(107, 0, 0, 1) calc(100% - 1px),
+  //   rgba(107, 0, 0, 1) 100%
+  // );
+  // background-size: 100% var(--base-lheight);
+  position: relative;
+  padding: 0 var(--gutter-width) calc(var(--base-lheight) * 4);
+  color: $text-dark;
+  -webkit-font-smoothing: antialiased;
+
+  // /* Changes re automatic colour contrast */
+  // --red: 255;
+  // --green: 255;
+  // --blue: 255;
+  // --aa-brightness: calc(
+  //   ((var(--red) * 299) + (var(--green) * 587) + (var(--blue) * 114)) / 1000
+  // );
+  // --aa-color: calc((var(--aa-brightness) - 128) * -1000);
+  // background: rgb(var(--red), var(--green), var(--blue));
+  // color: rgb(var(--aa-color), var(--aa-color), var(--aa-color));
+
+  counter-reset: paras;
+  
+    // @include respond-md {
+    //     padding: 0 Max(calc(4.875rem - var(--half-lheight)), calc((100vw - 80rem) / 2)) calc(var(--base-lheight) * 4);
+    // }
+}
+
+.source__grid {
+  grid-column: 1 / span 12;
+}
+
+html {
+  &.html--stretch,
+  &.html--scale {
+    body {
+      grid-template-columns: repeat(var(--columns), 1fr);
+    }
+  }
+
+  // font-size change, couple with grid above for scaling content within wider grid, font begins changing at 1280px upwards
+  &.html--scale {
+    @include respond-xl {
+      font-size: 1.25vw;
+    }
+  }
+}
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}

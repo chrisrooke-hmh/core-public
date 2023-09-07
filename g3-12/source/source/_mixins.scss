@@ -1,0 +1,184 @@
+// MEDIA QUERIES
+// Responds to mobile devices, assumes max-width
+@mixin respond-sm {
+  @media (min-width: ($bp-sm)) {
+    @content;
+  }
+}
+
+@mixin respond-md {
+  @media (min-width: ($bp-md)) {
+    @content;
+  }
+}
+
+@mixin respond-lg {
+  @media (min-width: ($bp-lg)) {
+    @content;
+  }
+}
+
+@mixin respond-xl {
+  @media (min-width: ($bp-xl)) {
+    @content;
+  }
+}
+
+// Responds to any specified max-width value in px.
+@mixin respond-max-width($max-width) {
+  @media (max-width: #{$max-width}) {
+    @content;
+  }
+}
+
+// Responds to any specified min-width value in px
+@mixin respond-min-width($min-width) {
+  @media (min-width: #{$min-width}) {
+    @content;
+  }
+}
+
+// Responds between two values in px
+@mixin respond-between($min-width, $max-width) {
+  @media (min-width: #{$min-width}) and (max-width: #{$max-width}) {
+    @content;
+  }
+}
+
+@mixin head-size($size) {
+  font-size: nth($type-size, $size);
+  line-height: nth($head-lheight, $size);
+  //   padding: nth($type-padding, $size);
+
+  @include respond-md {
+    font-size: nth($type-size-md, $size);
+    line-height: nth($head-lheight-md, $size);
+  }
+
+  @include respond-xl {
+    font-size: nth($type-size-lg, $size);
+    line-height: nth($head-lheight-lg, $size);
+  }
+}
+
+@mixin para-size($size) {
+  font-size: nth($type-size, $size);
+  line-height: nth($para-lheight, $size);
+  //   padding: nth($type-padding, $size);
+
+  @include respond-md {
+    font-size: nth($type-size-md, $size);
+    line-height: nth($para-lheight-md, $size);
+  }
+
+  @include respond-xl {
+    font-size: nth($type-size-lg, $size);
+    line-height: nth($para-lheight-lg, $size);
+  }
+}
+
+@mixin head-size-fluid($size) {
+  font-size: nth($type-size, $size);
+  line-height: nth($head-lheight, $size);
+  //   padding: nth($type-padding, $size);
+
+  @include respond-sm {
+    $type-difference: nth($type-size-lg, $size) - nth($type-size, $size);
+    $lheight-difference: nth($head-lheight-lg, $size) - nth($head-lheight, $size);
+    $bp-difference: $bp-xl - $bp-sm;
+    $type-multiplier: $type-difference / $bp-difference;
+    $lheight-multiplier: $lheight-difference / $bp-difference;
+    font-size: calc((100vw - #{$bp-sm}) * #{$type-multiplier} + #{nth($type-size, $size)});
+    line-height: calc((100vw - #{$bp-sm}) * #{$lheight-multiplier} + #{nth($head-lheight, $size)});
+  }
+
+  @include respond-xl {
+    font-size: nth($type-size-lg, $size);
+    line-height: nth($head-lheight-lg, $size);
+  }
+}
+
+@mixin padding-above($number) {
+  padding-top: $base-lheight * $number;
+
+  @include respond-md {
+    padding-top: $base-lheight-md * $number;
+  }
+
+  @include respond-xl {
+    padding-top: $base-lheight-lg * $number;
+  }
+}
+
+@mixin padding-below($number) {
+  padding-bottom: $base-lheight * $number;
+
+  @include respond-md {
+    padding-bottom: $base-lheight-md * $number;
+  }
+
+  @include respond-xl {
+    padding-bottom: $base-lheight-lg * $number;
+  }
+}
+
+@mixin margin-above($number) {
+  margin-top: $base-lheight * $number;
+
+  @include respond-md {
+    margin-top: $base-lheight-md * $number;
+  }
+
+  @include respond-xl {
+    margin-top: $base-lheight-lg * $number;
+  }
+}
+
+@mixin margin-below($number) {
+  margin-bottom: $base-lheight * $number;
+
+  @include respond-md {
+    margin-bottom: $base-lheight-md * $number;
+  }
+
+  @include respond-xl {
+    margin-bottom: $base-lheight-lg * $number;
+  }
+}
+
+@mixin footer-content($bg-color) {
+  position: relative;
+  bottom: unset;
+  width: auto;
+  height: auto;
+  background-color: $bg-color;
+  transform: translateX(0);
+  margin-bottom: 0;
+
+  &:before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    width: calc(100% + 2 * var(--gutter-width));
+    height: 100%;
+    left: calc(-1 * var(--gutter-width));
+    top: 0;
+    background-color: $bg-color;
+  }
+
+  @include respond-md {
+    transform: translateX(0);
+  }
+}
+
+@mixin source__animate($name, $duration, $timing: ease-in-out, $delay: 0s, $iteration: infinite) {    
+  @media screen and (prefers-reduced-motion: no-preference) {
+    animation-duration: $duration;
+    animation-timing-function: $timing;
+    animation-delay: $delay;
+    animation-iteration-count: $iteration;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-name: $name;
+  }
+}

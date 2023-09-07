@@ -1,0 +1,454 @@
+@import "custom/grades/grade_45";
+@import "source/variables";
+@import "source/colors";
+@import "source/mixins";
+@import "source/_functions";
+@import "source/icons/icon-map";
+@import "source/_icons";
+
+/* NOTES 
+- margin l/r removed in source.css
+*/
+
+/*! Temp layout styles to be ignored */
+
+body {
+    padding-top: var(--spacer-lv4);
+    grid-row-gap: var(--spacer-lv4);
+}
+
+button {
+    grid-column: span 3;
+}
+
+
+/*! Variables and gradeband values */
+
+:root {
+    --shadow-default: #{$shadow-default};
+    --shadow-hover: #{$shadow-hover};
+    --color-action-active: #{color-code($blue-c55)};
+    --color-action-disabled: #{color-code($gray-c15)};
+    --credits: #{nth($type-size, 2)};
+}
+
+.g35 {
+    --border-radius: .75rem;
+    --border-width: .1875rem;
+    --color-action-default: #{color-code($blue-s50)};
+    --spacer-lv4: #{nth($para-lheight, 7)};
+    --spacer-lv3: #{nth($para-lheight-half, 7)};
+    --spacer-lv2: #{nth($para-lheight-quart, 7)};
+    --spacer-lv1: #{nth($para-lheight-eighth, 7)};
+    --opener: #{nth($type-size, 15)};
+    --heading-lg: #{nth($type-size, 13)};
+    --heading-md: #{nth($type-size, 12)};
+    --heading-sm: #{nth($type-size, 10)};  
+    --body-lg: #{nth($type-size, 8)};
+    --body-md: #{nth($type-size, 7)};
+    --body-sm: #{nth($type-size, 6)};  
+    --caption: #{nth($type-size, 5)};
+    --opener-lheight: #{nth($head-lheight-md, 15)};
+    --heading-lg-lheight: #{nth($head-lheight, 13)};
+    --heading-md-lheight: #{nth($head-lheight, 12)};
+    --heading-sm-lheight: #{nth($head-lheight, 10)};  
+    --body-lg-lheight: #{nth($para-lheight, 8)};
+    --body-md-lheight: #{nth($para-lheight, 7)};
+    --body-sm-lheight: #{nth($para-lheight, 6)};  
+    --caption-lheight: #{nth($para-lheight, 5)};
+
+
+    @include respond-md {
+        --spacer-lv4: #{nth($para-lheight-md, 7)};
+        --spacer-lv3: #{nth($para-lheight-md-half, 7)};
+        --spacer-lv2: #{nth($para-lheight-md-quart, 7)};
+        --spacer-lv1: #{nth($para-lheight-md-eighth, 7)};
+        --opener: #{nth($type-size-md, 15)};
+        --heading-lg: #{nth($type-size-md, 13)};
+        --heading-md: #{nth($type-size-md, 12)};
+        --heading-sm: #{nth($type-size-md, 10)};  
+        --body-lg: #{nth($type-size-md, 8)};
+        --body-md: #{nth($type-size-md, 7)};
+        --body-sm: #{nth($type-size-md, 6)};  
+        --caption: #{nth($type-size-md, 5)};
+        --opener-lheight: #{nth($head-lheight-md, 15)};
+        --heading-lg-lheight: #{nth($head-lheight-md, 13)};
+        --heading-md-lheight: #{nth($head-lheight-md, 12)};
+        --heading-sm-lheight: #{nth($head-lheight-md, 10)};  
+        --body-lg-lheight: #{nth($para-lheight-md, 8)};
+        --body-md-lheight: #{nth($para-lheight-md, 7)};
+        --body-sm-lheight: #{nth($para-lheight-md, 6)};  
+        --caption-lheight: #{nth($para-lheight-md, 5)};    
+    }
+
+    @include respond-xl {
+        --spacer-lv4: #{nth($para-lheight-lg, 7)};
+        --spacer-lv3: #{nth($para-lheight-lg-half, 7)};
+        --spacer-lv2: #{nth($para-lheight-lg-quart, 7)};
+        --spacer-lv1: #{nth($para-lheight-lg-eighth, 7)};
+        --opener: #{nth($type-size-lg, 15)};
+        --heading-lg: #{nth($type-size-lg, 13)};
+        --heading-md: #{nth($type-size-lg, 12)};
+        --heading-sm: #{nth($type-size-lg, 10)};  
+        --body-lg: #{nth($type-size-lg, 8)};
+        --body-md: #{nth($type-size-lg, 7)};
+        --body-sm: #{nth($type-size-lg, 6)};  
+        --caption: #{nth($type-size-lg, 5)};
+        --opener-lheight: #{nth($head-lheight-lg, 15)};
+        --heading-lg-lheight: #{nth($head-lheight-lg, 13)};
+        --heading-md-lheight: #{nth($head-lheight-lg, 12)};
+        --heading-sm-lheight: #{nth($head-lheight-lg, 10)};  
+        --body-lg-lheight: #{nth($para-lheight-lg, 8)};
+        --body-md-lheight: #{nth($para-lheight-lg, 7)};
+        --body-sm-lheight: #{nth($para-lheight-lg, 6)};  
+        --caption-lheight: #{nth($para-lheight-lg, 5)};    
+    }
+}
+
+.g68 {
+    --border-radius: .375rem;
+    --border-width: .125rem;
+    --color-action-default: #{color-code($blue-c50)};
+    --spacer-lv4: #{nth($para-lheight, 6)};
+    --spacer-lv3: #{nth($para-lheight-half, 6)};
+    --spacer-lv2: #{nth($para-lheight-quart, 6)};
+    --spacer-lv1: #{nth($para-lheight-eighth, 6)};
+    --opener: #{nth($type-size, 15)};
+    --heading-lg: #{nth($type-size, 13)};
+    --heading-md: #{nth($type-size, 11)};
+    --heading-sm: #{nth($type-size, 9)};  
+    --body-lg: #{nth($type-size, 7)};
+    --body-md: #{nth($type-size, 6)};
+    --body-sm: #{nth($type-size, 5)};  
+    --caption: #{nth($type-size, 4)};
+    --opener-lheight: #{nth($head-lheight, 15)};
+    --heading-lg-lheight: #{nth($head-lheight, 13)};
+    --heading-md-lheight: #{nth($head-lheight, 11)};
+    --heading-sm-lheight: #{nth($head-lheight, 9)};  
+    --body-lg-lheight: #{nth($para-lheight, 7)};
+    --body-md-lheight: #{nth($para-lheight, 6)};
+    --body-sm-lheight: #{nth($para-lheight, 5)};  
+    --caption-lheight: #{nth($para-lheight, 4)};
+
+    @include respond-md {
+        --spacer-lv4: #{nth($para-lheight-md, 6)};
+        --spacer-lv3: #{nth($para-lheight-md-half, 6)};
+        --spacer-lv2: #{nth($para-lheight-md-quart, 6)};
+        --spacer-lv1: #{nth($para-lheight-md-eighth, 6)};
+        --opener: #{nth($type-size-md, 15)};
+        --heading-lg: #{nth($type-size-md, 13)};
+        --heading-md: #{nth($type-size-md, 11)};
+        --heading-sm: #{nth($type-size-md, 9)};  
+        --body-lg: #{nth($type-size-md, 7)};
+        --body-md: #{nth($type-size-md, 6)};
+        --body-sm: #{nth($type-size-md, 5)};  
+        --caption: #{nth($type-size-md, 4)};
+        --opener-lheight: #{nth($head-lheight-md, 15)};
+        --heading-lg-lheight: #{nth($head-lheight-md, 13)};
+        --heading-md-lheight: #{nth($head-lheight-md, 11)};
+        --heading-sm-lheight: #{nth($head-lheight-md, 9)};  
+        --body-lg-lheight: #{nth($para-lheight-md, 7)};
+        --body-md-lheight: #{nth($para-lheight-md, 6)};
+        --body-sm-lheight: #{nth($para-lheight-md, 5)};  
+        --caption-lheight: #{nth($para-lheight-md, 4)};    
+    }
+
+    @include respond-xl {
+        --spacer-lv4: #{nth($para-lheight-lg, 6)};
+        --spacer-lv3: #{nth($para-lheight-lg-half, 6)};
+        --spacer-lv2: #{nth($para-lheight-lg-quart, 6)};
+        --spacer-lv1: #{nth($para-lheight-lg-eighth, 6)};
+        --opener: #{nth($type-size-lg, 15)};
+        --heading-lg: #{nth($type-size-lg, 13)};
+        --heading-md: #{nth($type-size-lg, 11)};
+        --heading-sm: #{nth($type-size-lg, 9)};  
+        --body-lg: #{nth($type-size-lg, 7)};
+        --body-md: #{nth($type-size-lg, 6)};
+        --body-sm: #{nth($type-size-lg, 5)};  
+        --caption: #{nth($type-size-lg, 4)};
+        --opener-lheight: #{nth($head-lheight-lg, 15)};
+        --heading-lg-lheight: #{nth($head-lheight-lg, 13)};
+        --heading-md-lheight: #{nth($head-lheight-lg, 11)};
+        --heading-sm-lheight: #{nth($head-lheight-lg, 9)};  
+        --body-lg-lheight: #{nth($para-lheight-lg, 7)};
+        --body-md-lheight: #{nth($para-lheight-lg, 6)};
+        --body-sm-lheight: #{nth($para-lheight-lg, 5)};  
+        --caption-lheight: #{nth($para-lheight-lg, 4)};    
+    }
+}
+
+.g912 {
+    --border-radius: .375rem;
+    --border-width: .125rem;
+    --color-action-default: #{color-code($blue-c50)};
+    --spacer-lv4: #{nth($para-lheight, 5)};
+    --spacer-lv3: #{nth($para-lheight-half, 5)};
+    --spacer-lv2: #{nth($para-lheight-quart, 5)};
+    --spacer-lv1: #{nth($para-lheight-eighth, 5)};
+    --opener: #{nth($type-size, 14)};
+    --heading-lg: #{nth($type-size, 12)};
+    --heading-md: #{nth($type-size, 11)};
+    --heading-sm: #{nth($type-size, 9)};  
+    --body-lg: #{nth($type-size, 7)};
+    --body-md: #{nth($type-size, 5)};
+    --body-sm: #{nth($type-size, 4)};  
+    --caption: #{nth($type-size, 3)};
+    --opener-lheight: #{nth($head-lheight, 14)};
+    --heading-lg-lheight: #{nth($head-lheight, 12)};
+    --heading-md-lheight: #{nth($head-lheight, 11)};
+    --heading-sm-lheight: #{nth($head-lheight, 9)};  
+    --body-lg-lheight: #{nth($para-lheight, 7)};
+    --body-md-lheight: #{nth($para-lheight, 5)};
+    --body-sm-lheight: #{nth($para-lheight, 4)};  
+    --caption-lheight: #{nth($para-lheight, 3)};
+
+    @include respond-md {
+        --spacer-lv4: #{nth($para-lheight-md, 5)};
+        --spacer-lv3: #{nth($para-lheight-md-half, 5)};
+        --spacer-lv2: #{nth($para-lheight-md-quart, 5)};
+        --spacer-lv1: #{nth($para-lheight-md-eighth, 5)};
+        --opener: #{nth($type-size-md, 14)};
+        --heading-lg: #{nth($type-size-md, 12)};
+        --heading-md: #{nth($type-size-md, 11)};
+        --heading-sm: #{nth($type-size-md, 9)};  
+        --body-lg: #{nth($type-size-md, 7)};
+        --body-md: #{nth($type-size-md, 5)};
+        --body-sm: #{nth($type-size-md, 4)};  
+        --caption: #{nth($type-size-md, 3)}; 
+        --opener-lheight: #{nth($head-lheight-md, 14)};
+        --heading-lg-lheight: #{nth($head-lheight-md, 12)};
+        --heading-md-lheight: #{nth($head-lheight-md, 11)};
+        --heading-sm-lheight: #{nth($head-lheight-md, 9)};  
+        --body-lg-lheight: #{nth($para-lheight-md, 7)};
+        --body-md-lheight: #{nth($para-lheight-md, 5)};
+        --body-sm-lheight: #{nth($para-lheight-md, 4)};  
+        --caption-lheight: #{nth($para-lheight-md, 3)};       
+    }
+
+    @include respond-xl {
+        --spacer-lv4: #{nth($para-lheight-lg, 5)};
+        --spacer-lv3: #{nth($para-lheight-lg-half, 5)};
+        --spacer-lv2: #{nth($para-lheight-lg-quart, 5)};
+        --spacer-lv1: #{nth($para-lheight-lg-eighth, 5)};
+        --opener: #{nth($type-size-lg, 14)};
+        --heading-lg: #{nth($type-size-lg, 12)};
+        --heading-md: #{nth($type-size-lg, 11)};
+        --heading-sm: #{nth($type-size-lg, 9)};  
+        --body-lg: #{nth($type-size-lg, 7)};
+        --body-md: #{nth($type-size-lg, 5)};
+        --body-sm: #{nth($type-size-lg, 4)};  
+        --caption: #{nth($type-size-lg, 3)};
+        --opener-lheight: #{nth($head-lheight-lg, 14)};
+        --heading-lg-lheight: #{nth($head-lheight-lg, 12)};
+        --heading-md-lheight: #{nth($head-lheight-lg, 11)};
+        --heading-sm-lheight: #{nth($head-lheight-lg, 9)};  
+        --body-lg-lheight: #{nth($para-lheight-lg, 7)};
+        --body-md-lheight: #{nth($para-lheight-lg, 5)};
+        --body-sm-lheight: #{nth($para-lheight-lg, 4)};  
+        --caption-lheight: #{nth($para-lheight-lg, 3)};       
+    }
+}
+
+@mixin opener {
+    font-size: var(--opener);
+    line-height: var(--opener-lheight);
+}
+@mixin heading-lg {
+    font-size: var(--heading-lg);
+    line-height: var(--heading-lg-lheight);
+}
+@mixin heading-md {
+    font-size: var(--heading-md);
+    line-height: var(--heading-md-lheight);
+}
+@mixin heading-sm {
+    font-size: var(--heading-sm);
+    line-height: var(--heading-sm-lheight);
+}
+@mixin body-lg {
+    font-size: var(--body-lg);
+    line-height: var(--body-lg-lheight);
+}
+@mixin body-md {
+    font-size: var(--body-md);
+    line-height: var(--body-md-lheight);
+}
+@mixin body-sm {
+    font-size: var(--body-sm);
+    line-height: var(--body-sm-lheight);
+}
+@mixin caption {
+    font-size: var(--caption);
+    line-height: var(--caption-lheight);
+}
+
+
+
+// Component Styles
+
+button {
+    --active-color: var(--color-action-default);
+    width: fit-content;
+    border-radius: var(--border-radius);
+    border: var(--border-width) solid transparent;
+    @include caption;
+    padding: calc(var(--spacer-lv2) - var(--border-width)) calc(var(--spacer-lv3) - var(--border-width));
+    background-color: white;
+    color: white;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:not(:disabled) {
+        &:hover {
+            --active-color: var(--color-action-active);
+            box-shadow: var(--shadow-hover);
+        }
+        &:active {
+            box-shadow: var(--shadow-default);
+        }
+    }
+
+    &:disabled {
+        --active-color: var(--color-action-disabled);
+    }
+
+    &:not(.secondary) {
+        background-color: var(--active-color);
+    }
+
+    &.secondary {
+        color: var(--active-color);
+        border-color: var(--active-color);
+    }
+}
+
+
+.source__accordion {
+    list-style: none;
+    
+    > li {
+      padding-left: 0;
+      margin-top: var(--border-width);
+      margin-left: 0;
+  
+      &:before {
+        content: none;
+      }
+    }
+  
+    details {
+      margin-top: 0;
+  
+      & > * {
+        padding-left: var(--spacer-lv3);
+        padding-right: var(--spacer-lv3);
+      }
+  
+      &[open] {
+        padding-bottom: var(--spacer-lv2);
+  
+        summary {
+          border-radius: var(--border-radius) var(--border-radius) 0 0;
+  
+          &:after {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  
+    summary {
+      padding-top: var(--spacer-lv2);
+      padding-bottom: var(--spacer-lv2);
+      min-height: calc(var(---ui-button) + var(--spacer-lv3));
+      border-radius: var(--border-radius);
+  
+      @include para-size($body-lg);
+      list-style: none;
+      cursor: pointer;
+      // position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      *,
+      & + * {
+        margin-top: 0;
+      }
+  
+      &:after {
+        width: var(--ui-button);
+        height: var(--ui-button);
+        content: "";
+        margin-left: var(--spacer-lv3);
+        border-radius: 50%;
+        border: var(--border-width) solid $action-mid;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h20v20H0z'/%3E%3Cpath fill='%230072db' fill-rule='nonzero' d='M16 5.8c.5-.4 1.2-.4 1.7 0 .4.5.4 1.2 0 1.6l-6.9 6.8c-.4.4-1.2.4-1.6 0L2.3 7.4C2 7 2 6.3 2.3 5.8c.5-.4 1.2-.4 1.7 0l6 6 6-6z'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: var(--ui-icon) var(--ui-icon);
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease-in-out;
+        flex-shrink: 0;
+      }
+  
+      &:before {
+        width: 100%;
+        height: 100%;
+        background: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        border-radius: var(--border-radius);
+        box-shadow: $shadow-default;
+        z-index: -1;
+        transition: box-shadow 0.1s ease-in-out;
+      }
+  
+      &:hover {
+        &:before {
+          box-shadow: $shadow-hover;
+        }
+      }
+  
+      &:active {
+        &:before {
+          box-shadow: $shadow-active;
+        }
+      }
+    }
+  
+    &--divider {
+      summary {
+        & + * {
+          @include padding-above(0.25);
+          position: relative;
+  
+          &:before {
+            position: absolute;
+            top: 0;
+            left: var(--spacer-lv3);
+            width: calc(100% - var(--spacer-lv4));
+            height: var(--border-width);
+            content: "";
+            background: color-code($gray-c15);
+          }
+        }
+      }
+    }
+  
+    &--color {
+      details {
+        &[open] {
+          summary {
+            background: color-code($blue-c5);
+  
+            & + * {
+              @include padding-above(0.25);
+            }
+          }
+        }
+      }
+    }
+  }
+  

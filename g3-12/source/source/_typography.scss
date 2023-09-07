@@ -1,0 +1,151 @@
+body {
+  font-family: $font-sans;
+  @include para-size($body-md);
+}
+
+h1 {
+  @include margin-above(3);
+  @include head-size-fluid($project-opener);
+}
+
+h2 {
+  @include margin-above(2.5);
+  @include head-size($heading-lg);
+}
+
+h3 {
+  @include margin-above(2);
+  @include head-size($heading-md);
+}
+
+h4 {
+  @include margin-above(1.5);
+  @include head-size($heading-sm);
+}
+
+h5 {
+  @include margin-above(1);
+  @include head-size($body-lg);
+}
+
+h6 {
+  @include margin-above(0.5);
+  @include head-size($body-md);
+}
+
+blockquote {
+  @include para-size($body-lg);
+  @include margin-above(1.5);
+}
+
+aside {
+  @include para-size($body-sm);
+  @include margin-above(1);
+}
+
+small {
+  @include para-size($caption);
+  @include margin-above(1);
+}
+
+sup,
+sub {
+  @include para-size($caption);
+}
+
+p,
+li,
+q {
+  @include para-size($body-md);
+}
+
+p {
+  &.source--large-text {
+    @include para-size($body-lg);
+  }
+  &.source--small-text {
+    @include para-size($body-sm);
+  }
+}
+
+p,
+ol,
+ul,
+aside {
+  @include margin-above(0.5);
+}
+
+.source__supertitle,
+.source__subtitle {
+  @include para-size($body-md);
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 0.125rem solid $link-color;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+u {
+  text-decoration: underline;
+}
+
+s,
+del {
+  text-decoration: line-through;
+}
+
+del {
+  background-color: color-code($red-c5, 1);
+}
+
+ins {
+  background-color: color-code($green-c5, 1);
+}
+
+sup {
+  vertical-align: super;
+}
+
+sub {
+  vertical-align: sub;
+}
+
+dfn {
+  color: $link-color;
+  border-bottom: 0.125rem dotted $link-color;
+}
+
+[href*="[remark"],
+[rel="remark"] {
+  color: $text-dark;
+  text-decoration: none;
+  border-bottom: 0.125rem dotted $link-color;
+
+  &:after {
+    font-variant: small-caps;
+    font-weight: 600;
+    color: $link-color;
+    content: "[1]";
+    @include para-size($body-sm);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  hyphens: auto;
+}
