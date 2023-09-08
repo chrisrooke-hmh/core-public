@@ -272,8 +272,10 @@ button {
   padding: calc(var(--spacer-lv2) - var(--border-width)) calc(var(--spacer-lv3) - var(--border-width));
   background-color: white;
   color: white;
-  cursor: pointer;
   transition: all 0.2s ease-in-out;
+}
+button:not(:disabled) {
+  cursor: pointer;
 }
 button:not(:disabled):hover {
   --active-color: var(--color-action-active);
@@ -442,9 +444,74 @@ input[type=text].incorrect {
   color: black;
 }
 
+.mcq input[type=radio], .mcq input[type=checkbox] {
+  position: absolute;
+  visibility: hidden;
+}
 .mcq input[type=radio] + label, .mcq input[type=checkbox] + label {
-  display: block;
+  display: flex;
+  align-items: center;
   width: fit-content;
+  padding: var(--spacer-lv2) var(--spacer-lv3) var(--spacer-lv2) var(--spacer-lv2);
+  border-radius: var(--border-radius);
+  position: relative;
+}
+.mcq input[type=radio] + label:before, .mcq input[type=checkbox] + label:before {
+  content: "";
+  width: var(--spacer-lv4);
+  height: var(--spacer-lv4);
+  background: white;
+  margin-right: var(--spacer-lv3);
+  border-radius: calc(var(--border-radius) - var(--spacer-lv2));
+  border: var(--border-width) solid var(--color-action-default);
+}
+.mcq input[type=radio]:not(:disabled) + label, .mcq input[type=checkbox]:not(:disabled) + label {
+  cursor: pointer;
+}
+.mcq input[type=radio]:not(:disabled) + label:hover, .mcq input[type=checkbox]:not(:disabled) + label:hover {
+  background-color: var(--color-action-bg);
+}
+.mcq input[type=radio]:checked + label:after, .mcq input[type=checkbox]:checked + label:after {
+  content: "";
+  position: absolute;
+  width: calc(var(--spacer-lv4) - var(--border-width) * 4);
+  height: calc(var(--spacer-lv4) - var(--border-width) * 4);
+  top: calc(var(--spacer-lv2) + var(--border-width) * 2);
+  left: calc(var(--spacer-lv2) + var(--border-width) * 2);
+  background-color: var(--color-action-default);
+}
+.mcq input[type=radio]:disabled + label, .mcq input[type=checkbox]:disabled + label {
+  color: var(--color-action-disabled);
+}
+.mcq input[type=radio]:disabled + label:before, .mcq input[type=checkbox]:disabled + label:before {
+  border-color: var(--color-action-disabled);
+}
+.mcq input[type=radio]:disabled + label:after, .mcq input[type=checkbox]:disabled + label:after {
+  background-color: var(--color-action-disabled);
+}
+.mcq input[type=radio].correct + label, .mcq input[type=checkbox].correct + label {
+  color: var(--color-correct);
+}
+.mcq input[type=radio].correct + label:before, .mcq input[type=checkbox].correct + label:before {
+  border-color: var(--color-correct);
+}
+.mcq input[type=radio].correct + label:after, .mcq input[type=checkbox].correct + label:after {
+  background-color: var(--color-correct);
+}
+.mcq input[type=radio].incorrect + label, .mcq input[type=checkbox].incorrect + label {
+  color: var(--color-incorrect);
+}
+.mcq input[type=radio].incorrect + label:before, .mcq input[type=checkbox].incorrect + label:before {
+  border-color: var(--color-incorrect);
+}
+.mcq input[type=radio].incorrect + label:after, .mcq input[type=checkbox].incorrect + label:after {
+  background-color: var(--color-incorrect);
+}
+.mcq input[type=radio] + label {
+  border-radius: 9999rem;
+}
+.mcq input[type=radio] + label:before, .mcq input[type=radio] + label:after {
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=custom.css.map */

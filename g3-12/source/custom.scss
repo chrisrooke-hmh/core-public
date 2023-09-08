@@ -311,10 +311,10 @@ button {
     padding: calc(var(--spacer-lv2) - var(--border-width)) calc(var(--spacer-lv3) - var(--border-width));
     background-color: white;
     color: white;
-    cursor: pointer;
     transition: all .2s ease-in-out;
 
     &:not(:disabled) {
+        cursor: pointer;
         &:hover {
             --active-color: var(--color-action-active);
             box-shadow: var(--shadow-hover);
@@ -506,9 +506,94 @@ input[type=text] {
 
 .mcq {
     input[type=radio], input[type=checkbox] {
+        position: absolute;
+        visibility: hidden;
+
         + label {
-            display: block;
+            display: flex;
+            align-items: center;
             width: fit-content;
+            padding: var(--spacer-lv2) var(--spacer-lv3) var(--spacer-lv2) var(--spacer-lv2);
+            border-radius: var(--border-radius);
+            position: relative;
+
+            &:before {
+              content: '';
+              width: var(--spacer-lv4);
+              height: var(--spacer-lv4);
+              background: white;
+              margin-right: var(--spacer-lv3);
+              border-radius: calc(var(--border-radius) - var(--spacer-lv2));
+              border: var(--border-width) solid var(--color-action-default);
+            }
         }
+
+        &:not(:disabled) {
+          + label {
+            cursor: pointer;
+            &:hover {
+              background-color: var(--color-action-bg);
+            }  
+          }
+        }
+        &:checked {
+          + label {
+            &:after {
+              content: '';
+              position: absolute;
+              width: calc(var(--spacer-lv4) - var(--border-width) * 4);
+              height: calc(var(--spacer-lv4) - var(--border-width) * 4);
+              top: calc(var(--spacer-lv2) + var(--border-width) * 2);
+              left: calc(var(--spacer-lv2) + var(--border-width) * 2);
+              background-color: var(--color-action-default);
+            }
+          }
+        }   
+        
+        &:disabled {
+          + label {
+            color: var(--color-action-disabled);
+            &:before {
+              border-color: var(--color-action-disabled);
+            }
+            &:after {
+              background-color: var(--color-action-disabled);
+            }
+          }
+        }
+
+        &.correct {
+          + label {
+            color: var(--color-correct);
+            &:before {
+              border-color: var(--color-correct);
+            }
+            &:after {
+              background-color: var(--color-correct);
+            }
+          }
+        }
+        &.incorrect {
+          + label {
+            color: var(--color-incorrect);
+            &:before {
+              border-color: var(--color-incorrect);
+            }
+            &:after {
+              background-color: var(--color-incorrect);
+            }
+          }
+        }
+
     }
+
+    input[type=radio] {
+      + label {
+        border-radius: 9999rem;
+        &:before, &:after {
+          border-radius: 50%;
+        }
+      }
+    }
+
 }
