@@ -97,84 +97,153 @@
     <input type="text" value="answer" class="incorrect" disabled />
     <input type="text" value="answer" disabled />
     <div>
-    <form class="mcq">
-        <input type="radio" id="answer1" name="radio" value="answer1"><label for="answer1">The mouse rides a bike</label>
-        <input type="radio" id="answer2" name="radio" value="answer2" checked><label for="answer2">The mouse rides a bike</label>
-    </form>
-    <form class="mcq">
-        <input type="radio" id="answer3" name="radio" value="answer3" class="correct" checked disabled><label for="answer3">The mouse rides a bike</label>
-    </form>
-    <form class="mcq">
-        <input type="radio" id="answer4" name="radio" value="answer4" class="incorrect" checked disabled><label for="answer4">The mouse rides a bike</label>
-    </form>
-    <form class="mcq"> 
-        <input type="radio" id="answer5" name="radio" value="answer5" disabled><label for="answer5">The mouse rides a bike</label>
-    </form>
+        <form>
+            <input type="radio" id="answer1" name="radio" value="answer1"><label for="answer1">The mouse rides a bike</label>
+            <input type="radio" id="answer2" name="radio" value="answer2" checked><label for="answer2">The mouse rides a bike</label>
+        </form>
+        <form>
+            <input type="radio" id="answer3" name="radio" value="answer3" class="correct" checked disabled><label for="answer3">The mouse rides a bike</label>
+        </form>
+        <form>
+            <input type="radio" id="answer4" name="radio" value="answer4" class="incorrect" checked disabled><label for="answer4">The mouse rides a bike</label>
+        </form>
+        <form> 
+            <input type="radio" id="answer5" name="radio" value="answer5" disabled><label for="answer5">The mouse rides a bike</label>
+        </form>
     </div>
-    <form class="mcq">
+    <form>
         <input type="checkbox" id="answer6" name="check" value="answer6"><label for="answer6">The mouse rides a bike</label>
         <input type="checkbox" id="answer7" name="check" value="answer7" checked><label for="answer7">The mouse rides a bike</label>
         <input type="checkbox" id="answer8" name="check" value="answer8" class="correct" checked disabled><label for="answer8">The mouse rides a bike</label>
         <input type="checkbox" id="answer9" name="check" value="answer9" class="incorrect" checked disabled><label for="answer9">The mouse rides a bike</label>
         <input type="checkbox" id="answer10" name="check" value="answer10" disabled><label for="answer10">The mouse rides a bike</label>
     </form>
-    <!-- <form class="sm mcq">
-        <input type="radio" id="answer11" name="image" value="answer11"><label for="answer11"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer12" name="image" value="answer12" checked><label for="answer12"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer13" name="image" value="answer13" class="correct" disabled><label for="answer13"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer14" name="image" value="answer14" class="incorrect" disabled><label for="answer14"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer15" name="image" value="answer15" disabled><label for="answer15"><img src="images/zelda.jpg"></label>
+    <div>
+        <form class="mcq">
+            <input type="radio" id="answer11" name="radio-mcq" value="answer11"><label for="answer11">The mouse rides a bike</label>
+            <input type="radio" id="answer12" name="radio-mcq" value="answer12" checked><label for="answer12">The mouse rides a bike</label>
+        </form>
+        <form class="mcq">
+            <input type="radio" id="answer13" name="radio-mcq" value="answer13" class="correct" checked disabled><label for="answer13">The mouse rides a bike</label>
+        </form>
+        <form class="mcq">
+            <input type="radio" id="answer14" name="radio-mcq" value="answer14" class="incorrect" checked disabled><label for="answer14">The mouse rides a bike</label>
+        </form>
+        <form class="mcq"> 
+            <input type="radio" id="answer15" name="radio-mcq" value="answer15" disabled><label for="answer15">The mouse rides a bike</label>
+        </form>
+    </div>
+    <form class="mcq">
+        <input type="checkbox" id="answer16" name="check-mcq" value="answer16"><label for="answer16">The mouse rides a bike</label>
+        <input type="checkbox" id="answer17" name="check-mcq" value="answer17" checked><label for="answer17">The mouse rides a bike</label>
+        <input type="checkbox" id="answer18" name="check-mcq" value="answer18" class="correct" checked disabled><label for="answer18">The mouse rides a bike</label>
+        <input type="checkbox" id="answer19" name="check-mcq" value="answer19" class="incorrect" checked disabled><label for="answer19">The mouse rides a bike</label>
+        <input type="checkbox" id="answer20" name="check-mcq" value="answer20" disabled><label for="answer20">The mouse rides a bike</label>
     </form>
-    <form class="md mcq">
-        <input type="radio" id="answer16" name="image" value="answer16"><label for="answer16"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer17" name="image" value="answer17" checked><label for="answer17"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer18" name="image" value="answer18" class="correct" disabled><label for="answer18"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer19" name="image" value="answer19" class="incorrect" disabled><label for="answer19"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer20" name="image" value="answer20" disabled><label for="answer20"><img src="images/zelda.jpg"></label>
-    </form>
-    <form class="lg mcq">
+    
+    <form class="mcq">
         <input type="radio" id="answer21" name="image" value="answer21"><label for="answer21"><img src="images/zelda.jpg"></label>
         <input type="radio" id="answer22" name="image" value="answer22" checked><label for="answer22"><img src="images/zelda.jpg"></label>
         <input type="radio" id="answer23" name="image" value="answer23" class="correct" disabled><label for="answer23"><img src="images/zelda.jpg"></label>
         <input type="radio" id="answer24" name="image" value="answer24" class="incorrect" disabled><label for="answer24"><img src="images/zelda.jpg"></label>
         <input type="radio" id="answer25" name="image" value="answer25" disabled><label for="answer25"><img src="images/zelda.jpg"></label>
     </form>
-    <form class="xl mcq">
-        <input type="radio" id="answer26" name="image" value="answer26"><label for="answer26"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer27" name="image" value="answer27" checked><label for="answer27"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer28" name="image" value="answer28" class="correct" disabled><label for="answer28"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer29" name="image" value="answer29" class="incorrect" disabled><label for="answer29"><img src="images/zelda.jpg"></label>
-        <input type="radio" id="answer30" name="image" value="answer30" disabled><label for="answer30"><img src="images/zelda.jpg"></label>
+    <form class="mcq">
+        <input type="checkbox" id="answer26" name="image" value="answer26"><label for="answer26"><img src="images/zelda.jpg"></label>
+        <input type="checkbox" id="answer27" name="image" value="answer27" checked><label for="answer27"><img src="images/zelda.jpg"></label>
+        <input type="checkbox" id="answer28" name="image" value="answer28" class="correct" disabled><label for="answer28"><img src="images/zelda.jpg"></label>
+        <input type="checkbox" id="answer29" name="image" value="answer29" class="incorrect" disabled><label for="answer29"><img src="images/zelda.jpg"></label>
+        <input type="checkbox" id="answer30" name="image" value="answer30" disabled><label for="answer30"><img src="images/zelda.jpg"></label>
     </form>
-    <form class="sm mcq">
-        <input type="checkbox" id="answer31" name="image" value="answer31"><label for="answer31"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer32" name="image" value="answer32" checked><label for="answer32"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer33" name="image" value="answer33" class="correct" disabled><label for="answer33"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer34" name="image" value="answer34" class="incorrect" disabled><label for="answer34"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer35" name="image" value="answer35" disabled><label for="answer35"><img src="images/zelda.jpg"></label>
-    </form>
-    <form class="md mcq">
-        <input type="checkbox" id="answer36" name="image" value="answer36"><label for="answer36"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer37" name="image" value="answer37" checked><label for="answer37"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer38" name="image" value="answer38" class="correct" disabled><label for="answer38"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer39" name="image" value="answer39" class="incorrect" disabled><label for="answer39"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer40" name="image" value="answer40" disabled><label for="answer40"><img src="images/zelda.jpg"></label>
-    </form>
-    <form class="lg mcq">
-        <input type="checkbox" id="answer41" name="image" value="answer41"><label for="answer41"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer42" name="image" value="answer42" checked><label for="answer42"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer43" name="image" value="answer43" class="correct" disabled><label for="answer43"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer44" name="image" value="answer44" class="incorrect" disabled><label for="answer44"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer45" name="image" value="answer45" disabled><label for="answer45"><img src="images/zelda.jpg"></label>
-    </form>
-    <form class="xl mcq">
-        <input type="checkbox" id="answer46" name="image" value="answer46"><label for="answer46"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer47" name="image" value="answer47" checked><label for="answer47"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer48" name="image" value="answer48" class="correct" disabled><label for="answer48"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer49" name="image" value="answer49" class="incorrect" disabled><label for="answer49"><img src="images/zelda.jpg"></label>
-        <input type="checkbox" id="answer50" name="image" value="answer50" disabled><label for="answer50"><img src="images/zelda.jpg"></label>
-    </form>
-    <select class="v1">
+    <ul class="source__flipcards">
+        <li>
+            <details open>
+                <summary>
+                    <h5 class="source__flipcards__front">
+                        Front text
+                    </h5>
+                </summary>
+                <div class="source__flipcards__back">
+                    <p>This is a paragraph of placeholder text. It is only here to help show the layout of the page and how the text will flow. Replace this placeholder text with your own meaningful content.</p>
+                </div>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    <h5 class="source__flipcards__front">
+                        Front text
+                    </h5>
+                </summary>
+                <div class="source__flipcards__back">
+                    <p>This is a paragraph of placeholder text. It is only here to help show the layout of the page and how the text will flow. Replace this placeholder text with your own meaningful content.</p>
+                </div>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    <h5 class="source__flipcards__front">
+                        Front text
+                    </h5>
+                </summary>
+                <div class="source__flipcards__back">
+                    <p>This is a paragraph of placeholder text. It is only here to help show the layout of the page and how the text will flow. Replace this placeholder text with your own meaningful content.</p>
+                </div>
+            </details>
+        </li>
+    </ul>    
+    <ul class="source__flipcards source__flipcards--counter source__flipcards--four">
+        <li>
+            <details open>
+                <summary>
+                    <h5 class="source__flipcards__front">
+                        Front text
+                    </h5>
+                </summary>
+                <div class="source__flipcards__back">
+                    <p>This is a paragraph of placeholder text. It is only here to help show the layout of the page and how the text will flow. Replace this placeholder text with your own meaningful content.</p>
+                </div>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    <h5 class="source__flipcards__front">
+                        Front text
+                    </h5>
+                </summary>
+                <div class="source__flipcards__back">
+                    <p>This is a paragraph of placeholder text. It is only here to help show the layout of the page and how the text will flow. Replace this placeholder text with your own meaningful content.</p>
+                </div>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    <h5 class="source__flipcards__front">
+                        Front text
+                    </h5>
+                </summary>
+                <div class="source__flipcards__back">
+                    <p>This is a paragraph of placeholder text. It is only here to help show the layout of the page and how the text will flow. Replace this placeholder text with your own meaningful content.</p>
+                </div>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    <h5 class="source__flipcards__front">
+                        Front text
+                    </h5>
+                </summary>
+                <div class="source__flipcards__back">
+                    <p>This is a paragraph of placeholder text. It is only here to help show the layout of the page and how the text will flow. Replace this placeholder text with your own meaningful content.</p>
+                </div>
+            </details>
+        </li>
+    </ul>    
+    <select>
         <option>Tears of the Kingdom</option>
         <option>Breath of the Wild</option>
         <option>Skyward Sword</option>
@@ -183,7 +252,7 @@
         <option>Majora's Mask</option>
         <option>Ocarina of Time</option>
     </select>
-    <select class="v2">
+    <select class="correct" disabled>
         <option>Tears of the Kingdom</option>
         <option>Breath of the Wild</option>
         <option>Skyward Sword</option>
@@ -192,22 +261,23 @@
         <option>Majora's Mask</option>
         <option>Ocarina of Time</option>
     </select>
-    <figure>
-        <form>
-            <input type="radio" id="answer51" name="radio" value="answer51"><label for="answer51">The mouse rides a bike</label>
-            <input type="radio" id="answer52" name="radio" value="answer52" checked><label for="answer52">The mouse rides a bike</label>
-        </form>
-        <input type="radio" id="answer53" name="answer53" value="answer53" class="correct" checked disabled><label for="answer53">The mouse rides a bike</label>
-        <input type="radio" id="answer54" name="answer54" value="answer54" class="incorrect" checked disabled><label for="answer54">The mouse rides a bike</label>
-        <input type="radio" id="answer55" name="answer55" value="answer55" disabled><label for="answer55">The mouse rides a bike</label>
-    </figure>
-    <form>
-        <input type="checkbox" id="answer56" name="checkbox" value="answer56"><label for="answer56">The mouse rides a bike</label>
-        <input type="checkbox" id="answer57" name="checkbox" value="answer57" checked><label for="answer57">The mouse rides a bike</label>
-        <input type="checkbox" id="answer58" name="checkbox" value="answer58" class="correct" checked disabled><label for="answer58">The mouse rides a bike</label>
-        <input type="checkbox" id="answer59" name="checkbox" value="answer59" class="incorrect" checked disabled><label for="answer59">The mouse rides a bike</label>
-        <input type="checkbox" id="answer60" name="checkbox" value="answer60" disabled><label for="answer60">The mouse rides a bike</label>
-        </form> -->
-
+    <select class="incorrect" disabled>
+        <option>Tears of the Kingdom</option>
+        <option>Breath of the Wild</option>
+        <option>Skyward Sword</option>
+        <option>Twilight Princess</option>
+        <option>The Wind Waker</option>
+        <option>Majora's Mask</option>
+        <option>Ocarina of Time</option>
+    </select>
+    <select disabled>
+        <option>Tears of the Kingdom</option>
+        <option>Breath of the Wild</option>
+        <option>Skyward Sword</option>
+        <option>Twilight Princess</option>
+        <option>The Wind Waker</option>
+        <option>Majora's Mask</option>
+        <option>Ocarina of Time</option>
+    </select>
     </body>
 </html>
