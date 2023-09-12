@@ -13,16 +13,21 @@
 /*! Temp layout styles to be ignored */
 
 body {
-    padding-top: var(--spacer-lv4);
-    grid-gap: var(--spacer-lv4);
+    padding-top: var(--spacer-lg);
+    grid-gap: var(--spacer-lg);
+    color: var(--color-text);
 }
 
 button, input {
     grid-column: span 3;
 
-    &:first-of-type {
+    &:first-of-type, &:nth-of-type(4n + 1) {
         grid-column: 1 / span 3;
     }
+}
+
+.drop {
+  grid-column: span 6;
 }
 
 *, *:before, *:after {
@@ -43,6 +48,7 @@ button, input {
     --color-correct-bg: #{color-code($green-c5)};
     --color-incorrect: #{$feedback-red};
     --color-incorrect-bg: #{color-code($red-c5)};
+    --color-text: #{$text-color};
     --credits: #{nth($type-size, 2)};
     --ui-button: #{nth($icon-wrap, 1)};
     --ui-icon: #{nth($icon-boxed, 1)};
@@ -52,10 +58,10 @@ button, input {
     --border-radius: .75rem;
     --border-width: .1875rem;
     --color-action-default: #{color-code($blue-s50)};
-    --spacer-lv4: #{nth($para-lheight, 7)};
-    --spacer-lv3: #{nth($para-lheight-half, 7)};
-    --spacer-lv2: #{nth($para-lheight-quart, 7)};
-    --spacer-lv1: #{nth($para-lheight-eighth, 7)};
+    --spacer-lg: #{nth($para-lheight, 7)};
+    --spacer-md: #{nth($para-lheight-half, 7)};
+    --spacer-sm: #{nth($para-lheight-quart, 7)};
+    --spacer-xs: #{nth($para-lheight-eighth, 7)};
     --opener: #{nth($type-size, 15)};
     --heading-lg: #{nth($type-size, 13)};
     --heading-md: #{nth($type-size, 12)};
@@ -75,10 +81,10 @@ button, input {
 
 
     @include respond-md {
-        --spacer-lv4: #{nth($para-lheight-md, 7)};
-        --spacer-lv3: #{nth($para-lheight-md-half, 7)};
-        --spacer-lv2: #{nth($para-lheight-md-quart, 7)};
-        --spacer-lv1: #{nth($para-lheight-md-eighth, 7)};
+        --spacer-lg: #{nth($para-lheight-md, 7)};
+        --spacer-md: #{nth($para-lheight-md-half, 7)};
+        --spacer-sm: #{nth($para-lheight-md-quart, 7)};
+        --spacer-xs: #{nth($para-lheight-md-eighth, 7)};
         --opener: #{nth($type-size-md, 15)};
         --heading-lg: #{nth($type-size-md, 13)};
         --heading-md: #{nth($type-size-md, 12)};
@@ -98,10 +104,10 @@ button, input {
     }
 
     @include respond-xl {
-        --spacer-lv4: #{nth($para-lheight-lg, 7)};
-        --spacer-lv3: #{nth($para-lheight-lg-half, 7)};
-        --spacer-lv2: #{nth($para-lheight-lg-quart, 7)};
-        --spacer-lv1: #{nth($para-lheight-lg-eighth, 7)};
+        --spacer-lg: #{nth($para-lheight-lg, 7)};
+        --spacer-md: #{nth($para-lheight-lg-half, 7)};
+        --spacer-sm: #{nth($para-lheight-lg-quart, 7)};
+        --spacer-xs: #{nth($para-lheight-lg-eighth, 7)};
         --opener: #{nth($type-size-lg, 15)};
         --heading-lg: #{nth($type-size-lg, 13)};
         --heading-md: #{nth($type-size-lg, 12)};
@@ -125,10 +131,10 @@ button, input {
     --border-radius: .375rem;
     --border-width: .125rem;
     --color-action-default: #{color-code($blue-c50)};
-    --spacer-lv4: #{nth($para-lheight, 6)};
-    --spacer-lv3: #{nth($para-lheight-half, 6)};
-    --spacer-lv2: #{nth($para-lheight-quart, 6)};
-    --spacer-lv1: #{nth($para-lheight-eighth, 6)};
+    --spacer-lg: #{nth($para-lheight, 6)};
+    --spacer-md: #{nth($para-lheight-half, 6)};
+    --spacer-sm: #{nth($para-lheight-quart, 6)};
+    --spacer-xs: #{nth($para-lheight-eighth, 6)};
     --opener: #{nth($type-size, 15)};
     --heading-lg: #{nth($type-size, 13)};
     --heading-md: #{nth($type-size, 11)};
@@ -147,10 +153,10 @@ button, input {
     --caption-lheight: #{nth($para-lheight, 4)};
 
     @include respond-md {
-        --spacer-lv4: #{nth($para-lheight-md, 6)};
-        --spacer-lv3: #{nth($para-lheight-md-half, 6)};
-        --spacer-lv2: #{nth($para-lheight-md-quart, 6)};
-        --spacer-lv1: #{nth($para-lheight-md-eighth, 6)};
+        --spacer-lg: #{nth($para-lheight-md, 6)};
+        --spacer-md: #{nth($para-lheight-md-half, 6)};
+        --spacer-sm: #{nth($para-lheight-md-quart, 6)};
+        --spacer-xs: #{nth($para-lheight-md-eighth, 6)};
         --opener: #{nth($type-size-md, 15)};
         --heading-lg: #{nth($type-size-md, 13)};
         --heading-md: #{nth($type-size-md, 11)};
@@ -170,10 +176,10 @@ button, input {
     }
 
     @include respond-xl {
-        --spacer-lv4: #{nth($para-lheight-lg, 6)};
-        --spacer-lv3: #{nth($para-lheight-lg-half, 6)};
-        --spacer-lv2: #{nth($para-lheight-lg-quart, 6)};
-        --spacer-lv1: #{nth($para-lheight-lg-eighth, 6)};
+        --spacer-lg: #{nth($para-lheight-lg, 6)};
+        --spacer-md: #{nth($para-lheight-lg-half, 6)};
+        --spacer-sm: #{nth($para-lheight-lg-quart, 6)};
+        --spacer-xs: #{nth($para-lheight-lg-eighth, 6)};
         --opener: #{nth($type-size-lg, 15)};
         --heading-lg: #{nth($type-size-lg, 13)};
         --heading-md: #{nth($type-size-lg, 11)};
@@ -197,10 +203,10 @@ button, input {
     --border-radius: .375rem;
     --border-width: .125rem;
     --color-action-default: #{color-code($blue-c50)};
-    --spacer-lv4: #{nth($para-lheight, 5)};
-    --spacer-lv3: #{nth($para-lheight-half, 5)};
-    --spacer-lv2: #{nth($para-lheight-quart, 5)};
-    --spacer-lv1: #{nth($para-lheight-eighth, 5)};
+    --spacer-lg: #{nth($para-lheight, 5)};
+    --spacer-md: #{nth($para-lheight-half, 5)};
+    --spacer-sm: #{nth($para-lheight-quart, 5)};
+    --spacer-xs: #{nth($para-lheight-eighth, 5)};
     --opener: #{nth($type-size, 14)};
     --heading-lg: #{nth($type-size, 12)};
     --heading-md: #{nth($type-size, 11)};
@@ -219,10 +225,10 @@ button, input {
     --caption-lheight: #{nth($para-lheight, 3)};
 
     @include respond-md {
-        --spacer-lv4: #{nth($para-lheight-md, 5)};
-        --spacer-lv3: #{nth($para-lheight-md-half, 5)};
-        --spacer-lv2: #{nth($para-lheight-md-quart, 5)};
-        --spacer-lv1: #{nth($para-lheight-md-eighth, 5)};
+        --spacer-lg: #{nth($para-lheight-md, 5)};
+        --spacer-md: #{nth($para-lheight-md-half, 5)};
+        --spacer-sm: #{nth($para-lheight-md-quart, 5)};
+        --spacer-xs: #{nth($para-lheight-md-eighth, 5)};
         --opener: #{nth($type-size-md, 14)};
         --heading-lg: #{nth($type-size-md, 12)};
         --heading-md: #{nth($type-size-md, 11)};
@@ -242,10 +248,10 @@ button, input {
     }
 
     @include respond-xl {
-        --spacer-lv4: #{nth($para-lheight-lg, 5)};
-        --spacer-lv3: #{nth($para-lheight-lg-half, 5)};
-        --spacer-lv2: #{nth($para-lheight-lg-quart, 5)};
-        --spacer-lv1: #{nth($para-lheight-lg-eighth, 5)};
+        --spacer-lg: #{nth($para-lheight-lg, 5)};
+        --spacer-md: #{nth($para-lheight-lg-half, 5)};
+        --spacer-sm: #{nth($para-lheight-lg-quart, 5)};
+        --spacer-xs: #{nth($para-lheight-lg-eighth, 5)};
         --opener: #{nth($type-size-lg, 14)};
         --heading-lg: #{nth($type-size-lg, 12)};
         --heading-md: #{nth($type-size-lg, 11)};
@@ -308,32 +314,32 @@ button {
     border-radius: var(--border-radius);
     border: var(--border-width) solid transparent;
     @include caption;
-    padding: calc(var(--spacer-lv2) - var(--border-width)) calc(var(--spacer-lv3) - var(--border-width));
-    background-color: white;
+    padding: calc(var(--spacer-sm) - var(--border-width)) calc(var(--spacer-md) - var(--border-width));
+    background-color: var(--active-color);
     color: white;
+    cursor: pointer;
 
-    &:not(:disabled) {
-        cursor: pointer;
-        &:hover {
-            --active-color: var(--color-action-active);
-            box-shadow: var(--shadow-hover);
-        }
-        &:active {
-            box-shadow: var(--shadow-default);
-        }
+    &:hover {
+      --active-color: var(--color-action-active);
+      box-shadow: var(--shadow-hover);
+    }
+    &:active {
+        box-shadow: var(--shadow-default);
     }
 
     &:disabled {
         --active-color: var(--color-action-disabled);
-    }
+        cursor: unset;
 
-    &:not(.secondary) {
-        background-color: var(--active-color);
+        &:hover, &:active {
+          box-shadow: unset;
+        }
     }
 
     &.secondary {
         color: var(--active-color);
         border-color: var(--active-color);
+        background-color: white;
     }
 }
 
@@ -355,12 +361,12 @@ button {
       margin-top: 0;
   
       & > * {
-        padding-left: var(--spacer-lv3);
-        padding-right: var(--spacer-lv3);
+        padding-left: var(--spacer-md);
+        padding-right: var(--spacer-md);
       }
   
       &[open] {
-        padding-bottom: var(--spacer-lv2);
+        padding-bottom: var(--spacer-sm);
   
         summary {
           border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -373,9 +379,9 @@ button {
     }
   
     summary {
-      padding-top: var(--spacer-lv2);
-      padding-bottom: var(--spacer-lv2);
-      min-height: calc(var(--ui-button) + var(--spacer-lv3));
+      padding-top: var(--spacer-sm);
+      padding-bottom: var(--spacer-sm);
+      min-height: calc(var(--ui-button) + var(--spacer-md));
       border-radius: var(--border-radius);
   
       @include para-size($body-lg);
@@ -395,7 +401,7 @@ button {
         width: var(--ui-button);
         height: var(--ui-button);
         content: "";
-        margin-left: var(--spacer-lv3);
+        margin-left: var(--spacer-md);
         border-radius: 50%;
         border: var(--border-width) solid var(--color-action-default);
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h20v20H0z'/%3E%3Cpath fill='%230072db' fill-rule='nonzero' d='M16 5.8c.5-.4 1.2-.4 1.7 0 .4.5.4 1.2 0 1.6l-6.9 6.8c-.4.4-1.2.4-1.6 0L2.3 7.4C2 7 2 6.3 2.3 5.8c.5-.4 1.2-.4 1.7 0l6 6 6-6z'/%3E%3C/g%3E%3C/svg%3E");
@@ -440,8 +446,8 @@ button {
           &:before {
             position: absolute;
             top: 0;
-            left: var(--spacer-lv3);
-            width: calc(100% - var(--spacer-lv4));
+            left: var(--spacer-md);
+            width: calc(100% - var(--spacer-lg));
             height: var(--border-width);
             content: "";
             background: var(--color-action-disabled);
@@ -457,7 +463,7 @@ button {
             background: var(--color-action-bg);
   
             & + * {
-              padding-top: var(--spacer-lv2);
+              padding-top: var(--spacer-sm);
             }
           }
         }
@@ -469,7 +475,7 @@ input[type=text] {
     border-radius: var(--border-radius);
     border: var(--border-width) solid var(--color-action-default);
     @include body-md;
-    padding: calc(var(--spacer-lv2) - var(--border-width)) calc(var(--spacer-lv3) - var(--border-width));
+    padding: calc(var(--spacer-sm) - var(--border-width)) calc(var(--spacer-md) - var(--border-width));
     background-color: var(--color-action-bg);
 
     &:focus {
@@ -509,17 +515,17 @@ input[type=radio], input[type=checkbox] {
       display: flex;
       align-items: center;
       width: fit-content;
-      padding: var(--spacer-lv2) var(--spacer-lv3) var(--spacer-lv2) var(--spacer-lv2);
+      padding: var(--spacer-sm) var(--spacer-md) var(--spacer-sm) var(--spacer-sm);
       border-radius: var(--border-radius);
       position: relative;
 
       &:before {
         content: '';
-        width: var(--spacer-lv4);
-        height: var(--spacer-lv4);
+        width: var(--spacer-lg);
+        height: var(--spacer-lg);
         background: white;
-        margin-right: var(--spacer-lv3);
-        border-radius: calc(var(--border-radius) - var(--spacer-lv2));
+        margin-right: var(--spacer-md);
+        border-radius: calc(var(--border-radius) - var(--spacer-sm));
         border: var(--border-width) solid var(--color-action-default);
       }
   }
@@ -537,10 +543,10 @@ input[type=radio], input[type=checkbox] {
       &:after {
         content: '';
         position: absolute;
-        width: calc(var(--spacer-lv4) - var(--border-width) * 4);
-        height: calc(var(--spacer-lv4) - var(--border-width) * 4);
-        top: calc(var(--spacer-lv2) + var(--border-width) * 2);
-        left: calc(var(--spacer-lv2) + var(--border-width) * 2);
+        width: calc(var(--spacer-lg) - var(--border-width) * 4);
+        height: calc(var(--spacer-lg) - var(--border-width) * 4);
+        top: calc(var(--spacer-sm) + var(--border-width) * 2);
+        left: calc(var(--spacer-sm) + var(--border-width) * 2);
         background-color: var(--color-action-default);
       }
     }
@@ -594,21 +600,21 @@ input[type=radio] {
 .mcq {
   input[type=radio], input[type=checkbox] {
     + label {
-      padding: var(--spacer-lv2) var(--spacer-lv3);
+      padding: var(--spacer-sm) var(--spacer-md);
       border-radius: var(--border-radius);
       box-shadow: var(--shadow-default);
       border: var(--border-width) solid transparent;
-      margin-top: var(--spacer-lv3);
+      margin-top: var(--spacer-md);
 
       &:before, &:after {
         content: unset;
       }
 
       &:has(img) {
-        padding: var(--spacer-lv2);
+        padding: var(--spacer-sm);
 
         img {
-          border-radius: calc(var(--border-radius) - var(--spacer-lv2));
+          border-radius: calc(var(--border-radius) - var(--spacer-sm));
         }
       }
     }    
@@ -663,7 +669,7 @@ input[type=radio], input[type=checkbox] {
 
 
 .source__flipcards, .source__reveal {
-  --flipcard-height: calc(var(--spacer-lv4) * 10);
+  --flipcard-height: calc(var(--spacer-lg) * 10);
   list-style: none;
   grid-column: 1 / span 12;
   display: flex;
@@ -679,13 +685,13 @@ input[type=radio], input[type=checkbox] {
     flex-basis: 100%;
 
     @include respond-md {
-      flex-basis: calc(50% - var(--spacer-lv4));
-      margin-left: var(--spacer-lv3);
-      margin-right: var(--spacer-lv3);
+      flex-basis: calc(50% - var(--spacer-lg));
+      margin-left: var(--spacer-md);
+      margin-right: var(--spacer-md);
     }
 
     @include respond-lg {
-      flex-basis: calc(33.3333% - var(--spacer-lv4));
+      flex-basis: calc(33.3333% - var(--spacer-lg));
     }
 
     &:before {
@@ -736,7 +742,7 @@ input[type=radio], input[type=checkbox] {
     width: 100%;
     height: var(--flipcard-height);
     left: 0;
-    padding: var(--spacer-lv3);
+    padding: var(--spacer-md);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     box-shadow: var(--shadow-default);
@@ -782,7 +788,7 @@ input[type=radio], input[type=checkbox] {
 
   .source__flipcards__front {
     overflow: hidden;
-    padding: var(--spacer-lv3) var(--spacer-lv3) var(--ui-button);
+    padding: var(--spacer-md) var(--spacer-md) var(--ui-button);
 
     &:before {
       content: "";
@@ -792,7 +798,7 @@ input[type=radio], input[type=checkbox] {
       left: 0;
       position: absolute;
       background-size: var(--ui-icon);
-      background-position: var(--spacer-lv2) center;
+      background-position: var(--spacer-sm) center;
       background-repeat: no-repeat;
       background-color: white;
       transform: scaleX(-1);
@@ -822,7 +828,7 @@ input[type=radio], input[type=checkbox] {
       bottom: 0;
       left: 0;
       background-size: var(--ui-icon);
-      background-position: var(--spacer-lv2) center;
+      background-position: var(--spacer-sm) center;
       background-repeat: no-repeat;
       background-color: var(--color-action-default);
       transform: scaleX(-1);
@@ -833,7 +839,7 @@ input[type=radio], input[type=checkbox] {
     > * {
       &:last-child {
         margin-bottom: 0;
-        padding-bottom: var(--spacer-lv2);
+        padding-bottom: var(--spacer-sm);
       }
     }
 
@@ -843,11 +849,11 @@ input[type=radio], input[type=checkbox] {
   }
 
   .source__flipcards__back > * {
-    margin: var(--spacer-lv2) var(--spacer-lv3) 0;
+    margin: var(--spacer-sm) var(--spacer-md) 0;
     grid-column: 1;
 
     &:first-child {
-      margin-top: var(--spacer-lv3);
+      margin-top: var(--spacer-md);
     }
   }
 
@@ -856,7 +862,7 @@ input[type=radio], input[type=checkbox] {
   &--four {
     @include respond-xl {
       li {
-        flex-basis: calc(25% - var(--spacer-lv4));
+        flex-basis: calc(25% - var(--spacer-lg));
       }
     }
   }
@@ -876,7 +882,7 @@ input[type=radio], input[type=checkbox] {
           position: absolute;
           height: var(--ui-button);
           bottom: 0;
-          left: var(--spacer-lv2);
+          left: var(--spacer-sm);
           content: counter(cards);
           @include caption;
           text-align: center;
@@ -904,8 +910,8 @@ select {
   border-radius: var(--border-radius);
   border: var(--border-width) solid var(--active-color);
   @include caption;
-  padding: calc(var(--spacer-lv2) - var(--border-width)) calc(var(--spacer-lv4) + var(--spacer-lv3) + var(--border-width)) calc(var(--spacer-lv2) - var(--border-width)) calc(var(--spacer-lv3) - var(--border-width));
-  background: var(--icon), linear-gradient(90deg, rgba(0, 114, 219, 0) 0%, rgba(0, 114, 219, 0) calc(100% - var(--border-width) * 2 - var(--spacer-lv4)), var(--active-color) calc(100% - var(--border-width) * 2 - var(--spacer-lv4)), var(--active-color) 100%);
+  padding: calc(var(--spacer-sm) - var(--border-width)) calc(var(--spacer-lg) + var(--spacer-md) + var(--border-width)) calc(var(--spacer-sm) - var(--border-width)) calc(var(--spacer-md) - var(--border-width));
+  background: var(--icon), linear-gradient(90deg, rgba(0, 114, 219, 0) 0%, rgba(0, 114, 219, 0) calc(100% - var(--border-width) * 2 - var(--spacer-lg)), var(--active-color) calc(100% - var(--border-width) * 2 - var(--spacer-lg)), var(--active-color) 100%);
   background-size: var(--ui-icon) var(--ui-icon), 100% 100%;
   background-position: calc(100% - (var(--ui-button) - var(--ui-icon)) / 2 - var(--border-width)) center, top left;
   background-repeat: no-repeat;
@@ -929,12 +935,104 @@ select {
   &.correct {
     --active-color: var(--color-correct);
     --icon: url("data:image/svg+xml,%3Csvg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.828 2 18 4.194c-2.283 2.307-5.216 6.254-8.765 11.818L7.967 18l-1.3-1.967c-1.364-2.065-2.92-3.498-4.667-4.33l1.31-2.807c1.683.802 3.197 2 4.542 3.583C10.982 7.705 13.633 4.217 15.828 2Z' fill='%23fff'/%3E%3C/svg%3E");
-    color: $text-dark;
+    color: var(--color-text);
   }
 
   &.incorrect {
     --active-color: var(--color-incorrect);
     --icon: url("data:image/svg+xml,%3Csvg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m14 14.484-2.186 1.75c-.62-.775-1.43-2.042-2.436-3.813L4.98 16.82 3 14.839l4.973-4.973a236.42 236.42 0 0 1-2.889-5.613L7.59 3a249.365 249.365 0 0 0 2.455 4.794l4.689-4.689 1.98 1.98-5.279 5.28c1.11 1.995 1.97 3.373 2.567 4.12Z' fill='%23fff'/%3E%3C/svg%3E");
-    color: $text-dark;
+    color: var(--color-text);
+  }
+}
+
+.drag {
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none'%3E%3Cpath fill='%232D2D2D' d='M15 9h-4V5h2l-3-3-3 3h2v4H5V7l-3 3 3 3v-2h4v4H7l3 3 3-3h-2v-4h4v2l3-3-3-3v2Z'/%3E%3C/svg%3E");
+  background-color: white;
+  box-shadow: var(--shadow-default);
+  color: var(--color-text);
+  position: relative;
+  padding-bottom: calc(var(--ui-button) - var(--border-width));
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+    box-shadow: var(--shadow-active);
+  }
+
+  &:disabled {
+    box-shadow: unset;
+    border-color: var(--color-action-disabled);
+    color: var(--color-action-disabled);
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none'%3E%3Cpath fill='%23dcdcdc' d='M15 9h-4V5h2l-3-3-3 3h2v4H5V7l-3 3 3 3v-2h4v4H7l3 3 3-3h-2v-4h4v2l3-3-3-3v2Z'/%3E%3C/svg%3E");
+
+    &:hover, &:active {
+      cursor: unset;
+    }
+  }
+
+  &.correct {
+    border-color: var(--color-correct);
+    color: var(--color-text);
+    --icon: url("data:image/svg+xml,%3Csvg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.828 2 18 4.194c-2.283 2.307-5.216 6.254-8.765 11.818L7.967 18l-1.3-1.967c-1.364-2.065-2.92-3.498-4.667-4.33l1.31-2.807c1.683.802 3.197 2 4.542 3.583C10.982 7.705 13.633 4.217 15.828 2Z' fill='%23008000'/%3E%3C/svg%3E");
+  }
+
+  &.incorrect {
+    border-color: var(--color-incorrect);
+    color: var(--color-text);
+    --icon: url("data:image/svg+xml,%3Csvg width='20' height='20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m14 14.484-2.186 1.75c-.62-.775-1.43-2.042-2.436-3.813L4.98 16.82 3 14.839l4.973-4.973a236.42 236.42 0 0 1-2.889-5.613L7.59 3a249.365 249.365 0 0 0 2.455 4.794l4.689-4.689 1.98 1.98-5.279 5.28c1.11 1.995 1.97 3.373 2.567 4.12Z' fill='%23e60000'/%3E%3C/svg%3E");
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: calc(50% - var(--ui-button) / 2);
+    width: var(--ui-button);
+    height: var(--ui-button);
+    background-image: var(--icon);
+    background-size: var(--ui-icon);
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+.drop {
+  width: fit-content;
+  height: calc(var(--spacer-sm) + var(--caption-lheight) + var(--ui-button) + var(--spacer-sm) * 2);
+  border-radius: calc(var(--border-radius) + var(--spacer-sm));
+  box-shadow: inset 0px 0.0625rem 0.125rem 0px rgba(0, 0, 0, 0.3), inset 0px 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
+  position: relative;
+  padding: var(--spacer-sm);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: var(--spacer-sm);
+    left: var(--spacer-sm);
+    width: calc(100% - var(--spacer-sm) * 2);
+    height: calc(100% - var(--spacer-sm) * 2);
+    border-radius: var(--border-radius);
+    border: var(--border-width) dashed var(--color-action-disabled);
+  }
+
+  // to be removed
+  button {
+    visibility: hidden;
+  }
+  // end removal
+}
+
+.tray {
+  width: 100%;
+  border-radius: calc(var(--border-radius) + var(--spacer-sm));
+  box-shadow: inset 0px 0.0625rem 0.125rem 0px rgba(0, 0, 0, 0.3), inset 0px 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
+  position: relative;
+  padding: var(--spacer-xs);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  button {
+    margin: var(--spacer-xs);
   }
 }
