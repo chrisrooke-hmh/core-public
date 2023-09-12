@@ -896,10 +896,12 @@ input[type=radio], input[type=checkbox] {
 
 
   // Sequenced cards
-  li:not(:has(details[open])):not(:has( ~ li details[open])) ~ li details {
-    pointer-events: none;
-    opacity: 0.5;
-    filter: grayscale(1)
+  .source__flipcards--sequenced {
+    li:not(:has(details[open])):not(:has( ~ li details[open])) ~ li details {
+      pointer-events: none;
+      opacity: 0.5;
+      filter: grayscale(1)
+    }
   }
 }
 
@@ -1034,5 +1036,103 @@ select {
 
   button {
     margin: var(--spacer-xs);
+  }
+}
+
+.source__reveal {
+  details {
+      --flipcard-height: calc(var(--base-lheight) + var(--half-lheight));
+      background: white;
+      border-radius: $border-radius;
+      box-shadow: $shadow-default;
+      // overflow: hidden;
+      transition: box-shadow 0.1s cubic-bezier(0.52, 0.02, 0.28, 1);
+      
+      &:hover {
+          box-shadow: $shadow-hover;
+      }
+      
+      &[open] {
+          box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 0px 4px rgba(0, 0, 0, 0.15);
+          
+          summary {
+              background-image: unset;
+          }
+          
+          .source__flipcards__front, .source__flipcards__back {
+              transition: unset;
+              animation: unset;
+          }
+          
+          .source__flipcards__back {
+              transform: rotateY(0deg);
+          }
+      }
+  }
+  
+  summary {
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius;
+      left: unset;
+      bottom: 0;
+      right: 0;
+      background: url(images/reveal.svg);
+      background-size: calc(var(--half-lheight) + var(--quart-lheight));
+      background-position: center center;
+      background-repeat: no-repeat;
+      
+      &:hover {
+          .source__flipcards__front, .source__flipcards__back {
+              box-shadow: unset;
+          }
+      }
+      
+      &:before {
+          content: unset;
+      }
+  }
+  
+  .source__flipcards__back-visuals {
+      display: none;
+  }
+  
+  .source__flipcards__front, .source__flipcards__back {
+      background: unset;
+      box-shadow: unset;
+      transition: unset;
+      animation: unset;
+      padding: var(--quart-lheight) var(--half-lheight);
+      
+      &:before, &:after {
+          content: unset;
+      }
+  }
+  
+  .source__flipcards__front {
+      right: 0;
+      bottom: 0;
+        left: 0;
+      padding: var(--quart-lheight) var(--half-lheight);
+      opacity: 0;
+      pointer-events: none
+  }
+  
+  .source__flipcards__back {
+      display: block;
+      
+      > *:first-child {
+          margin-top: 0;
+      }
+      
+      > *:last-child {
+        padding-bottom: 0;
+      }
+      
+      > * {
+          margin: 0;
+          @include para-size($body-md);
+          text-align: center;
+      }
   }
 }
