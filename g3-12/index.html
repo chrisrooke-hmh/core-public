@@ -8,6 +8,7 @@
     <title>3-12 components</title>
 </head>
 <body class="g35">
+    <div id="grades"><button id="g35">G3-5</button><button id="g68">G6-8</button><button id="g912">G9-12</button></div>
     <button>Check</button>
     <button disabled>Check</button>
     <button class="secondary">Check</button>
@@ -326,5 +327,27 @@
             </details>
         </li>
     </ul>
+    <script type="text/javascript">
+        const g35 = document.getElementById("g35");
+        const g68 = document.getElementById("g68");
+        const g912 = document.getElementById("g912");
+        const body = document.body;
+
+        g35.addEventListener("click", () => {
+            body.classList.remove("g35", "g68", "g912");
+            body.classList.add("g35");
+        });
+
+        g68.addEventListener("click", () => {
+            body.classList.remove("g35", "g68", "g912");
+            body.classList.add("g68");
+        });
+
+        g912.addEventListener("click", () => {
+            body.classList.remove("g35", "g68", "g912");
+            body.classList.add("g912");
+        });
+
+    </script>
     </body>
 </html>

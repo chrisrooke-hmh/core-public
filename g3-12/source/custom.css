@@ -8,7 +8,7 @@
 */
 /*! Temp layout styles to be ignored */
 body {
-  padding-top: var(--spacer-lg);
+  padding-top: calc(var(--spacer-lg) * 4);
   grid-gap: var(--spacer-lg);
   color: var(--color-text);
 }
@@ -18,6 +18,22 @@ button, input {
 }
 button:first-of-type, button:nth-of-type(4n + 1), input:first-of-type, input:nth-of-type(4n + 1) {
   grid-column: 1/span 3;
+}
+
+#grades {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--color-action-disabled);
+  width: 100%;
+  margin: 0 !important;
+  padding: var(--spacer-sm);
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+}
+#grades button {
+  margin: 0 var(--spacer-xs);
 }
 
 .drop {
