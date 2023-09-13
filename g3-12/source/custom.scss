@@ -20,7 +20,6 @@ body {
 
 button, input {
     grid-column: span 3;
-
     &:first-of-type, &:nth-of-type(4n + 1) {
         grid-column: 1 / span 3;
     }
