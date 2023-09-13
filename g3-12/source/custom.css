@@ -284,6 +284,16 @@ button:first-of-type, button:nth-of-type(4n + 1), input:first-of-type, input:nth
   }
 }
 
+p {
+  font-size: var(--body-md);
+  line-height: var(--body-md-lheight);
+}
+
+h5 {
+  font-size: var(--body-lg);
+  line-height: var(--body-lg-lheight);
+}
+
 button {
   --active-color: var(--color-action-default);
   width: fit-content;
@@ -348,25 +358,13 @@ button.secondary {
   padding-bottom: var(--spacer-sm);
   min-height: calc(var(--ui-button) + var(--spacer-md));
   border-radius: var(--border-radius);
-  font-size: 1.375rem;
-  line-height: 2.125rem;
+  font-size: var(--body-lg);
+  line-height: var(--body-lg-lheight);
   list-style: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-@media (min-width: 40.625rem) {
-  .source__accordion summary {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
-  }
-}
-@media (min-width: 80rem) {
-  .source__accordion summary {
-    font-size: 1.6875rem;
-    line-height: 2.625rem;
-  }
 }
 .source__accordion summary *, .source__accordion summary + * {
   margin-top: 0;
@@ -495,7 +493,7 @@ input[type=radio]:checked + label:after, input[type=checkbox]:checked + label:af
   position: absolute;
   width: calc(var(--spacer-lg) - var(--border-width) * 4);
   height: calc(var(--spacer-lg) - var(--border-width) * 4);
-  top: calc(var(--spacer-sm) + var(--border-width) * 2);
+  top: calc(50% - (var(--spacer-lg) - var(--border-width) * 4) / 2);
   left: calc(var(--spacer-sm) + var(--border-width) * 2);
   background-color: var(--color-action-default);
 }
@@ -736,20 +734,8 @@ input[type=radio]:focus-visible + label, input[type=checkbox]:focus-visible + la
   padding-bottom: var(--spacer-sm);
 }
 .source__flipcards .source__flipcards__back *, .source__reveal .source__flipcards__back * {
-  font-size: 1.25rem;
-  line-height: 1.875rem;
-}
-@media (min-width: 40.625rem) {
-  .source__flipcards .source__flipcards__back *, .source__reveal .source__flipcards__back * {
-    font-size: 1.3125rem;
-    line-height: 2rem;
-  }
-}
-@media (min-width: 80rem) {
-  .source__flipcards .source__flipcards__back *, .source__reveal .source__flipcards__back * {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
-  }
+  font-size: var(--body-sm);
+  line-height: var(--body-sm-lheight);
 }
 .source__flipcards .source__flipcards__back > *, .source__reveal .source__flipcards__back > * {
   margin: var(--spacer-sm) var(--spacer-md) 0;
@@ -911,12 +897,12 @@ select.incorrect {
 .source__reveal details {
   --flipcard-height: calc(var(--base-lheight) + var(--half-lheight));
   background: white;
-  border-radius: 0.375rem;
-  box-shadow: 0px 0.0625rem 0.125rem 0px rgba(0, 0, 0, 0.3), 0px 0.0625rem 0.1875rem 0.0625rem rgba(0, 0, 0, 0.15);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
   transition: box-shadow 0.1s cubic-bezier(0.52, 0.02, 0.28, 1);
 }
 .source__reveal details:hover {
-  box-shadow: 0px 0.0625rem 0.1875rem 0px rgba(0, 0, 0, 0.3), 0px 0.25rem 0.5rem 0.1875rem rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-hover);
 }
 .source__reveal details[open] {
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 0px 4px rgba(0, 0, 0, 0.15);
@@ -934,7 +920,7 @@ select.incorrect {
 .source__reveal summary {
   width: 100%;
   height: 100%;
-  border-radius: 0.375rem;
+  border-radius: var(--border-radius);
   left: unset;
   bottom: 0;
   right: 0;
@@ -971,7 +957,9 @@ select.incorrect {
   pointer-events: none;
 }
 .source__reveal .source__flipcards__back {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .source__reveal .source__flipcards__back > *:first-child {
   margin-top: 0;
@@ -981,21 +969,9 @@ select.incorrect {
 }
 .source__reveal .source__flipcards__back > * {
   margin: 0;
-  font-size: 1.3125rem;
-  line-height: 2rem;
+  font-size: var(--body-md);
+  line-height: var(--body-md-lheight);
   text-align: center;
-}
-@media (min-width: 40.625rem) {
-  .source__reveal .source__flipcards__back > * {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
-  }
-}
-@media (min-width: 80rem) {
-  .source__reveal .source__flipcards__back > * {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
-  }
 }
 
 /*# sourceMappingURL=custom.css.map */

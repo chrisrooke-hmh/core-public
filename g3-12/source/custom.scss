@@ -321,6 +321,14 @@ button, input {
     line-height: var(--caption-lheight);
 }
 
+p {
+  @include body-md;
+}
+
+h5 {
+  @include body-lg;
+}
+
 
 
 // Component Styles
@@ -401,7 +409,7 @@ button {
       min-height: calc(var(--ui-button) + var(--spacer-md));
       border-radius: var(--border-radius);
   
-      @include para-size($body-lg);
+      @include body-lg;
       list-style: none;
       cursor: pointer;
       // position: relative;
@@ -562,7 +570,7 @@ input[type=radio], input[type=checkbox] {
         position: absolute;
         width: calc(var(--spacer-lg) - var(--border-width) * 4);
         height: calc(var(--spacer-lg) - var(--border-width) * 4);
-        top: calc(var(--spacer-sm) + var(--border-width) * 2);
+        top: calc(50% - (var(--spacer-lg) - var(--border-width) * 4) / 2);
         left: calc(var(--spacer-sm) + var(--border-width) * 2);
         background-color: var(--color-action-default);
       }
@@ -861,7 +869,7 @@ input[type=radio], input[type=checkbox] {
     }
 
     * {
-      @include para-size($body-sm);
+      @include body-sm;
     }
   }
 
@@ -1060,13 +1068,13 @@ select {
   details {
       --flipcard-height: calc(var(--base-lheight) + var(--half-lheight));
       background: white;
-      border-radius: $border-radius;
-      box-shadow: $shadow-default;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-default);
       // overflow: hidden;
       transition: box-shadow 0.1s cubic-bezier(0.52, 0.02, 0.28, 1);
       
       &:hover {
-          box-shadow: $shadow-hover;
+          box-shadow: var(--shadow-hover);
       }
       
       &[open] {
@@ -1090,7 +1098,7 @@ select {
   summary {
       width: 100%;
       height: 100%;
-      border-radius: $border-radius;
+      border-radius: var(--border-radius);
       left: unset;
       bottom: 0;
       right: 0;
@@ -1136,7 +1144,9 @@ select {
   }
   
   .source__flipcards__back {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       
       > *:first-child {
           margin-top: 0;
@@ -1148,7 +1158,7 @@ select {
       
       > * {
           margin: 0;
-          @include para-size($body-md);
+          @include body-md;
           text-align: center;
       }
   }
