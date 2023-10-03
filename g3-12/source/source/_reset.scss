@@ -183,9 +183,9 @@ table {
   outline: none; 
 }
 
-*:focus-visible:not(.source__flipcards summary), 
-.source__flipcards details:not([open]) summary:focus-visible .source__flipcards__front, 
-.source__flipcards details[open] summary:focus-visible {
-   --focus-indicator: 0px 0px 0px 1px #fff, 0px 0px 0px 3px #ca0092, 0 0 0 4px #fff;
-   box-shadow: var(--focus-indicator);
-}
+// *:focus-visible:not(.source__flipcards summary), 
+// .source__flipcards details:not([open]) summary:focus-visible .source__flipcards__front, 
+// .source__flipcards details[open] summary:focus-visible {
+//    --focus-indicator: 0px 0px 0px 1px #fff, 0px 0px 0px 3px #ca0092, 0 0 0 4px #fff;
+//    box-shadow: var(--focus-indicator);
+// }
