@@ -377,7 +377,7 @@ button {
       --shadow-3: 0 0 0 rgba(0,0,0,0);
       // --shadow-4: 0 0 0 rgba(0,0,0,0);
     }
-    &:focus {
+    &:focus-visible {
       --shadow-1: var(--shadow-focus-stroke);
       --shadow-2: var(--shadow-focus-wedge);
       --shadow-3: var(--shadow-focus-stroke-barrier);
