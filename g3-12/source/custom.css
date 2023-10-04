@@ -60,6 +60,7 @@ button:first-of-type, button:nth-of-type(4n + 1), input:first-of-type, input:nth
   --shadow-focus-wedge-barrier: 0 .125rem 0 .125rem white;
   --color-action-active: rgb(6, 94, 194);
   --color-action-disabled: rgb(220, 220, 220);
+  --color-text-disabled: rgb(93, 95, 95);
   --color-action-bg: rgb(234, 244, 255);
   --color-correct: #008000;
   --color-correct-bg: rgb(235, 250, 225);
@@ -304,35 +305,51 @@ h5 {
 }
 
 button {
+  --shadow-inset: inset 0 0 0 .125rem var(--inset-color);
+  --shadow-1: 0 0 0 rgba(0,0,0,0);
+  --shadow-2: 0 0 0 rgba(0,0,0,0);
+  --shadow-3: 0 0 0 rgba(0,0,0,0);
+  --shadow-4: 0 0 0 rgba(0,0,0,0);
+  --shadow-5: 0 0 0 rgba(0,0,0,0);
+  --inset-color: transparent;
   --active-color: var(--color-action-default);
   width: fit-content;
   border-radius: var(--border-radius);
-  border: var(--border-width) solid transparent;
+  border: 0.125rem solid white;
   font-size: var(--caption);
   line-height: var(--caption-lheight);
   padding: calc(var(--spacer-sm) - var(--border-width)) calc(var(--spacer-md) - var(--border-width));
   background-color: var(--active-color);
   color: white;
   cursor: pointer;
+  box-shadow: var(--shadow-1), var(--shadow-2), var(--shadow-3), var(--shadow-4), var(--shadow-5), var(--shadow-inset);
 }
 button:hover {
-  --active-color: var(--color-action-active);
-  box-shadow: var(--shadow-hover);
+  --shadow-2: var(--shadow-condensed);
+  --shadow-3: var(--shadow-diffused);
 }
 button:active {
-  box-shadow: var(--shadow-default);
+  --shadow-2: 0 0 0 rgba(0,0,0,0);
+  --shadow-3: 0 0 0 rgba(0,0,0,0);
+}
+button:focus {
+  --shadow-1: var(--shadow-focus-stroke);
+  --shadow-2: var(--shadow-focus-wedge);
+  --shadow-3: var(--shadow-focus-stroke-barrier);
+  --shadow-4: var(--shadow-focus-wedge-barrier);
+}
+button.secondary:not(:disabled) {
+  --inset-color: var(--active-color);
+  color: var(--active-color);
+  background-color: white;
 }
 button:disabled {
   --active-color: var(--color-action-disabled);
+  color: var(--color-text-disabled);
   cursor: unset;
 }
 button:disabled:hover, button:disabled:active {
   box-shadow: unset;
-}
-button.secondary {
-  color: var(--active-color);
-  border-color: var(--active-color);
-  background-color: white;
 }
 
 .source__accordion {
