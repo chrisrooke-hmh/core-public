@@ -454,7 +454,7 @@ input[type=text] {
   box-shadow: var(--shadow-inner), var(--shadow-outer);
 }
 input[type=text]:not(:disabled):not(:focus):hover {
-  --shadow-outer: var(--shadow-hover);
+  --shadow-outer: var(--shadow-hover-button);
 }
 input[type=text]:focus {
   background-color: var(--color-action-bg);

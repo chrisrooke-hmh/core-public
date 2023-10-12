@@ -540,7 +540,7 @@ input[type=text] {
 
     &:not(:disabled):not(:focus) {
         &:hover {
-          --shadow-outer: var(--shadow-hover);
+          --shadow-outer: var(--shadow-hover-button);
         }
     }
 
