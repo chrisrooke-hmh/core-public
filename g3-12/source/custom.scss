@@ -63,14 +63,16 @@ button, input {
     // --shadow-pad: 0 0 0 0.125rem white;
     --shadow-outline: 0 0 0 0.0625rem rgba(0,0,0,0.1);
     --shadow-flat: 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0);
-    --shadow-default: 0px 1px 8px 0px rgba(0, 0, 0, 0.12), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.2);
-    --shadow-hover: 0px 3px 14px 2px rgba(0, 0, 0, 0.12), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
-    --shadow-selected: 0px 0px 0px 2px rgba(0, 105, 254, 1) inset;
-    --shadow-focus: 0px 2px 0px 1px rgba(255, 46, 171, 1), 0px 0px 0px 1px rgba(255, 46, 171, 1), 0px 1px 0px 3px rgba(255, 255, 255, 1), 0px 0px 0px 2px rgba(255, 255, 255, 1);
+    --shadow-default: 0 .0625rem .5rem 0 rgba(0, 0, 0, 0.12), 0 .1875rem .25rem 0 rgba(0, 0, 0, 0.14), 0 .1875rem .1875rem -.125rem rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 .1875rem .875rem .125rem rgba(0, 0, 0, 0.12), 0 .5rem .625rem .0625rem rgba(0, 0, 0, 0.14), 0 .3125rem .3125rem -.1875rem rgba(0, 0, 0, 0.2);
+    --shadow-hover-button: 0 .1875rem .1875rem -.125rem rgba(0,0,0,0.2), 0 .1875rem .25rem 0 rgba(0,0,0,0.14), 0 .0625rem .5rem 0 rgba(0,0,0,0.12);
+    --shadow-selected: 0 0 0 .125rem rgba(0, 105, 254, 1) inset;
+    --shadow-selected-trans: 0 0 0 .125rem rgba(0, 105, 254, 0) inset;
+    --shadow-focus: 0 .125rem 0 .0625rem rgba(255, 46, 171, 1), 0 0 0 .0625rem rgba(255, 46, 171, 1), 0 .0625rem 0 .1875rem rgba(255, 255, 255, 1), 0 0 0 .125rem rgba(255, 255, 255, 1);
 
-    --shadow-inner-gray: 3px 4px 3px 1px rgba(0, 0, 0, 0.15) inset, 0px 3px 2px 0px rgba(0, 0, 0, 0.3) inset;
-    --shadow-inner-blue: 3px 4px 3px 1px rgba(0, 105, 254, 0.15) inset, 0px 3px 2px 0px rgba(0, 105, 254, 0.3) inset;
-    --shadow-input-hover: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+    --shadow-inner-gray: .1875rem .25rem .1875rem .0625rem rgba(0, 0, 0, 0.15) inset, 0 .1875rem .125rem 0 rgba(0, 0, 0, 0.3) inset;
+    --shadow-inner-blue: .1875rem .25rem .1875rem .0625rem rgba(0, 105, 254, 0.15) inset, 0 .1875rem .125rem 0 rgba(0, 105, 254, 0.3) inset;
+    --shadow-input-hover: 0 .125rem .375rem .125rem rgba(0, 0, 0, 0.15), 0 .0625rem .125rem 0 rgba(0, 0, 0, 0.3);
     
        
     // --shadow-condensed: 0 .1875rem .125rem -.125rem rgba(0,0,0,0.3);
@@ -358,14 +360,8 @@ h5 {
 // Component Styles
 
 button {
-    --shadow-inset: inset 0 0 0 .125rem var(--inset-color);
-    --shadow-1: 0 0 0 rgba(0,0,0,0);
-    --shadow-2: 0 0 0 rgba(0,0,0,0);
-    --shadow-3: 0 0 0 rgba(0,0,0,0);
-    --shadow-4: 0 0 0 rgba(0,0,0,0);
-    --shadow-5: 0 0 0 rgba(0,0,0,0);
-    --inset-color: transparent;
-
+    --shadow-outer: var(--shadow-flat);
+    --shadow-inner: var(--shadow-selected-trans);
     --active-color: var(--color-action-default);
     width: fit-content;
     border-radius: var(--border-radius);
@@ -375,28 +371,23 @@ button {
     background-color: var(--active-color);
     color: white;
     cursor: pointer;
-    box-shadow: var(--shadow-1), var(--shadow-2), var(--shadow-3), var(--shadow-4), var(--shadow-5), var(--shadow-inset);
+    box-shadow: var(--shadow-outline), var(--shadow-outer), var(--shadow-inner);
 
-
-    &:hover {
-      --shadow-2: var(--shadow-condensed);
-      --shadow-3: var(--shadow-diffused);
-      // --shadow-4: var(--shadow-focus-stroke-barrier);
+    &:not(:disabled) {
+      &:hover {
+        --shadow-outer: var(--shadow-hover-button);
+      }
+      &:active {
+        --shadow-outer: var(--shadow-flat);
+      }  
     }
-    &:active {
-      --shadow-2: 0 0 0 rgba(0,0,0,0);
-      --shadow-3: 0 0 0 rgba(0,0,0,0);
-      // --shadow-4: 0 0 0 rgba(0,0,0,0);
-    }
+    
     &:focus-visible {
-      --shadow-1: var(--shadow-focus-stroke);
-      --shadow-2: var(--shadow-focus-wedge);
-      --shadow-3: var(--shadow-focus-stroke-barrier);
-      --shadow-4: var(--shadow-focus-wedge-barrier);
+      --shadow-outer: var(--shadow-focus);
     }
     
     &.secondary:not(:disabled) {
-      --inset-color: var(--active-color);
+      --shadow-inner: var(--shadow-selected);
       color: var(--active-color);
       background-color: white;
     }
@@ -405,10 +396,6 @@ button {
         --active-color: var(--color-action-disabled);
         color: var(--color-text-disabled);
         cursor: unset;
-
-        &:hover, &:active {
-          box-shadow: unset;
-        }
     }
 
 }
@@ -542,26 +529,24 @@ button {
 }
 
 input[type=text] {
+    --shadow-inner: var(--shadow-inner-gray);
+    --shadow-outer: 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0), 0 0 0 0 rgba(0,0,0,0);
     border-radius: var(--border-radius);
     border: .125rem solid white;
     @include body-md;
     padding: calc(var(--spacer-sm) - var(--border-width)) calc(var(--spacer-md) - var(--border-width));
     background-color: var(--color-action-disabled);
-    box-shadow: var(--shadow-inner-gray);
-
-    &:focus-visible {
-        box-shadow: var(--shadow-inner-gray), var(--shadow-focus);
-      }
+    box-shadow: var(--shadow-inner), var(--shadow-outer);
 
     &:not(:disabled):not(:focus) {
         &:hover {
-          box-shadow: var(--shadow-inner-gray), var(--shadow-input-hover);
+          --shadow-outer: var(--shadow-hover);
         }
     }
 
     &:focus {
       background-color: var(--color-action-bg);
-      box-shadow: var(--shadow-inner-blue), var(--shadow-focus);
+      --shadow-outer: var(--shadow-focus);
     }
 
     &:disabled {
@@ -584,7 +569,9 @@ input[type=radio], input[type=checkbox] {
   opacity: 0;
 
   + label {
-      box-shadow: var(--shadow-outline), var(--shadow-default);
+      --shadow-outer: var(--shadow-default);
+      --shadow-inner: 0 0 0 .125rem rgba(0, 105, 254, 0) inset;
+      box-shadow: var(--shadow-outline), var(--shadow-outer), var(--shadow-inner);
       background-color: white;
       display: flex;
       align-items: center;
@@ -610,87 +597,39 @@ input[type=radio], input[type=checkbox] {
     + label {
       cursor: pointer;
       &:hover {
-        box-shadow: var(--shadow-outline), var(--shadow-hover);
+        --shadow-outer: var(--shadow-hover)
       }  
       &:active {
-        box-shadow: var(--shadow-outline), var(--shadow-flat);
+        --shadow-outer: var(--shadow-flat)
       }
     }
   }
 
   &:focus-visible {
     + label {
-      box-shadow: var(--shadow-focus);
+      box-shadow: var(--shadow-focus), var(--shadow-inner);
     }
   }
   &:checked:not(:disabled) {
     + label {
-      box-shadow: var(--shadow-outline), var(--shadow-default), var(--shadow-selected);
-    
-      &:hover {
-        box-shadow: var(--shadow-outline), var(--shadow-hover), var(--shadow-selected);
-      }
-
-      &:active {
-        box-shadow: var(--shadow-outline), var(--shadow-flat), var(--shadow-selected);
-      }
-
-      // &:after {
-      //   content: '';
-      //   position: absolute;
-      //   width: calc(var(--spacer-lg) - var(--border-width) * 4);
-      //   height: calc(var(--spacer-lg) - var(--border-width) * 4);
-      //   top: calc(50% - (var(--spacer-lg) - var(--border-width) * 4) / 2);
-      //   left: calc(var(--spacer-sm) + var(--border-width) * 2);
-      //   background-color: var(--color-action-default);
-      // }
-    }
-
-    &:focus-visible {
-      + label {
-        box-shadow: var(--shadow-focus), var(--shadow-selected);
-      }
+      --shadow-inner: var(--shadow-selected);
     }
   }   
   
   &:disabled {
     + label {
-        box-shadow: var(--shadow-outline), var(--shadow-flat);
-      // color: var(--color-action-disabled);
-      &:before {
-        // border-color: var(--color-action-disabled);
-      }
-      &:after {
-        background-color: var(--color-action-disabled);
-      }
+      --shadow-outer: var(--shadow-flat);
     }
   }
 
   &.correct {
     + label {
-      // color: var(--color-correct);
-      --inset-color: white;
       background-color: var(--color-correct-bg);
-      &:before {
-        border-color: var(--color-correct);
-      }
-      &:after {
-        background-color: var(--color-correct);
-      }
     }
   }
   &.incorrect {
     + label {
-      // color: var(--color-incorrect);
-      --inset-color: white;
       background-color: var(--color-incorrect-bg);
-
-      &:before {
-        border-color: var(--color-incorrect);
-      }
-      &:after {
-        background-color: var(--color-incorrect);
-      }
     }
   }
 }
