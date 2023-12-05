@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Geist Sans";
-  src: url("../fonts/GeistVariableVF.ttf") format("truetype");
+  src: url("./GeistVariableVF.ttf") format("truetype");
 }
 
 :root {
@@ -561,7 +561,7 @@ form + div {
   text-wrap: balance;
 }
 .nothing::after {
-  background-image: url("../images/brokenmac.png");
+  background-image: url("./brokenmac.png");
   background-repeat: no-repeat;
   background-size: cover;
   content: "";
@@ -706,10 +706,10 @@ form + div {
     height: fit-content;
   }
 }
-.graphs ol {
+.graphs ul {
   margin-top: 3.75rem;
 }
-.graphs ol li {
+.graphs ul li {
   align-items: center;
   border-radius: 0.375rem;
   display: grid;
@@ -720,30 +720,30 @@ form + div {
   padding: 0.75rem;
   transition: 0.1s ease-in-out;
 }
-.graphs ol li:hover {
+.graphs ul li:hover {
   background-color: var(--theme-1);
   box-shadow: var(--shadow-1) 0rem 0rem 0rem 0.0625rem inset;
 }
-.graphs ol li h3 {
+.graphs ul li h3 {
   grid-row: 1;
   width: 100%;
 }
-.graphs ol li canvas {
+.graphs ul li canvas {
   align-self: center;
   grid-column: 2;
   grid-row: 2/-1;
   margin-left: auto;
 }
-.graphs ol li p {
+.graphs ul li p {
   margin-top: 0;
 }
 @media only screen and (min-width: 45rem) {
-  .graphs ol li {
+  .graphs ul li {
     grid-column: span 6;
   }
 }
 @media only screen and (min-width: 68.75rem) {
-  .graphs ol li {
+  .graphs ul li {
     grid-column: span 4;
   }
 }
