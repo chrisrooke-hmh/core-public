@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Geist Sans";
-  src: url("https://assets.codepen.io/1149983/GeistVariableVF.ttf") format("truetype");
+  src: url("./GeistVariableVF.ttf") format("truetype");
 }
 
 :root {
@@ -561,7 +561,7 @@ form + div {
   text-wrap: balance;
 }
 .nothing::after {
-  background-image: url("https://assets.codepen.io/1149983/brokenmac.png");
+  background-image: url("./brokenmac.png");
   background-repeat: no-repeat;
   background-size: cover;
   content: "";
