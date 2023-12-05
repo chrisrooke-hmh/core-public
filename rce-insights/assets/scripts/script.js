@@ -8540,64 +8540,6 @@ document.getElementById("totalUsersSpan").innerHTML = totalUsers.toLocaleString(
 document.getElementById("totalViewportsSpan").innerHTML = totalViewports;
 
 
-
-/**
- * Function to create a chart using Chart.js library.
- * @param {string} ctxId - The ID of the canvas element where the chart will be drawn.
- * @param {string} chartType - The type of chart (e.g., 'bar', 'line', 'pie').
- * @param {Array} labels - The labels for the data points on the chart.
- * @param {Array} datasets - An array of datasets to be plotted on the chart.
- * @param {Object} options - The options to customize the appearance and behavior of the chart.
- * @returns {Object} - The Chart.js object representing the created chart.
- */
-
-function createChart(ctxId, chartType, labels, datasets, options) {
-    var ctx = document.getElementById(ctxId).getContext('2d');
-    return new Chart(ctx, {
-        type: chartType,
-        data: {
-            labels: labels,
-            datasets: datasets
-        },
-        options: options
-    });
-}
-
-function createDataset(label, data, backgroundColor, borderColor, borderWidth, yAxisID) {
-    return {
-        label: label,
-        data: data,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: borderWidth,
-        yAxisID: yAxisID
-    };
-}
-
-function createOptions(scales) {
-    return {
-        scales: scales
-    };
-}
-
-function createScales(x, y) {
-    return {
-        x: x,
-        y: y
-    };
-}
-
-function createScale(beginAtZero, type, position) {
-    return {
-        beginAtZero: beginAtZero,
-        type: type,
-        position: position
-    };
-}
-
-
-
-
 /**
  * This function creates datasets for the top 10, 25, and 50 viewports based on the sorted data.
  * @param {Array} sortedData - The sorted array of viewports.
@@ -8623,9 +8565,9 @@ Viewport size
   Gets the initial size, Updates each time screen resizes
 */
 
-function debounce(func, wait) {
+const debounce = (func, wait) => {
     let timeout;
-    return function executedFunction(...args) {
+    return (...args) => {
         const later = () => {
             clearTimeout(timeout);
             func(...args);
@@ -8635,8 +8577,8 @@ function debounce(func, wait) {
     };
 };
 
-function updateViewportSize() {
-    var viewportSizeElement = document.getElementById("viewportSize");
+const updateViewportSize = () => {
+    const viewportSizeElement = document.getElementById("viewportSize");
     viewportSizeElement.textContent = `${window.innerWidth} x ${window.innerHeight}`;
 }
 
@@ -8645,7 +8587,7 @@ window.addEventListener("resize", debounce(updateViewportSize, 200));
 
 
 /* Get the browser and print it */
-function getCurrentBrowser() {
+const getCurrentBrowser = () => {
     const userAgent = navigator.userAgent;
 
     const browserRegex = /(Chrome|Firefox|Safari|Edge|Opera|Trident|MSIE)/;
@@ -8660,7 +8602,6 @@ const browserInfoSpan = document.getElementById("browserInfo");
 // Call the function and update the span's text content
 browserInfoSpan.textContent = getCurrentBrowser();
 /* End Browser */
-
 
 
 
@@ -9305,8 +9246,6 @@ if (safariBrowser.length > 0) {
 
 /* 4: Market Share Breakdown */
 
-var safariData = jsonData.safari[0];
-
 // Calculate the total number of Safari users
 var totalSafariUsers = safariData.reduce((total, os) => total + os.users, 0);
 
@@ -9594,7 +9533,6 @@ document.getElementById('totalChromeGroups').innerHTML = totalChromeGroups;
 
 // FIREFOX
 // Create the chart
-var chromeData = jsonData.browsers.find(browser => browser.Browser === "Chrome");
 var safariData = jsonData.browsers.find(browser => browser.Browser === "Safari");
 var firefoxData = jsonData.browsers.find(browser => browser.Browser === "Firefox");
 var mozillaData = jsonData.browsers.find(browser => browser.Browser === "Mozilla Compatible Agent");
@@ -9606,7 +9544,6 @@ var combinedFirefoxData = {
 };
 
 // FIREFOX
-var totalUsers = jsonData.browsers.reduce((total, browser) => total + browser.users, 0);
 var percentageCombinedUsers = ((combinedFirefoxData.users / totalUsers) * 100).toFixed(2);
 
 var combinedEngagementRate = ((firefoxData.EngagementRate + mozillaData.EngagementRate) / 2).toFixed(2);
