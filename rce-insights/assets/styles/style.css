@@ -1,7 +1,9 @@
-@charset "UTF-8";
+
 @font-face {
   font-family: "Geist Sans";
-  src: url("./GeistVariableVF.ttf") format("truetype");
+  src:
+    local("Geist Sans"),
+    url("../fonts/GeistVariableVF.ttf") format("truetype");
 }
 
 :root {
@@ -127,6 +129,7 @@
     filter: invert(1);
   }
 }
+
 *,
 *::before,
 *::after {
@@ -181,13 +184,14 @@ body {
 .sub-grid, .engagement article,
 .browsers article, .engagement ul,
 .browsers ul, .glossary ul, .graphs ul {
-  align-items: baseline;
   display: grid;
   grid-column: span 12;
   grid-template-columns: subgrid;
 }
+
+
 @media only screen and (min-width: 45rem) {
-  .sub-grid, .engagement article,
+.sub-grid, .engagement article,
 .browsers article, .engagement ul,
 .browsers ul, .glossary ul, .graphs ul {
     gap: 1.875rem;
@@ -561,7 +565,7 @@ form + div {
   text-wrap: balance;
 }
 .nothing::after {
-  background-image: url("./brokenmac.png");
+  background-image: url("../images/brokenmac.png");
   background-repeat: no-repeat;
   background-size: cover;
   content: "";
@@ -738,7 +742,7 @@ form + div {
   margin-top: 0;
 }
 @media only screen and (min-width: 45rem) {
-  .graphs ul li {
+  .graphs ol li {
     grid-column: span 6;
   }
 }
