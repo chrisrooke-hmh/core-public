@@ -166,6 +166,13 @@ body {
   z-index: 2;
 }
 
+div:has(canvas) {
+  background-color: var(--theme-0);
+  border-radius: .75rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px .25rem 1rem, rgba(17, 17, 26, 0.05) 0px .5rem 2rem;
+  padding: .75rem;
+}
+
 @supports (animation-timeline: view()) {
   .progress {
     opacity: 1;
@@ -640,7 +647,6 @@ form + div {
 .graphs {
   background-color: var(--theme-1);
   border-color: var(--theme-4);
-  grid-row-gap: 7.5rem;
   position: relative;
   z-index: 1;
 }
@@ -708,6 +714,7 @@ form + div {
     grid-row-end: 5;
     grid-row-start: 2;
     height: fit-content;
+    padding: 1.5rem;
   }
 }
 .graphs ul {
@@ -732,12 +739,7 @@ form + div {
   grid-row: 1;
   width: 100%;
 }
-.graphs ul li canvas {
-  align-self: center;
-  grid-column: 2;
-  grid-row: 2/-1;
-  margin-left: auto;
-}
+
 .graphs ul li p {
   margin-top: 0;
 }
@@ -750,6 +752,12 @@ form + div {
   .graphs ul li {
     grid-column: span 4;
   }
+  .graphs ul li canvas {
+  align-self: center;
+  grid-column: 2;
+  grid-row: 2/-1;
+  margin-left: auto;
+}
 }
 @media only screen and (min-width: 68.75rem) {
   .graphs {
@@ -781,7 +789,6 @@ form + div {
   gap: 0.75rem;
   grid-column: span 12;
   justify-content: center;
-  padding: 0.75rem 0;
 }
 @media only screen and (min-width: 45rem) {
   .graph {

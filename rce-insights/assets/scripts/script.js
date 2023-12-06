@@ -8534,11 +8534,8 @@ var jsonData = {
  */
 var totalUsers = jsonData.viewports.reduce((total, viewport) => total + viewport.users, 0);
 var totalViewports = jsonData.viewports.length;
-
-
 document.getElementById("totalUsersSpan").innerHTML = totalUsers.toLocaleString();
 document.getElementById("totalViewportsSpan").innerHTML = totalViewports;
-
 
 /**
  * This function creates datasets for the top 10, 25, and 50 viewports based on the sorted data.
@@ -8552,7 +8549,6 @@ function createDatasets(sortedData) {
         "Top 50": sortedData.slice(0, 50)
     };
 }
-
 
 /*
   HERE STARTS THE HEADER HELPERS
@@ -8585,7 +8581,6 @@ const updateViewportSize = () => {
 // Add event listener for resize events
 window.addEventListener("resize", debounce(updateViewportSize, 200));
 
-
 /* Get the browser and print it */
 const getCurrentBrowser = () => {
     const userAgent = navigator.userAgent;
@@ -8596,14 +8591,9 @@ const getCurrentBrowser = () => {
     return match ? match[0] : "Unknown Browser";
 }
 
-// Get the span element
 const browserInfoSpan = document.getElementById("browserInfo");
-
-// Call the function and update the span's text content
 browserInfoSpan.textContent = getCurrentBrowser();
-/* End Browser */
-
-
+/* End HEADER HELPERS */
 
 /*
   This section of the code is responsible for searching viewports by width.
@@ -8632,9 +8622,9 @@ function searchByWidth(jsonData) {
     }
 
     function clearSearch() {
-        widthInput.value = ""; // Clear the input field
-        clearSearchResults(); // Clear the results
-        searchButton.disabled = false; // Enable the search button
+        widthInput.value = "";
+        clearSearchResults();
+        searchButton.disabled = false;
     }
 
     clearButton.addEventListener("click", clearSearch);
@@ -8733,13 +8723,30 @@ function searchByWidth(jsonData) {
     searchButton.addEventListener("click", searchViewport);
 }
 
+/*
+HERE STARTS THE VIEWPORTS CHARTS
+This code is used for analyzing and visualizing viewport data. 
 
+The code first defines several categories based on viewport width. 
+For each category, it filters the viewport data to include only the viewports that fall within the category's width range. 
 
+The filtered data is then grouped by viewport size (width x height),
+ and the total number of users for each viewport size is calculated. 
 
+The grouped data is sorted in descending order of users, 
+and datasets are created for the top 10 and top 25 viewport sizes in each category. 
 
+A line chart is created for each category,
+with the viewport sizes on the x-axis and the number of users on the y-axis. 
+The chart initially displays the top 10 viewport sizes, but can be updated to display the top 25. 
 
-/// VIEWPORTS CHARTS
-// GET the percentage of users in viewports
+The code also includes a function to update the chart when a different dataset is selected. 
+
+In addition, the code calculates the total number of users in each width range and 
+displays this information in a series of pie charts. 
+
+Finally, the code includes a function to group the viewport data by categories for further analysis.
+*/
 
 const totalViewportUsers = jsonData.viewports.reduce((total, viewport) => total + viewport.users, 0);
 const widthRanges = [
@@ -8754,7 +8761,6 @@ const percentages = widthRanges.map((range) => {
         .reduce((total, viewport) => total + viewport.users, 0);
     return (usersInRange / totalViewportUsers * 100).toFixed(2) + "%";
 });
-
 const totalUsersRange = [
     jsonData.viewports.filter(viewport => viewport.width >= 320 && viewport.width <= 479)
         .reduce((total, viewport) => total + viewport.users, 0),
@@ -8767,7 +8773,6 @@ const totalUsersRange = [
     jsonData.viewports.filter(viewport => viewport.width >= 1280)
         .reduce((total, viewport) => total + viewport.users, 0)
 ];
-
 const ranges = ["range320to479", "range480to649", "range650to879", "range880to1279", "range1280andLarger"];
 
 ranges.forEach((range, index) => {
@@ -8915,8 +8920,6 @@ categories.forEach(category => {
     });
 });
 
-// GET TOP 10 VIEWPORTS
-// Function to get the top 10 viewports based on users across all widths
 function getTop10Viewports(data) {
     // Flatten the viewport data into a single array
     const allViewports = data.viewports.flatMap((viewport) => viewport);
@@ -8926,18 +8929,10 @@ function getTop10Viewports(data) {
 
     return top10Viewports;
 }
-
-// Call the function to get the top 10 viewports
 const top10Viewports = getTop10Viewports(jsonData);
-
-// Create a chart for the top 10 viewports
 const top10Labels = top10Viewports.map((viewport) => `${viewport.width}x${viewport.height}`);
 const top10Users = top10Viewports.map((viewport) => viewport.users);
-
-// Get the canvas context for the new chart
 const top10ChartCtx = document.getElementById("top10ViewportChart").getContext("2d");
-
-// Create the new chart
 const top10Chart = new Chart(top10ChartCtx, {
     type: "bar",
     data: {
@@ -8974,7 +8969,6 @@ const top10Chart = new Chart(top10ChartCtx, {
     }
 });
 
-
 // GET UNIQUE WIDTHS
 function countUniqueWidths(data, categories) {
     var uniqueWidthCounts = categories.map(category => {
@@ -8991,10 +8985,7 @@ function countUniqueWidths(data, categories) {
     });
     return uniqueWidthCounts;
 }
-
-// Assuming you are using Chart.js for chart creation
 var uniqueWidthsData = countUniqueWidths(jsonData, categories);
-
 var uniqueWidthsCtx = document.getElementById('uniqueWidthsChart').getContext('2d');
 var uniqueWidthsChart = new Chart(uniqueWidthsCtx, {
     type: 'bar',
@@ -9018,13 +9009,31 @@ var uniqueWidthsChart = new Chart(uniqueWidthsCtx, {
 });
 
 
-
-
 /*
-  HERE STARTS THE Engament SECTION
+HERE STARTS THE ENGAGEMENT SECTION
 
-The code also sorts the viewports based on engagement rate and average engagement time, 
-extracts the top 10 viewports for each, and creates bar charts to display this data.
+This JavaScript code is part of the "Engagement" section of a larger script. 
+
+The main purpose of this code is to analyze and visualize data related to user engagement 
+across different viewport sizes. 
+
+The code includes a function named 'createChart'
+This function takes several parameters including the context of a canvas element, 
+the type of chart to create, the labels and data for the chart, 
+and the titles for the chart and its axes.
+
+The code then sorts the viewport data based on engagement rate and average engagement time, 
+and extracts the top 10 viewports for each metric. 
+
+For each metric, the code creates an array of labels (viewport sizes) and an array of data 
+(engagement rates or average engagement times), gets the context of a canvas element, 
+and calls the 'createChart' function to create a line chart.
+
+The 'createChart' function is called twice to create two charts: 
+1. A chart of the top 10 viewports by engagement rate.
+2. A chart of the top 10 viewports by average engagement time. 
+
+In the second chart, the average engagement time is converted from seconds to minutes for easier interpretation.
 */
 
 // Function to create a chart
@@ -9084,35 +9093,32 @@ createChart(ctxEngagementTime, 'line', labelsEngagementTime, dataEngagementTime,
 
 /*
   HERE STARTS THE BROWSERS SECTION
+This section of the script is primarily focused on analyzing and visualizing data related to different browsers, 
+specifically Firefox, Safari, and Chrome. 
 
-  1: Insights and stats from the browser array
-      Total unqiue number of borwsers
-      Pie chart for Browsers
+Firstly, it combines the engagement rate of Firefox and Mozilla Compatible Agent and calculates the average.
+It then updates the HTML elements to display the combined user percentage, 
+average engagement time, and combined engagement rate.
 
+A bar chart is then created to compare the user count and average engagement time (in minutes)
+ between Chrome, Safari, and the combined Firefox and Mozilla.
 
-  /* Safari metrics start here /*    
-  1: Put ios and mac os together on a chart
-  2: Helpers to print stats:
-        Total number of Browsers
-  3: Calculate safari market share
-        Total number of users
-        Total number of Safari Users
-        Print users or print warning
-  4: Market share breakdown
-        ios market share
-        Mac market share
-  5: Engagement breakdown
-        ios market share
-        Mac market share
+Next, it creates a bar chart to compare the user count and average engagement time (in minutes) 
+between iOS and Macintosh for Safari browser.
 
+The script then calculates the total number of unique browsers and updates the HTML element to display this count.
 
+The market share of the Safari browser is calculated as a percentage of the total number of users across all browsers. 
+This percentage is then displayed in the HTML.
 
-  /* Chrome metrics start here /*    
-  1: chrome market share
-  2: chrome engagemnt 
-        Total number of Browsers
-  3: Chromiuum Browswers
-        Enagement and marjet share
+The script also calculates the market share of iOS and Macintosh within Safari and
+ updates the HTML elements to display these percentages.
+
+The engagement rate and average engagement time for iOS and Macintosh are 
+calculated and displayed in the HTML.
+
+Finally, the script processes the data for Safari, groups the data by version, 
+and creates a line chart to visualize the number of users per Mac OS version.
 */
 
 // Group "Mozilla Compatible Agent" with "Firefox"
@@ -9133,11 +9139,9 @@ var groupedBrowsers = jsonData.browsers.reduce((acc, curr) => {
 var browserNames = groupedBrowsers.map(browser => browser.Browser);
 var userCounts = groupedBrowsers.map(browser => browser.users);
 
-
 // Sort the browsers in descending order based on the users
 var sortedBrowsers = jsonData.browsers.sort((a, b) => b.users - a.users);
 
-// Get the top three browsers
 var topBrowser = sortedBrowsers[0];
 var secondBrowser = sortedBrowsers[1];
 var thirdBrowser = sortedBrowsers[2];
@@ -9174,9 +9178,30 @@ var browserLineChart = new Chart(browserCtx, {
 });
 
 
+/*
+This section of the script is primarily focused on analyzing and visualizing data related to
+Safari browser usage, specifically on iOS and Macintosh platforms.
 
-// 1: Put ios and mac os together on a chart
-// Assuming the createChart function is defined as mentioned in the previous code block, you can use it to create the safariCombinedChart as follows:
+Firstly, it creates a bar chart to compare the user count and average engagement time (in minutes)
+ between iOS and Macintosh for Safari browser.
+
+Next, it calculates the total number of unique browsers and updates the HTML element to display this count.
+
+The market share of the Safari browser is calculated as a percentage of the 
+total number of users across all browsers. This percentage is then displayed in the HTML.
+
+The script also calculates the market share of iOS and Macintosh within 
+Safari and updates the HTML elements to display these percentages.
+
+The engagement rate and average engagement time for iOS and Macintosh 
+are calculated and displayed in the HTML.
+
+The script then processes the data for Safari, groups the data by version,
+ and creates a line chart to visualize the number of users per Mac OS version.
+
+Finally, it calculates the total number of Safari appearances and Safari version groups,
+ and identifies the Safari version with the most users. These values are then displayed in the HTML.
+*/
 
 var safariData = jsonData.safari[0];
 var ctxCombined = document.getElementById('safariCombinedChart').getContext('2d');
@@ -9220,33 +9245,25 @@ var safariCombinedChart = new Chart(ctxCombined, {
         }
     }
 });
-// 2: Print the total number of browsers, unique only
+
 var uniqueBrowsers = jsonData.browsers.length;
 document.getElementById("browserCount").innerHTML = uniqueBrowsers;
 
-/* 3: Market Share */
-// Calculate the total number of users across all browsers
 var totalUsers = jsonData.browsers.reduce((total, browser) => total + (browser.users || 0), 0);
 
-// Find the Safari browser data
 var safariBrowser = jsonData.browsers.filter(browser => browser.Browser.includes("Safari"));
 
 if (safariBrowser.length > 0) {
     // Calculate the total number of Safari users
     var totalSafariUsers = safariBrowser.reduce((total, browser) => total + (browser.users || 0), 0);
 
-    // Calculate the market share percentage of Safari browser
     var safariMarketShare = (totalSafariUsers / totalUsers) * 100;
 
-    // Print the market share percentage to the "safariMarketShare" id
     document.getElementById("safariMarketShare").innerHTML = safariMarketShare.toFixed(2) + "%";
 } else {
     document.getElementById("safariMarketShare").innerHTML = "Safari browser data not found";
 }
 
-/* 4: Market Share Breakdown */
-
-// Calculate the total number of Safari users
 var totalSafariUsers = safariData.reduce((total, os) => total + os.users, 0);
 
 // Find the iOS and Macintosh data within the Safari data
@@ -9257,12 +9274,9 @@ var macintoshData = safariData.find(os => os.OperatingSystem === "Macintosh");
 var iOSMarketShare = iOSData ? (iOSData.users / totalSafariUsers) * 100 : 0;
 var macintoshMarketShare = macintoshData ? (macintoshData.users / totalSafariUsers) * 100 : 0;
 
-// Print the market share percentage to the respective ids
 document.getElementById("iOSMarketShare").innerHTML = iOSMarketShare.toFixed(2) + "%";
 document.getElementById("macintoshMarketShare").innerHTML = macintoshMarketShare.toFixed(2) + "%";
 
-/* 5: engagement */
-// Print the engagement rate and average engagement time for iOS
 if (iOSData) {
     var iOSAverageEngagementTimeInMinutes = iOSData.AverageEngagementTime / 60;
     document.getElementById("iOSEngagementRate").innerHTML = (iOSData.EngagementRate * 100).toFixed(2) + "%";
@@ -9272,7 +9286,6 @@ if (iOSData) {
     document.getElementById("iOSAverageEngagementTime").innerHTML = "iOS data not found";
 }
 
-// Print the engagement rate and average engagement time for Macintosh
 if (macintoshData) {
     var macintoshAverageEngagementTimeInMinutes = macintoshData.AverageEngagementTime / 60;
     document.getElementById("macintoshEngagementRate").innerHTML = (macintoshData.EngagementRate * 100).toFixed(2) + "%";
@@ -9282,33 +9295,28 @@ if (macintoshData) {
     document.getElementById("macintoshAverageEngagementTime").innerHTML = "Macintosh data not found";
 }
 
-
-// Process the data for Safari
 var safariData = jsonData.browserVersions
     .filter(version => version.safari) // Filter out only Safari versions
-    .map(version => ({ // Map to a new object with rounded version and users
+    .map(version => ({
         version: Math.floor(parseFloat(version.version)), // Round down the version
         users: version.users
     }));
 
-// Group the Safari data by version and sum the users
 var groupedSafariData = safariData.reduce((acc, curr) => {
     acc[curr.version] = (acc[curr.version] || 0) + curr.users;
     return acc;
 }, {});
 
-// Create the labels and data arrays for the chart
 var safariLabels = Object.keys(groupedSafariData);
 var safariData = Object.values(groupedSafariData);
 
-// Create the chart for Safari
 var safariCtx = document.getElementById('safariVersionsChart').getContext('2d');
 var safariChart = new Chart(safariCtx, {
     type: 'line',
     data: {
         labels: safariLabels,
         datasets: [{
-            label: 'Users',
+            label: 'Users per Mac Os',
             data: safariData,
             backgroundColor: 'rgba(54, 162, 235, 0.6)',
             borderColor: 'rgba(54, 162, 235, 1)',
@@ -9324,7 +9332,6 @@ var safariChart = new Chart(safariCtx, {
     }
 });
 
-// Calculate the total number of Safari appearances
 var totalSafariAppearances = jsonData.browserVersions.reduce((count, browser) => {
     if ('safari' in browser) {
         count++;
@@ -9332,25 +9339,41 @@ var totalSafariAppearances = jsonData.browserVersions.reduce((count, browser) =>
     return count;
 }, 0);
 
-// Display the total number of Safari appearances in a span
 document.getElementById('totalSafariBrowsers').innerHTML = totalSafariAppearances;
 
-// Calculate the total number of Safari version groups
 var totalSafariGroups = Object.keys(groupedSafariData).length;
 
-// Print the total number of Safari groups to a span
 document.getElementById('totalSafariGroups').innerHTML = totalSafariGroups;
 
-// Find the Safari version with the most users
 var safariVersions = jsonData.browserVersions.filter(browser => 'safari' in browser);
 var topSafariVersion = safariVersions.sort((a, b) => b.users - a.users)[0];
 
-// Print the Safari version with the most users
 document.getElementById('topSafariVersion').innerHTML = `v${Math.floor(topSafariVersion.version)}`;
 
+/* END SAFARI */
 
-/* Chrome Browser section */
-// Calculate the total users for Chrome
+
+/*
+CHROME BROWSER
+This section of the script is primarily focused on analyzing and visualizing data related to different browsers,
+ specifically Chrome, Safari, Edge, and Opera.
+
+Firstly, it finds the data for each of these browsers from the jsonData object.
+
+A bar chart is then created to compare the user count and average engagement time (in minutes)
+ between Safari and Chrome.
+
+Next, it processes the data for Chrome, groups the data by version, and creates a line chart to
+ visualize the number of users per Chrome version.
+
+The total number of Chrome appearances and Chrome version groups are calculated and displayed in the HTML.
+
+The script then calculates the total users, market share, engagement rate, 
+and total engagement time for Chrome, Edge, and Opera. It also calculates the total market share for Chrome, Edge, and Opera combined. These values are then displayed in the HTML.
+
+Finally, a bar chart is created to compare the user count and average engagement time (in minutes)
+between Chrome, Edge, and Opera.
+*/
 var chromeUsers = jsonData.browsers.find(browser => browser.Browser === "Chrome").users || 0;
 
 // Calculate the market share percentage of Chrome
@@ -9364,26 +9387,18 @@ document.getElementById("chromeEngagementRate").innerHTML = (chromeEngagementRat
 // Calculate the total engagement time for Chrome and convert to minutes
 var chromeEngagementTimeInMinutes = (jsonData.browsers.find(browser => browser.Browser === "Chrome").AverageEngagementTime || 0) / 60;
 document.getElementById("chromeAverageEngagementTime").innerHTML = chromeEngagementTimeInMinutes.toFixed(2) + " minutes";
-
 // Calculate the total users for Edge and Opera
 var edgeUsers = jsonData.browsers.find(browser => browser.Browser === "Edge").users || 0;
 var operaUsers = jsonData.browsers.find(browser => browser.Browser === "Opera").users || 0;
-
 // Calculate the total market share for Chrome, Edge, and Opera
 var totalMarketShare = (chromeUsers + edgeUsers + operaUsers) / totalUsers * 100;
 document.getElementById("totalMarketShare").innerHTML = totalMarketShare.toFixed(2) + "%";
-
 // Calculate the market share for Opera by itself
 var operaMarketShare = (operaUsers / totalUsers) * 100;
 document.getElementById("operaMarketShare").innerHTML = operaMarketShare.toFixed(2) + "%";
-
 // Calculate the market share for Edge by itself
 var edgeMarketShare = (edgeUsers / totalUsers) * 100;
 document.getElementById("edgeMarketShare").innerHTML = edgeMarketShare.toFixed(2) + "%";
-
-
-// Compare the engagement of browsers for chrome
-
 var chromeData = jsonData.browsers.find(browser => browser.Browser === "Chrome");
 var safariData = jsonData.browsers.find(browser => browser.Browser === "Safari");
 var edgeData = jsonData.browsers.find(browser => browser.Browser === "Edge");
@@ -9428,7 +9443,6 @@ var browserChart = new Chart(ctxBrowserChart, {
         }
     }
 });
-
 var ctxBrowserComparisonChart = document.getElementById('chromiumComparisonChart').getContext('2d');
 var browserComparisonChart = new Chart(ctxBrowserComparisonChart, {
     type: 'bar',
@@ -9469,27 +9483,18 @@ var browserComparisonChart = new Chart(ctxBrowserComparisonChart, {
         }
     }
 });
-
-// First, we need to process the data
 var chromeData = jsonData.browserVersions
     .filter(version => version.chrome) // Filter out only Chrome versions
     .map(version => ({ // Map to a new object with rounded version and users
         version: Math.floor(parseFloat(version.version)), // Round down the version
         users: version.users
     }));
-
-// Now we need to group by version and sum the users
 var groupedChromeData = chromeData.reduce((acc, curr) => {
     acc[curr.version] = (acc[curr.version] || 0) + curr.users;
     return acc;
 }, {});
-
-
-// Now we can create the labels and data arrays for the chart
 var labels = Object.keys(groupedChromeData);
 var data = Object.values(groupedChromeData);
-
-// Now we can create the chart
 var ctx = document.getElementById('chromeChart').getContext('2d');
 var chromeChart = new Chart(ctx, {
     type: 'line',
@@ -9511,7 +9516,6 @@ var chromeChart = new Chart(ctx, {
         }
     }
 });
-
 var totalChromeAppearances = jsonData.browserVersions.reduce((count, browser) => {
     if ('chrome' in browser) {
         count++;
@@ -9519,36 +9523,42 @@ var totalChromeAppearances = jsonData.browserVersions.reduce((count, browser) =>
     return count;
 }, 0);
 
-// Display the total number of Chrome appearances in a span
 document.getElementById('totalChromeBrowsers').innerHTML = totalChromeAppearances;
-
-// Calculate the total number of Chrome version groups
 var totalChromeGroups = Object.keys(groupedChromeData).length;
-
-// Print the total number of Chrome groups to a span
 document.getElementById('totalChromeGroups').innerHTML = totalChromeGroups;
+/* END CHROME */
 
+/*
+FIREFOX
+This section of the script is primarily focused on analyzing and visualizing data related 
+to Firefox browser usage.
 
+Firstly, it finds the data for Chrome, Safari, Firefox, and Mozilla Compatible Agent from the jsonData object.
 
+Next, it combines the user count and average engagement time for Firefox and Mozilla Compatible Agent
+into a single data object.
 
-// FIREFOX
-// Create the chart
+The script then calculates the percentage of combined users and the combined engagement rate 
+for Firefox and Mozilla Compatible Agent. These values are displayed in the HTML.
+
+Finally, a bar chart is created to compare the user count and average engagement time (in minutes)
+between Chrome, Safari, and the combined Firefox and Mozilla Compatible Agent data. 
+The chart is displayed in the 'FirefoxVTopTwo' HTML element.
+*/
+var chromeData = jsonData.browsers.find(browser => browser.Browser === "Chrome");
 var safariData = jsonData.browsers.find(browser => browser.Browser === "Safari");
 var firefoxData = jsonData.browsers.find(browser => browser.Browser === "Firefox");
 var mozillaData = jsonData.browsers.find(browser => browser.Browser === "Mozilla Compatible Agent");
 
-// Combine Firefox and Mozilla Compatible Agent data
 var combinedFirefoxData = {
     users: firefoxData.users + mozillaData.users,
     AverageEngagementTime: (firefoxData.AverageEngagementTime + mozillaData.AverageEngagementTime) / 2
 };
 
-// FIREFOX
 var percentageCombinedUsers = ((combinedFirefoxData.users / totalUsers) * 100).toFixed(2);
 
 var combinedEngagementRate = ((firefoxData.EngagementRate + mozillaData.EngagementRate) / 2).toFixed(2);
 
-// Set the innerHTML of the spans to just the variable values
 document.getElementById('spanPercentageCombinedUsers').innerHTML = percentageCombinedUsers + '%';
 document.getElementById('spanCombinedAvgEngagementTimeMinutes').innerHTML = (Math.round(combinedFirefoxData.AverageEngagementTime / 60 * 100) / 100).toFixed(2) + ' minutes';
 document.getElementById('spanCombinedEngagementRate').innerHTML = combinedEngagementRate + '%';
@@ -9594,15 +9604,30 @@ var FirefoxVTopTwo = new Chart(ctx, {
     }
 });
 
+/*
+OPERATING SYSTEMS
+This section of the script is primarily focused on analyzing and visualizing data 
+related to different operating systems, specifically iOS and Android.
 
+Firstly, it defines several utility functions for calculating percentages, updating HTML content,
+ formatting user data, creating bar charts, creating labels, sorting users, 
+ grouping data by OS version, and grouping data for the OS version chart.
 
+Next, it calculates the total number of mobile users, iOS users, Android users,
+ and the percentage of total iOS and Android users. These values are then displayed in the HTML.
 
+The script then groups Android data by operating system and sums the users. 
+A bar chart is created to visualize this grouped data.
 
+A bar chart is also created to compare the total users between iOS and Android.
 
+The script then groups iOS data by OS version and sums the users. 
+A bar chart is created to visualize this grouped data.
 
+Finally, the script sorts the combined array in ascending order of OS version and updates 
+the HTML with the total number of sorted versions.
+*/
 
-
-/* OPERATING SYSTEMS */
 
 // Function to calculate the total users for a given operating system
 function calculateTotalUsersForOS(osName) {
@@ -9655,7 +9680,6 @@ const topThreeOperatingSystems = filteredOperatingSystems.sort((a, b) => b.users
 // Calculate the total count of users for the top three operating systems
 const totalTopOsUsers = topThreeOperatingSystems.reduce((total, os) => total + calculateTotalUsersForOS(os), 0);
 
-// Print the total number of operating systems and the operating system with the most users to spans
 document.getElementById("totalOperatingSystems").innerHTML = totalOperatingSystems;
 document.getElementById("osWithMostUsers").innerHTML = osWithMostUsers;
 document.getElementById("osWithSecondMostUsers").innerHTML = topThreeOperatingSystems[1];
@@ -9669,18 +9693,13 @@ topThreeOperatingSystems.forEach((os, index) => {
 });
 
 document.getElementById("totalTopOsUsers").innerHTML = totalTopOsUsers.toLocaleString();
-
-// Print the percentage of the total users for the top three operating systems to a span
 document.getElementById("percentageOfTopOsUsers").innerHTML = "(" + calculatePercentageOfTotalUsers(totalTopOsUsers).toFixed(2) + "%)";
-
-// Create a bar chart for the top three operating systems
 createBarChart('topOsChart', topThreeOperatingSystems, topThreeOperatingSystems.map(os => calculateTotalUsersForOS(os)), "Top 3 OS");
+
 // Extracting the OS names and user counts from the filtered operatingSystems data
 var osNames = filteredOperatingSystems.map(os => os.os);
 var userCounts = filteredOperatingSystems.map(os => os.users);
-
-// Create a bar chart for all operating systems
-createBarChart('osChart', osNames, userCounts);
+createBarChart('osChart', osNames, userCounts, "Top operating systems");
 
 
 // MOBILES
@@ -9717,6 +9736,7 @@ function createBarChart(elementId, labels, data, label, backgroundColor = 'rgba(
             }]
         },
         options: {
+
             scales: {
                 y: {
                     beginAtZero: true
@@ -9750,24 +9770,19 @@ function groupDataForOsVersionChart(data) {
     }, {});
 }
 
-// Main code
 const totalMobileUsers = jsonData.operatingSystems.reduce((total, os) => total + os.users, 0);
 const totalIOSUsers = getOSUsers("iOS");
 const totalAndroidUsers = getOSUsers("Android");
 const totalIOSAndAndroidUsersPercentage = calculatePercentage(totalIOSUsers + totalAndroidUsers, totalMobileUsers);
-
 updateInnerHTML('totalIOSAndAndroidUsersPercentage', totalIOSAndAndroidUsersPercentage + "%");
 
 const totalMobileOperatingSystemsUsers = jsonData.operatingSystems.reduce((total, os) => total + os.users, 0);
 const iOSPercentage = calculatePercentage(totalIOSUsers, totalMobileOperatingSystemsUsers);
 const androidPercentage = calculatePercentage(totalAndroidUsers, totalMobileOperatingSystemsUsers);
-
 updateInnerHTML('totalIOSUsers', formatUsers(totalIOSUsers, iOSPercentage));
 updateInnerHTML('totalAndroidUsers', formatUsers(totalAndroidUsers, androidPercentage));
 
 
-// Create a bar chart for Android
-// Group data by operatingSystem and sum users
 const groupedAndroidData = jsonData.android.reduce((acc, curr) => {
     const existingOS = acc.find(os => os.operatingSystem === curr.operatingSystem);
     if (existingOS) {
@@ -9778,7 +9793,6 @@ const groupedAndroidData = jsonData.android.reduce((acc, curr) => {
     return acc;
 }, []);
 
-// Create the chart with the grouped data
 createBarChart(
     'androidChart',
     groupedAndroidData.map(os => os.operatingSystem === "Android" ? "Unknown" : os.operatingSystem),
@@ -9827,9 +9841,6 @@ updateInnerHTML('totalSortedVersions', totalSortedVersions);
 
 createBarChart('iosBands', Object.keys(iosGroupedData).map(String), Object.values(iosGroupedData), 'ios versions grouped');
 
-
-
-// Usage
 
 updateViewportSize();
 searchByWidth(jsonData);
