@@ -1,14 +1,10 @@
-
 @font-face {
   font-family: "Geist Sans";
-  src:
-    local("Geist Sans"),
+  src: local("Geist Sans"),
     url("../fonts/GeistVariableVF.ttf") format("truetype");
 }
 
 :root {
-  --red: rgba(217, 36, 18, 1);
-  --black: rgb(0, 0, 0);
   --font-size-fluid-0: clamp(0.75rem, 2vw, 1rem);
   --font-size-fluid-1: clamp(1rem, 4vw, 1.5rem);
   --font-size-fluid-2: clamp(1.5rem, 6vw, 2.5rem);
@@ -69,12 +65,13 @@
   --red-12: #7d1a1a;
   --hover: transparent;
   --row-hover: transparent;
-  --button-bg: #e9ecef;
-  --button-bg-hover: #dee2e6;
-  --button-shadow: #adb5bd;
-  --button-border: #dee2e6;
-  --button-focus-outline: #495057;
-  --button-focus-shadow: #dee2e6;
+  --button-bg: var(--theme-2);
+  --button-bg-hover: var(--theme-3);
+  --button-shadow: var(--theme-5);
+  --button-border: var(--theme-3);
+  --button-focus-outline: var(--theme-6);
+  --button-focus-outline-hover: var(--theme-5);
+  --button-focus-shadow: var(--theme-3);
   --link-color: var(--blue-11);
   --shadow-1: rgba(3, 4, 7, 0.2);
   --checkbox-shadow: rgba(206, 212, 218, 0.4);
@@ -116,13 +113,6 @@
     --checkbox-shadow: rgba(206, 212, 218, 0.4);
     --checkbox-shadow-light: rgba(206, 212, 218, 0.2);
     --checkbox-shadow-lightest: rgba(206, 212, 218, 0.1);
-    --green-6: #40c057;
-    --green-7: #37b24d;
-    --green-8: #2f9e44;
-    --green-9: #2b8a3e;
-    --green-10: #237032;
-    --green-11: #1b5727;
-    --green-12: #133d1b;
   }
 
   canvas {
@@ -149,6 +139,7 @@ body {
   font-size: var(--font-size-fluid-1);
   line-height: 1.5;
   overflow-y: auto;
+  scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
 }
 
@@ -168,15 +159,15 @@ body {
 
 div:has(canvas) {
   background-color: var(--theme-0);
-  border-radius: .75rem;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px .25rem 1rem, rgba(17, 17, 26, 0.05) 0px .5rem 2rem;
+  border-radius: 0.75rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0rem 0.25rem 1rem,
+    rgba(17, 17, 26, 0.05) 0rem 0.5rem 2rem;
   display: flex;
-  padding: .75rem;
-  height: 100%;
+  padding: 0.75rem;
 }
 
 canvas {
-  min-width: 100%;;
+  min-width: 100%;
 }
 
 @supports (animation-timeline: view()) {
@@ -184,8 +175,13 @@ canvas {
     opacity: 1;
   }
 }
-.grid, .engagement,
-.browsers, .glossary, .graphs, .search, header {
+.grid,
+.engagement,
+.browsers,
+.glossary,
+.graphs,
+.search,
+header {
   align-content: start;
   display: grid;
   grid-row-gap: 0;
@@ -194,19 +190,26 @@ canvas {
   width: 100%;
 }
 
-.sub-grid, .engagement article,
-.browsers article, .engagement ul,
-.browsers ul, .glossary ul, .graphs ul {
+.sub-grid,
+.engagement article,
+.browsers article,
+.engagement ul,
+.browsers ul,
+.glossary ul,
+.graphs ul {
   display: grid;
   grid-column: span 12;
   grid-template-columns: subgrid;
 }
 
-
 @media only screen and (min-width: 45rem) {
-.sub-grid, .engagement article,
-.browsers article, .engagement ul,
-.browsers ul, .glossary ul, .graphs ul {
+  .sub-grid,
+  .engagement article,
+  .browsers article,
+  .engagement ul,
+  .browsers ul,
+  .glossary ul,
+  .graphs ul {
     gap: 1.875rem;
   }
 }
@@ -286,8 +289,9 @@ button {
   align-items: center;
   background-color: var(--button-bg);
   border: 0.125rem solid var(--button-border);
-  border-radius: 0.25rem;
-  box-shadow: 0.25rem 0.25rem 0 var(--button-shadow), 0.0625rem 0 0.375rem 0 inset rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0.25rem 0.25rem 0 var(--button-shadow),
+    0.0625rem 0 0.375rem 0 inset rgba(0, 0, 0, 0.1);
   color: var(--body-color);
   cursor: pointer;
   display: flex;
@@ -298,16 +302,24 @@ button {
   padding: 0.75rem;
   text-align: center;
   text-transform: uppercase;
-  transition: background-color var(--trans-speed) linear, outline var(--trans-speed) linear;
+  transition: background-color var(--trans-speed) linear,
+    outline var(--trans-speed) linear;
 }
-button:hover, button:focus-visible, button:focus {
+button:hover,
+button:focus-visible,
+button:focus {
   background-color: var(--button-bg-hover);
-  box-shadow: 0.25rem 0.25rem 0 var(--button-focus-shadow), 0.0625rem 0 0.375rem 0 inset rgba(0, 0, 0, 0.1);
+  box-shadow: 0.25rem 0.25rem 0 var(--button-focus-shadow),
+    0.0625rem 0 0.375rem 0 inset rgba(0, 0, 0, 0.1);
+  outline-color: var(--button-focus-outline-hover);
+  outline-offset: 0.25rem;
 }
-button:focus-visible, button:focus {
+button:focus-visible,
+button:focus {
   outline-color: var(--button-focus-outline);
   outline-offset: 0.25rem;
-  box-shadow: 0.25rem 0.25rem 0 transparent, 0.0625rem 0 0.375rem 0 inset rgba(0, 0, 0, 0.1);
+  box-shadow: 0.25rem 0.25rem 0 transparent,
+    0.0625rem 0 0.375rem 0 inset rgba(0, 0, 0, 0.1);
 }
 button svg {
   margin-left: auto;
@@ -319,14 +331,17 @@ img {
   object-fit: contain;
 }
 
-.box-effect, aside details {
+.box-effect,
+aside details {
   --shadow-color: var(--theme-4);
   border: 0.1875rem solid var(--theme-1);
   border-radius: 0.75rem;
-  box-shadow: 1rem 1rem 0 var(--shadow-color), 0.0625rem 0 0.75rem 0 inset rgba(0, 0, 0, 0.1);
+  box-shadow: 1rem 1rem 0 var(--shadow-color),
+    0.0625rem 0 0.75rem 0 inset rgba(0, 0, 0, 0.1);
   padding: 0.75rem;
 }
-.box-effect span:is([id]), aside details span:is([id]) {
+.box-effect span:is([id]),
+aside details span:is([id]) {
   background-color: transparent;
   font-weight: 600;
 }
@@ -348,7 +363,8 @@ header article {
 header h2 {
   font-size: var(--font-size-fluid-1);
 }
-header::before, header::after {
+header::before,
+header::after {
   bottom: 0;
   content: "";
   height: var(--overlay-h);
@@ -361,31 +377,33 @@ header::before {
   z-index: -2;
 }
 header::after {
-  background-image: radial-gradient(var(--theme-4) 33%, transparent 33%), radial-gradient(var(--theme-4) 33%, transparent 33%);
+  background-image: radial-gradient(var(--theme-4) 33%, transparent 33%),
+    radial-gradient(var(--theme-4) 33%, transparent 33%);
   background-position: 0 0, 0.25rem 0.25rem, 0 0;
   background-size: 0.5rem 0.5rem, 0.5rem 0.5rem, 100% 100%;
   z-index: -1;
 }
 @media only screen and (min-width: 45rem) {
-  header::before, header::after {
+  header::before,
+  header::after {
     bottom: unset;
     top: 0;
   }
   header h1,
-header p {
-    grid-column: 1/span 8;
+  header p {
+    grid-column: 1 / span 8;
   }
   header article {
-    grid-column: 1/span 6;
+    grid-column: 1 / span 6;
   }
 }
 @media only screen and (min-width: 68.75rem) {
   header h1,
-header p {
-    grid-column: 1/span 5;
+  header p {
+    grid-column: 1 / span 5;
   }
   header article {
-    grid-column: 1/span 4;
+    grid-column: 1 / span 4;
   }
 }
 header p {
@@ -411,12 +429,14 @@ aside ul {
   gap: 0.375rem;
   padding: 0.75rem 0;
 }
+aside ul li {
+  padding: 0 1.5rem;
+}
 aside ul a {
   color: var(--link-color);
   outline: 0.1875rem solid transparent;
-  padding: 0 1.5rem;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color var(--trans-speed) linear;
 }
 aside ul a:hover {
   outline-color: var(--blue-3);
@@ -439,7 +459,8 @@ aside ul ul {
 
 section {
   border-top: 0.75rem solid;
-  padding: var(--section-padding-top) var(--section-padding-horizontal) var(--section-padding-bottom) var(--section-padding-horizontal);
+  padding: var(--section-padding-top) var(--section-padding-horizontal)
+    var(--section-padding-bottom) var(--section-padding-horizontal);
 }
 section h2 + p {
   margin-top: 1.5rem;
@@ -491,7 +512,8 @@ form input {
   border: none;
   color: var(--body-color);
   border-radius: 0.5625rem;
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.4) inset, 0.0625rem 0.0625rem 0.0625rem rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.4) inset,
+    0.0625rem 0.0625rem 0.0625rem rgba(255, 255, 255, 0.75);
   flex: 1;
   margin-right: 0.75rem;
   outline: 0.1875rem solid transparent;
@@ -564,7 +586,7 @@ form + div {
 }
 .nothing {
   --margin-value: 6rem;
-  color: var(--red);
+  color: var(--red-8);
   margin: var(--margin-value) 0;
   position: relative;
   text-align: center;
@@ -591,7 +613,8 @@ form + div {
   position: relative;
   z-index: 1;
 }
-.search::before, .search::after {
+.search::before,
+.search::after {
   bottom: 0;
   content: "";
   height: var(--overlay-h);
@@ -604,14 +627,15 @@ form + div {
   z-index: -2;
 }
 .search::after {
-  background-image: radial-gradient(var(--theme-4) 33%, transparent 33%), radial-gradient(var(--theme-4) 33%, transparent 33%);
+  background-image: radial-gradient(var(--theme-4) 33%, transparent 33%),
+    radial-gradient(var(--theme-4) 33%, transparent 33%);
   background-position: 0 0, 0.25rem 0.25rem, 0 0;
   background-size: 0.5rem 0.5rem, 0.5rem 0.5rem, 100% 100%;
   z-index: -1;
 }
 .search h2,
 .search p {
-  grid-column: 1/span 12;
+  grid-column: 1 / span 12;
 }
 .search article {
   display: flex;
@@ -621,7 +645,8 @@ form + div {
   width: 100%;
 }
 @media only screen and (min-width: 45rem) {
-  .search::before, .search::after {
+  .search::before,
+  .search::after {
     height: 100%;
     left: unset;
     right: 0;
@@ -629,17 +654,17 @@ form + div {
     width: 10vw;
   }
   .search h2,
-.search p {
-    grid-column: 1/span 8;
+  .search p {
+    grid-column: 1 / span 8;
   }
   .search article {
-    grid-column: 1/span 10;
+    grid-column: 1 / span 10;
   }
 }
 @media only screen and (min-width: 68.75rem) {
   .search h2,
-.search p {
-    grid-column: 1/span 5;
+  .search p {
+    grid-column: 1 / span 5;
   }
 }
 
@@ -649,7 +674,8 @@ form + div {
   position: relative;
   z-index: 1;
 }
-.graphs::before, .graphs::after {
+.graphs::before,
+.graphs::after {
   content: "";
   height: var(--overlay-h);
   left: 0;
@@ -662,7 +688,8 @@ form + div {
   z-index: -2;
 }
 .graphs::after {
-  background-image: radial-gradient(var(--theme-3) 33%, transparent 33%), radial-gradient(var(--theme-3) 33%, transparent 33%);
+  background-image: radial-gradient(var(--theme-3) 33%, transparent 33%),
+    radial-gradient(var(--theme-3) 33%, transparent 33%);
   background-position: 0 0, 0.25rem 0.25rem, 0 0;
   background-size: 0.5rem 0.5rem, 0.5rem 0.5rem, 100% 100%;
   z-index: -1;
@@ -672,9 +699,11 @@ form + div {
 }
 .graphs h2,
 .graphs p {
-  grid-column: 1/span 12;
+  grid-column: 1 / span 12;
 }
-.graphs .box-effect, .graphs aside details, aside .graphs details {
+.graphs .box-effect,
+.graphs aside details,
+aside .graphs details {
   padding: 0.75rem 1.5rem;
 }
 .graphs p {
@@ -697,19 +726,21 @@ form + div {
 }
 @media only screen and (min-width: 45rem) {
   .graphs article:not(.graph) h2,
-.graphs article:not(.graph) p {
-    grid-column: 1/span 8;
+  .graphs article:not(.graph) p {
+    grid-column: 1 / span 8;
   }
 }
 @media only screen and (min-width: 68.75rem) {
   .graphs article:not(.graph) h2,
-.graphs article:not(.graph) p {
-    grid-column: 1/span 6;
+  .graphs article:not(.graph) p {
+    grid-column: 1 / span 6;
   }
-  .graphs article:not(.graph) .box-effect, .graphs article:not(.graph) aside details, aside .graphs article:not(.graph) details {
+  .graphs article:not(.graph) .box-effect,
+  .graphs article:not(.graph) aside details,
+  aside .graphs article:not(.graph) details {
     display: flex;
     gap: 0.75rem;
-    grid-column: 7/span 6;
+    grid-column: 7 / span 6;
     grid-row-end: 5;
     grid-row-start: 2;
     height: fit-content;
@@ -752,11 +783,11 @@ form + div {
     grid-column: span 4;
   }
   .graphs ul li canvas {
-  align-self: center;
-  grid-column: 2;
-  grid-row: 2/-1;
-  margin-left: auto;
-}
+    align-self: center;
+    grid-column: 2;
+    grid-row: 2/-1;
+    margin-left: auto;
+  }
 }
 @media only screen and (min-width: 68.75rem) {
   .graphs {
@@ -816,7 +847,8 @@ form + div {
   position: relative;
   z-index: 1;
 }
-.glossary::before, .glossary::after {
+.glossary::before,
+.glossary::after {
   bottom: 0;
   content: "";
   height: var(--overlay-h);
@@ -829,7 +861,8 @@ form + div {
   z-index: -2;
 }
 .glossary::after {
-  background-image: radial-gradient(var(--theme-3) 33%, transparent 33%), radial-gradient(var(--theme-3) 33%, transparent 33%);
+  background-image: radial-gradient(var(--theme-3) 33%, transparent 33%),
+    radial-gradient(var(--theme-3) 33%, transparent 33%);
   background-position: 0 0, 0.25rem 0.25rem, 0 0;
   background-size: 0.5rem 0.5rem, 0.5rem 0.5rem, 100% 100%;
   z-index: -1;
@@ -842,8 +875,8 @@ form + div {
 }
 @media only screen and (min-width: 45rem) {
   .glossary h2,
-.glossary p {
-    grid-column: 1/span 10;
+  .glossary p {
+    grid-column: 1 / span 10;
   }
 }
 .glossary ul {
@@ -851,11 +884,16 @@ form + div {
   z-index: 3;
 }
 .glossary ul::before {
-  background-image: linear-gradient(to right, var(--theme-3) 0.0625rem, transparent 0.0625rem), linear-gradient(to bottom, var(--theme-3) 0.0625rem, transparent 0.0625rem);
+  background-image: linear-gradient(
+      to right,
+      var(--theme-3) 0.0625rem,
+      transparent 0.0625rem
+    ),
+    linear-gradient(to bottom, var(--theme-3) 0.0625rem, transparent 0.0625rem);
   background-size: 1.25rem 1.25rem;
   content: "";
   filter: opacity(0.6);
-  height: calc( 100% + calc(var(--section-padding-bottom) - var(--overlay-h)) );
+  height: calc(100% + calc(var(--section-padding-bottom) - var(--overlay-h)));
   left: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
@@ -880,11 +918,19 @@ form + div {
   width: 100%;
 }
 @media only screen and (min-width: 45rem) {
+  .glossary ul {
+    margin-top: var(--overlay-h);
+  }
+
   .glossary ul li {
     grid-column: span 6;
   }
 }
 @media only screen and (min-width: 68.75rem) {
+  .glossary ul {
+    margin-top: calc(var(--overlay-h) + calc(var(--overlay-h) / 2));
+  }
+
   .glossary ul li {
     grid-column: span 3;
   }
@@ -898,7 +944,8 @@ form + div {
   top: 0;
   z-index: 1;
 }
-.engagement::before, .engagement::after,
+.engagement::before,
+.engagement::after,
 .browsers::before,
 .browsers::after {
   bottom: 0;
@@ -915,7 +962,8 @@ form + div {
 }
 .engagement::after,
 .browsers::after {
-  background-image: radial-gradient(var(--theme-3) 33%, transparent 33%), radial-gradient(var(--theme-3) 33%, transparent 33%);
+  background-image: radial-gradient(var(--theme-3) 33%, transparent 33%),
+    radial-gradient(var(--theme-3) 33%, transparent 33%);
   background-position: 0 0, 0.25rem 0.25rem, 0 0;
   background-size: 0.5rem 0.5rem, 0.5rem 0.5rem, 100% 100%;
   z-index: -1;
@@ -932,7 +980,7 @@ form + div {
 }
 @media only screen and (min-width: 68.75rem) {
   .engagement ul li,
-.browsers ul li {
+  .browsers ul li {
     grid-column: span 4;
   }
 }
@@ -948,53 +996,90 @@ form + div {
 .browsers article p span {
   font-weight: 700;
 }
+
 .engagement article div,
 .browsers article div {
   margin-top: 3.75rem;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  max-width: 100vw;
+  position: relative;
+  right: 50%;
+  width: 100vw;
 }
+@media only screen and (min-width: 45rem) {
+  .engagement article div,
+  .browsers article div {
+    left: 0;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    right: 0;
+    width: 100%;
+  }
+}
+
 .engagement article div canvas:not(:first-of-type),
 .browsers article div canvas:not(:first-of-type) {
   margin-top: 3.75rem;
 }
 @media only screen and (min-width: 45rem) {
-
   .engagement article div canvas:not(:first-of-type),
-.browsers article div canvas:not(:first-of-type) {
+  .browsers article div canvas:not(:first-of-type) {
     margin-top: 0;
   }
 }
 @media only screen and (min-width: 68.75rem) {
   .engagement article,
-.browsers article {
+  .browsers article {
     align-items: flex-start;
   }
   .engagement article div,
-.browsers article div {
+  .browsers article div {
     grid-row: 1;
-  grid-column: 7/span 6;
-  grid-row-end: span 5;
-  margin-top: 0;
+    grid-column: 7 / span 6;
+    grid-row-end: span 5;
+    margin-top: 0;
   }
   .engagement article p,
-.engagement article ul,
-.browsers article p,
-.browsers article ul {
-    grid-column: 1/span 5;
+  .engagement article ul,
+  .browsers article p,
+  .browsers article ul {
+    grid-column: 1 / span 5;
   }
 }
 @media only screen and (min-width: 68.75rem) {
   .engagement:not(:has(p)) canvas,
-.browsers:not(:has(p)) canvas {
+  .browsers:not(:has(p)) canvas {
     grid-column: span 6;
   }
 }
+.browsers:nth-of-type(odd) {
+  background-color: var(--theme-0);
+  border-color: var(--theme-4);
+}
+.browsers:nth-of-type(odd)::before {
+  background-color: var(--theme-1);
+}
+.browsers:nth-of-type(odd)::after {
+  background-image: radial-gradient(var(--theme-4) 33%, transparent 33%),
+    radial-gradient(var(--theme-4) 33%, transparent 33%);
+}
+.browsers:nth-of-type(even) {
+  background-color: var(--theme-1);
+  border-color: var(--theme-4);
+}
+.browsers:nth-of-type(odd)::before {
+  background-color: var(--theme-1);
+}
 
-body:has([name=rowHover]:checked) tr:hover {
+body:has([name="rowHover"]:checked) tr:hover {
   --hover: var(--theme-2);
   --row-hover: #ffd43b;
 }
 
-body:has([name=columnHover]:checked) {
+body:has([name="columnHover"]:checked) {
   --hover: #f08c00;
 }
 
@@ -1024,36 +1109,42 @@ table tr:hover {
   background: var(--row-hover);
   color: var(--theme-12);
 }
-table:has(td:nth-child(1):hover, th:nth-child(1):hover) th:nth-child(1), table:has(td:nth-child(1):hover, th:nth-child(1):hover) tbody td:nth-child(1) {
+table:has(td:nth-child(1):hover, th:nth-child(1):hover) th:nth-child(1),
+table:has(td:nth-child(1):hover, th:nth-child(1):hover) tbody td:nth-child(1) {
   background: var(--hover);
   color: var(--body-color);
 }
-table:has(td:nth-child(2):hover, th:nth-child(2):hover) th:nth-child(2), table:has(td:nth-child(2):hover, th:nth-child(2):hover) tbody td:nth-child(2) {
+table:has(td:nth-child(2):hover, th:nth-child(2):hover) th:nth-child(2),
+table:has(td:nth-child(2):hover, th:nth-child(2):hover) tbody td:nth-child(2) {
   background: var(--hover);
   color: var(--body-color);
 }
-table:has(td:nth-child(3):hover, th:nth-child(3):hover) th:nth-child(3), table:has(td:nth-child(3):hover, th:nth-child(3):hover) tbody td:nth-child(3) {
+table:has(td:nth-child(3):hover, th:nth-child(3):hover) th:nth-child(3),
+table:has(td:nth-child(3):hover, th:nth-child(3):hover) tbody td:nth-child(3) {
   background: var(--hover);
   color: var(--body-color);
 }
-table:has(td:nth-child(4):hover, th:nth-child(4):hover) th:nth-child(4), table:has(td:nth-child(4):hover, th:nth-child(4):hover) tbody td:nth-child(4) {
+table:has(td:nth-child(4):hover, th:nth-child(4):hover) th:nth-child(4),
+table:has(td:nth-child(4):hover, th:nth-child(4):hover) tbody td:nth-child(4) {
   background: var(--hover);
   color: var(--body-color);
 }
-table:has(td:nth-child(5):hover, th:nth-child(5):hover) th:nth-child(5), table:has(td:nth-child(5):hover, th:nth-child(5):hover) tbody td:nth-child(5) {
+table:has(td:nth-child(5):hover, th:nth-child(5):hover) th:nth-child(5),
+table:has(td:nth-child(5):hover, th:nth-child(5):hover) tbody td:nth-child(5) {
   background: var(--hover);
   color: var(--body-color);
 }
-table:has(td:nth-child(6):hover, th:nth-child(6):hover) th:nth-child(6), table:has(td:nth-child(6):hover, th:nth-child(6):hover) tbody td:nth-child(6) {
+table:has(td:nth-child(6):hover, th:nth-child(6):hover) th:nth-child(6),
+table:has(td:nth-child(6):hover, th:nth-child(6):hover) tbody td:nth-child(6) {
   background: var(--hover);
   color: var(--body-color);
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   display: none;
 }
 
-input[type=checkbox] + label {
+input[type="checkbox"] + label {
   border-radius: 0.25rem;
   cursor: pointer;
   grid-column: 1/-1;
@@ -1062,11 +1153,12 @@ input[type=checkbox] + label {
   padding-left: 2.25rem;
   position: relative;
 }
-input[type=checkbox] + label::before {
+input[type="checkbox"] + label::before {
   background-color: var(--theme-4);
   border: 0.0625rem solid var(--theme-7);
   border-radius: 0.25rem;
-  box-shadow: inset 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1), 0 0 0 rgba(203, 34, 237, 0.2);
+  box-shadow: inset 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1),
+    0 0 0 rgba(203, 34, 237, 0.2);
   content: "";
   height: 1.5rem;
   left: 0;
@@ -1075,7 +1167,7 @@ input[type=checkbox] + label::before {
   transition: all var(--trans-speed);
   width: 1.5rem;
 }
-input[type=checkbox] + label::after {
+input[type="checkbox"] + label::after {
   color: var(--checkbox-tick);
   content: "✓";
   left: 0.25rem;
@@ -1086,27 +1178,29 @@ input[type=checkbox] + label::after {
   transition: all var(--trans-speed);
 }
 @media only screen and (min-width: 45rem) {
-  input[type=checkbox] + label::after {
+  input[type="checkbox"] + label::after {
     left: 0;
     top: -0.25rem;
   }
 }
 
-[type=checkbox]:not(:checked) + label:after {
+[type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   transform: scale(0) rotate(45deg);
 }
 
-[type=checkbox]:checked + label:after {
+[type="checkbox"]:checked + label:after {
   opacity: 1;
   transform: scale(1) rotate(0);
 }
 
-input[type=checkbox]:not(:checked) + label:hover::before {
-  box-shadow: 0 0 0.1rem 0.3rem var(--checkbox-shadow), 0 0 0.1rem 0.6rem var(--checkbox-shadow-light), 0 0 0.1rem 0.9rem var(--checkbox-shadow-lightest);
+input[type="checkbox"]:not(:checked) + label:hover::before {
+  box-shadow: 0 0 0.1rem 0.3rem var(--checkbox-shadow),
+    0 0 0.1rem 0.6rem var(--checkbox-shadow-light),
+    0 0 0.1rem 0.9rem var(--checkbox-shadow-lightest);
 }
 
-input[type=checkbox]:not(:checked) + label::after {
+input[type="checkbox"]:not(:checked) + label::after {
   opacity: 0;
   transform: scale(0) rotate(45deg) translateX(-0.2rem) translateY(0.2rem);
 }
