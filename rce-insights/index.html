@@ -1,800 +1,967 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>RCE Screen Insights</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./assets/styles/reset.css">
-  <link rel="stylesheet" href="./assets/styles/style.css">
-</head>
-<body>
-<body>
-  <div
-    class="progress"
-    style="--color: var(--progress)"
-    aria-hidden="true"
-  ></div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>RCE Screen Insights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/styles/reset.css" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+  </head>
+  <body>
+    <body>
+      <div
+        class="progress"
+        style="--color: var(--progress)"
+        aria-hidden="true"
+      ></div>
 
-  <header>
-    <h1>
-      RCE Analytics Analysis
-      <span></span>
-    </h1>
+      <header>
+        <h1>
+          RCE Analytics Analysis
+          <span></span>
+        </h1>
 
-    <p>
-      This data accounts for users accessing the RCE from July - mid-Nov ‘23.
-      During this period <span id="totalUsersSpan"></span> users across
-      <span id="totalViewportsSpan"></span> different screen sizes accessed
-      content in the RCE
-    </p>
+        <p>
+          This data accounts for users accessing the RCE from July - mid-Nov
+          ‘23. During this period <span id="totalUsersSpan"></span> users across
+          <span id="totalViewportsSpan"></span> different screen sizes accessed
+          content in the RCE
+        </p>
 
-    <article class="box-effect">
-      <h2>Your details</h2>
-      <p>
-        <span
-          >Screen size:
-          <span
-            id="viewportSize"
-            aria-live="polite"
-            aria-atomic="true"
-            role="status"
-            aria-label="Screen size"
-          ></span
-        ></span>
-        <span
-          >Browser:
-          <span
-            id="browserInfo"
-            aria-live="polite"
-            aria-atomic="true"
-            role="status"
-            aria-label="Browser information"
-          ></span
-        ></span>
-      </p>
-    </article>
-  </header>
+        <article class="box-effect">
+          <h2>Your details</h2>
+          <p>
+            <span
+              >Screen size:
+              <span
+                id="viewportSize"
+                aria-atomic="true"
+                role="status"
+                aria-label="Screen size"
+              ></span
+            ></span>
+            <span
+              >Browser:
+              <span
+                id="browserInfo"
+                aria-atomic="true"
+                role="status"
+                aria-label="Browser information"
+              ></span
+            ></span>
+          </p>
+        </article>
+      </header>
 
-  <aside>
-    <details>
-      <summary>Table of contents</summary>
-      <nav aria-label="Table of Contents">
-        <ul>
-          <li>
-            <a href="#glossarySection"> Glossary </a>
-          </li>
-          <li>
-            <a href="#viewportSection"> Screen Sizes </a>
-          </li>
-          <li>
-            <a href="#searchSection"> Search Data </a>
-          </li>
-          <li>
-            <a href="#engagementSection"> Engagement </a>
-          </li>
-          <li>
-            <a href="#operatingSystemsSection"> Operating Systems </a>
-          </li>
-          <li>
-            <a href="#browserSection"> Browsers </a>
-
+      <aside>
+        <details>
+          <summary>
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path
+                d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"
+              />
+              <path
+                d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"
+              />
+            </svg>
+            Links
+          </summary>
+          <nav aria-label="Table of Contents">
             <ul>
               <li>
-                <a href="#browserVersionsSection"> Browsers Versions </a>
+                <a href="#glossarySection"> Glossary </a>
               </li>
               <li>
-                <a href="#safariSection"> Safari </a>
+                <a href="#viewportSection"> Screen Sizes </a>
               </li>
               <li>
-                <a href="#chromeSection"> Chrome </a>
+                <a href="#searchSection"> Search Data </a>
               </li>
               <li>
-                <a href="#firefoxSection"> Firefox </a>
+                <a href="#engagementSection"> Engagement </a>
+              </li>
+              <li>
+                <a href="#operatingSystemsSection"> Operating Systems </a>
+              </li>
+              <li>
+                <a href="#browserSection"> Browsers </a>
+
+                <ul>
+                  <li>
+                    <a href="#browserVersionsSection"> Browsers Versions </a>
+                  </li>
+                  <li>
+                    <a href="#safariSection"> Safari </a>
+                  </li>
+                  <li>
+                    <a href="#chromeSection"> Chrome </a>
+                  </li>
+                  <li>
+                    <a href="#firefoxSection"> Firefox </a>
+                  </li>
+                </ul>
               </li>
             </ul>
+          </nav>
+        </details>
+      </aside>
+
+      <section
+        class="glossary"
+        id="glossarySection"
+        aria-labelledby="glossary-heading"
+      >
+        <h2>
+          Glossary
+          <span>Terminology</span>
+        </h2>
+
+        <ul>
+          <li>
+            <h3>
+              <svg
+                class="with-icon_icon__MHUeb"
+                data-testid="geist-icon"
+                fill="none"
+                height="24"
+                shape-rendering="geometricPrecision"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                width="24"
+                style="width: 24px; height: 24px"
+              >
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                <path d="M16 3.13a4 4 0 010 7.75" />
+              </svg>
+              Users
+            </h3>
+            <p>The total number of unique users for a given stat.</p>
           </li>
-          
+
+          <li>
+            <h3>
+              <svg
+                class="with-icon_icon__MHUeb"
+                data-testid="geist-icon"
+                fill="none"
+                height="24"
+                shape-rendering="geometricPrecision"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                width="24"
+                style="width: 24px; height: 24px"
+              >
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+              Engaged Sessions
+            </h3>
+            <p>
+              A session that lasts longer than 10 seconds, has a conversion
+              event, or has at least 2 pageviews or screenviews.
+            </p>
+          </li>
+          <li>
+            <h3>
+              <svg
+                class="with-icon_icon__MHUeb"
+                data-testid="geist-icon"
+                fill="none"
+                height="24"
+                shape-rendering="geometricPrecision"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                width="24"
+                style="width: 24px; height: 24px"
+              >
+                <path d="M19 5L5 19" />
+                <circle cx="6.5" cy="6.5" r="2.5" />
+                <circle cx="17.5" cy="17.5" r="2.5" />
+              </svg>
+              Engagement Rate
+            </h3>
+            <p>The ratio of engaged sessions to total sessions.</p>
+          </li>
+          <li>
+            <h3>
+              <svg
+                class="with-icon_icon__MHUeb"
+                data-testid="geist-icon"
+                fill="none"
+                height="24"
+                shape-rendering="geometricPrecision"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                width="24"
+                style="width: 24px; height: 24px"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              Average Engagement Time
+            </h3>
+            <p>The amount of time users spend in engaged sessions.</p>
+          </li>
         </ul>
-      </nav>
-    </details>
-  </aside>
+      </section>
 
-  <section
-    class="glossary"
-    id="glossarySection"
-    aria-labelledby="glossary-heading"
-  >
-    <h2>
-      Glossary
-      <span>Terminology</span>
-    </h2>
+      <section class="graphs" id="viewportSection">
+        <article>
+          <h2>
+            Screen Size Data
+            <span> Analysis </span>
+          </h2>
+          <p>
+            The data below represents the screen sizes of the devices used to
+            access the RCE.
+          </p>
 
-    <ul>
-      <li>
-        <h3>
-          <svg
-            class="with-icon_icon__MHUeb"
-            data-testid="geist-icon"
-            fill="none"
-            height="24"
-            shape-rendering="geometricPrecision"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            width="24"
-            style="width: 24px; height: 24px"
-          >
-            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 00-3-3.87" />
-            <path d="M16 3.13a4 4 0 010 7.75" />
-          </svg>
-          Users
-        </h3>
-        <p>The total number of unique users for a given stat.</p>
-      </li>
+          <p class="box-effect">
+            The screen size is the physical size of the device's display. This
+            is different to the viewport size, which is the size of the visible
+            part of a page within the browser on that device. The size of the
+            screen almost never matches the viewport size, due to the visibility
+            of both operating system and browser interfaces.
+          </p>
 
-      <li>
-        <h3>
-          <svg
-            class="with-icon_icon__MHUeb"
-            data-testid="geist-icon"
-            fill="none"
-            height="24"
-            shape-rendering="geometricPrecision"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            width="24"
-            style="width: 24px; height: 24px"
-          >
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-          </svg>
-          Engaged Sessions
-        </h3>
+          <p>
+            This data therefore tells us the sizes of the devices used to access
+            the RCE, but will not always give us a realistic picture of how the
+            content is viewed. For example, a Chrome window that only takes up
+            2/3 of the screen size will not be captured. Neither will the
+            viewable portion of a browser that is zoomed in for accessibility
+            reasons.
+          </p>
+
+          <p>
+            Source embraces responsive design, adapting content and layouts
+            based on the viewer's viewport size and shape. Responsive design
+            extends beyond smaller devices, impacting user experience on larger
+            devices and accommodating accessibility settings. It is important to
+            keep this in mind when considering this data while we do not have
+            viewport data.
+          </p>
+
+          <ul>
+            <li>
+              <h3>Extra Small: 320px - 479px</h3>
+              <p>% of users: <span id="range320to479"></span></p>
+              <p>Total users: <span id="totalUserRange320to479"></span></p>
+              <canvas id="range320to479Chart" width="80" height="80"></canvas>
+            </li>
+            <li>
+              <h3>Small: 480px - 649px</h3>
+              <p>% of users: <span id="range480to649"></span></p>
+              <p>Total users: <span id="totalUserRange480to649"></span></p>
+              <canvas id="range480to649Chart" width="80" height="80"></canvas>
+            </li>
+            <li>
+              <h3>Medium: 650px - 879px</h3>
+              <p>% of users: <span id="range650to879"></span></p>
+              <p>Total users: <span id="totalUserRange650to879"></span></p>
+              <canvas id="range650to879Chart" width="80" height="80"></canvas>
+            </li>
+            <li>
+              <h3>Large: 880px - 1279px</h3>
+              <p>% of users: <span id="range880to1279"></span></p>
+              <p>Total users: <span id="totalUserRange880to1279"></span></p>
+              <canvas id="range880to1279Chart" width="80" height="80"></canvas>
+            </li>
+            <li>
+              <h3>Extra Large 1280px +</h3>
+              <p>% of users: <span id="range1280andLarger"></span></p>
+              <p>Total users: <span id="totalUserRange1280andLarger"></span></p>
+              <canvas
+                id="range1280andLargerChart"
+                width="80"
+                height="80"
+              ></canvas>
+            </li>
+          </ul>
+        </article>
+        <article class="graph" id="top10">
+          <h3>Top 10 total</h3>
+          <canvas id="top10ViewportChart"></canvas>
+        </article>
+        <article class="graph" id="320-479">
+          <h3>Screen Sizes betwen 320-479</h3>
+          <canvas id="viewportChart320-479"></canvas>
+          <button id="320-479Top 10">
+            Top 10
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+          <button id="320-479Top 25">
+            Top 25
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+        </article>
+        <article class="graph" id="480-649">
+          <h3>Screen Sizes betwen 480-649</h3>
+
+          <canvas id="viewportChart480-649"></canvas>
+          <button id="480-649Top 10">
+            Top 10
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+          <button id="480-649Top 25">
+            Top 25
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+        </article>
+
+        <article class="graph" id="650-879">
+          <h3>Screen Sizes betwen 650-879</h3>
+          <canvas id="viewportChart650-879"></canvas>
+          <button id="650-879Top 10">
+            Top 10
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+          <button id="650-879Top 25">
+            Top 25
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+        </article>
+        <article class="graph" id="880-1279">
+          <h3>Screen Sizes betwen 880-1279</h3>
+          <canvas id="viewportChart880-1279"></canvas>
+          <button id="880-1279Top 10">
+            Top 10
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+          <button id="880-1279Top 25">
+            Top 25
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+        </article>
+
+        <article class="graph" id="1280Plus">
+          <h3>Screen Sizes betwen 1280+</h3>
+          <canvas id="viewportChart1280Plus"></canvas>
+          <button id="1280PlusTop 10">
+            Top 10
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+          <button id="1280PlusTop 25">
+            Top 25
+            <svg
+              fill="none"
+              height="24"
+              shape-rendering="geometricPrecision"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              width="24"
+              style="width: 24px; height: 24px"
+            >
+              <path d="M12 20V10" />
+              <path d="M18 20V4" />
+              <path d="M6 20v-4" />
+            </svg>
+          </button>
+        </article>
+
+        <article class="graph" id="uniqueWidths">
+          <h3>The total number of unique screen Sizes per breakpoint</h3>
+          <canvas id="uniqueWidthsChart"></canvas>
+        </article>
+      </section>
+
+      <section class="search" id="searchSection">
+        <h2>
+          Deep Dive
+          <span>Explore all screen sizes</span>
+        </h2>
         <p>
-          A session that lasts longer than 10 seconds, has a conversion event,
-          or has at least 2 pageviews or screenviews.
+          If you are looking for a particular screen size, enter the number in
+          the input field without the need for "px" or "rem" – just the whole
+          number
         </p>
-      </li>
-      <li>
-        <h3>
-          <svg
-            class="with-icon_icon__MHUeb"
-            data-testid="geist-icon"
-            fill="none"
-            height="24"
-            shape-rendering="geometricPrecision"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            width="24"
-            style="width: 24px; height: 24px"
-          >
-            <path d="M19 5L5 19" />
-            <circle cx="6.5" cy="6.5" r="2.5" />
-            <circle cx="17.5" cy="17.5" r="2.5" />
-          </svg>
-          Engagement Rate
-        </h3>
-        <p>The ratio of engaged sessions to total sessions.</p>
-      </li>
-      <li>
-        <h3>
-          <svg
-            class="with-icon_icon__MHUeb"
-            data-testid="geist-icon"
-            fill="none"
-            height="24"
-            shape-rendering="geometricPrecision"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            width="24"
-            style="width: 24px; height: 24px"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 6v6l4 2" />
-          </svg>
-          Average Engagement Time
-        </h3>
-        <p>The amount of time users spend in engaged sessions.</p>
-      </li>
-    </ul>
-  </section>
 
-  <section class="graphs" id="viewportSection">
-    <article>
-      <h2>
-        Screen Size Data
-        <span> Analysis </span>
-      </h2>
-      <p>
-        The data below represents the screen sizes of the devices used to access
-        the RCE.
-      </p>
+        <article class="search-form">
+          <img src="./assets/images/robot.png" alt="Search icon" />
+          <form id="viewportForm" class="box-effect" onsubmit="return false;">
+            <input
+              type="number"
+              class="input"
+              id="widthInput"
+              placeholder="Enter width"
+              aria-label="Viewport Width"
+            />
+            <button class="btn-clear" id="clearButton">
+              Clear
+              <svg
+                fill="none"
+                height="24"
+                shape-rendering="geometricPrecision"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                width="24"
+                style="width: 24px; height: 24px"
+              >
+                <path d="M18 6L6 18" />
+                <path d="M6 6l12 12" />
+              </svg>
+            </button>
+            <button id="searchButton" aria-label="Search">
+              Search
+              <svg
+                fill="none"
+                height="24"
+                shape-rendering="geometricPrecision"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                width="24"
+                style="width: 24px; height: 24px"
+              >
+                <path
+                  d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"
+                />
+                <path d="M16 16l4.5 4.5" />
+              </svg>
+            </button>
+            <div class="filters">
+              <div>
+                <input type="checkbox" name="rowHover" id="rowHover" checked />
+                <label for="rowHover">Row hover</label>
+              </div>
 
-      <p class="box-effect">
-        The screen size is the physical size of the device's display. This is
-        different to the viewport size, which is the size of the visible part of
-        a page within the browser on that device. The size of the screen almost
-        never matches the viewport size, due to the visibility of both operating
-        system and browser interfaces.
-      </p>
+              <div>
+                <input type="checkbox" name="columnHover" id="columnHover" />
+                <label for="columnHover">Column hover</label>
+              </div>
+            </div>
+          </form>
 
-      <p>
-        This data therefore tells us the sizes of the devices used to access the
-        RCE, but will not always give us a realistic picture of how the content
-        is viewed. For example, a Chrome window that only takes up 2/3 of the
-        screen size will not be captured. Neither will the viewable portion of a
-        browser that is zoomed in for accessibility reasons.
-      </p>
+          <div id="searchResults" role="status"></div>
+        </article>
+      </section>
 
-      <p>
-        Source embraces responsive design, adapting content and layouts based on
-        the viewer's viewport size and shape. Responsive design extends beyond
-        smaller devices, impacting user experience on larger devices and
-        accommodating accessibility settings. It is important to keep this in
-        mind when considering this data while we do not have viewport data.
-      </p>
+      <section class="engagement" id="engagementSection">
+        <article>
+          <h2>
+            Engagement Data
+            <span> Analysis </span>
+          </h2>
 
-      <ul>
-        <li>
-          <h3>Extra Small: 320px - 479px</h3>
-          <p>% of users: <span id="range320to479"></span></p>
-          <p>Total users: <span id="totalUserRange320to479"></span></p>
-          <canvas id="range320to479Chart" width="80" height="80"></canvas>
-        </li>
-        <li>
-          <h3>Small: 480px - 649px</h3>
-          <p>% of users: <span id="range480to649"></span></p>
-          <p>Total users: <span id="totalUserRange480to649"></span></p>
-          <canvas id="range480to649Chart" width="80" height="80"></canvas>
-        </li>
-        <li>
-          <h3>Medium: 650px - 879px</h3>
-          <p>% of users: <span id="range650to879"></span></p>
-          <p>Total users: <span id="totalUserRange650to879"></span></p>
-          <canvas id="range650to879Chart" width="80" height="80"></canvas>
-        </li>
-        <li>
-          <h3>Large: 880px - 1279px</h3>
-          <p>% of users: <span id="range880to1279"></span></p>
-          <p>Total users: <span id="totalUserRange880to1279"></span></p>
-          <canvas id="range880to1279Chart" width="80" height="80"></canvas>
-        </li>
-        <li>
-          <h3>Extra Large 1280px +</h3>
-          <p>% of users: <span id="range1280andLarger"></span></p>
-          <p>Total users: <span id="totalUserRange1280andLarger"></span></p>
-          <canvas id="range1280andLargerChart" width="80" height="80"></canvas>
-        </li>
-      </ul>
-    </article>
-    <article class="graph" id="top10">
-      <h3>Top 10 total</h3>
-      <canvas id="top10ViewportChart"></canvas>
-    </article>
-    <article class="graph" id="320-479">
-      <h3>Screen Sizes betwen 320-479</h3>
-      <canvas id="viewportChart320-479"></canvas>
-      <button id="320-479Top 10">
-        Top 10
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-      <button id="320-479Top 25">
-        Top 25
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-    </article>
-    <article class="graph" id="480-649">
-      <h3>Screen Sizes betwen 480-649</h3>
-
-      <canvas id="viewportChart480-649"></canvas>
-      <button id="480-649Top 10">
-        Top 10
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-      <button id="480-649Top 25">
-        Top 25
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-    </article>
-
-    <article class="graph" id="650-879">
-      <h3>Screen Sizes betwen 650-879</h3>
-      <canvas id="viewportChart650-879"></canvas>
-      <button id="650-879Top 10">
-        Top 10 
-        <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-      <button id="650-879Top 25">
-        Top 25 
-        <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-    </article>
-    <article class="graph" id="880-1279">
-      <h3>Screen Sizes betwen 880-1279</h3>
-      <canvas id="viewportChart880-1279"></canvas>
-      <button id="880-1279Top 10">
-        Top 10
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-      <button id="880-1279Top 25">
-        Top 25
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-    </article>
-
-    <article class="graph" id="1280Plus">
-      <h3>Screen Sizes betwen 1280+</h3>
-      <canvas id="viewportChart1280Plus"></canvas>
-      <button id="1280PlusTop 10">
-        Top 10
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-      <button id="1280PlusTop 25">
-        Top 25
-         <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-      </button>
-    </article>
-
-    <article class="graph" id="uniqueWidths">
-      <h3>The total number of unique screen Sizes per breakpoint</h3>
-      <canvas id="uniqueWidthsChart"></canvas>
-    </article>
-  </section>
-
-  <section class="search" id="searchSection">
-    <h2>
-      Deep Dive
-      <span>Explore all screen sizes</span>
-    </h2>
-    <p>
-      If you are looking for a particular screen size, enter the number in the
-      input field without the need for "px" or "rem" – just the whole number
-    </p>
-
-    <article class="search-form">
-      <img
-        src="./assets/images/robot.png"
-        alt="Search icon"
-      />
-      <form id="viewportForm" class="box-effect" onsubmit="return false;">
-        <label for="widthInput">Width:</label>
-        <input
-          type="number"
-          class="input"
-          id="widthInput"
-          placeholder="Enter width"
-          aria-label="Viewport Width"
-        />
-        <button class="btn-clear" id="clearButton">Clear <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
-        <button id="searchButton" aria-label="Search">
-          Search
-           <svg class="with-icon_icon__MHUeb" data-testid="geist-icon" fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" style="width:24px;height:24px"><path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"/><path d="M16 16l4.5 4.5"/></svg>
-        </button>
-        <div class="filters">
-          <div>
-            <input type="checkbox" name="rowHover" id="rowHover" checked />
-            <label for="rowHover">Row hover</label>
-          </div>
+          <p>
+            Our data shows that engagement rates are often as high on mobile
+            devices as desktop, however engagement time is higher on larger
+            devices, this supported by our data.
+          </p>
 
           <div>
-            <input type="checkbox" name="columnHover" id="columnHover" />
-            <label for="columnHover">Column hover</label>
+            <canvas
+              id="engagementRateChart"
+              aria-label="Engagement Rate Chart"
+              role="img"
+            ></canvas>
           </div>
-        </div>
-      </form>
+        </article>
 
-      <div id="searchResults" aria-live="polite" role="status"></div>
-    </article>
-  </section>
+        <article>
+          <p>
+            It is difficult to discern a reason for this directly from the data
+            and more analysis of user flows would be needed. Possibilities
+            include users accessing content on mobile devices for specific
+            discrete tasks; or attemping more general learning and being
+            frustrataed with the mobile experience and leaving for a larger
+            device; or something else.
+          </p>
+          <div>
+            <canvas
+              id="engagementTimeChart"
+              aria-label="Engagement Time Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
 
-  <section class="engagement" id="engagementSection">
-    <article>
-      <h2>
-        Engagement Data
-        <span> Analysis </span>
-      </h2>
+      <section class="browsers" id="operatingSystemsSection">
+        <h2>
+          Operating Systems:
+          <span>Overview</span>
+        </h2>
 
-      <p>
-        Our data shows that engagement rates are often as high on mobile devices
-        as desktop, however engagement time is higher on larger devices, this
-        supported by our data.
-      </p>
+        <article>
+          <p>
+            Users are currently using devices which run on
+            <span id="totalOperatingSystems" role="status"></span>
+            different operating systems, although only 4 are of significance. By
+            far our most popular operating system is:
+            <span id="osWithMostUsers" role="status"></span>
+            used on ChromeBooks. Traditional desktop OSes
+            <span id="osWithSecondMostUsers"></span> and
+            <span id="osWithThirdMostUsers"></span> then follow in that order.
+          </p>
 
-      <div>
-        <canvas
-          id="engagementRateChart"
-          aria-label="Engagement Rate Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
+          <div>
+            <canvas
+              id="osChart"
+              aria-label="Operating Systems Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
 
-    <article>
-      <p>
-        It is difficult to discern a reason for this directly from the data and
-        more analysis of user flows would be needed. Possibilities include users
-        accessing content on mobile devices for specific discrete tasks; or
-        attemping more general learning and being frustrataed with the mobile
-        experience and leaving for a larger device; or something else.
-      </p>
-      <div>
-        <canvas
-          id="engagementTimeChart"
-          aria-label="Engagement Time Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
+        <article>
+          <p>
+            These OSes account for
+            <span id="totalTopOsUsers" role="status"></span>,
 
-  <section class="browsers" id="operatingSystemsSection">
-    <h2>
-      Operating Systems:
-      <span>Overview</span>
-    </h2>
+            <span id="percentageOfTopOsUsers" role="status"></span>
+            of users. The full breakdown of the big three
+            <span id="percentageTopOperatingSystem1Users" role="status"></span>,
+            <span id="percentageTopOperatingSystem2Users" role="status"></span>,
+            <span id="percentageTopOperatingSystem3Users" role="status"></span>.
+          </p>
 
-    <article>
-      <p>
-        Users are currently using devices which run on
-        <span
-          id="totalOperatingSystems"
-          aria-live="polite"
-          role="status"
-        ></span>
-        different operating systems, although only 4 are of significance. By far
-        our most popular operating system is:
-        <span id="osWithMostUsers" aria-live="polite" role="status"></span> used
-        on ChromeBooks. Traditional desktop OSes
-        <span id="osWithSecondMostUsers"></span> and
-        <span id="osWithThirdMostUsers"></span> then follow in that order.
-      </p>
+          <div>
+            <canvas
+              id="topOsChart"
+              aria-label="Top 3 operating systems"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
 
-      <div>
-        <canvas
-          id="osChart"
-          aria-label="Operating Systems Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
+      <section class="browsers" id="operatingSystemsSection">
+        <h2>
+          Mobile Operating Systems
+          <span>Overview</span>
+        </h2>
 
-    <article>
-      <p>
-        These OSes account for
-        <span id="totalTopOsUsers" aria-live="polite" role="status"></span>,
+        <article>
+          <p>
+            iOS is the only mobile OS of significance used to access our content
+            with
+            <span id="totalIOSUsers"></span> of our users. Android lags behind
+            with <span id="totalAndroidUsers"></span>. Combined the two account
+            for <span id="totalIOSAndAndroidUsersPercentage"></span>.
+          </p>
 
-        <span
-          id="percentageOfTopOsUsers"
-          aria-live="polite"
-          role="status"
-        ></span>
-        of users. The full breakdown of the big three
-        <span
-          id="percentageTopOperatingSystem1Users"
-          aria-live="polite"
-          role="status"
-        ></span
-        >,
-        <span
-          id="percentageTopOperatingSystem2Users"
-          aria-live="polite"
-          role="status"
-        ></span
-        >,
-        <span
-          id="percentageTopOperatingSystem3Users"
-          aria-live="polite"
-          role="status"
-        ></span
-        >.
-      </p>
+          <div>
+            <canvas
+              id="iosVsAndroid"
+              aria-label="iOS vs Android Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+        <article>
+          <p>
+            In positive news, we can see iOS devices are largely being kept up
+            to date with very few devices running versions older than iOS 15,
+            and most on iOS 16. iOS 17
+          </p>
 
-      <div>
-        <canvas
-          id="topOsChart"
-          aria-label="Top 3 operating systems"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
+          <div>
+            <canvas
+              id="iosBands"
+              aria-label="iOS Grouped into iOS Versions Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
 
-  <section class="browsers" id="operatingSystemsSection">
-    <h2>
-      Mobile Operating Systems
-      <span>Overview</span>
-    </h2>
+        <article>
+          <p>
+            For IOS we have <span id="totalVersions"></span> versions, which we
+            have grouped into <span id="totalSortedVersions"></span> main
+            releases. iOS 17, released in September, is the second highest
+            version recorded and we would expect this to increase as users and
+            institutions update their devices.
+          </p>
 
-    <article>
-      <p>
-        iOS is the only mobile OS of significance used to access our content
-        with
-        <span id="totalIOSUsers"></span> of our users. Android lags behind with
-        <span id="totalAndroidUsers"></span>. Combined the two account for
-        <span id="totalIOSAndAndroidUsersPercentage"></span>.
-      </p>
+          <div>
+            <canvas
+              id="osVersionChart"
+              aria-label="Most Popular iOS Versions Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
 
-      <div>
-        <canvas
-          id="iosVsAndroid"
-          aria-label="iOS vs Android Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-    <article>
-      <p>
-         In positive news, we can see iOS devices are largely being kept up to
-        date with very few devices running versions older than iOS 15, and most
-        on iOS 16. iOS 17
-      </p>
+        <article>
+          <p>
+            In contrast, Android releases, exhibit a more diverse landscape due
+            to the availability of multiple versions across various devices and
+            manufacturers. This diversity allows for extensive customization and
+            flexibility, but it can lead to fragmentation and delayed updates
+            for some users.
+          </p>
 
-      <div>
-        <canvas
-          id="iosBands"
-          aria-label="iOS Grouped into iOS Versions Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
+          <div>
+            <canvas
+              id="androidChart"
+              aria-label="Android Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
 
-    <article>
-      <p>
-        For IOS we have <span id="totalVersions"></span> versions,
-         which we have grouped
-        into <span id="totalSortedVersions"></span> main releases.
-        iOS 17, released in September, is the second highest version
-        recorded and we would expect this to increase as users and institutions
-        update their devices.
-      </p>
+      <section class="browsers" id="browserSection">
+        <h2>
+          Browser Wars
+          <span>Insights</span>
+        </h2>
 
-      <div>
-        <canvas
-          id="osVersionChart"
-          aria-label="Most Popular iOS Versions Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
+        <article>
+          <p>
+            Users are currently using
+            <span id="browserCount" role="status"></span>
+            browsers to access our content, although only 3 are of significance.
+            Once again,
+            <span id="topBrowser"></span> leads far and away with
+            <span id="secondBrowser"></span> (for both Mac and IOS) next and
+            followed by
+            <span id="thirdBrowser"></span>
+          </p>
 
-    <article>
-      <p>
-        In contrast, Android releases, exhibit a more diverse landscape due to
-        the availability of multiple versions across various devices and
-        manufacturers. This diversity allows for extensive customization and
-        flexibility, but it can lead to fragmentation and delayed updates for
-        some users.
-      </p>
+          <div>
+            <canvas
+              id="browsersChart"
+              aria-label="Browsers Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
 
-      <div>
-        <canvas
-          id="androidChart"
-          aria-label="Android Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
+      <section class="browsers" id="browserVersionsSection">
+        <h2>
+          Browser Versions
+          <span>Insights</span>
+        </h2>
 
-  <section class="browsers" id="browserSection">
-    <h2>
-      Browser Wars
-      <span>Insights</span>
-    </h2>
+        <article>
+          <p>
+            Continuting with the good news. Chrome is largely being kept up to
+            date by users. Chrome 118, released in early October 2023, is by far
+            our most used version, with v119 following, and very little usage of
+            versions older than v114.
+          </p>
+          <div>
+            <canvas
+              id="chromeChart"
+              aria-label="Chrome Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
 
-    <article>
-      <p>
-        Users are currently using
-        <span id="browserCount" aria-live="polite" role="status"></span>
-        browsers to access our content, although only 3 are of significance.
-        Once again,
-        <span id="topBrowser"></span> leads far and away with
-        <span id="secondBrowser"></span> (for both Mac and IOS) next and
-        followed by
-        <span id="thirdBrowser"></span>
-      </p>
+        <article>
+          <p>
+            Safari is a slightly more mixed story: while most users are using a
+            <span id="topSafariVersion"></span>, released in 2022, substantial
+            number of users are still on v12. Knowing that Safari updates are
+            directly related to iOS updates and iOS is largely up-to-date for
+            our users, this suggests that many of the Macs in use may be using
+            older versions of Safari.
 
-      <div>
-        <canvas
-          id="browsersChart"
-          aria-label="Browsers Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
+            <span id="totalSafariBrowsers" role="status"></span>
+            versions of Safari in use by our users. These versions can be
+            grouped into major releases, of which we have
+            <span id="totalSafariGroups" role="status"></span>
+            major releases.
+          </p>
 
-  <section class="browsers" id="browserVersionsSection">
-    <h2>
-      Browser Versions
-      <span>Insights</span>
-    </h2>
+          <div>
+            <canvas
+              id="safariVersionsChart"
+              aria-label="Safari Versions Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
 
-    <article>
-      <p>
-        Continuting with the good news. Chrome is largely being kept up to date by users. 
-        Chrome 118, released in early October 2023, 
-        is by far our most used version, with v119 following, 
-        and very little usage of versions older than v114. 
-      </p>
-      <div>
-        <canvas id="chromeChart" aria-label="Chrome Chart" role="img"></canvas>
-      </div>
-    </article>
+      <section class="browsers" id="chromeSection">
+        <h2>
+          Chrome
+          <span>Market Leader</span>
+        </h2>
+        <article>
+          <p>
+            Chrome stands out as the most widely used web browser with
+            <span id="chromeMarketShare" role="status"></span>
+            of all web browsers. This includes
+            <span id="totalChromeBrowsers" role="status"></span>
+            versions of Chrome in use by our users. These versions can be
+            grouped into major releases, of which we have
+            <span id="totalChromeGroups" role="status"></span>
+            major releases. It works on both desktops and mobiles, with a solid
+            engagement rate of
+            <span id="chromeEngagementRate" role="status"></span>
+            and an average usage time of
+            <span id="chromeAverageEngagementTime" role="status"></span>.
+          </p>
+          <div>
+            <canvas
+              id="browserChart"
+              aria-label="Browser Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
 
-    <article>
-      <p>
-        Safari is a slightly more mixed story: while most users are using a
-        <span id="topSafariVersion"></span>, released in 2022, substantial
-        number of users are still on v12. Knowing that Safari updates are
-        directly related to iOS updates and iOS is largely up-to-date for our
-        users, this suggests that many of the Macs in use may be using older
-        versions of Safari.
+        <article>
+          <p>
+            Among Chromium-based browsers, Chrome, Microsoft Edge, and Opera
+            lead, collectively holding
+            <span id="totalMarketShare" role="status"></span>
+            of the market. If you consider Edge's
+            <span id="edgeMarketShare" role="status"></span>
+            and Opera's
+            <span id="operaMarketShare" role="status"></span>, Chrome's overall
+            market share grows even more.
+          </p>
 
-        <span id="totalSafariBrowsers" aria-live="polite" role="status"></span>
-        versions of Safari in use by our users. These versions can be grouped
-        into major releases, of which we have
-        <span id="totalSafariGroups" aria-live="polite" role="status"></span>
-        major releases.
-      </p>
+          <div>
+            <canvas
+              id="chromiumComparisonChart"
+              aria-label="Chromium Comparison Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
 
-      <div>
-        <canvas
-          id="safariVersionsChart"
-          aria-label="Safari Versions Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
+      <section class="browsers" id="safariSection">
+        <h2>
+          Safari
+          <span>Mac vs IOS</span>
+        </h2>
+        <article>
+          <p>
+            As mentioned, Safari operates on both iOS and Mac devices, and it's
+            crucial to distinguish between these platforms. Within our browser
+            data, Safari accounts for
+            <span id="safariMarketShare" role="status"></span>. Breaking it
+            down, iOS accounts for
+            <span id="iOSMarketShare" role="status"></span>, while Mac
+            represents <span id="macintoshMarketShare" role="status"></span>.
+            Taking a closer look at engagement levels, iOS boasts an
+            <span id="iOSEngagementRate" role="status"></span>
+            engagement rate, surpassing Mac's
+            <span id="macintoshEngagementRate" role="status"></span>. In terms
+            of average usage time, iOS users spend an average of
+            <span id="iOSAverageEngagementTime" role="status"></span>
+            contrasting with Mac users who engage for an average of
+            <span id="macintoshAverageEngagementTime" role="status"></span>.
+            This reflects the trends seen across the board.
+          </p>
 
+          <div>
+            <canvas
+              id="safariCombinedChart"
+              aria-label="Safari Combined Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
 
-<section class="browsers" id="chromeSection">
-    <h2>
-      Chrome
-      <span>Market Leader</span>
-    </h2>
-    <article>
-      <p>
-        Chrome stands out as the most widely used web browser with
-        <span id="chromeMarketShare" aria-live="polite" role="status"></span> of
-        all web browsers. This includes <span id="totalChromeBrowsers" aria-live="polite" role="status"></span>
-        versions of Chrome in use by our users. These versions can be grouped
-        into major releases, of which we have
-        <span id="totalChromeGroups" aria-live="polite" role="status"></span>
-        major releases. It works on both desktops and mobiles, with a solid engagement rate of
-        <span id="chromeEngagementRate" aria-live="polite" role="status"></span>
-        and an average usage time of
-        <span
-          id="chromeAverageEngagementTime"
-          aria-live="polite"
-          role="status"
-        ></span
-        >.
-      </p>
-      <div>
-        <canvas
-          id="browserChart"
-          aria-label="Browser Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
+      <section class="browsers" id="firefoxSection">
+        <h2>
+          Firefox
+          <span>Honourable mention</span>
+        </h2>
+        <article id="firefoxInfo">
+          <p>
+            Surprisingly, Mozilla browsers have low usage for our users of only
+            <span id="spanPercentageCombinedUsers"></span>. The combined average
+            engagement rate for these browsers is
+            <span id="spanCombinedEngagementRate"></span>, however the average
+            engagement time for these users is high at
+            <span id="spanCombinedAvgEngagementTimeMinutes"></span>. It’s
+            difficult to discern why this is — one theory could be that teachers
+            may be using it rather than students, but again we would need to
+            follow user flows to try to confirm this.
+          </p>
 
-    <article>
-      <p>
-        Among Chromium-based browsers, Chrome, Microsoft Edge, and Opera lead,
-        collectively holding
-        <span id="totalMarketShare" aria-live="polite" role="status"></span> of
-        the market. If you consider Edge's
-        <span id="edgeMarketShare" aria-live="polite" role="status"></span> and
-        Opera's
-        <span id="operaMarketShare" aria-live="polite" role="status"></span>,
-        Chrome's overall market share grows even more.
-      </p>
-
-      <div>
-        <canvas
-          id="chromiumComparisonChart"
-          aria-label="Chromium Comparison Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
-
-  <section class="browsers" id="safariSection">
-    <h2>
-      Safari
-      <span>Mac vs IOS</span>
-    </h2>
-    <article>
-      <p>
-        As mentioned, Safari operates on both iOS and Mac devices, and it's
-        crucial to distinguish between these platforms. Within our browser data,
-        Safari accounts for
-        <span id="safariMarketShare" aria-live="polite" role="status"></span>.
-        Breaking it down, iOS accounts for
-        <span id="iOSMarketShare" aria-live="polite" role="status"></span>,
-        while Mac represents
-        <span id="macintoshMarketShare" aria-live="polite" role="status"></span
-        >.
-      
-        Taking a closer look at engagement levels, iOS boasts an
-        <span id="iOSEngagementRate" aria-live="polite" role="status"></span>
-        engagement rate, surpassing Mac's
-        <span
-          id="macintoshEngagementRate"
-          aria-live="polite"
-          role="status"
-        ></span
-        >. In terms of average usage time, iOS users spend an average of
-        <span
-          id="iOSAverageEngagementTime"
-          aria-live="polite"
-          role="status"
-        ></span>
-        contrasting with Mac users who engage for an average of
-        <span
-          id="macintoshAverageEngagementTime"
-          aria-live="polite"
-          role="status"
-        ></span
-        >. This reflects the trends seen across the board.
-      </p>
-
-      <div>
-        <canvas
-          id="safariCombinedChart"
-          aria-label="Safari Combined Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
-
-
-
-    <section class="browsers" id="firefoxSection">
-    <h2>
-      Firefox
-      <span>Honourable mention</span>
-    </h2>
-    <article id="firefoxInfo">
-      
-      <p>
-        Surprisingly, Mozilla browsers have low usage for our users of only <span id="spanPercentageCombinedUsers"></span>.
-        The combined average engagement rate for these browsers is <span id="spanCombinedEngagementRate"></span>,
-        however the average engagement time for these users is high at <span id="spanCombinedAvgEngagementTimeMinutes"></span>. It’s difficult to discern why this is — one theory could be that teachers may be using it rather than students, but again we would need to follow user flows to try to confirm this. 
-      </p>
-      
-   
-      <div>
-       
-        <canvas
-          id="FirefoxVTopTwo"
-          aria-label="Final Browser Chart"
-          role="img"
-        ></canvas>
-      </div>
-    </article>
-  </section>
-</body>
-<!-- partial -->
-  <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
-  <script src='https://www.gstatic.com/charts/loader.js'></script>
-  <script  src="./assets/scripts/script.js"></script>
-</body>
+          <div>
+            <canvas
+              id="FirefoxVTopTwo"
+              aria-label="Final Browser Chart"
+              role="img"
+            ></canvas>
+          </div>
+        </article>
+      </section>
+    </body>
+    <!-- partial -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="./assets/scripts/script.js"></script>
+  </body>
 </html>
