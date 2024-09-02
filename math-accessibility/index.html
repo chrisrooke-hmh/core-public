@@ -1,0 +1,4586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Equations</title>
+
+    <link rel="stylesheet" href="./styles/temml.css" />
+    <link rel="stylesheet" href="./styles/katex.css" />
+    <link rel="stylesheet" href="./styles/customMathMl.css" />
+    <link rel="stylesheet" href="./styles/source.css" />
+    <link rel="stylesheet" href="./styles/fonts.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/mhchem.min.js"
+    ></script>
+
+    <script defer src="./script.js"></script>
+
+    <script
+      defer
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body class="connect__g68">
+    <header>
+      <h1>Math Equations</h1>
+      <p>
+        Below is a collection of different type of math equations, the equations
+        are in KaTeX, mathML and MathJax, there is minimal styling here the
+        purpose of this page is to identify different accessibility needs across
+        the different math equation tools.
+      </p>
+
+      <p>Two different sources have been used to generale mathML equations.</p>
+
+      <ul>
+        <li>
+          <a href="https://temml.org/"> Temml </a> A TeX-to-MathML conversion
+          library which converts latex to MathML
+        </li>
+        <li>
+          <a href="https://docs.mathjax.org/en/latest/input/mathml.html">
+            MathJax
+          </a>
+          which converts tex to MathML.
+        </li>
+      </ul>
+
+      <aside>
+        <h2>Fonts</h2>
+        <p>
+          There are a number of recommended fonts for math.
+          <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Fonts"
+            >MDN</a
+          >
+          has a list of the fonts.
+        </p>
+
+        <ul>
+          <li>Latin Modern Math</li>
+          <li>Cambria Math</li>
+          <li>STIXTwoMath-Regular</li>
+        </ul>
+
+        <p>
+          This is page is serving all text with the new HMH fonts, to change the
+          math fonts, select a font family from the select list below
+        </p>
+        <ul>
+          <li>Latin Modern Math</li>
+          <li>Cambria Math</li>
+          <li>Temml</li>
+          <li>STIXTwoMath-Regular</li>
+          <li>Asana-Math</li>
+        </ul>
+
+        <label for="font-select" class="sr-only">Select a font</label>
+        <select id="font-select" class="connect__select">
+          <option value="" selected>Select a font</option>
+          <optgroup label="MathML recommended fonts">
+            <option value="latin-modern">Latin Modern Math</option>
+            <option value="cambria">Cambria Math</option>
+            <option value="stix">STIXTwoMath-Regular</option>
+          </optgroup>
+          <option value="temml">Temml</option>
+          <option value="asana">Asana-Math</option>
+        </select>
+
+        <p>Example of math with different font</p>
+
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mfrac>
+                    <mn>11</mn>
+                    <mn>30</mn>
+                  </mfrac>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mn>16</mn>
+                    <mn>45</mn>
+                  </mfrac>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mrow>
+                      <mn>11</mn>
+                      <mo>×</mo>
+                      <mn>45</mn>
+                    </mrow>
+                    <mrow>
+                      <mn>30</mn>
+                      <mo>×</mo>
+                      <mn>45</mn>
+                    </mrow>
+                  </mfrac>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mrow>
+                      <mn>16</mn>
+                      <mo>×</mo>
+                      <mn>30</mn>
+                    </mrow>
+                    <mrow>
+                      <mn>45</mn>
+                      <mo>×</mo>
+                      <mn>30</mn>
+                    </mrow>
+                  </mfrac>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mn>495</mn>
+                    <mn>1,350</mn>
+                  </mfrac>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mn>480</mn>
+                    <mn>1,350</mn>
+                  </mfrac>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mn>975</mn>
+                    <mn>1,350</mn>
+                  </mfrac>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </aside>
+
+      <nav>
+        <h2>Table of Contents</h2>
+        <ul>
+          <li><a href="cpl-like-interactions">Cpl style</a></li>
+          <li><a href="#additions-equations">Additions</a></li>
+          <li><a href="#subtraction-equations">Subtraction</a></li>
+          <li><a href="#multiplication-equations">Multiplication</a></li>
+          <li><a href="#multiplying-fractions">Multiplying Fractions</a></li>
+          <li><a href="#dividing-fractions">Dividing Fractions</a></li>
+          <li><a href="#comparisons-equations">Comparisons</a></li>
+          <li><a href="#tally-marks-equations">Tally Marks</a></li>
+          <li><a href="#findings">Findings</a></li>
+          <li><a href="#pros-cons">Pros vs Cons</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="mathJaxAccessibility">
+      <h2>A case for: MathJax</h2>
+
+      <article>
+        <h3 class="">MathJax</h3>
+        <ul>
+          <li>Open Source</li>
+          <li>Full browser support / mobile friendly</li>
+          <li>Consolidate math experience</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3 class="">Authoring experience</h3>
+
+        <ul>
+          <li>
+            MathJax allows page authors to write formulas using TeX and LaTeX
+            notation (used in current LXD authoring), MathML, or AsciiMath
+          </li>
+          <li>Content can be generated for HTML/CSS styling or in SVG</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3 class="">Accessibility</h3>
+        <ul>
+          <li>Speakable text versions: Math can be generated to be spoken</li>
+          <li>
+            Interactive expression explorer: offers a walk through experience,
+            one piece of an expression at a time rather than whole expression at
+            once.
+          </li>
+          <li>
+            Collapsible expression sections: expand or collapse expressions .
+          </li>
+          <li>
+            Braille support: Braille output on a connected Braille displays.
+          </li>
+          <li>
+            MathJax Menu: The MathJax Menu follows WCAG 2.0 guidelines.
+            <ul>
+              <li>Each MathJax fragment is included in the tab order</li>
+              <li>the menu can be triggered via the space or menu key</li>
+
+              <li>navigation in the menu is possible using the arrow keys</li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+      <p>
+        Below each KaTeX equation, an attempt has been made to print out the
+        equation, exactly how a screen reader would read it This is possible
+        because KaTeX actually prints mathml to the dom in all equations, it is
+        just visually hidden. This is currently implemented in programs such as
+        goMath.
+      </p>
+      <p>
+        Current implementations in programs utilise the Katex annotations. By
+        implementing a mathJax approach, there are more accessible aria-labels.
+        Consider the following
+      </p>
+
+      <p>
+        \(\frac{2}{6} + \frac{1}{6}\) This will have aria-label="two sixths plus
+        one sixth" using mathJax
+      </p>
+
+      <p>
+        \(\frac{2}{6} + \frac{1}{6}\) This will have annotation
+        encoding="application/x-tex" \frac{2}{6} + \frac{1}{6}\ using KaTeX
+      </p>
+
+      <p>
+        Alternatively, mathml could be set to be rendered instead of KaTeX and
+        this would require little changes to engineering
+      </p>
+    </section>
+
+    <section id="cpl-like-interactions">
+      <h2>Equations from teams meeting / document</h2>
+
+      <h3>Dropdowns (native select) NO screen reader support</h3>
+
+      <article class="cpl no-mathjax">
+        <header class="cpl-header">
+          <h5>Find the answer. \(\frac{2}{6} + \frac{1}{6}\) KaTeX version</h5>
+        </header>
+        <main>
+          <p>\(\frac{2}{6} + \frac{1}{6}\) =</p>
+
+          <label for="select-1" class="sr-only">Select an answer</label>
+          <select id="select-1" class="connect__select">
+            <option value="" disabled selected>Select an answer</option>
+            <option value="3/6" data-math="\(\frac{3}{6}\)">3/6</option>
+            <option value="5/6" data-math="\(\frac{5}{6}\)">5/6</option>
+            <option value="4/6" data-math="\(\frac{4}{6}\)">4/6</option>
+          </select>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl no-mathjax">
+        <header class="cpl-header">
+          <h5>
+            Find the answer.
+            <math
+              role="math"
+              xmlns="http://www.w3.org/1998/Math/MathML"
+              class="no-mathjax"
+            >
+              <mrow>
+                <mfrac>
+                  <mn>2</mn>
+                  <mn>6</mn>
+                </mfrac>
+                <mo>+</mo>
+              </mrow>
+              <mrow>
+                <mfrac>
+                  <mn>1</mn>
+                  <mn>6</mn>
+                </mfrac>
+              </mrow>
+            </math>
+            MathML version
+          </h5>
+        </header>
+        <main>
+          <p>
+            <math
+              role="math"
+              xmlns="http://www.w3.org/1998/Math/MathML"
+              class="no-mathjax"
+            >
+              <mrow>
+                <mfrac>
+                  <mn>2</mn>
+                  <mn>6</mn>
+                </mfrac>
+                <mo>+</mo>
+              </mrow>
+              <mrow>
+                <mfrac>
+                  <mn>1</mn>
+                  <mn>6</mn>
+                </mfrac>
+                <mo>=</mo>
+              </mrow>
+            </math>
+          </p>
+
+          <label for="select-2" class="sr-only">Select an answer</label>
+          <select id="select-2" class="connect__select">
+            <option value="" disabled selected>Select an answer</option>
+            <option
+              value="3/6"
+              data-math="<math role='math' xmlns='http://www.w3.org/1998/Math/MathML' display='block' class='no-mathjax'><mfrac><mn>3</mn><mn>6</mn></mfrac></math>"
+            >
+              3/6
+            </option>
+            <option
+              value="5/6"
+              data-math="<math role='math' xmlns='http://www.w3.org/1998/Math/MathML' display='block' class='no-mathjax'><mfrac><mn>5</mn><mn>6</mn></mfrac></math>"
+            >
+              5/6
+            </option>
+            <option
+              value="4/6"
+              data-math="<math role='math' xmlns='http://www.w3.org/1998/Math/MathML' display='block' class='no-mathjax'><mfrac><mn>4</mn><mn>6</mn></mfrac></math>"
+            >
+              4/6
+            </option>
+          </select>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl mathjax">
+        <header class="cpl-header">
+          <h5>
+            Find the answer. \( \frac{2}{6} + \frac{1}{6} \) MathJax version
+          </h5>
+        </header>
+        <main>
+          <p>\( \frac{2}{6} + \frac{1}{6} \) =</p>
+
+          <label for="select-3" class="sr-only">Select an answer</label>
+          <select id="select-3" class="connect__select">
+            <option value="" disabled selected>Select an answer</option>
+            <option value="3/6" data-math="\(\frac{3}{6}\)">3/6</option>
+            <option value="5/6" data-math="\(\frac{5}{6}\)">5/6</option>
+            <option value="4/6" data-math="\(\frac{4}{6}\)">4/6</option>
+          </select>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <h3>Dropdowns using JavaScript list</h3>
+      <article class="cpl no-mathjax">
+        <header class="cpl-header">
+          <h5>Find the answer. \(\frac{2}{6} + \frac{1}{6}\) KaTeX version</h5>
+        </header>
+        <main>
+          <p>\(\frac{2}{6} + \frac{1}{6}\) =</p>
+
+          <div class="toggler">
+            <button
+              class="connect__button dropdown toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="dropdown-menu-1"
+            >
+              ?
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-1" role="menu">
+              <li role="menuitem">
+                <p>\(\frac{3}{6}\)</p>
+              </li>
+              <li role="menuitem">
+                <p>\(\frac{5}{6}\)</p>
+              </li>
+              <li role="menuitem">
+                <p>\(\frac{4}{6}\)</p>
+              </li>
+            </ul>
+          </div>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl no-mathjax">
+        <header class="cpl-header">
+          <h5>
+            Find the answer.
+            <math role="math" class="no-mathjax">
+              <mrow>
+                <mfrac>
+                  <mn>2</mn>
+                  <mn>6</mn>
+                </mfrac>
+                <mo>+</mo>
+              </mrow>
+              <mrow>
+                <mfrac>
+                  <mn>1</mn>
+                  <mn>6</mn>
+                </mfrac>
+              </mrow>
+            </math>
+            MathML version
+          </h5>
+        </header>
+        <main>
+          <p>
+            <math role="math" class="no-mathjax">
+              <mrow>
+                <mfrac>
+                  <mn>2</mn>
+                  <mn>6</mn>
+                </mfrac>
+                <mo>+</mo>
+              </mrow>
+              <mrow>
+                <mfrac>
+                  <mn>1</mn>
+                  <mn>6</mn>
+                </mfrac>
+                <mo>=</mo>
+              </mrow>
+            </math>
+          </p>
+
+          <div class="toggler">
+            <button
+              class="connect__button dropdown toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="dropdown-menu-2"
+            >
+              ?
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-2" role="menu">
+              <li role="menuitem">
+                <p>
+                  <math role="math" class="no-mathjax">
+                    <mfrac>
+                      <mn>3</mn>
+                      <mn>6</mn>
+                    </mfrac>
+                  </math>
+                </p>
+              </li>
+              <li role="menuitem">
+                <p>
+                  <math role="math" class="no-mathjax">
+                    <mfrac>
+                      <mn>5</mn>
+                      <mn>6</mn>
+                    </mfrac>
+                  </math>
+                </p>
+              </li>
+              <li role="menuitem">
+                <p>
+                  <math role="math" class="no-mathjax">
+                    <mfrac>
+                      <mn>4</mn>
+                      <mn>6</mn>
+                    </mfrac>
+                  </math>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl mathjax">
+        <header class="cpl-header">
+          <h5>
+            Find the answer. \( \frac{2}{6} + \frac{1}{6} \) MathJax version
+          </h5>
+        </header>
+        <main>
+          <p>\( \frac{2}{6} + \frac{1}{6} \) =</p>
+
+          <div class="toggler">
+            <button
+              class="connect__button dropdown toggle"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="dropdown-menu-3"
+            >
+              ?
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-3" role="menu">
+              <li role="menuitem">
+                <p>\( \frac{3}{6} \)</p>
+              </li>
+              <li role="menuitem">
+                <p>\( \frac{5}{6} \)</p>
+              </li>
+              <li role="menuitem">
+                <p>\( \frac{4}{6} \)</p>
+              </li>
+            </ul>
+          </div>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <h3>Radio Buttons</h3>
+
+      <article class="cpl no-mathjax">
+        <header class="cpl-header">
+          <h5>Which is correct? \( < \text{ or } > \)</h5>
+        </header>
+        <main>
+          <ul>
+            <li class="connect__mcq-label-wrapper">
+              <input
+                type="radio"
+                id="katex1"
+                class="connect__input"
+                name="katex"
+                aria-label="Multiple Choice Question"
+              />
+              <label class="connect__mcq-label" for="katex1"
+                >\(-0.3 < 0.2\)</label
+              >
+            </li>
+            <li class="connect__mcq-label-wrapper">
+              <input
+                type="radio"
+                id="katex2"
+                class="connect__input"
+                name="katex"
+                aria-label="Multiple Choice Question"
+              />
+              <label class="connect__mcq-label" for="katex2"
+                >\(-0.3 > 0.2\)</label
+              >
+            </li>
+          </ul>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl no-mathjax">
+        <header class="cpl-header">
+          <h5>
+            Find the answer.
+            <math
+              role="math"
+              xmlns="http://www.w3.org/1998/Math/MathML"
+              class="no-mathjax"
+            >
+              <mrow>
+                <mo>&lt;</mo>
+              </mrow>
+              <mrow>
+                <mtext> or </mtext>
+                <mo>&gt;</mo>
+              </mrow>
+            </math>
+            MathML version
+          </h5>
+        </header>
+        <main>
+          <ul>
+            <li class="connect__mcq-label-wrapper">
+              <input
+                type="radio"
+                id="mathml1"
+                class="connect__input"
+                name="mathml"
+                aria-label="Multiple Choice Question"
+              />
+              <label class="connect__mcq-label" for="mathml1">
+                <math
+                  role="math"
+                  xmlns="http://www.w3.org/1998/Math/MathML"
+                  class="no-mathjax"
+                >
+                  <mrow>
+                    <mo>−</mo>
+                  </mrow>
+                  <mrow>
+                    <mn>0.3</mn>
+                    <mo>&lt;</mo>
+                  </mrow>
+                  <mrow>
+                    <mn>0.2</mn>
+                  </mrow>
+                </math>
+              </label>
+            </li>
+            <li class="connect__mcq-label-wrapper">
+              <input
+                type="radio"
+                id="mathml2"
+                class="connect__input"
+                name="mathml"
+                aria-label="Multiple Choice Question"
+              />
+              <label class="connect__mcq-label" for="mathml2"
+                ><math
+                  role="math"
+                  xmlns="http://www.w3.org/1998/Math/MathML"
+                  class="no-mathjax"
+                >
+                  <mrow>
+                    <mo>−</mo>
+                  </mrow>
+                  <mrow>
+                    <mn>0.3</mn>
+                    <mo>&gt;</mo>
+                  </mrow>
+                  <mrow>
+                    <mn>0.2</mn>
+                  </mrow>
+                </math></label
+              >
+            </li>
+          </ul>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl mathjax">
+        <header class="cpl-header">
+          <h5>Which is correct? \( < \text{ or } > \) MathJax</h5>
+        </header>
+        <main>
+          <ul>
+            <li class="connect__mcq-label-wrapper">
+              <input
+                type="radio"
+                id="mathjax1"
+                class="connect__input"
+                name="mathjax"
+                aria-label="Multiple Choice Question"
+              />
+              <label class="connect__mcq-label" for="mathjax1"
+                >\(-0.3 < 0.2\)</label
+              >
+            </li>
+            <li class="connect__mcq-label-wrapper">
+              <input
+                type="radio"
+                id="mathjax2"
+                class="connect__input"
+                name="mathjax"
+                aria-label="Multiple Choice Question"
+              />
+              <label class="connect__mcq-label" for="mathjax2"
+                >\(-0.3 > 0.2\)</label
+              >
+            </li>
+          </ul>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <h3>FIB</h3>
+
+      <article class="cpl fib no-mathjax">
+        <header class="cpl-header">
+          <h5>Find the sum of \(\frac{1}{4} + \frac{2}{4}\) KaTeX version</h5>
+        </header>
+        <main>
+          <section>
+            <p>\(\frac{1}{4} + \frac{2}{4} = \)</p>
+          </section>
+          <section>
+            <p>
+              \( ? = \)
+              <span class="fraction">
+                <label for="numerator" class="sr-only">Numerator</label>
+                <input
+                  type="text"
+                  id="numerator"
+                  class="connect__input"
+                  aria-label="Numerator"
+                  value="3"
+                />
+                <span class="fraction-bar"></span>
+                <label for="denominator" class="sr-only">Denominator</label>
+                <input
+                  type="text"
+                  id="denominator"
+                  class="connect__input"
+                  aria-label="Denominator"
+                  value="4"
+                />
+              </span>
+            </p>
+          </section>
+        </main>
+
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl fib no-mathjax">
+        <header class="cpl-header">
+          <h5>
+            Find the sum of.
+            <math
+              role="math"
+              xmlns="http://www.w3.org/1998/Math/MathML"
+              class="no-mathjax"
+            >
+              <mrow>
+                <mfrac>
+                  <mn>1</mn>
+                  <mn>4</mn>
+                </mfrac>
+                <mo>+</mo>
+              </mrow>
+              <mrow>
+                <mfrac>
+                  <mn>2</mn>
+                  <mn>4</mn>
+                </mfrac>
+              </mrow>
+            </math>
+            MathML version
+          </h5>
+        </header>
+        <main>
+          <section>
+            <p>
+              <math
+                role="math"
+                xmlns="http://www.w3.org/1998/Math/MathML"
+                class="no-mathjax"
+              >
+                <mrow>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mn>4</mn>
+                  </mfrac>
+                  <mo>+</mo>
+                </mrow>
+                <mrow>
+                  <mfrac>
+                    <mn>2</mn>
+                    <mn>4</mn>
+                  </mfrac>
+                  <mo>=</mo>
+                </mrow>
+              </math>
+            </p>
+          </section>
+          <section>
+            <p>
+              <math
+                role="math"
+                xmlns="http://www.w3.org/1998/Math/MathML"
+                class="no-mathjax"
+              >
+                <mrow>
+                  <mo form="postfix" stretchy="false">?</mo>
+                </mrow>
+                <mrow>
+                  <mo>=</mo>
+                </mrow>
+              </math>
+              <span class="fraction">
+                <label for="numerator1" class="sr-only">Numerator</label>
+                <input
+                  type="text"
+                  id="numerator1"
+                  class="connect__input"
+                  aria-label="Numerator"
+                />
+                <span class="fraction-bar"></span>
+                <label for="denominator1" class="sr-only">Denominator</label>
+                <input
+                  type="text"
+                  id="denominator1"
+                  class="connect__input"
+                  aria-label="Denominator"
+                />
+              </span>
+            </p>
+          </section>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+
+      <article class="cpl fib mathjax">
+        <header class="cpl-header">
+          <h5>Find the sum of \(\frac{1}{4} + \frac{2}{4}\) Mathjax version</h5>
+        </header>
+        <main>
+          <section>
+            <p>\(\frac{1}{4} + \frac{2}{4} =\)</p>
+          </section>
+          <section>
+            <p>
+              \( ? = \)
+              <span class="fraction">
+                <label for="numerator2" class="sr-only">Numerator</label>
+                <input
+                  type="text"
+                  id="numerator2"
+                  class="connect__input"
+                  aria-label="Numerator"
+                />
+                <span class="fraction-bar"></span>
+                <label for="denominator2" class="sr-only">Denominator</label>
+                <input
+                  type="text"
+                  id="denominator2"
+                  class="connect__input"
+                  aria-label="Denominator"
+                />
+              </span>
+            </p>
+          </section>
+        </main>
+        <footer class="cpl-footer">
+          <button class="connect__button primary" disabled>Check</button>
+        </footer>
+      </article>
+    </section>
+
+    <!-- Additions -->
+    <section id="additions-equations">
+      <h2>Additions</h2>
+
+      <h3>Simple Addition</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(9 + 4 = 13\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>9</mn>
+            <mo>+</mo>
+            <mn>4</mn>
+            <mo>=</mo>
+            <mn>13</mn>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(9 + 4 = 13\)</p>
+      </article>
+
+      <h3>Vertical Addition w/? in sum</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 325 \\ + & 494 \\ \hline & ? \end{array} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>325</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>+</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>494</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mo form="postfix" stretchy="false">?</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 325 \\ + & 494 \\ \hline & ? \end{array} \]
+        </p>
+      </article>
+
+      <h3>Expanded Form Addition</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{rcr} \begin{array}{rcr} & 325 \\ + & 494 \\ \hline
+          \end{array} & \begin{array}{c} = \\ = \end{array} &
+          \begin{array}{rrrrr} 300 & + & 20 & + & 5 \\ 400 & + & 90 & + & 4 \\
+          \hline 700 & + & 110 & + & 9 \end{array} \end{array} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mtable columnalign="right center right">
+                  <mtr>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mrow></mrow>
+                    </mtd>
+                    <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                      <mn>325</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="border-bottom"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>494</mn>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mtd>
+              <mtd style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt">
+                <mtable columnalign="center">
+                  <mtr>
+                    <mtd style="padding: 0.5ex 0pt 0.5ex 0pt">
+                      <mo>=</mo>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd style="padding: 0.5ex 0pt 0.5ex 0pt">
+                      <mo>=</mo>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mtable columnalign="right right right right right">
+                  <mtr>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mn>300</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mn>20</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>5</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mn>400</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mn>90</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>4</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mn>700</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mn>110</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>9</mn>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{rcr} \begin{array}{rcr} & 325 \\ + & 494 \\ \hline
+          \end{array} & \begin{array}{c} = \\ = \\ \end{array} &
+          \begin{array}{rrrrr} 300 & + & 20 & + & 5 \\ 400 & + & 90 & + & 4 \\
+          \hline 700 & + & 110 & + & 9 \\ \end{array} \end{array} \]
+        </p>
+      </article>
+
+      <h3>Expanded Form Addition w/? in sum</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{array}{rcr} \begin{array}{rr} & 325 \\ + & 494 \\ \hline & ?
+          \end{array} & \begin{array}{c} = \\ = \\ \\ \end{array} &
+          \begin{array}{rrrrr} 300 & + & 20 & + & 5 \\ 400 & + & 90 & + & 4 \\
+          \hline 700 & + & 110 & + & 9 \\ \end{array} \end{array}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mtable columnalign="right right">
+                  <mtr>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mrow></mrow>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>325</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>494</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mrow></mrow>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mo form="postfix" stretchy="false">?</mo>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mtd>
+              <mtd style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt">
+                <mtable columnalign="center">
+                  <mtr>
+                    <mtd style="padding: 0.5ex 0pt 0.5ex 0pt">
+                      <mo>=</mo>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd style="padding: 0.5ex 0pt 0.5ex 0pt">
+                      <mo>=</mo>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd style="padding: 0.5ex 0pt 0.5ex 0pt">
+                      <mrow></mrow>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mtable columnalign="right right right right right">
+                  <mtr>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mn>300</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mn>20</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>5</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mn>400</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mn>90</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right border-bottom"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>4</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+                    >
+                      <mn>700</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mn>110</mn>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 5.9776pt 0.5ex 5.9776pt"
+                    >
+                      <mo>+</mo>
+                    </mtd>
+                    <mtd
+                      class="tml-right"
+                      style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+                    >
+                      <mn>9</mn>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{array}{rcr} \begin{array}{rr} & 325 \\ + & 494 \\ \hline & ?
+          \end{array} & \begin{array}{c} = \\ = \\ \\ \end{array} &
+          \begin{array}{rrrrr} 300 & + & 20 & + & 5 \\ 400 & + & 90 & + & 4 \\
+          \hline 700 & + & 110 & + & 9 \\ \end{array} \end{array}\)
+        </p>
+      </article>
+
+      <h3>Vertical – New Groups Above method</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{array}{rcr} & \overset{1}{3}24\\ + & 285\\ \hline & 609
+          \end{array}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow>
+                  <mrow>
+                    <mover>
+                      <mn>3</mn>
+                      <mn>1</mn>
+                    </mover>
+                  </mrow>
+                  <mn>24</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>+</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>285</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>609</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{array}{rcr} & \overset{1}{3}24\\ + & 285\\ \hline & 609
+          \end{array}\)
+        </p>
+      </article>
+
+      <h3>Vertical – New Groups Below method</h3>
+
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 39 \\ + \; \; 97 \\ \hline \overset{1}{1}
+          \overset{1}{3}6 \\ \end{aligned}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mn>39</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mo>+</mo>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mn>97</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mrow>
+                    <mover>
+                      <mn>1</mn>
+                      <mn>1</mn>
+                    </mover>
+                  </mrow>
+                  <mrow>
+                    <mover>
+                      <mn>3</mn>
+                      <mn>1</mn>
+                    </mover>
+                  </mrow>
+                  <mn>6</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} 39 \\ + \; \; 97 \\ \hline \overset{1}{1}
+          \overset{1}{3}6 \\ \end{aligned} \]
+        </p>
+      </article>
+
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 37 \, \text{¢} \\ + \; \; 15 \, \text{¢} \\ \hline
+          \overset{1}{5}2 \, \text{¢} \end{aligned}\)
+        </p>
+      </article>
+
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>37</mn>
+                  <mspace width="0.1667em"></mspace>
+                  <mtext>¢</mtext>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mo>+</mo>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mn>15</mn>
+                  <mspace width="0.1667em"></mspace>
+                  <mtext>¢</mtext>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mrow>
+                    <mover>
+                      <mn>5</mn>
+                      <mn>1</mn>
+                    </mover>
+                  </mrow>
+                  <mn>2</mn>
+                  <mspace width="0.1667em"></mspace>
+                  <mtext>¢</mtext>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} 37 \, \text{¢} \\ + \; \; 15 \, \text{¢} \\ \hline
+          \overset{1}{5}2 \, \text{¢} \end{aligned} \]
+        </p>
+      </article>
+
+      <h3>Vertical Addition with Color and Circled Result</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 34 \\ + \; \; \color{blue}{6} \\ \hline 40 \\ + \;
+          \; \color{blue}{30} \\ \hline 70 \\ + \; \; \color{blue}{3} \\ \hline
+          73 \end{aligned} \quad \mathring{39}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mtable displaystyle="true" columnalign="right">
+              <mtr>
+                <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                  <mn>34</mn>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd
+                  class="tml-right border-bottom"
+                  style="padding: 0.7ex 0em 0.7ex 0em"
+                >
+                  <mrow>
+                    <mo>+</mo>
+                    <mspace width="0.2778em"></mspace>
+                    <mspace width="0.2778em"></mspace>
+                    <mn style="color: #0000ff">6</mn>
+                  </mrow>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                  <mn>40</mn>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd
+                  class="tml-right border-bottom"
+                  style="padding: 0.7ex 0em 0.7ex 0em"
+                >
+                  <mrow>
+                    <mo>+</mo>
+                    <mspace width="0.2778em"></mspace>
+                    <mspace width="0.2778em"></mspace>
+                    <mn style="color: #0000ff">30</mn>
+                  </mrow>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                  <mn>70</mn>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd
+                  class="tml-right border-bottom"
+                  style="padding: 0.7ex 0em 0.7ex 0em"
+                >
+                  <mrow>
+                    <mo>+</mo>
+                    <mspace width="0.2778em"></mspace>
+                    <mspace width="0.2778em"></mspace>
+                    <mn style="color: #0000ff">3</mn>
+                  </mrow>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                  <mn>73</mn>
+                </mtd>
+              </mtr>
+            </mtable>
+            <mspace width="1em"></mspace>
+            <mover>
+              <mn>39</mn>
+              <mo stretchy="false" style="math-style: normal; math-depth: 0"
+                >˚</mo
+              >
+            </mover>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{aligned} 34 \\ + \; \; \color{blue}{6} \\ \hline 40 \\ + \;
+          \; \color{blue}{30} \\ \hline 70 \\ + \; \; \color{blue}{3} \\ \hline
+          73 \end{aligned} \quad \mathring{39}\)
+        </p>
+      </article>
+    </section>
+
+    <!-- Subtractions -->
+
+    <section id="subtraction-equations">
+      <h2>Subtraction Examples</h2>
+
+      <h3>Horizontal Subtraction</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(20 - 10 = 10\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mn>20</mn>
+          <mo>-</mo>
+          <mn>10</mn>
+          <mo>=</mo>
+          <mn>10</mn>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(20 - 10 = 10\)</p>
+      </article>
+
+      <h3>Vertical Subtraction</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(\begin{array}{rcr} & 607\\ - &568\\ \hline &39 \end{array}\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>607</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>−</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>568</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>39</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 607 \\ - & 568 \\ \hline & 39 \end{array} \]
+        </p>
+      </article>
+
+      <h3>Vertical Subtraction w/Regrouping</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{array}{rr} & 5\overset{7}{\cancel8}\overset{15}{\cancel5}\\ -
+          & 119\\ \hline \end{array}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow>
+                  <mn>5</mn>
+                  <mrow>
+                    <mover>
+                      <mrow class="tml-cancel">
+                        <mn>8</mn>
+                      </mrow>
+                      <mn>7</mn>
+                    </mover>
+                  </mrow>
+                  <mrow>
+                    <mover>
+                      <mrow class="tml-cancel">
+                        <mn>5</mn>
+                      </mrow>
+                      <mn>15</mn>
+                    </mover>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>−</mo>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>119</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p class="mathjax">
+          \[ \begin{array}{rr} &
+          5\overset{7}{\cancel{8}}\overset{15}{\cancel{5}} \\ - & 119 \\ \hline
+          \end{array} \]
+        </p>
+      </article>
+
+      <h3>Vertical – Ungrouping (hash mark points down to the right)</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{matrix} & \overset{5}{\cancel{6}} & \overset{15}{5} \\ - & 3
+          & 7 \\ \hline & 2 & 8 \end{matrix} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="center center center">
+            <mtr>
+              <mtd style="padding-left: 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd>
+                <mrow>
+                  <mover>
+                    <mrow class="tml-cancel">
+                      <mn>6</mn>
+                    </mrow>
+                    <mn>5</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+              <mtd style="padding-right: 0em">
+                <mrow>
+                  <mover>
+                    <mn>5</mn>
+                    <mn>15</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="border-bottom" style="padding-left: 0em">
+                <mo>−</mo>
+              </mtd>
+              <mtd class="border-bottom">
+                <mn>3</mn>
+              </mtd>
+              <mtd class="border-bottom" style="padding-right: 0em">
+                <mn>7</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd style="padding-left: 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd>
+                <mn>2</mn>
+              </mtd>
+              <mtd style="padding-right: 0em">
+                <mn>8</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{matrix} & \overset{5}{\cancel{6}} & \overset{15}{5} \\ - & 3
+          & 7 \\ \hline & 2 & 8 \end{matrix} \]
+        </p>
+      </article>
+
+      <h3>Vertical – Ungrouping (hash mark points down to the left)</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{aligned} \hspace{1px} \\ \overset{0}{\cancel{6}} &
+          \overset{15}{\cancel{5}} \\ - & 3 & 7 \\ \hline & 8 & 4 \end{aligned}
+          \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mspace width="1px"></mspace>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mover>
+                    <mrow class="tml-cancel">
+                      <mn>6</mn>
+                    </mrow>
+                    <mn>0</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mover>
+                    <mrow class="tml-cancel">
+                      <mn>5</mn>
+                    </mrow>
+                    <mn>15</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mo>−</mo>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mn>3</mn>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mn>7</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mn>8</mn>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>4</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} \hspace{1px} \\ \overset{0}{\cancel{6}} &
+          \overset{15}{\cancel{5}} \\ - & 3 & 7 \\ \hline & 8 & 4 \end{aligned}
+          \]
+        </p>
+      </article>
+
+      <h3>Addition w/Decimal Alignment</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 2.50 \\ + & 0.926 \\ \hline & 3.426
+          \end{array} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>2.50</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>+</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>0.926</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>3.426</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{array}{rcr} & 2.50\\ + &0.926\\ \hline &3.426 \end{array}\)
+        </p>
+      </article>
+
+      <h3>Additional Vertical Subtraction Samples</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{aligned} 200 & = & \overset{100}{\cancel{200}} & + &
+          \overset{90}{\overset{\cancel{100}}{\cancel{0}}} & + &
+          \overset{10}{\overset{\phantom{\cancel{100}}}{\cancel{0}}} & \\ -
+          \quad 68 & = & & & 60 \;\; & + & 8 \;\; & \\ \hline & & 100 \; & + &
+          30 \;\; & + & 2 \;\; & = & 13 \\ \end{aligned} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable
+            displaystyle="true"
+            columnalign="right left right left right left right left right"
+          >
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mn>200</mn>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mover>
+                    <mrow class="tml-cancel">
+                      <mn>200</mn>
+                    </mrow>
+                    <mn>100</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>+</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mover>
+                    <mrow>
+                      <mover>
+                        <mrow class="tml-cancel">
+                          <mn>0</mn>
+                        </mrow>
+                        <mrow class="tml-cancel">
+                          <mn>100</mn>
+                        </mrow>
+                      </mover>
+                    </mrow>
+                    <mn>90</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>+</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mover>
+                    <mrow>
+                      <mover>
+                        <mrow class="tml-cancel">
+                          <mn>0</mn>
+                        </mrow>
+                        <mphantom>
+                          <mrow class="tml-cancel">
+                            <mn>100</mn>
+                          </mrow>
+                        </mphantom>
+                      </mover>
+                    </mrow>
+                    <mn>10</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mo>−</mo>
+                  <mspace width="1em"></mspace>
+                  <mn>68</mn>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mo>=</mo>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mrow></mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow></mrow>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mrow>
+                  <mn>60</mn>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mo>+</mo>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mrow>
+                  <mn>8</mn>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>100</mn>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>+</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>30</mn>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>+</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>2</mn>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>13</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} 200 & = & \overset{100}{\cancel{200}} & + &
+          \overset{90}{\overset{\cancel{100}}{\cancel{0}}} & + &
+          \overset{10}{\overset{\phantom{\cancel{100}}}{\cancel{0}}} & \\ -
+          \quad 68 & = & & & 60 \;\; & + & 8 \;\; & \\ \hline & & 100 \; & + &
+          30 \;\; & + & 2 \;\; & = & 13 \\ \end{aligned} \]
+        </p>
+      </article>
+
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 64 &=& \overset{50}{\cancel{60}} &+&
+          \overset{14}{\cancel{4}} \\ - \; 28 &=& 20 \; &+& 8 \; \\ \hline &=&
+          30 \; &+& 6 \; &=& 36 \\ \end{aligned}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable
+            displaystyle="true"
+            columnalign="right left right left right left right"
+          >
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mn>64</mn>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mover>
+                    <mrow class="tml-cancel">
+                      <mn>60</mn>
+                    </mrow>
+                    <mn>50</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>+</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mover>
+                    <mrow class="tml-cancel">
+                      <mn>4</mn>
+                    </mrow>
+                    <mn>14</mn>
+                  </mover>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mo>−</mo>
+                  <mspace width="0.2778em"></mspace>
+                  <mn>28</mn>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mo>=</mo>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mrow>
+                  <mn>20</mn>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mo>+</mo>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mrow>
+                  <mn>8</mn>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>30</mn>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>+</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>6</mn>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>36</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{aligned} 64 &=& \overset{50}{\cancel{60}} &+&
+          \overset{14}{\cancel{4}} \\ - \; 28 &=& 20 \; &+& 8 \; \\ \hline &=&
+          30 \; &+& 6 \; &=& 36 \\ \end{aligned}\)
+        </p>
+      </article>
+    </section>
+
+    <!-- Multiplication -->
+    <section id="multiplication-equations">
+      <h2>Multiplication Examples</h2>
+
+      <h3>Horizontal Multiplication</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(2 \times 5 = 10\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>2</mn>
+            <mo>&#xD7;</mo>
+            <mn>5</mn>
+            <mo>=</mo>
+            <mn>10</mn>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(2 \times 5 = 10\)</p>
+      </article>
+
+      <h3>Vertical Multiplication</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\[ \begin{array}{rcr} & 23 \\ \times & 6 \\ \hline \end{array} \]</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>23</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>×</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>6</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\[ \begin{array}{rcr} & 23 \\ \times & 6 \\ \hline \end{array} \]</p>
+      </article>
+
+      <h3>Vertical multiplication w/? in product</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 23 \\ \times & 6 \\ \hline & ? \end{array} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>23</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>×</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>6</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mo form="postfix" stretchy="false">?</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 23 \\ \times & 6 \\ \hline & ? \end{array} \]
+        </p>
+      </article>
+
+      <h3>Vertical multiplication w/product</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 23 \\ \times & 6 \\ \hline & 138 \end{array}
+          \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>23</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>×</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>6</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>138</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{rcr} & 23 \\ \times & 6 \\ \hline & 138 \end{array}
+          \]
+        </p>
+      </article>
+
+      <h3>Vertical Multiplication w/Money Symbols/Decimals w/? in Product</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{rcr} & \$0.05 \\ \times & 0.2 \\ \hline & ?
+          \end{array} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow>
+                  <mi>$</mi>
+                  <mn>0.05</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>×</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>0.2</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mo form="postfix" stretchy="false">?</mo>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{rcr} & \$0.05 \\ \times & 0.2 \\ \hline & ?
+          \end{array} \]
+        </p>
+      </article>
+
+      <h3>Multiplication 2 by 2 Digit</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{rcr} & \overset{2}{1}7 \\ \times & 32 \\ \hline & 174
+          \\ + & 2,610 \\ \hline & 2,784 \end{array} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right center right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow>
+                  <mrow>
+                    <mover>
+                      <mn>1</mn>
+                      <mn>2</mn>
+                    </mover>
+                  </mrow>
+                  <mn>7</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>×</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>32</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>174</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mo>+</mo>
+              </mtd>
+              <mtd
+                class="border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 5.9776pt"
+              >
+                <mn>2,610</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow></mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mn>2,784</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{rcr} & \overset{2}{1}7 \\ \times & 32 \\ \hline & 174
+          \\ + & 2,610 \\ \hline & 2,784 \end{array} \]
+        </p>
+      </article>
+
+      <h3>Horizontal Multiplication with Symbol for Unknown</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(\begin{aligned} 6 \times \triangle = 0 \end{aligned}\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>6</mn>
+            <mo>&#xD7;</mo>
+            <mi>&#x25B3;</mi>
+            <mo>=</mo>
+            <mn>0</mn>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(\begin{aligned} 6 \times \triangle = 0 \end{aligned}\)</p>
+      </article>
+
+      <h3>All Multiplication Symbols (×, *, •)</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\( 3 \times 5 \)</p>
+        <p>\( 3 \ast 5 \)</p>
+        <p>\( 3 \bullet 5 \)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>3</mn>
+            <mo>&#xd7;</mo>
+            <mn>5</mn>
+          </mrow>
+        </math>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>3</mn>
+            <mo>&#x2217;</mo>
+            <mn>5</mn>
+          </mrow>
+        </math>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>3</mn>
+            <mo>&#x2219;</mo>
+            <mn>5</mn>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\( 3 \times 5 \)</p>
+        <p>\( 3 \ast 5 \)</p>
+        <p>\( 3 \bullet 5 \)</p>
+      </article>
+
+      <h3>Combining Two Multiplications</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 4 \times 7 & = 28 \\ 3 \times 7 & = 21 \\ \hline 7
+          \times 7 & = 49 \\ \end{aligned} \)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>4</mn>
+                  <mo>×</mo>
+                  <mn>7</mn>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mn>28</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mn>3</mn>
+                  <mo>×</mo>
+                  <mn>7</mn>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mo>=</mo>
+                  <mn>21</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>7</mn>
+                  <mo>×</mo>
+                  <mn>7</mn>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mn>49</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} 4 \times 7 & = 28 \\ 3 \times 7 & = 21 \\ \hline 7
+          \times 7 & = 49 \\ \end{aligned} \]
+        </p>
+      </article>
+
+      <h3>Expanded Notation Method</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 28 &=& 20 + 8 \\ \times \;\;\: 9 &=& 9 \\ \hline 9
+          \times 20 &=& 180 \\ 9 \times \;\; 8 &=& 72\\ \hline &=& 252 \\
+          \end{aligned} \)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mn>28</mn>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>20</mn>
+                  <mo>+</mo>
+                  <mn>8</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mo>×</mo>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2222em"></mspace>
+                  <mn>9</mn>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mo>=</mo>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mn>9</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>9</mn>
+                  <mo>×</mo>
+                  <mn>20</mn>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>180</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mn>9</mn>
+                  <mo>×</mo>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mn>8</mn>
+                </mrow>
+              </mtd>
+              <mtd
+                class="tml-left border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mo>=</mo>
+              </mtd>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 1em"
+              >
+                <mn>72</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>252</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} 28 &= 20 + 8 \\ \times \;\;\: 9 &= 9 \\ \hline 9
+          \times 20 &= 180 \\ 9 \times \;\; 8 &= 72 \\ \hline &= 252 \\
+          \end{aligned} \]
+        </p>
+      </article>
+
+      <h3>Algebraic Notation Method</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 9 \bullet 28 &=& 9 \bullet ( 20 + 8 ) \\ &=& 9
+          \bullet 20 + 9 \bullet 8 \\ &=& 180 + 72 \\ &=& 252 \end{aligned}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>9</mn>
+                  <mo>∙</mo>
+                  <mn>28</mn>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>9</mn>
+                  <mo>∙</mo>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mn>20</mn>
+                  <mo>+</mo>
+                  <mn>8</mn>
+                  <mo form="postfix" stretchy="false">)</mo>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>9</mn>
+                  <mo>∙</mo>
+                  <mn>20</mn>
+                  <mo>+</mo>
+                  <mn>9</mn>
+                  <mo>∙</mo>
+                  <mn>8</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow>
+                  <mn>180</mn>
+                  <mo>+</mo>
+                  <mn>72</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mo>=</mo>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>252</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} 9 \bullet 28 &= 9 \bullet (20 + 8) \\ &= 9 \bullet
+          20 + 9 \bullet 8 \\ &= 180 + 72 \\ &= 252 \end{aligned} \]
+        </p>
+      </article>
+    </section>
+
+    <!-- Division -->
+    <section id="division-equations">
+      <h2>Division Examples</h2>
+
+      <h3>Horizontal Division</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(27 \div 9 = 3\)</p>
+        <p>\(27 \div 9 = \underline{\phantom{3}}\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mn>27</mn>
+          <mo>&#xF7;</mo>
+          <mn>9</mn>
+          <mo>=</mo>
+          <mn>3</mn>
+        </math>
+
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mn>27</mn>
+          <mo>&#xF7;</mo>
+          <mn>9</mn>
+          <mo>=</mo>
+          <mo>&#x23AF;</mo>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(27 \div 9 = 3\)</p>
+        <p>\(27 \div 9 = \underline{\phantom{3}}\)</p>
+      </article>
+
+      <h3>Division House with Quotient</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{array}{r} ?\phantom{)} \\
+          2{\overline{\smash{\big)}\,18\phantom{)}}} \end{array} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mrow>
+                  <mo form="postfix" stretchy="false">?</mo>
+                  <mphantom>
+                    <mo
+                      form="postfix"
+                      stretchy="false"
+                      lspace="0em"
+                      rspace="0em"
+                      >)</mo
+                    >
+                  </mphantom>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mrow>
+                  <mn>2</mn>
+                  <mrow class="border-top" style="padding: 0.1em 0 0 0">
+                    <mrow>
+                      <mpadded height="0px" depth="0px">
+                        <mo
+                          fence="false"
+                          symmetric="true"
+                          minsize="1.2em"
+                          maxsize="1.2em"
+                          lspace="0em"
+                          rspace="0em"
+                          >)</mo
+                        >
+                      </mpadded>
+                      <mspace width="0.1667em"></mspace>
+                      <mn>18</mn>
+                      <mphantom>
+                        <mo
+                          form="postfix"
+                          stretchy="false"
+                          lspace="0em"
+                          rspace="0em"
+                          >)</mo
+                        >
+                      </mphantom>
+                    </mrow>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{array}{r} ?\phantom{)} \\
+          2{\overline{\smash{\big)}\,18\phantom{)}}} \end{array} \]
+        </p>
+      </article>
+
+      <h3>Division House without Quotient</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(\begin{array}{r} 19 \\ \hline 800 \end{array}\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right">
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 0pt"
+              >
+                <mn>19</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mn>800</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(\begin{array}{r} 19 \\ \hline 800 \end{array}\)</p>
+      </article>
+    </section>
+
+    <section id="long-division-equations">
+      <h2>Long Division Examples</h2>
+
+      <h3>Long Division Digit by Digit - With Remainder</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \[ \begin{aligned} 142 \, R1 \\ 6 \, \overline{853} \quad \: \\
+          \underline{- \; 6 \;\;} \quad \;\;\, \\ 25 \quad \;\;\: \\
+          \underline{- \; 24 \;\; } \quad \: \\ 13 \quad \; \\ \underline{- \;
+          12} \quad \; \\ 1 \quad \; \end{aligned} \]
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>142</mn>
+                  <mspace width="0.1667em"></mspace>
+                  <mi>R</mi>
+                  <mn>1</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>6</mn>
+                  <mspace width="0.1667em"></mspace>
+                  <mrow style="padding: 0.1em 0 0 0; border-top: 0.065em solid">
+                    <mn>853</mn>
+                  </mrow>
+                  <mspace width="1em"></mspace>
+                  <mspace width="0.2222em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mrow style="padding: 0 0 0.1em 0">
+                    <mrow>
+                      <mo lspace="0em" rspace="0em">−</mo>
+                      <mspace width="0.2778em"></mspace>
+                      <mn>6</mn>
+                      <mspace width="0.2778em"></mspace>
+                      <mspace width="0.2778em"></mspace>
+                    </mrow>
+                  </mrow>
+                  <mspace width="1em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.1667em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>25</mn>
+                  <mspace width="1em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2222em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mrow style="padding: 0 0 0.1em 0">
+                    <mrow>
+                      <mo lspace="0em" rspace="0em">−</mo>
+                      <mspace width="0.2778em"></mspace>
+                      <mn>24</mn>
+                      <mspace width="0.2778em"></mspace>
+                      <mspace width="0.2778em"></mspace>
+                    </mrow>
+                  </mrow>
+                  <mspace width="1em"></mspace>
+                  <mspace width="0.2222em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>13</mn>
+                  <mspace width="1em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mrow style="padding: 0 0 0.1em 0">
+                    <mrow>
+                      <mo lspace="0em" rspace="0em">−</mo>
+                      <mspace width="0.2778em"></mspace>
+                      <mn>12</mn>
+                    </mrow>
+                  </mrow>
+                  <mspace width="1em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>1</mn>
+                  <mspace width="1em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \[ \begin{aligned} 142 \, R1 \\ 6 \, \overline{853} \quad \: \\
+          \underline{- \; 6 \;\;} \quad \;\;\, \\ 25 \quad \;\;\: \\
+          \underline{- \; 24 \;\; } \quad \: \\ 13 \quad \; \\ \underline{- \;
+          12} \quad \; \\ 1 \quad \; \end{aligned} \]
+        </p>
+      </article>
+
+      <h3>Long Division Digit by Digit - Without Remainder</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{array}{r} 759 \\ 4\overline{)3,036} \\ - \, 28 \\
+          \underline{\phantom{0}28} \\ 23 \\ - \, 20 \\
+          \underline{\phantom{0}20} \\ 36 \\ - \, 36 \\
+          \underline{\phantom{0}36} \\ 0 \\ \end{array}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mn>759</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mrow>
+                  <mn>4</mn>
+                  <mrow class="border-top" style="padding: 0.1em 0 0 0">
+                    <mrow>
+                      <mo
+                        form="postfix"
+                        stretchy="false"
+                        lspace="0em"
+                        rspace="0em"
+                        >)</mo
+                      >
+                      <mn>3,036</mn>
+                    </mrow>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mrow>
+                  <mo>−</mo>
+                  <mspace width="0.1667em"></mspace>
+                  <mn>28</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 0pt"
+              >
+                <mrow style="padding: 0 0 0.1em 0">
+                  <mrow>
+                    <mphantom>
+                      <mn>0</mn>
+                    </mphantom>
+                    <mn>28</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mn>23</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mrow>
+                  <mo>−</mo>
+                  <mspace width="0.1667em"></mspace>
+                  <mn>20</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 0pt"
+              >
+                <mrow style="padding: 0 0 0.1em 0">
+                  <mrow>
+                    <mphantom>
+                      <mn>0</mn>
+                    </mphantom>
+                    <mn>20</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mn>36</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mrow>
+                  <mo>−</mo>
+                  <mspace width="0.1667em"></mspace>
+                  <mn>36</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 0pt 0.5ex 0pt"
+              >
+                <mrow style="padding: 0 0 0.1em 0">
+                  <mrow>
+                    <mphantom>
+                      <mn>0</mn>
+                    </mphantom>
+                    <mn>36</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 0pt 0.5ex 0pt">
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{array}{r} 759 \\ 4\overline{)3,036} \\ - \, 28 \\
+          \underline{\phantom{0}28} \\ 23 \\ - \, 20 \\
+          \underline{\phantom{0}20} \\ 36 \\ - \, 36 \\
+          \underline{\phantom{0}36} \\ 0 \\ \end{array}\)
+        </p>
+      </article>
+
+      <h3>Long Division Expanded Notation</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{array}{r} \begin{aligned} 8 \\ 40 \end{aligned} \big] \!\!\!
+          & \;\; 48 \: R3 \\ 5 \overline{)243} & \\ \underline{- \; 200} & \\
+          \phantom{0}43 & \\ \underline{- \; 40} & \\ \phantom{00}3 &
+          \end{array}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable columnalign="right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow>
+                  <mtable displaystyle="true" columnalign="right">
+                    <mtr>
+                      <mtd
+                        class="tml-right"
+                        style="padding: 0.7ex 0em 0.7ex 0em"
+                      >
+                        <mn>8</mn>
+                      </mtd>
+                    </mtr>
+                    <mtr>
+                      <mtd
+                        class="tml-right"
+                        style="padding: 0.7ex 0em 0.7ex 0em"
+                      >
+                        <mn>40</mn>
+                      </mtd>
+                    </mtr>
+                  </mtable>
+                  <mo
+                    fence="false"
+                    symmetric="true"
+                    minsize="1.2em"
+                    maxsize="1.2em"
+                    >]</mo
+                  >
+                  <mspace
+                    width="-0.1667em"
+                    style="margin-left: -0.1667em"
+                  ></mspace>
+                  <mspace
+                    width="-0.1667em"
+                    style="margin-left: -0.1667em"
+                  ></mspace>
+                  <mspace
+                    width="-0.1667em"
+                    style="margin-left: -0.1667em"
+                  ></mspace>
+                </mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow>
+                  <mspace width="0.2778em"></mspace>
+                  <mspace width="0.2778em"></mspace>
+                  <mn>48</mn>
+                  <mspace width="0.2222em"></mspace>
+                  <mi>R</mi>
+                  <mn>3</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow>
+                  <mn>5</mn>
+                  <mrow class="border-top" style="padding: 0.1em 0 0 0">
+                    <mrow>
+                      <mo
+                        form="postfix"
+                        stretchy="false"
+                        lspace="0em"
+                        rspace="0em"
+                        >)</mo
+                      >
+                      <mn>243</mn>
+                    </mrow>
+                  </mrow>
+                </mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mrow style="padding: 0 0 0.1em 0">
+                  <mrow>
+                    <mo lspace="0em" rspace="0em">−</mo>
+                    <mspace width="0.2778em"></mspace>
+                    <mn>200</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow>
+                  <mphantom>
+                    <mn>0</mn>
+                  </mphantom>
+                  <mn>43</mn>
+                </mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.5ex 5.9776pt 0.5ex 0pt"
+              >
+                <mrow style="padding: 0 0 0.1em 0">
+                  <mrow>
+                    <mo lspace="0em" rspace="0em">−</mo>
+                    <mspace width="0.2778em"></mspace>
+                    <mn>40</mn>
+                  </mrow>
+                </mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.5ex 5.9776pt 0.5ex 0pt">
+                <mrow>
+                  <mphantom>
+                    <mn>00</mn>
+                  </mphantom>
+                  <mn>3</mn>
+                </mrow>
+              </mtd>
+              <mtd style="padding: 0.5ex 0pt 0.5ex 5.9776pt">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{array}{r} \begin{aligned} 8 \\ 40 \end{aligned} \big] \!\!\!
+          & \;\; 48 \: R3 \\ 5 \overline{)243} & \\ \underline{- \; 200} & \\
+          \phantom{0}43 & \\ \underline{- \; 40} & \\ \phantom{00}3 &
+          \end{array}\)
+        </p>
+      </article>
+
+      <h3>Long Division – Place Value Sections</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} & & 70 &= 70 \\ 5 & \phantom{} & \begin{array}{|r|}
+          \hline 350 \\ -350 \\ \hline \end{array} & \phantom{} & \\ &
+          \phantom{} & 0 & \phantom{} & \\ \end{aligned}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left right left right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>70</mn>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mn>70</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mn>5</mn>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mphantom></mphantom>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mtable columnalign="right">
+                  <mtr>
+                    <mtd
+                      class="tml-right border-left border-right border-top"
+                      style="padding: 0.5ex 0pt 0.5ex 0pt; padding-right: 0.4em"
+                    >
+                      <mn>350</mn>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd
+                      class="tml-right border-bottom border-left border-right"
+                      style="padding: 0.5ex 0pt 0.5ex 0pt; padding-right: 0.4em"
+                    >
+                      <mrow>
+                        <mo>−</mo>
+                        <mn>350</mn>
+                      </mrow>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mphantom></mphantom>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mphantom></mphantom>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mn>0</mn>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mphantom></mphantom>
+              </mtd>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 1em">
+                <mrow></mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{aligned} & & 70 &= 70 \\ 5 & \phantom{} & \begin{array}{|r|}
+          \hline 350 \\ -350 \\ \hline \end{array} & \phantom{} & \\ &
+          \phantom{} & 0 & \phantom{} & \\ \end{aligned}\)
+        </p>
+      </article>
+    </section>
+
+    <section id="fractions-equations">
+      <h2>Fractions Examples</h2>
+
+      <h3>Stacked</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(\frac{11}{30}\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mfrac>
+            <mn>11</mn>
+            <mn>30</mn>
+          </mfrac>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(\frac{11}{30}\)</p>
+      </article>
+
+      <h3>Addition – Finding Common Denominator</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} \frac{11}{30} + \frac{16}{45} &= \frac{11 \times
+          45}{30 \times 45} + \frac{16 \times 30}{45 \times 30} \\ &=
+          \frac{495}{1,350} + \frac{480}{1,350} \\ &= \frac{975}{1,350}
+          \end{aligned}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mfrac>
+                    <mn>11</mn>
+                    <mn>30</mn>
+                  </mfrac>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mn>16</mn>
+                    <mn>45</mn>
+                  </mfrac>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mrow>
+                      <mn>11</mn>
+                      <mo>×</mo>
+                      <mn>45</mn>
+                    </mrow>
+                    <mrow>
+                      <mn>30</mn>
+                      <mo>×</mo>
+                      <mn>45</mn>
+                    </mrow>
+                  </mfrac>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mrow>
+                      <mn>16</mn>
+                      <mo>×</mo>
+                      <mn>30</mn>
+                    </mrow>
+                    <mrow>
+                      <mn>45</mn>
+                      <mo>×</mo>
+                      <mn>30</mn>
+                    </mrow>
+                  </mfrac>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mn>495</mn>
+                    <mn>1,350</mn>
+                  </mfrac>
+                  <mo>+</mo>
+                  <mfrac>
+                    <mn>480</mn>
+                    <mn>1,350</mn>
+                  </mfrac>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mfrac>
+                    <mn>975</mn>
+                    <mn>1,350</mn>
+                  </mfrac>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{aligned} \frac{11}{30} + \frac{16}{45} &= \frac{11 \times
+          45}{30 \times 45} + \frac{16 \times 30}{45 \times 30} \\ &=
+          \frac{495}{1,350} + \frac{480}{1,350} \\ &= \frac{975}{1,350}
+          \end{aligned}\)
+        </p>
+      </article>
+
+      <h3>Horizontal Addition/Subtraction Mixed Numbers</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(3\tfrac{3}{10} - 1\tfrac{3}{4}\)</p>
+        <p>\(4\tfrac{2}{9} + 1\tfrac{2}{3}\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>3</mn>
+            <mstyle displaystyle="false" scriptlevel="0">
+              <mfrac>
+                <mn>3</mn>
+                <mn>10</mn>
+              </mfrac>
+            </mstyle>
+            <mo>−</mo>
+          </mrow>
+          <mrow>
+            <mn>1</mn>
+            <mstyle displaystyle="false" scriptlevel="0">
+              <mfrac>
+                <mn>3</mn>
+                <mn>4</mn>
+              </mfrac>
+            </mstyle>
+          </mrow>
+        </math>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mn>4</mn>
+            <mstyle displaystyle="false" scriptlevel="0">
+              <mfrac>
+                <mn>2</mn>
+                <mn>9</mn>
+              </mfrac>
+            </mstyle>
+            <mo>+</mo>
+          </mrow>
+          <mrow>
+            <mn>1</mn>
+            <mstyle displaystyle="false" scriptlevel="0">
+              <mfrac>
+                <mn>2</mn>
+                <mn>3</mn>
+              </mfrac>
+            </mstyle>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(3\tfrac{3}{10} - 1\tfrac{3}{4}\)</p>
+        <p>\(4\tfrac{2}{9} + 1\tfrac{2}{3}\)</p>
+      </article>
+
+      <h3>Vertical Subtraction – Mixed Numbers</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} 7\tfrac{5}{9} \\ - \; 3\tfrac{2}{15} \\ \hline 4
+          \tfrac{19}{45} \end{aligned}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>7</mn>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>5</mn>
+                      <mn>9</mn>
+                    </mfrac>
+                  </mstyle>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd
+                class="tml-right border-bottom"
+                style="padding: 0.7ex 0em 0.7ex 0em"
+              >
+                <mrow>
+                  <mo>−</mo>
+                  <mspace width="0.2778em"></mspace>
+                  <mn>3</mn>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>2</mn>
+                      <mn>15</mn>
+                    </mfrac>
+                  </mstyle>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>4</mn>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>19</mn>
+                      <mn>45</mn>
+                    </mfrac>
+                  </mstyle>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{aligned} 7\tfrac{5}{9} \\ - \; 3\tfrac{2}{15} \\ \hline 4
+          \tfrac{19}{45} \end{aligned}\)
+        </p>
+      </article>
+
+      <h3>Multiplying by Whole Number</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\begin{aligned} \tfrac{1}{5} \bullet 3 &= \tfrac{1}{5} \bullet ( 1 +
+          1 + 1) \\ &= (\tfrac{1}{5} \bullet 1) + (\tfrac{1}{5} \bullet 1) +
+          (\tfrac{1}{5} \bullet 1) \\ &= \tfrac{1}{5} + \tfrac{1}{5} +
+          \tfrac{1}{5} \\ &= \tfrac{3}{5} \end{aligned} \)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                  <mo>∙</mo>
+                  <mn>3</mn>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                  <mo>∙</mo>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mn>1</mn>
+                  <mo>+</mo>
+                  <mn>1</mn>
+                  <mo>+</mo>
+                  <mn>1</mn>
+                  <mo form="postfix" stretchy="false">)</mo>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                  <mo>∙</mo>
+                  <mn>1</mn>
+                  <mo form="postfix" stretchy="false">)</mo>
+                  <mo>+</mo>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                  <mo>∙</mo>
+                  <mn>1</mn>
+                  <mo form="postfix" stretchy="false">)</mo>
+                  <mo>+</mo>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                  <mo>∙</mo>
+                  <mn>1</mn>
+                  <mo form="postfix" stretchy="false">)</mo>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                  <mo>+</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                  <mo>+</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>1</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow></mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mo>=</mo>
+                  <mstyle displaystyle="false" scriptlevel="0">
+                    <mfrac>
+                      <mn>3</mn>
+                      <mn>5</mn>
+                    </mfrac>
+                  </mstyle>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\begin{aligned} \tfrac{1}{5} \bullet 3 &= \tfrac{1}{5} \bullet ( 1 +
+          1 + 1) \\ &= (\tfrac{1}{5} \bullet 1) + (\tfrac{1}{5} \bullet 1) +
+          (\tfrac{1}{5} \bullet 1) \\ &= \tfrac{1}{5} + \tfrac{1}{5} +
+          \tfrac{1}{5} \\ &= \tfrac{3}{5} \end{aligned} \)
+        </p>
+      </article>
+
+      <h3>Multiplying Fractions</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+
+        <p></p>
+        <p>
+          \(\frac{3}{10} \bullet \frac{5}{12} = \frac{3 \;\bullet\; 5}{10
+          \;\bullet\; 12}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mfrac>
+              <mn>3</mn>
+              <mn>10</mn>
+            </mfrac>
+            <mo>∙</mo>
+          </mrow>
+          <mrow>
+            <mfrac>
+              <mn>5</mn>
+              <mn>12</mn>
+            </mfrac>
+            <mo>=</mo>
+          </mrow>
+          <mrow>
+            <mfrac>
+              <mrow>
+                <mn>3</mn>
+                <mspace width="0.2778em"></mspace>
+                <mo>∙</mo>
+                <mspace width="0.2778em"></mspace>
+                <mn>5</mn>
+              </mrow>
+              <mrow>
+                <mn>10</mn>
+                <mspace width="0.2778em"></mspace>
+                <mo>∙</mo>
+                <mspace width="0.2778em"></mspace>
+                <mn>12</mn>
+              </mrow>
+            </mfrac>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\frac{3}{10} \bullet \frac{5}{12} = \frac{3 \;\bullet\; 5}{10
+          \;\bullet\; 12}\)
+        </p>
+      </article>
+
+      <h3>Dividing Fractions</h3>
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>
+          \(\mathcal{w} \div \frac{1}{\mathcal{d}} = \mathcal{w} \times
+          \mathcal{d}\)
+        </p>
+        <p>
+          \(\mathcal{n} \div \mathcal{d} = \mathcal{n} \times
+          \frac{1}{\mathcal{d}}\)
+        </p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+          ><mrow
+            ><mi mathvariant="script">w</mi><mo>&#xf7;</mo
+            ><mfrac><mn>1</mn><mi mathvariant="script">d</mi></mfrac
+            ><mo>=</mo><mi mathvariant="script">w</mi><mo>&#xd7;</mo
+            ><mi mathvariant="script">d</mi></mrow
+          ></math
+        >
+
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+          ><mrow
+            ><mi mathvariant="script">n</mi><mo>&#xf7;</mo
+            ><mi mathvariant="script">d</mi><mo>=</mo
+            ><mi mathvariant="script">n</mi><mo>&#xd7;</mo
+            ><mfrac><mn>1</mn><mi mathvariant="script">d</mi></mfrac
+            ><mo>=</mo
+            ><mfrac
+              ><mi mathvariant="script">n</mi
+              ><mi mathvariant="script">d</mi></mfrac
+            ></mrow
+          ></math
+        >
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>
+          \(\mathcal{w} \div \frac{1}{\mathcal{d}} = \mathcal{w} \times
+          \mathcal{d}\)
+        </p>
+        <p>
+          \(\mathcal{n} \div \mathcal{d} = \mathcal{n} \times
+          \frac{1}{\mathcal{d}}\)
+        </p>
+      </article>
+    </section>
+
+    <section id="comparisons-equations">
+      <h3>Comparisons</h3>
+
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(\begin{aligned} 63.749 < 63.\square &2 \\ \end{aligned}\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mtable displaystyle="true" columnalign="right left">
+            <mtr>
+              <mtd class="tml-right" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mrow>
+                  <mn>63.749</mn>
+                  <mo>&lt;</mo>
+                  <mn>63</mn>
+                  <mi>.</mi>
+                  <mi>□</mi>
+                </mrow>
+              </mtd>
+              <mtd class="tml-left" style="padding: 0.7ex 0em 0.7ex 0em">
+                <mn>2</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(\begin{aligned} 63.749 < 63.\square &2 \\ \end{aligned}\)</p>
+      </article>
+    </section>
+
+    <section id="tally-marks-equations">
+      <h3>Tally Marks</h3>
+
+      <article class="no-mathjax">
+        <h4>KaTeX:</h4>
+        <p>\(\cancel{||||} \ \ |||\)</p>
+      </article>
+      <article class="no-mathjax">
+        <h4>MathML:</h4>
+        <math
+          role="math"
+          xmlns="http://www.w3.org/1998/Math/MathML"
+          class="no-mathjax"
+        >
+          <mrow>
+            <mrow class="tml-cancel">
+              <mrow>
+                <mi>|</mi>
+                <mi>|</mi>
+                <mi>|</mi>
+                <mi>|</mi>
+              </mrow>
+            </mrow>
+            <mtext> </mtext>
+            <mtext> </mtext>
+            <mi>|</mi>
+            <mi>|</mi>
+            <mi>|</mi>
+          </mrow>
+        </math>
+      </article>
+      <article class="mathjax">
+        <h4>MathJax:</h4>
+        <p>\(\cancel{||||} \ \ |||\)</p>
+      </article>
+    </section>
+
+    <section id="findings">
+      <h3>Findings from Dev experience</h3>
+
+      <article>
+        <p>
+          The mathJax versions of mathMl come with more semantic information
+          than the MathML generated by Temml. This is because mathJax supports
+          adding TeX hints to mathML and adding the original TeX source as an
+          annotation, (these must be enabled however and are not turned on by
+          default)
+        </p>
+
+        <p>
+          The Temml comes with some base styling, similar to KaTeX, however the
+          mathJax does not. For the purpose of this POC, the Temml styling is
+          applied to the mathJax equations to ensure visual consistency around
+          typography.
+        </p>
+
+        <p>
+          While styling is applied through css, some limitations still exist,
+          for example all the borders must be added by the author, or a suite of
+          css classes must be created and the author would still need to apply
+          these classes, alternatively, there may be a formatter or equation
+          generator that will do this. Temml generated the inline styles for the
+          mathML, while mathJax does not, For the purpose of this poc, the
+          missing styles have been left out for now, these missing styles are
+          present in the mathJax version of the mathML which is below the Temml
+          version.
+        </p>
+
+        <p>
+          Per
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/MathML/Authoring"
+            >MDN</a
+          >
+          "this text can become very verbose for complex content and so requires
+          proper authoring tools such as converters from a lightweight markup
+          language or WYSIWYG equation editors". Some of these tools can be
+          found
+          <a href="https://www.w3.org/wiki/Math_Tools#Authoring_tools">here</a>
+          or through the use of editors like
+          <a
+            href="https://www.tiny.cloud/tinymce/features/math-equations/#math-equations-demo"
+          >
+            TinyMCE</a
+          >
+        </p>
+
+        <p>
+          No math is natively supported in selects, there is an example with the
+          math visually rendering correctly however without the use of
+          javascript or some plugin, it is not possible to match the visual
+          display with the actual read out versions
+        </p>
+
+        <p>
+          Anywhere where there is a MathML equation there are two versions, the
+          Temml version and the mathjax version with the Temml version coming
+          first.
+        </p>
+      </article>
+
+      <table>
+        <thead>
+          <tr>
+            <th>MathML Compatibility</th>
+            <th>HTML Elements</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compatible">
+            <td>Compatible</td>
+            <td>
+              &lt;div&gt;, &lt;span&gt;, &lt;p&gt;, &lt;h1&gt; - &lt;h6&gt;,
+              &lt;aside&gt;, &lt;footer&gt;, &lt;header&gt;, &lt;nav&gt;,
+              &lt;section&gt;, &lt;article&gt;, &lt;main&gt;,
+              &lt;blockquote&gt;, &lt;pre&gt;, &lt;code&gt;, &lt;address&gt;,
+              &lt;details&gt;, &lt;summary&gt;<br />
+              &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;<br />
+              &lt;figure&gt;, &lt;figcaption&gt;<br />
+              &lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;<br />
+              &lt;table&gt;, &lt;caption&gt;, &lt;thead&gt;, &lt;tbody&gt;,
+              &lt;tfoot&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;
+            </td>
+            <td>Can contain MathML content.</td>
+          </tr>
+          <tr class="incompatible">
+            <td>Incompatible</td>
+            <td>
+              &lt;input&gt;, &lt;textarea&gt;, &lt;select&gt;, &lt;option&gt;,
+              &lt;button&gt;
+            </td>
+            <td>Cannot contain MathML content.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="pros-cons">
+      <h3>Pros vs Cons</h3>
+
+      <article>
+        <h4>KaTeX</h4>
+        <h5>Pros</h5>
+
+        <ul class="pros">
+          <li>
+            <strong>Compatibility:</strong> Works well with modern web
+            technologies and integrates easily with JavaScript frameworks.
+          </li>
+          <li>
+            <strong>Ease of Use:</strong> Simple to use with KaTeX syntax, which
+            is familiar to many users.
+          </li>
+          <li>
+            <strong>Styling:</strong> Provides good control over the styling of
+            mathematical expressions.
+          </li>
+        </ul>
+        <h5>Cons</h5>
+        <ul class="cons">
+          <li>
+            <strong>Accessibility:</strong> Limited accessibility features
+            compared to MathML. Screen readers may not interpret KaTeX-rendered
+            content as effectively.
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h4>MathMl</h4>
+        <h5>Pros</h5>
+
+        <ul class="pros">
+          <li>
+            <strong>Accessibility:</strong> Excellent accessibility support.
+            Screen readers and other assistive technologies can interpret MathML
+            content effectively.
+          </li>
+          <li>
+            <strong>Standardization:</strong> MathML is a W3C standard, ensuring
+            broad compatibility and future-proofing.
+          </li>
+          <li>
+            <strong>Integration:</strong> Integrates well with other XML-based
+            technologies and can be embedded directly in HTML.
+          </li>
+        </ul>
+        <h5>Pros</h5>
+
+        <ul class="cons">
+          <li>
+            <strong>Browser Support:</strong> Legacy Browsers may be an issue
+          </li>
+          <li>
+            <strong>Styling:</strong> Limited control over styling compared to
+            KaTeX and MathJax.
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h4>MathJax</h4>
+        <h5>Pros</h5>
+        <ul class="pros">
+          <li>
+            <strong>Feature-Rich:</strong> Supports a wide range of KaTeX
+            features and extensions, making it suitable for complex mathematical
+            content.
+          </li>
+          <li>
+            <strong>Accessibility:</strong> Strong accessibility support, with
+            features designed to work well with screen readers.
+          </li>
+          <li>
+            <strong>Customization:</strong> Highly customizable with extensive
+            configuration options.
+          </li>
+        </ul>
+
+        <h5>Cons</h5>
+        <ul class="cons">
+          <li>
+            <strong>Size:</strong> Larger footprint, which can impact load times
+            and performance.
+          </li>
+        </ul>
+      </article>
+    </section>
+  </body>
+
+  <!-- SVG Symbol Definition -->
+  <svg style="display: none">
+    <symbol
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 40 40"
+      id="arrow-up"
+    >
+      <path
+        d="M9.41421 25.4142C8.63317 26.1953 7.36684 26.1953 6.58579 25.4142C5.80474 24.6332 5.80474 23.3668 6.58579 22.5858L18.5858 10.5858C19.3668 9.80474 20.6332 9.80474 21.4142 10.5858L33.4142 22.5858C34.1953 23.3668 34.1953 24.6332 33.4142 25.4142C32.6332 26.1953 31.3668 26.1953 30.5858 25.4142L20 14.8284L9.41421 25.4142Z"
+        fill="var(--connect__icon-fill-color, #fff)"
+      ></path>
+    </symbol>
+  </svg>
+</html>

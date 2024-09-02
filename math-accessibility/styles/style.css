@@ -1,0 +1,1051 @@
+:root {
+  --headline: 'HMHMicroMedium';
+  --sub-head: 'ProximaHMHBold';
+  --body-copy: 'ProximaHMH';
+  --stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  --connect__effects-inner-edge: 0.125rem;
+  --inner-status: 0.25rem;
+  --inner-divider-width: 0.375rem;
+
+  --primary-gradient: linear-gradient(90deg, #ff0083 0%, #fdb913 100%);
+  --gold-gradient: linear-gradient(90deg, #ff6f0f 0%, #fdb913 100%);
+  --orange-gradient: linear-gradient(90deg, #ff0083 0%, #ff6f0f 100%);
+  --magenta-gradient: linear-gradient(90deg, #cc00cc 0%, #ff0083 100%);
+}
+
+/* DESIGN SYSTEMS 
+  * MCQ
+  * INPUT
+  * BUTTON
+*/
+
+/* 
+  * MCQ STYLING
+  * MCQ LABEL
+  * MCQ INPUT
+*/
+.connect__mcq-label {
+  --connect__label-border-w: 0rem;
+  --connect__label-border-c: var(--connect__neutrals-white, transparent);
+  --connect__label-radius: var(--border-radius);
+  --inner-shadow: 0rem 0rem 0rem var(--connect__effects-inner-edge)
+    var(--inner-shadow-color, transparent) inset;
+  --inner-shadow-color: var(--connect__neutrals-white);
+  --starting-shadow-color: var(--connect__neutrals-white);
+  --connect__shadow-level-1: var(--connect__shadow-spread-level-2);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-7);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-8);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-9);
+  --connect__label-color: var(--active-color, var(--connect__neutrals-dark));
+  --connect__label-gap: var(--connect__spacer-md);
+  --connect__label-padding-y: 0;
+  --connect__label-padding-x: 0;
+  --connect__label-justify-content: var(--connect__card-justify, start);
+  --connect__label-w: 100%;
+  --connect__input-dimensions: calc(var(--connect__spacer-lg) - var(--border-width));
+
+  align-items: center;
+  background-color: var(--state-based-bg, var(--connect__neutrals-white));
+  border: var(--connect__label-border-w) solid var(--connect__label-border-c, transparent);
+  border-radius: var(--connect__label-radius, 0);
+
+  color: var(--connect__label-color);
+  cursor: pointer;
+  display: inline-flex;
+  flex-flow: var(--connect__label-flow, row);
+  justify-content: var(--connect__label-justify-content);
+  padding: var(--connect__label-padding-y) var(--connect__label-padding-x);
+  position: relative;
+  text-transform: var(--connect__label-text-transform, initial);
+  transition: all 90ms cubic-bezier(0.42, 0, 0.58, 1);
+  width: var(--connect__label-w, fit-content);
+}
+.connect__mcq-label:before {
+  --connect__input-dimensions: calc(var(--connect__spacer-xl) - var(--border-width));
+
+  --connect__input-border-w: 0.125rem;
+  border: var(--connect__input-border-w) solid
+    var(--checkbox-checked-state-based-border-c, var(--connect__selected-mid));
+  border-radius: calc(var(--border-radius) - var(--connect__spacer-sm));
+  content: '';
+  height: calc(
+    var(--connect__input-dimensions) - var(--connect__spacer-sm) - var(--connect__input-border-w)
+  );
+  margin-right: var(--connect__label-gap);
+  padding: var(--connect__spacer-xs);
+  width: calc(
+    var(--connect__input-dimensions) - var(--connect__spacer-sm) - var(--connect__input-border-w)
+  );
+}
+input[type='checkbox'].connect__input,
+input[type='radio'].connect__input {
+  opacity: 0;
+  position: absolute;
+}
+input[type='checkbox'].connect__input:disabled + .connect__mcq-label,
+input[type='radio'].connect__input:disabled + .connect__mcq-label {
+  --active-color: var(--connect__neutrals-mid);
+  --checkbox-checked-state-based-border-c: var(--connect__gray-c45);
+  --checkbox-state-based-bg: var(--checked-incorrect-bg);
+  --checkbox-state-based-bg: var(--connect__neutrals-pale);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-0);
+  cursor: not-allowed;
+}
+
+input[type='checkbox'].connect__input:checked + .connect__mcq-label:before,
+input[type='radio'].connect__input:checked + .connect__mcq-label:before {
+  background-color: var(--checkbox-state-based-bg, var(--connect__selected-mid));
+  background-image: var(--checked-state-icon, transparent);
+  background-size: contain;
+  box-shadow: 0 0 0 var(--connect__input-border-w)
+    var(--checkbox-state-based-bg, var(--connect__neutrals-white)) inset;
+}
+
+input[type='radio'].connect__input + label:before,
+input[type='radio'].connect__input + label:after {
+  border-radius: 50%;
+}
+
+/* 
+  * INPUT STYLING
+  * INPUT
+*/
+.connect__input {
+  --resize: none;
+  --starting-shadow-color: var(--connect__shadow-10);
+  --connect__input-focus-shadow: transparent;
+  --outer-shadow-color: var(--connect__neutrals-white);
+  --connect__shadow-level-1: var(--connect__shadow-spread-level-1);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-4);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-3);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-5);
+  --connect__shadow-level-5: var(--connect__shadow-spread-level-0);
+  --connect__input-outer-shadow: var(--connect__shadow-spread-level-2);
+  --connect__input-padding-y: var(--connect__spacer-sm);
+  --connect__input-padding-x: var(--connect__spacer-md);
+  --connect__input-fs: var(--connect__body-sm, 1.25rem);
+  --connect__input-lh: var(--connect__body-sm-lheight, 1.5);
+  --connect__input-text-color: var(--active-color, var(--connect__neutrals-dark));
+  --connect__input-bg: var(--connect__neutrals-white, transparent);
+  --connect__input-border-w: 0rem;
+  --connect__input-border-c: var(--connect__neutrals-white, transparent);
+  --caret-color: var(--connect__selected-mid);
+  background-color: var(--state-based-bg, var(--connect__neutrals-white));
+  border: var(--connect__input-border-w) solid var(--connect__input-border-c);
+  border-radius: var(--border-radius);
+  box-shadow:
+    var(--connect__shadow-level-1) var(--starting-shadow-color, var(--connect__shadow-10)) inset,
+    var(--connect__shadow-level-2) var(--connect__shadow-20) inset,
+    var(--connect__shadow-level-3) var(--connect__shadow-14) inset,
+    var(--connect__shadow-level-4) var(--connect__shadow-12) inset,
+    var(--connect__shadow-level-5, initial) var(--connect__input-focus-shadow, rgba(0, 0, 0, 0)),
+    var(--connect__input-outer-shadow) var(--outer-shadow-color, #fff);
+  caret-color: var(--caret-color);
+  color: var(--connect__input-text-color);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1;
+  font-family: var(--connect__font-sans);
+  font-size: var(--connect__input-fs);
+  line-height: var(--connect__input-lh);
+  padding: var(--connect__input-padding-y) var(--connect__input-padding-x);
+  position: relative;
+  resize: var(--resize);
+  transition: all 90ms cubic-bezier(0.42, 0, 0.58, 1);
+  width: var(--connect__input-width, 100%);
+}
+.connect__input:not(:disabled):hover,
+.connect__input:not(:disabled):active,
+.connect__input:not(:disabled).active,
+.connect__input:not(:disabled).hover {
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-7);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-14);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-9);
+}
+.connect__input.active,
+.connect__input:focus-visible,
+.connect__input.focus .connect__input:active {
+  outline: unset;
+}
+.connect__input:focus-visible:not(:active),
+.connect__input.focus-visible:not(:active) {
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-4);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-3);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-5);
+  --connect__shadow-level-5: var(--connect__shadow-spread-level-17);
+  --connect__input-outer-shadow: var(--connect__shadow-spread-level-15);
+  --starting-shadow-color: var(--connect__focus-mid);
+  --connect__input-focus-shadow: var(--connect__focus-mid);
+}
+.connect__input:active:not(:disabled),
+.connect__input.active:not(.disabled) {
+  --starting-shadow-color: var(--connect__selected-mid);
+}
+
+/* 
+  * BUTTON STYLING
+  * BUTTON
+*/
+.connect__button {
+  --connect__button-fs: var(--theme-button-fs, var(--connect__body-sm));
+  --connect__button-lh: var(--theme-button-lh, var(--connect__body-sm-lheight));
+  --connect__button-font-w: var(--theme-button-fw, 400);
+  --connect__button-text-transform: var(--theme-button-transform, capitalize);
+  --connect__button-border-w: var(--theme-button-border-w, 0rem);
+  --connect__button-border-c: var(--connect__neutrals-white, transparent);
+  --connect__button-radius: var(--theme-border-radius, var(--border-radius));
+  --inner-shadow: 0rem 0rem 0rem var(--connect__effects-inner-edge)
+    var(--inner-shadow-color, transparent) inset;
+  --inner-shadow-color: var(--connect__neutrals-white);
+  --connect__shadow-level-1: var(--connect__shadow-spread-level-1);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-7);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-8);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-9);
+  --connect__button-color: var(--active-color, var(--connect__neutrals-dark));
+  --connect__button-bg: var(--state-based-bg, var(--connect__selected-mid));
+  --connect__button-gap: var(--connect__spacer-sm);
+  --connect__button-padding-y: calc(var(--connect__spacer-sm) - var(--connect__button-border-w));
+  --connect__button-padding-x: calc(var(--connect__spacer-md) - var(--connect__button-border-w));
+  --connect__button-justify-content: var(--btn-justify, space-between);
+  --connect__button-flow: var(--btn-flow, row wrap);
+  --connect__button-margin: var(--theme-button-margin, 0);
+  --connect__button-color: var(--active-color);
+  background-color: var(--theme-button-bg, var(--connect__button-bg));
+  border: var(--connect__button-border-w) solid var(--connect__button-border-c, transparent);
+  border-radius: var(--connect__button-radius, 0);
+  box-shadow:
+    var(--inner-shadow),
+    0 0 0 var(--inner-status, 0)
+      var(--inner-status-color-state, var(--inner-status-color, transparent)) inset,
+    0 0 0 var(--connect__button-inner-divider, 0)
+      var(--connect__button-inner-divider-color, transparent) inset,
+    var(--connect__shadow-level-1) var(--connect__shadow-10),
+    var(--connect__shadow-level-2) var(--connect__shadow-20),
+    var(--connect__shadow-level-3) var(--connect__shadow-14),
+    var(--connect__shadow-level-4) var(--connect__shadow-12);
+  color: var(--theme-button-color, var(--connect__button-color));
+  cursor: var(--connect__disabled-cursor, pointer);
+  display: inline-flex;
+  flex-flow: var(--connect__button-flow);
+  font-family: var(--connect__font-sans);
+  font-size: var(--connect__button-fs);
+  font-weight: var(--connect__button-font-w, initial);
+  gap: var(--connect__button-gap, 0);
+  justify-content: var(--connect__button-justify-content);
+  line-height: var(--connect__button-lh);
+  margin: var(--connect__button-margin);
+  padding: calc(var(--connect__button-padding-y) - var(--connect__button-border-w))
+    calc(var(--connect__button-padding-x) - var(--connect__button-border-w));
+  text-transform: var(--connect__button-text-transform, initial);
+  transition: all 90ms cubic-bezier(0.42, 0, 0.58, 1);
+  width: var(--connect__button-w, fit-content);
+}
+.connect__button:not(:disabled):hover,
+.connect__button:not(:disabled).hover {
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-10);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-11);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-12);
+}
+.connect__button:not(:disabled):active,
+.connect__button:not(:disabled).active {
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-0);
+}
+.connect__button:focus-visible:not(:active),
+.connect__button.focus-visible:not(:active) {
+  --connect__shadow-10: var(--connect__focus-mid);
+  --connect__shadow-20: var(--connect__focus-mid);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-16);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-0);
+  outline: unset;
+}
+.connect__button-primary {
+  --active-color: var(--connect__neutrals-white);
+  --icon-fill: var(--connect__icon-fill-color);
+}
+
+a {
+  --inner-shadow-color: var(--connect__neutrals-white);
+  --connect__shadow-level-1: var(--connect__shadow-spread-level-1);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-7);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-8);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-9);
+  box-shadow:
+    var(--inner-shadow),
+    0 0 0 var(--inner-status, 0)
+      var(--inner-status-color-state, var(--inner-status-color, transparent)) inset,
+    0 0 0 var(--connect__button-inner-divider, 0)
+      var(--connect__button-inner-divider-color, transparent) inset,
+    var(--connect__shadow-level-1) var(--connect__shadow-10),
+    var(--connect__shadow-level-2) var(--connect__shadow-20),
+    var(--connect__shadow-level-3) var(--connect__shadow-14),
+    var(--connect__shadow-level-4) var(--connect__shadow-12);
+
+  color: var(--connect__selected-mid);
+  text-decoration: 0;
+}
+
+a:hover {
+  color: var(--connect__selected-dark);
+}
+
+a:focus-visible {
+  --inner-shadow: 0rem 0rem 0rem var(--connect__effects-inner-edge)
+    var(--inner-shadow-color, transparent) inset;
+
+  --connect__shadow-10: var(--connect__focus-mid);
+  --connect__shadow-20: var(--connect__focus-mid);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-16);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-0);
+  outline: 0;
+}
+
+button:active {
+  outline: unset;
+}
+
+.connect__select {
+  --connect__select-bg: var(--state-based-bg, var(--connect__neutrals-white));
+  --connect__select-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M4.70711 7.29289C4.31658 6.90237 3.68342 6.90237 3.29289 7.29289C2.90237 7.68342 2.90237 8.31658 3.29289 8.70711L9.29289 14.7071C9.68342 15.0976 10.3166 15.0976 10.7071 14.7071L16.7071 8.70711C17.0976 8.31658 17.0976 7.68342 16.7071 7.29289C16.3166 6.90237 15.6834 6.90237 15.2929 7.29289L10 12.5858L4.70711 7.29289Z' fill='%23006AFF'/%3E%3C/svg%3E");
+  --connect__select-border-w: 0rem;
+  --connect__select-border-c: var(--connect__select-border-c, transparent);
+  --connect__select-fs: var(--connect__body-sm, 1.25rem);
+  --connect__select-lh: var(--connect__body-sm-lheight, 1.5);
+  --connect__select-font-w: 400;
+  --connect__select-text-transform: capitalize;
+  --outer-shadow-color: var(--connect__neutrals-white);
+  --connect__shadow-level-1: var(--connect__shadow-spread-level-1);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-4);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-3);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-5);
+  --connect__shadow-level-5: var(--connect__shadow-spread-level-0);
+  --connect__input-outer-shadow: var(--connect__shadow-spread-level-2);
+  --connect__select-padding-y: var(--connect__spacer-sm);
+  --connect__select-padding-x: var(--connect__spacer-md);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--connect__select-bg);
+  background-image: var(--connect__select-icon);
+  background-position: calc(100% - var(--connect__select-padding-x));
+  background-repeat: no-repeat;
+  background-size: var(--ui-icon) var(--ui-icon);
+  border: var(--connect__select-border-w) solid var(--connect__select-border-c);
+  border-radius: var(--border-radius);
+  box-shadow:
+    var(--connect__shadow-level-1) var(--starting-shadow-color, var(--connect__shadow-10)) inset,
+    var(--connect__shadow-level-2) var(--connect__shadow-20) inset,
+    var(--connect__shadow-level-3) var(--connect__shadow-14) inset,
+    var(--connect__shadow-level-4) var(--connect__shadow-12) inset,
+    var(--connect__shadow-level-5, initial) var(--connect__input-focus-shadow, rgba(0, 0, 0, 0)),
+    var(--connect__input-outer-shadow) var(--outer-shadow-color, #fff);
+  color: var(--active-color, var(--connect__neutrals-dark));
+  display: inline-flex;
+  flex: 1;
+  font-size: var(--connect__select-fs);
+  font-weight: var(--connect__select-font-w);
+  line-height: var(--connect__select-lh);
+  padding: var(--connect__select-padding-y) var(--connect__select-padding-x);
+  position: relative;
+  text-transform: capitalize;
+  width: auto;
+}
+.connect__select:not(:disabled) {
+  cursor: pointer;
+}
+.connect__select:not(:disabled):hover,
+.connect__select:not(:disabled):active,
+.connect__select:not(:disabled).active,
+.connect__select:not(:disabled).hover {
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-7);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-14);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-9);
+}
+.connect__select.focus,
+.connect__select.active,
+.connect__select:focus-visible,
+.connect__select:active {
+  outline: unset;
+}
+.connect__select:focus-visible:not(:active),
+.connect__select.focus-visible:not(:active) {
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-4);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-3);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-5);
+  --connect__shadow-level-5: var(--connect__shadow-spread-level-17);
+  --connect__input-outer-shadow: var(--connect__shadow-spread-level-15);
+  --starting-shadow-color: var(--connect__focus-mid);
+  --connect__input-focus-shadow: var(--connect__focus-mid);
+}
+.connect__select:active:not(:disabled),
+.connect__select.active:not(.disabled) {
+  --starting-shadow-color: var(--connect__selected-mid);
+}
+.connect__select-correct,
+.connect__select-incorrect,
+.connect__select-shown,
+.connect__select:disabled {
+  --connect__select-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M4.70711 7.29289C4.31658 6.90237 3.68342 6.90237 3.29289 7.29289C2.90237 7.68342 2.90237 8.31658 3.29289 8.70711L9.29289 14.7071C9.68342 15.0976 10.3166 15.0976 10.7071 14.7071L16.7071 8.70711C17.0976 8.31658 17.0976 7.68342 16.7071 7.29289C16.3166 6.90237 15.6834 6.90237 15.2929 7.29289L10 12.5858L4.70711 7.29289Z' fill='%235D5F5F'/%3E%3C/svg%3E");
+}
+.connect__select::-ms-expand {
+  display: none;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 0.0625rem;
+  margin: -0.0625rem;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 0.0625rem;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  scroll-behavior: smooth;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  display: block;
+  list-style: none;
+  margin-block: 0;
+  padding-inline: 0;
+  unicode-bidi: isolate;
+}
+
+ul:not([class]) {
+  display: flex;
+  flex-flow: column wrap;
+  gap: var(--connect__spacer-md);
+  list-style: disc;
+
+  margin-top: var(--connect__spacer-md);
+  padding-inline-start: var(--connect__spacer-md);
+}
+
+/* Set core body defaults */
+body {
+  font-family: var(--body-copy), var(--stack);
+  font-size: var(--connect__body-sm);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: var(--connect__body-sm-lheight);
+  min-height: 100vh;
+  padding: var(--connect__spacer-xl) var(--connect__spacer-md);
+}
+
+/* Typography overrides 
+
+*/
+
+h1 {
+  font-family: var(--headline), var(--stack);
+}
+
+h2,
+h3 {
+  padding: var(--connect__spacer-sm);
+}
+
+h2,
+h3,
+h4 {
+  width: 100%;
+}
+
+h3:not([class]) {
+  background-color: var(--connect__neutrals-pale);
+  position: relative;
+}
+
+h3::after {
+  background: var(--gold-gradient);
+  bottom: 0;
+  content: '';
+  height: 0.125rem;
+  left: -0;
+  position: absolute;
+  width: 100%;
+}
+
+h3:nth-of-type(even)::after {
+  background: var(--orange-gradient);
+}
+
+h4 {
+  font-weight: 500;
+}
+
+h2,
+h3,
+h4 {
+  font-family: var(--sub-head), var(--stack);
+}
+
+header:not([class]) {
+  --cols: 1;
+  background-color: var(--connect__neutrals-pale);
+  container-name: header;
+  container-type: inline-size;
+
+  display: grid;
+  gap: var(--connect__spacer-lg);
+  grid-template-columns: repeat(var(--cols), 1fr);
+  padding: var(--connect__spacer-lg) var(--connect__spacer-md);
+  position: relative;
+}
+
+header:not([class])::after {
+  background: var(--primary-gradient);
+  bottom: 0;
+  content: '';
+  height: var(--connect__spacer-xs);
+  left: -0;
+  position: absolute;
+  width: 100%;
+}
+
+header p,
+header ul {
+  --basis-value: 100%;
+  --basis: calc(var(--basis-value) - var(--connect__spacer-md));
+  flex-basis: var(--basis);
+  grid-column: 1;
+  max-width: var(--basis);
+}
+
+header aside {
+  --basis-value: 100%;
+  --basis: calc(var(--basis-value) - var(--connect__spacer-md));
+  display: block;
+  flex-basis: var(--basis);
+  max-width: var(--basis);
+  padding: var(--connect__spacer-md);
+}
+
+aside ul {
+  list-style: disc;
+}
+
+aside ul + p {
+  margin-top: var(--connect__spacer-md);
+}
+
+aside select {
+  margin-top: var(--connect__spacer-md);
+}
+
+aside select + p {
+  margin-top: var(--connect__spacer-md);
+}
+
+aside select + p + math {
+  margin-top: var(--connect__spacer-md);
+}
+
+@media (min-width: 47.9375rem) {
+  header:not([class]) {
+    --cols: 2;
+  }
+}
+
+@container header (min-width: 47.9375rem) {
+  header p,
+  header ul {
+    --basis-value: 66%;
+  }
+
+  header aside {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+  }
+}
+@container header (min-width: 64rem) {
+  header p,
+  header ul {
+    --basis-value: 60%;
+  }
+}
+
+section {
+  --margin-y: calc(var(--connect__spacer-xl) * 2);
+  align-items: flex-start;
+  container-name: section;
+  container-type: inline-size;
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--connect__spacer-md);
+  margin-top: var(--margin-y);
+  padding: 0;
+  width: 100%;
+}
+
+/* Article styles, responsive basis based on container size */
+article {
+  --basis: calc(100% - var(--connect__spacer-md));
+
+  display: flex;
+  flex-basis: var(--basis);
+  flex-flow: column wrap;
+  gap: var(--gap, var(--connect__spacer-md));
+  max-width: var(--basis);
+  padding: var(--connect__spacer-md);
+  width: 100%;
+}
+
+@container section (min-width: 47.9375rem) {
+  article {
+    --basis: calc(50% - var(--connect__spacer-md));
+  }
+}
+@container section (min-width: 64rem) {
+  article {
+    --basis: calc(33.333% - var(--connect__spacer-md));
+  }
+}
+
+article:has(math + math) {
+  --gap: var(--connect__spacer-xl);
+}
+
+article:has(p + p) {
+  --gap: var(--connect__spacer-lg);
+}
+
+article main:has(select) {
+  --gap: var(--connect__spacer-sm);
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+article ul:not([class]) {
+  padding-inline-start: var(--connect__spacer-sm);
+}
+
+#mathJaxAccessibility {
+  container-name: mathJax;
+  container-type: inline-size;
+}
+
+#mathJaxAccessibility .math-output-screen {
+  display: none;
+}
+
+#mathJaxAccessibility p:has(span) {
+  gap: var(--connect__spacer-xs);
+}
+
+#mathJaxAccessibility p:has(span) span {
+  white-space: nowrap;
+}
+
+@container mathJax (min-width: .0625rem) {
+  p {
+    --basis: calc(100% - var(--connect__spacer-md));
+    display: flex;
+    flex-basis: var(--basis);
+    max-width: var(--basis);
+    padding: var(--connect__spacer-md);
+  }
+}
+
+@container mathJax (min-width: 47.9375rem) {
+  article {
+    --basis: calc(50% - var(--connect__spacer-md));
+  }
+
+  p {
+    --basis: calc(66% - var(--connect__spacer-md));
+  }
+}
+@container mathJax (min-width: 64rem) {
+  article {
+    --basis: calc(33.333% - var(--connect__spacer-md));
+  }
+}
+
+/* Core 'cpl' styles
+* Styles for each variation can be found with it's only code block usually behind a has check for this demo
+*/
+.cpl {
+  --connect__card-border-w: var(--theme-chip-border-w, 0rem);
+  --connect__card-border-c: var(--connect__neutrals-white, transparent);
+  --connect__card-radius: var(--theme-border-radius, var(--border-radius));
+
+  --connect__shadow-level-1: var(--connect__shadow-spread-level-1);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-4);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-18);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-18);
+
+  --connect__card-padding-y: 0;
+  --connect__card-padding-x: 0;
+
+  --connect__card-flow: var(--theme-card-flow, column wrap);
+
+  background-color: var(--connect__neutrals-white);
+  border: var(--connect__card-border-w) solid var(--connect__card-border-c, transparent);
+
+  border-radius: var(--border-radius);
+  box-shadow:
+    var(--connect__shadow-level-1) var(--connect__shadow-10),
+    var(--connect__shadow-level-2) var(--connect__shadow-20),
+    var(--connect__shadow-level-3) var(--connect__shadow-14),
+    var(--connect__shadow-level-4) var(--connect__shadow-12);
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-flow: var(--connect__card-flow);
+  padding: calc(var(--connect__card-padding-y) - var(--connect__card-border-w))
+    calc(var(--connect__card-padding-x) - var(--connect__card-border-w));
+  width: 100%;
+}
+
+.cpl header,
+.cpl main,
+.cpl footer {
+  align-items: var(--align, start);
+  display: flex;
+  flex-flow: var(--flow, row);
+  gap: var(--gap, 0);
+  justify-content: var(--justify, flex-start);
+}
+
+.cpl header,
+.cpl footer,
+.cpl main,
+.cpl .katex-output-container {
+  padding: var(--connect__card-padding-y) var(--connect__card-padding-x);
+  width: 100%;
+}
+
+.cpl header,
+.cpl footer,
+.cpl .katex-output-container {
+  --connect__card-padding-y: var(--connect__spacer-sm);
+  --connect__card-padding-x: var(--connect__spacer-sm);
+}
+
+.cpl header {
+  background-color: var(--connect__neutrals-pale);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.cpl main {
+  --connect__card-padding-y: 0;
+  --connect__card-padding-x: var(--connect__spacer-md);
+}
+
+.cpl footer {
+  --justify: flex-end;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  border-top: 0.125rem solid var(--connect__neutrals-pale);
+}
+
+.cpl ul:not([class]) {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+/* 
+  * DROPDOWNS STYLING
+  * TOGGLER
+  * DROPDOWN MENU
+  * DROPDOWN MENU ITEMS
+*/
+
+/* Styles for when a dropdown is there */
+.cpl main:has(.toggler) {
+  --align: center;
+  --gap: var(--connect__spacer-lg);
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+.toggler {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: var(--connect__neutrals-white);
+  border-radius: var(--border-radius);
+  box-shadow:
+    var(--connect__shadow-spread-level-1) var(--connect__shadow-10),
+    var(--connect__shadow-spread-level-4) var(--connect__shadow-20),
+    var(--connect__shadow-spread-level-18) var(--connect__shadow-14),
+    var(--connect__shadow-spread-level-18) var(--connect__shadow-12);
+  display: none;
+  left: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 3.75rem;
+  width: 9.375rem;
+  z-index: 99;
+}
+
+.dropdown {
+  --theme-button-border-c: var(--connect__neutrals-pale);
+  --theme-button-border-w: 0.0625rem;
+  --connect__button-color: var(--connect__neutrals-dark);
+  --theme-button-bg: var(--connect__neutrals-white);
+
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-0);
+  align-items: center;
+
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 9.375rem;
+}
+
+.dropdown::after {
+  content: '\25BC';
+  font-size: var(--connect__credits);
+  position: absolute;
+  right: var(--connect__spacer-sm);
+}
+
+.dropdown.active::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li {
+  --connect__shadow-level-1: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-0);
+  --connect__shadow-level-5: var(--connect__shadow-spread-level-0);
+  --connect__input-outer-shadow: var(--connect__shadow-spread-level-0);
+  box-shadow:
+    var(--connect__shadow-level-1) var(--starting-shadow-color, var(--connect__shadow-10)) inset,
+    var(--connect__shadow-level-2) var(--connect__shadow-20) inset,
+    var(--connect__shadow-level-3) var(--connect__shadow-14) inset,
+    var(--connect__shadow-level-4) var(--connect__shadow-12) inset,
+    var(--connect__shadow-level-5, initial) var(--connect__input-focus-shadow, rgba(0, 0, 0, 0)),
+    var(--connect__input-outer-shadow) var(--outer-shadow-color, #fff);
+
+  padding: var(--connect__spacer-sm);
+}
+.dropdown-menu li:focus {
+  --connect__shadow-level-2: var(--connect__shadow-spread-level-4);
+  --connect__shadow-level-3: var(--connect__shadow-spread-level-3);
+  --connect__shadow-level-4: var(--connect__shadow-spread-level-5);
+  --connect__shadow-level-5: var(--connect__shadow-spread-level-17);
+  --connect__input-outer-shadow: var(--connect__shadow-spread-level-15);
+  --starting-shadow-color: var(--connect__focus-mid);
+  --connect__input-focus-shadow: var(--connect__focus-mid);
+}
+
+.dropdown-menu li p {
+  cursor: pointer;
+  width: 100%;
+}
+
+.dropdown-menu li:first-of-type {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.dropdown-menu li:last-of-type {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.dropdown-menu li:hover {
+  background-color: var(--connect__neutrals-pale);
+}
+
+.katex-display {
+  margin: 0;
+}
+
+/* CPL with radios checkboxes */
+
+.cpl:has(.connect__mcq-label) ul {
+  --flow: column;
+  --gap: var(--connect__spacer-sm);
+}
+
+div.connect__mcq-label-wrapper {
+  --flow: row;
+  display: inline-flex;
+  position: relative;
+}
+
+/* CPL FIB VARIATION */
+.cpl.fib main {
+  --connect__card-padding-y: 0;
+  --connect__card-padding-x: 0;
+  --align: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cpl.fib section {
+  --margin-y: 0;
+  --connect__card-padding-y: 0;
+  --connect__card-padding-x: var(--connect__spacer-lg);
+  align-items: center;
+  container: unset;
+
+  padding: var(--connect__card-padding-y) var(--connect__card-padding-x);
+  z-index: 1;
+}
+
+.fib main > section:first-of-type {
+  position: relative;
+}
+
+.fib main > section:first-of-type > * {
+  position: relative;
+  z-index: 1;
+}
+
+.fib main > section:first-of-type::before {
+  background-color: rgb(244 244 244);
+  content: '';
+  height: calc(100% + calc(var(--gap, var(--connect__spacer-md)) * 2));
+  left: 0;
+  position: absolute;
+  top: calc(var(--gap, var(--connect__spacer-md)) * -1);
+
+  width: 100%;
+  z-index: -1;
+}
+
+.fraction {
+  display: inline-block;
+  margin-left: var(--connect__spacer-sm);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fraction .connect__input {
+  --connect__input-padding-y: 0;
+  --connect__input-padding-x: var(--connect__spacer-xs);
+  align-items: center;
+  border-radius: 0.5rem;
+  height: var(--connect__spacer-xl);
+  justify-content: center;
+  min-width: 3.125rem;
+  width: 0;
+}
+
+.fraction .fraction-bar {
+  border-top: 0.0625rem solid var(--connect__neutrals-dark);
+  display: block;
+  margin: var(--connect__spacer-xs) 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  border: 0.0625rem solid var(--connect__neutrals-mid);
+  padding: var(--connect__spacer-sm);
+  text-align: left;
+}
+th {
+  background-color: var(--connect__neutrals-pale);
+  color: var(--connect__neutrals-dark);
+}
+.compatible {
+  background-color: var(--connect__apple-c15);
+}
+.incompatible {
+  background-color: var(--connect__red-c15);
+}
+
+section:has(table) {
+  --cols: 1;
+  container-name: findings;
+  container-type: inline-size;
+
+  display: grid;
+  gap: var(--connect__spacer-lg);
+  grid-template-columns: repeat(var(--cols), 1fr);
+  padding: var(--connect__spacer-lg) var(--connect__spacer-md);
+}
+
+section:has(table) h3 {
+  grid-column: 1 / -1;
+}
+
+section:has(table) article,
+section:has(table) table {
+  --basis-value: 100%;
+  --basis: calc(var(--basis-value) - var(--connect__spacer-md));
+  flex-basis: var(--basis);
+  grid-column: 1 / -1;
+  max-width: var(--basis);
+}
+
+@container findings (min-width: 64rem) {
+  section:has(table) article {
+    grid-column: 1;
+  }
+
+  section:has(table) table {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 64rem) {
+  section:has(table) {
+    --cols: 2;
+  }
+}
+
+#return-to-top {
+  bottom: 1.5rem;
+  position: fixed;
+  right: 0.375rem;
+}
+
+.katex-display > .katex {
+  text-align: left;
+}
+
+p {
+  text-wrap: pretty;
+}

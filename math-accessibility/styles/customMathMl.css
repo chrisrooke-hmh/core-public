@@ -1,0 +1,21 @@
+.border-bottom {
+    border-bottom: 0.06em solid;
+}
+
+.border-left {
+border-left: .06em solid
+}
+
+.border-right {
+border-right: 0.06em solid;
+}
+
+.border-top {
+    border-top: 0.06em solid;
+
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+    text-align: left;;
+}
+

@@ -1,0 +1,104 @@
+/*
+Temml.woff2 is a clone of KaTeX_Script-Regular, except that the code points
+have been changed from ASCII to Unicode Mathematical Alphanumeric Symbols Script capitals,
+Unicode range 1D49C to 1D4B5.
+*/
+
+@font-face {
+  font-family: 'Temml';
+  src: url('../fonts/Temml.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'STIXTwoMath-Regular';
+  src: url('../fonts/STIXTwoMath-Regular.woff2') format('woff2'),
+       url('../fonts/STIXTwoMath-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Asana-Math';
+  src: url('../fonts/Asana-Math.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Latin Modern Math';
+  src: url('../fonts/latinmodern-math.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cambria Math';
+  src: url('../fonts/Cambria-Math.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* HMH NEW FONTS */
+@font-face {
+  font-family: 'HMHMicroMedium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/HMHMicro-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HMHMicroMediumItalic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/HMHMicro-MediumItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'ProximaHMHBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/ProximaNovaForHMH-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'ProximaHMHBoldItalic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/ProximaNovaForHMH-BoldIt.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'ProximaHMH';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/ProximaNovaForHMH-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'ProximaHMHItalic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/ProximaNovaForHMH-RegularIt.otf') format('opentype');
+}
+
+.stix {
+  font-family: 'STIXTwoMath-Regular';
+}
+
+.asana {
+  font-family: 'Asana-Math';
+}
+
+.temml {
+  font-family: 'Temml';
+}
+
+.latin-modern {
+  font-family: 'Latin Modern Math';
+}
+
+.cambria {
+  font-family: 'Cambria Math';
+}
