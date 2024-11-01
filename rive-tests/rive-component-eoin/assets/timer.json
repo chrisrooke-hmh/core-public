@@ -1,0 +1,17 @@
+{
+    "riv": "timer.riv",
+    "lines": {
+        "0": {
+            "ga": "Crochann amadóir san aer - tá aghaidh ghlas air, agus fráma corcra. Níl lámh an clog ag bogadh.",
+            "en": "A timer clock with a stylised green face and purple frame hovers in the air. The timer is currently stopped."
+        },
+        "1": {
+            "ga": "Thosnaigh an t-amadóir! Tá a lámh ag rothlú go mall.",
+            "en": "The timer has started! Its hand rotates slowly."
+        },
+        "2": {
+            "ga": "Chríochnaigh an t-amadóir a chomhaireamh síos! Preabeann an t-amadóir agus buaileann a chloigín.",
+            "en": "The timer finished counting! It bounces as its alarm rings out."
+        }
+    }
+}

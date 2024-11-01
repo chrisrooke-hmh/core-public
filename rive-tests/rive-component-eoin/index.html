@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rive Animation Web Component Test</title></head><body><style>body {
+    background-color:rgb(150, 219, 103); 
+    justify-items: center;
+    text-align: center;
+  }
+  button {
+    background-color: #baff90;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+  }
+  button:hover {
+    background-color: #d2ffb6;
+    cursor: pointer;
+  }
+  button:active {
+    position: relative;
+    left: 2px;
+    top: 2px;
+    background-color: #91d965;
+  }
+  hmh-rive {
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    background-color: #fb92b5;
+    margin-bottom: 30px;
+  }
+  .rive-container{
+    display: inline-block; 
+    justify-items: center;
+    text-align: center;
+  }</style><script>function setInputValue(hmhRiveID, input_attr, value) {
+      const riveAnimation = document.getElementById(hmhRiveID);
+      riveAnimation.setAttribute(input_attr, value);
+  }
+  function togglePlay() {
+      const riveAnimation = document.getElementById('testRive');
+
+      console.log("paused?", riveAnimation.isPaused);
+      console.log("stopped?", riveAnimation.isStopped);
+      console.log("playing?", riveAnimation.isPlaying);
+
+      if (riveAnimation.isPlaying)
+        riveAnimation.pause();
+      else
+        riveAnimation.play();
+  }</script><div class="rive-container"><div class="button-row"><div style="display:inline-block;"><button onclick="setInputValue('timer', 'input_number_animationstate', 0)">animationState 0</button></div><div style="display:inline-block;"><button onclick="setInputValue('timer', 'input_number_animationstate', 1)">animationState 1</button></div><div style="display:inline-block;"><button onclick="setInputValue('timer', 'input_number_animationstate', 2)">animationState 2</button></div></div><hmh-rive id="timer" src="../assets/timer.riv" script_src="../assets/timer.js" subtitles_src="../assets/timer.json" subtitles="true" statemachine="State Machine 1" width="566" height="500" debug="true" volume="1"></hmh-rive></div><div class="rive-container"><div class="button-row"><div style="display:inline-block;"><button onclick="setInputValue('student-picker', 'input_trigger_pickstudent', 1)">Pick Student</button></div></div><hmh-rive id="student-picker" src="../assets/student_picker.riv" width="566" height="500" fit="contain" statemachine="State Machine 1" desc="A cartoon dog against a blue background." autoplay="true" surfaceallinputs="true"></hmh-rive></div><hmh-rive id="reducedMotionTest" src="../assets/reduced_motion_test.riv" width="566" height="500" play="true" fadein="0.75" style="filter: drop-shadow(2px 4px 8px #73bb6b);
+    background-color: #94dc72;" autoplay="true" fit="contain" desc="A schoolchild sitting at a computer desk - reading, thinking, and typing." surfaceallinputs="true" debug="false"></hmh-rive><hmh-rive src="../assets/buttontest.riv" statemachine="State Machine 1" surfaceallinputs="true" debug="false"></hmh-rive><script defer="defer" src="bundle.js?719f0a95f5ffabe2b50a"></script></body></html>
